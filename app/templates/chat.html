@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+{% block title %}Chat{% endblock %}
+{% block content %}
+<div class="chat-container">
+    <div class="chat-sidebar">
+        <h3 data-i18n="chatHistory">Chat History</h3>
+        <ul class="chat-history">
+            <!-- 假设 chats 是传递到模板中的聊天列表 -->
+            {% for chat in chats %}
+                <li>
+                    <a href="{{ url_for('chat.detail', chat_id=chat.id) }}" class="chat-link">
+                        {{ chat.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="chat-main">
+        <div class="chat-header">
+            <h3 data-i18n="currentChat">Current Chat</h3>
+        </div>
+        <div class="chat-messages">
+            <!-- 假设 messages 是传递到模板中的当前聊天记录 -->
+            {% for message in messages %}
+                <div class="chat-message {{ 'from-user' if message.from_user else 'from-bot' }}">
+                    <p>{{ message.content }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="chat-input">
+            <form method="POST" action="{{ url_for('chat.send_message', chat_id=current_chat_id) }}">
+                {{ form.hidden_tag() }}
+                <div class="input-group">
+                    {{ form.message(class="form-control", placeholder="Type your message here...", data_i18n_placeholder="typeMessage") }}
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit" data-i18n="send">Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<style>
+.chat-container {
+    display: flex;
+    height: 80vh;
+}
+
+.chat-sidebar {
+    width: 25%;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-right: 1px solid #dee2e6;
+}
+
+.chat-sidebar h3 {
+    margin-bottom: 1rem;
+}
+
+.chat-history {
+    list-style: none;
+    padding: 0;
+}
+
+.chat-history li {
+    margin-bottom: 0.5rem;
+}
+
+.chat-link {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.chat-link:hover {
+    text-decoration: underline;
+}
+
+.chat-main {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.chat-header {
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.5rem;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin: 1rem 0;
+}
+
+.chat-message {
+    margin-bottom: 1rem;
+}
+
+.chat-message.from-user {
+    text-align: right;
+}
+
+.chat-message.from-bot {
+    text-align: left;
+}
+
+.chat-input {
+    border-top: 1px solid #dee2e6;
+    padding-top: 0.5rem;
+}
+</style>

@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #f4f4f9;
+}
+
+.chat-box {
+    height: 400px;
+    overflow-y: auto;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
+
+.message strong {
+    color: #0056b3;
+}
+
+#chat-box {
+    background-color: #ffffff;
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.form-inline {
+    margin-left: 20px;
+}
+
+#language-select {
+    margin-right: 15px;
+}
+
+.back-arrow {
+    font-size: 1.5rem;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.back-arrow:hover {
+    text-decoration: underline;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h4 {
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.card-header button {
+    margin: 0;
+}
