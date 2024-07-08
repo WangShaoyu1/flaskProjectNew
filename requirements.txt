@@ -4,4 +4,6 @@ flask_bcrypt>=0.7
 flask_login>=0.5
 flask_wtf>=1.0
 python-dotenv>=0.15
-openai>=0.27
+openai>=1.35.0
+flask_migrate>=4.0
+email_validator>=2.1.1

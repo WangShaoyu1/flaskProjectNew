@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="chat-container">
+        <div class="chat-sidebar">
+            <h3>Chat History</h3>
+            <ul class="chat-history" id="chat-history">
+                <!-- Chat list will be populated by jQuery -->
+            </ul>
+        </div>
+        <div class="chat-main">
+            <div class="chat-header">
+                <h2 id="chat-title"></h2>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will be populated by jQuery -->
+            </div>
+            <div class="chat-input">
+                <textarea id="chat-message" class="form-control" rows="1"
+                          data-i18n-placeholder="enterChatMsg"></textarea>
+                <button class="btn btn-primary" id="send-message" type="button" data-i18n="send">Send</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

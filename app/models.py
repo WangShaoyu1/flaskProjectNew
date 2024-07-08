@@ -1,40 +1,29 @@
 from datetime import datetime
-from app import db, login
 from flask_login import UserMixin
+from app import db
 
 
-@login.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
-
-class User(db.Model, UserMixin):
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(60), nullable=False)
-    chats = db.relationship('Chat', backref='author', lazy=True)
-
-    def __repr__(self):
-        return f"User('{self.username}', '{self.email}')"
+    username = db.Column(db.String(150), unique=True, nullable=False)
+    email = db.Column(db.String(150), unique=True, nullable=False)
+    password = db.Column(db.String(150), nullable=False)
+    chats = db.relationship('Chat', backref='user', lazy=True)
 
 
 class Chat(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    conversation_id = db.Column(db.Integer, unique=True, nullable=False)
+    conversation_id = db.Column(db.String(36), nullable=False, unique=True, default=lambda: str(uuid.uuid4()))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    title = db.Column(db.String(150), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     messages = db.relationship('Message', backref='chat', lazy=True)
-
-    def __repr__(self):
-        return f"Chat('{self.conversation_id}', '{self.user_id}')"
 
 
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     chat_id = db.Column(db.Integer, db.ForeignKey('chat.id'), nullable=False)
-    sender = db.Column(db.String(20), nullable=False)
-    message = db.Column(db.Text, nullable=False)
-    timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-
-    def __repr__(self):
-        return f"Message('{self.sender}', '{self.message}', '{self.timestamp}')"
+    sender_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    from_user = db.Column(db.Boolean, default=True)
