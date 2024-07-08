@@ -3,8 +3,10 @@ from flask_login import login_required, current_user
 from app import db
 from app.models import Chat, Message
 import openai
+from openai import OpenAI
 import uuid
-
+from litellm import completion
+from utils import util
 chat = Blueprint('chat', __name__)
 
 
@@ -57,13 +59,15 @@ def send_message(chat_id):
     # Append the current user message
     messages.append({"role": "user", "content": content})
 
+    print(messages)
+    util.write_to_file('./temp_data_dir/result_1.txt', str(messages))
     # Call OpenAI API
-    client = openai(api_key=current_app.config['OPENAI_API_KEY'], base_url=current_app.config['OPENAI_BASE_URL'])
-    response = client.chat.Completion.create(
-        model="gpt-4",
+    client = OpenAI(api_key=current_app.config['OPENAI_API_KEY'], base_url=current_app.config['OPENAI_BASE_URL'])
+    response = client.chat.completions.create(
+        model="gpt-4o",
         messages=messages
     )
-    bot_response = response.choices[0].text.strip()
+    bot_response = response.choices[0].message.content
 
     # Add bot response to the database
     bot_message = Message(content=bot_response, from_user=False, chat_id=chat.id, sender_id=current_user.id)

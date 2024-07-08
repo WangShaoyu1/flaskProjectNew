@@ -33,8 +33,13 @@ $(document).ready(function () {
                 const chatMessages = $('#chat-messages');
                 chatMessages.empty();
                 data.forEach(message => {
-                    const messageClass = message.from_user ? 'from-user' : 'from-bot';
-                    chatMessages.append(`<div class="chat-message ${messageClass}"><p>${message.content}</p></div>`);
+                    // const messageClass = message.from_user ? 'from-user' : 'from-bot';
+                    // chatMessages.append(`<div class="chat-message ${messageClass}"><p>${message.content}</p></div>`);
+                    var messageElement = $('<div>').addClass(message.from_user ? 'user-message' : 'bot-message');
+                    var contentElement = $('<div>').addClass('message-content').text(message.content);
+
+                    messageElement.append(contentElement);
+                    $('#chat-messages').append(messageElement)
                 });
                 $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
             },

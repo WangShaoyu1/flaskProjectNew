@@ -1,3 +1,22 @@
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fafafa;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbeaf1;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Basic Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -60,6 +79,7 @@ body {
     margin-top: 62px;
 }
 
+/* Chat Container */
 .chat-container {
     display: flex;
     height: 100vh;
@@ -67,9 +87,11 @@ body {
 
 .chat-sidebar {
     width: 25%;
-    max-width: 280px;
+    max-width: 300px;
     padding: 10px;
-    overflow-y: hidden; /* Prevent scrolling */
+    height: calc(100vh - 62px);
+    border-right: 0px solid #e0e0e0;
+    overflow-y: auto; /* Prevent scrolling */
     background-color: #f4f4f9;
 }
 
@@ -113,27 +135,22 @@ body {
 .chat-messages {
     flex-grow: 1;
     overflow-y: auto;
-    margin-bottom: 100px; /* Allow space for the chat input at the bottom */
-    padding: 10px 100px;
+    margin-bottom: 150px; /* Allow space for the chat input at the bottom */
+    padding: 10px 150px;
 }
 
 .chat-input {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     position: fixed;
     bottom: 30px;
-    left: 320px; /* Adjust according to sidebar width */
-    right: 50px; /* Adjust according to desired margin */
-    /*width: calc(75% - 70px); !* Adjust width to leave 50px margin on the right *!*/
-    /*padding: 10px 100px;*/
-}
+    padding: 10px 150px;
+    width: 75%;
 
-#chat-message {
-    flex-grow: 1;
-    margin-right: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    :first-child {
+        flex-basis: 90%
+    }
 }
 
 #send-message {
@@ -149,18 +166,54 @@ body {
     background-color: #0056b3;
 }
 
+/* Messages */
 .user-message {
-    background-color: #d1ffd6;
+    display: flex;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-bottom: 10px;
-    align-self: flex-start;
+    word-wrap: break-word; /* 自动换行 */
+    justify-content: end;
+}
+
+.user-message .message-content {
+    max-width: 80%; /* 防止文字太长 */
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    border-radius: 20px;
 }
 
 .bot-message {
-    background-color: #ffd1d1;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 10px 10px 10px 60px;
+    border-radius: 10px;
     margin-bottom: 10px;
-    align-self: flex-end;
+    align-self: flex-start;
+    max-width: 100%;
+    word-wrap: break-word;
+    position: relative;
+}
+
+.bot-message .message-content {
+    text-align: justify; /* 文字靠左对齐，保持可读性 */
+}
+
+.bot-message:before {
+    content: "";
+    width: 36px;
+    height: 36px;
+    background-image: url('../img/robot-icon.png'); /* Make sure to have this image in your static/img folder */
+    background-size: cover;
+    border-radius: 50%;
+    position: absolute;
+    left: 10px;
+    top: 10%;
+    transform: translateY(-50%);
+}
+
+.bot-icon {
+    width: 48px;
+    height: 48px;
+    margin-right: 10px;
+    border-radius: 50%;
+    vertical-align: middle;
 }
