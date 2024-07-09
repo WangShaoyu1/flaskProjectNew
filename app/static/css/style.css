@@ -136,7 +136,7 @@ body {
     flex-grow: 1;
     overflow-y: auto;
     margin-bottom: 150px; /* Allow space for the chat input at the bottom */
-    padding: 10px 150px;
+    padding: 10px 180px;
 }
 
 .chat-input {
@@ -145,7 +145,7 @@ body {
     align-items: center;
     position: fixed;
     bottom: 30px;
-    padding: 10px 150px;
+    padding: 10px 180px;
     width: 75%;
 
     :first-child {
@@ -206,8 +206,7 @@ body {
     border-radius: 50%;
     position: absolute;
     left: 10px;
-    top: 10%;
-    transform: translateY(-50%);
+    top: 10px;
 }
 
 .bot-icon {
@@ -216,4 +215,33 @@ body {
     margin-right: 10px;
     border-radius: 50%;
     vertical-align: middle;
+}
+
+.global-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #007bff;
+    opacity: 0.9;
+    transition: opacity 0.5s ease;
+}
+
+.global-message.danger {
+    background-color: #dc3545;
+}
+
+.global-message.success {
+    background-color: #28a745;
+}
+
+.global-message.info {
+    background-color: #17a2b8;
+}
+
+.global-message.warning {
+    background-color: #ffc107;
 }

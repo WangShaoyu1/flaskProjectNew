@@ -1,33 +1,62 @@
 {% extends "layout.html" %}
 {% block title %}Login{% endblock %}
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <a href="javascript:history.back()" class="back-arrow">&larr;</a>
-                <h4 data-i18n="login">Login</h4>
-                <span></span> <!-- 占位符，保持标题居中 -->
-            </div>
-            <div class="card-body">
-                <form method="POST" action="{{ url_for('auth.login') }}">
-                    {{ form.hidden_tag() }}
-                    <div class="form-group">
-                        <label for="email" data-i18n="email">Email</label>
-                        {{ form.email(class="form-control", id="email", data_i18n_placeholder="enterEmail") }}
-                    </div>
-                    <div class="form-group">
-                        <label for="password" data-i18n="password">Password</label>
-                        {{ form.password(class="form-control", id="password", data_i18n_placeholder="enterPassword") }}
-                    </div>
-                    <div class="form-group form-check">
-                        {{ form.remember_me(class="form-check-input", id="remember_me") }}
-                        <label class="form-check-label" for="remember_me" data-i18n="rememberMe">Remember Me</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary" data-i18n="login">Login</button>
-                </form>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <a href="javascript:history.back()" class="back-arrow">&larr;</a>
+                    <h4 data-i18n="login">Login</h4>
+                    <span></span> <!-- 占位符，保持标题居中 -->
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('auth.login') }}">
+                        {{ form.hidden_tag() }}
+                        <div class="form-group">
+                            <label for="login" data-i18n="usernameOrEmail">Username or Email</label>
+                            {{ form.login(class="form-control", id="login", data_i18n_placeholder="enterUsernameOrEmail") }}
+                        </div>
+                        <div class="form-group">
+                            <label for="password" data-i18n="password">Password</label>
+                            {{ form.password(class="form-control", id="password", data_i18n_placeholder="enterPassword") }}
+                        </div>
+                        <div class="form-group form-check">
+                            {{ form.remember_me(class="form-check-input", id="remember_me") }}
+                            <label class="form-check-label" for="remember_me" data-i18n="rememberMe">Remember Me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-i18n="login">Login</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        document.getElementById('login').addEventListener('input', function () {
+            this.value = this.value.replace(/\s/g, '');
+        });
+        document.getElementById('password').addEventListener('input', function () {
+            this.value = this.value.replace(/\s/g, '');
+        });
+
+        function showMessage(message, type) {
+            const messageBox = document.createElement('div');
+            messageBox.className = 'global-message ' + type;
+            messageBox.innerText = message;
+            document.body.appendChild(messageBox);
+
+            setTimeout(() => {
+                messageBox.remove();
+            }, 3000);
+        }
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    showMessage("{{ message }}", "{{ category }}");
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </script>
 {% endblock %}

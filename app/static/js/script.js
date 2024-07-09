@@ -57,6 +57,9 @@ $(document).ready(function () {
         }
 
         const chatId = currentChatId ? currentChatId : 0; // Use 0 for new chats
+        // Disable the send button and change its text
+        $('#send-message').prop('disabled', true).text('思考中...');
+
         $.ajax({
             url: `/chat/api/send_message/${chatId}`,
             method: 'POST',
@@ -74,6 +77,10 @@ $(document).ready(function () {
             },
             error: function (error) {
                 console.error('Error sending message:', error);
+            },
+            complete: function () {
+                // Re-enable the send button and restore its text
+                $('#send-message').prop('disabled', false).text('发送');
             }
         });
     });

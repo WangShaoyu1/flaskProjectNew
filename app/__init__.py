@@ -4,12 +4,14 @@ from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from app.config import Config
+import os
 
 db = SQLAlchemy()
 migrate = Migrate()
 bcrypt = Bcrypt()
 login = LoginManager()
 login.login_view = 'auth.login'
+
 
 def create_app(config_class=Config):
     app = Flask(__name__)
@@ -34,5 +36,17 @@ def create_app(config_class=Config):
 
     from app.chat import chat as chat_bp
     app.register_blueprint(chat_bp, url_prefix='/chat')
+
+    @app.cli.command('reset_db')
+    def reset_db():
+        db_path = os.path.join(app.instance_path, 'chat_app.db')
+
+        if os.path.exists(db_path):
+            os.remove(db_path)
+            print(f"Deleted database {db_path}")
+
+        with app.app_context():
+            db.create_all()
+            print("Recreated all tables")
 
     return app

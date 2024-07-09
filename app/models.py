@@ -1,6 +1,7 @@
 from datetime import datetime
 from flask_login import UserMixin
 from app import db
+import uuid
 
 
 class User(UserMixin, db.Model):
@@ -22,7 +23,7 @@ class Chat(db.Model):
 
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    chat_id = db.Column(db.Integer, db.ForeignKey('chat.id'), nullable=False)
+    conversation_id = db.Column(db.Integer, db.ForeignKey('chat.conversation_id'), nullable=False)
     sender_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     content = db.Column(db.Text, nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
