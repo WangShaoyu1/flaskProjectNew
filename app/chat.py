@@ -15,7 +15,7 @@ chat = Blueprint('chat', __name__)
 @login_required
 def get_chats():
     chats = Chat.query.filter_by(user_id=current_user.id).all()
-    return jsonify([{'id': chat.id, 'title': chat.title} for chat in chats])
+    return jsonify([{'id': chat.conversation_id, 'title': chat.title} for chat in chats])
 
 
 @chat.route('/<string:conversation_id>', methods=['GET'])

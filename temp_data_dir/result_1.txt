@@ -1,4 +1,4 @@
 [
-{"role": "user", "content": "你好"}
-{"role": "user", "content": "你好"}
+{"role": "user", "content": "贵州在哪里"}
+{"role": "user", "content": "贵州在哪里"}
 ]
