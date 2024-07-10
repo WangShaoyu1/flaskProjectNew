@@ -7,6 +7,7 @@ from openai import OpenAI
 import uuid
 from litellm import completion
 from utils import util
+
 chat = Blueprint('chat', __name__)
 
 
@@ -17,28 +18,28 @@ def get_chats():
     return jsonify([{'id': chat.id, 'title': chat.title} for chat in chats])
 
 
-@chat.route('/<int:chat_id>', methods=['GET'])
+@chat.route('/<string:conversation_id>', methods=['GET'])
 @login_required
-def view_chat(chat_id):
-    return render_template('chat/index.html', chat_id=chat_id)
+def view_chat(conversation_id):
+    return render_template('chat/index.html', conversation_id=conversation_id)
 
 
-@chat.route('/api/get_messages/<int:chat_id>', methods=['GET'])
+@chat.route('/api/get_messages/<string:conversation_id>', methods=['GET'])
 @login_required
-def get_messages(chat_id):
-    messages = Message.query.filter_by(chat_id=chat_id).order_by(Message.timestamp.asc()).all()
+def get_messages(conversation_id):
+    messages = Message.query.filter_by(conversation_id=conversation_id).order_by(Message.timestamp.asc()).all()
     return jsonify([{'content': message.content, 'from_user': message.from_user} for message in messages])
 
 
-@chat.route('/api/send_message/<int:chat_id>', methods=['POST'])
+@chat.route('/api/send_message/<string:conversation_id>', methods=['POST'])
 @login_required
-def send_message(chat_id):
+def send_message(conversation_id):
     data = request.json
     content = data.get('message', '')
     if not content:
         return jsonify({'status': 'error', 'message': 'Invalid data'})
 
-    chat = Chat.query.get(chat_id)
+    chat = Chat.query.get(conversation_id)
     if not chat:
         # If chat doesn't exist, create a new chat
         title = content[:10]
@@ -48,12 +49,12 @@ def send_message(chat_id):
         db.session.commit()
 
     # Add user message to the database
-    user_message = Message(content=content, from_user=True, chat_id=chat.id, sender_id=current_user.id)
+    user_message = Message(content=content, from_user=True, conversation_id=chat.id, sender_id=current_user.id)
     db.session.add(user_message)
     db.session.commit()
 
     # Get chat history for the current chat session
-    chat_history = Message.query.filter_by(chat_id=chat.id).order_by(Message.timestamp.asc()).all()
+    chat_history = Message.query.filter_by(conversation_id=chat.id).order_by(Message.timestamp.asc()).all()
     messages = [{"role": "user" if msg.from_user else "assistant", "content": msg.content} for msg in chat_history]
 
     # Append the current user message
@@ -70,8 +71,9 @@ def send_message(chat_id):
     bot_response = response.choices[0].message.content
 
     # Add bot response to the database
-    bot_message = Message(content=bot_response, from_user=False, chat_id=chat.id, sender_id=current_user.id)
+    bot_message = Message(content=bot_response, from_user=False, conversation_id=chat.id, sender_id=current_user.id)
     db.session.add(bot_message)
     db.session.commit()
 
-    return jsonify({'status': 'success', 'chat_id': chat.id, 'message': 'Message sent successfully'})
+    return jsonify(
+        {'status': 'success', 'conversation_id': chat.conversation_id, 'message': 'Message sent successfully'})

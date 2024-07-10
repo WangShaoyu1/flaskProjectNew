@@ -17,7 +17,9 @@ const translations = {
         enterUsername: "Enter username",
         confirmPassword: "Confirm password",
         startChat: "Start Chatting",
-        enterChatMsg:"Please enter a message..."
+        enterChatMsg: "Please enter a message...",
+        thinking: "Thinking...",
+        usernameOrEmail: "Username or Email"
     },
     zh: {
         welcome: "欢迎使用 Flask 聊天应用",
@@ -37,7 +39,9 @@ const translations = {
         enterUsername: "输入用户名",
         confirmPassword: "确认密码",
         startChat: "开始聊天",
-        enterChatMsg:"请输入一条消息..."
+        enterChatMsg: "请输入一条消息...",
+        thinking: "思考中...",
+        usernameOrEmail: "用户名或电子邮件"
     },
     ja: {
         welcome: "Flaskチャットアプリへようこそ",
@@ -57,7 +61,9 @@ const translations = {
         enterUsername: "ユーザー名を入力",
         confirmPassword: "パスワードを確認",
         startChat: "チャットを始める",
-        enterChatMsg:"メッセージを入力してください..."
+        enterChatMsg: "メッセージを入力してください...",
+        thinking: "考え中...",
+        usernameOrEmail: "ユーザー名またはメールアドレス"
     },
     fr: {
         welcome: "Bienvenue sur Flask Chat App",
@@ -77,7 +83,9 @@ const translations = {
         enterUsername: "Entrez le nom d'utilisateur",
         confirmPassword: "Confirmez le mot de passe",
         startChat: "Commencer à discuter",
-        enterChatMsg:"Veuillez entrer un message..."
+        enterChatMsg: "Veuillez entrer un message...",
+        thinking: "Réflexion...",
+        usernameOrEmail: "Nom d'utilisateur ou email"
     },
     de: {
         welcome: "Willkommen bei Flask Chat App",
@@ -97,7 +105,9 @@ const translations = {
         enterUsername: "Benutzernamen eingeben",
         confirmPassword: "Passwort bestätigen",
         startChat: "Chat starten",
-        enterChatMsg:"Bitte geben Sie eine Nachricht ein..."
+        enterChatMsg: "Bitte geben Sie eine Nachricht ein...",
+        thinking: "Denken...",
+        usernameOrEmail: "Benutzername oder E-Mail"
     }
 };
 
