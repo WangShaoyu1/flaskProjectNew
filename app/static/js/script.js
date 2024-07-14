@@ -1,35 +1,58 @@
 $(document).ready(function () {
+    // 获取查询字符串
+    var queryString = window.location.search, // 创建 URLSearchParams 对象
+        urlParams = new URLSearchParams(queryString), // 获取特定参数的值，例如 "paramName"
+        paramValue = urlParams.get('chat_id');
     let currentChatId = null;
+    let chatHistoryList = [];
 
     // Fetch and render chat history
-    function loadChats() {
+    function loadChatHistory(cb) {
         $.ajax({
-            url: '/chat/api/get_chats',
-            method: 'GET',
-            success: function (data) {
+            url: '/chat/api/get_chats', method: 'GET', success: function (data) {
+                chatHistoryList = data;
                 $('#chat-history').empty();
                 data.forEach(function (chat) {
-                    var chatElement = $('<li>').text(chat.title).data('chat-id', chat.id);
-                    chatElement.click(function () {
-                        var chatId = $(this).data('chat-id');
-                        loadMessages(chatId);
-                        $('#chat-title').text(chat.title);
-                        $('#chat-title').data('chat-id', chatId);
-                    });
+                    // 创建聊天会话元素
+                    var chatElement = $(`<li data-chat-id="${chat.conversation_id}">
+                             <a href="${window.location.pathname}?chat_id=${chat.conversation_id}">${chat.title}</a>
+                             <span class="delete-icon">&times</span>
+                         </li>`)
+
+                    if (chat.conversation_id === paramValue) {
+                        chatElement.addClass('chat-history-active');
+                    }
+
                     $('#chat-history').append(chatElement);
                 });
-            },
-            error: function (error) {
+
+                // 删除会话
+                $(".delete-icon").click(function (event) {
+                    event.stopPropagation();
+                    var chatId = $(this).parent().data('chat-id');
+                    deleteChat(chatId);
+                });
+
+                // 拉取聊天历史
+                if (paramValue) {
+                    currentChatId = paramValue;
+                    loadMessages(paramValue);
+                    $('#chat-title').text((data.find((ele => ele.conversation_id == paramValue)) || {}).title);
+                } else {
+                    $('#chat-title').text('新聊天');
+                }
+
+                cb && cb();
+            }, error: function (error) {
                 console.error('Error fetching chats:', error);
             }
         });
     }
 
+    // Fetch and render message history
     function loadMessages(chatId) {
         $.ajax({
-            url: `/chat/api/get_messages/${chatId}`,
-            method: 'GET',
-            success: function (data) {
+            url: `/chat/api/get_messages/${chatId}`, method: 'GET', success: function (data) {
                 const chatMessages = $('#chat-messages');
                 chatMessages.empty();
                 data.forEach(message => {
@@ -42,8 +65,7 @@ $(document).ready(function () {
                     $('#chat-messages').append(messageElement)
                 });
                 $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
-            },
-            error: function (error) {
+            }, error: function (error) {
                 console.error('Error fetching messages:', error);
             }
         });
@@ -56,20 +78,26 @@ $(document).ready(function () {
             return;
         }
 
-        const chatId = currentChatId ? currentChatId : 0; // Use 0 for new chats
+        let currentChatId = paramValue ? paramValue : 0; // Use 0 for new chats
         // Disable the send button and change its text
         $('#send-message').prop('disabled', true).text('思考中...');
 
         $.ajax({
-            url: `/chat/api/send_message/${chatId}`,
+            url: `/chat/api/send_message`,
             method: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify({message}),
+            data: JSON.stringify({message, conversation_id: currentChatId}),
             success: function (response) {
                 if (response.status === 'success') {
-                    currentChatId = response.chat_id; // Update current chat ID for new chats
+                    currentChatId = response.conversation_id; // Update current chat ID for new chats
                     loadMessages(currentChatId);
-                    loadChats(); // Refresh chat list to show new chat
+                    loadChatHistory(); // Refresh chat list to show new chat
+
+                    if (!currentChatId) {
+                        // If the user is creating a new chat, redirect to it
+                        window.location = window.location.pathname + '?chat_id=' + currentChatId;
+                    }
+                    // 清空输入框
                     $('#chat-message').val('');
                 } else {
                     alert(response.message);
@@ -84,6 +112,31 @@ $(document).ready(function () {
             }
         });
     });
+
+    // Function to delete chat
+    function deleteChat(chatId) {
+        $.ajax({
+            url: '/chat/api/chat/' + chatId, method: 'DELETE', success: function (response) {
+                if (response.status === 'success') {
+                    loadChatHistory(() => {
+                        $('#chat-title').text('');
+                        $('#chat-messages').empty();
+
+                        // If the user is creating a new chat, redirect to it
+                        if (chatHistoryList.length > 0) {
+                            window.location = window.location.pathname + '?chat_id=' + chatHistoryList[0].conversation_id;
+                        }
+                    });
+
+                } else {
+                    alert('Failed to delete chat');
+                }
+            }, error: function (error) {
+                console.error('Error fetching messages:', error);
+            }
+        })
+    }
+
     // Enter key submits the message
     $('#chat-message').keypress(function (e) {
         if (e.which === 13 && !e.shiftKey) {
@@ -92,5 +145,6 @@ $(document).ready(function () {
         }
     });
     // Initial load
-    loadChats();
-});
+    loadChatHistory();
+})
+

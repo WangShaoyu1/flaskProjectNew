@@ -25,6 +25,18 @@ body {
     overflow: hidden;
 }
 
+/* 去掉 a 标签的默认下划线 */
+a {
+    text-decoration: none;
+    color: inherit; /* 使用父元素的颜色，可以根据需要调整 */
+}
+
+/* 确保在 hover 状态下也没有下划线 */
+a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit; /* 使用父元素的颜色，可以根据需要调整 */
+}
+
 .navbar {
     position: fixed;
     top: 0;
@@ -116,6 +128,28 @@ body {
     background-color: #f9f9f9;
     cursor: pointer;
     transition: background-color 0.3s;
+
+    a {
+        display: inline-block;
+        width: 90%;
+        height: 100%;
+    }
+}
+
+.delete-icon {
+    display: none;
+    color: red;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.chat-history .chat-history-active {
+    background-color: #e0e0e0;
+
+    .delete-icon {
+        display: inline-block;
+    }
 }
 
 .chat-history li:hover {
@@ -130,6 +164,9 @@ body {
 }
 
 .chat-header {
+    h2 {
+        display: none
+    }
 }
 
 .chat-messages {

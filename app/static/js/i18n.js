@@ -19,7 +19,8 @@ const translations = {
         startChat: "Start Chatting",
         enterChatMsg: "Please enter a message...",
         thinking: "Thinking...",
-        usernameOrEmail: "Username or Email"
+        usernameOrEmail: "Username or Email",
+        historyConvassation:"History Conversation"
     },
     zh: {
         welcome: "欢迎使用 Flask 聊天应用",
@@ -41,7 +42,8 @@ const translations = {
         startChat: "开始聊天",
         enterChatMsg: "请输入一条消息...",
         thinking: "思考中...",
-        usernameOrEmail: "用户名或电子邮件"
+        usernameOrEmail: "用户名或电子邮件",
+        historyConvassation: "历史会话"
     },
     ja: {
         welcome: "Flaskチャットアプリへようこそ",
@@ -63,7 +65,8 @@ const translations = {
         startChat: "チャットを始める",
         enterChatMsg: "メッセージを入力してください...",
         thinking: "考え中...",
-        usernameOrEmail: "ユーザー名またはメールアドレス"
+        usernameOrEmail: "ユーザー名またはメールアドレス",
+        historyConvassation: "履歴会話"
     },
     fr: {
         welcome: "Bienvenue sur Flask Chat App",
@@ -85,7 +88,8 @@ const translations = {
         startChat: "Commencer à discuter",
         enterChatMsg: "Veuillez entrer un message...",
         thinking: "Réflexion...",
-        usernameOrEmail: "Nom d'utilisateur ou email"
+        usernameOrEmail: "Nom d'utilisateur ou email",
+        historyConvassation: "Conversation historique"
     },
     de: {
         welcome: "Willkommen bei Flask Chat App",
@@ -107,7 +111,8 @@ const translations = {
         startChat: "Chat starten",
         enterChatMsg: "Bitte geben Sie eine Nachricht ein...",
         thinking: "Denken...",
-        usernameOrEmail: "Benutzername oder E-Mail"
+        usernameOrEmail: "Benutzername oder E-Mail",
+        historyConvassation: "Historische Gespräche"
     }
 };
 
