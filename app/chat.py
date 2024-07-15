@@ -2,9 +2,9 @@ from flask import Blueprint, render_template, jsonify, request, current_app
 from flask_login import login_required, current_user
 from app import db
 from app.models import Chat, Message
-import openai
 from openai import OpenAI
 import uuid
+import time
 from litellm import completion
 from utils import util
 
@@ -60,11 +60,9 @@ def send_message():
     chat_history = Message.query.filter_by(conversation_id=chat.conversation_id).order_by(Message.timestamp.asc()).all()
     messages = [{"role": "user" if msg.from_user else "assistant", "content": msg.content} for msg in chat_history]
 
-    # Append the current user message
-    # messages.append({"role": "user", "content": content})
+    # Record the time before sending the request
+    start_time = time.time()
 
-    print(f"messages: {messages}")
-    util.write_to_file('./temp_data_dir/result_1.txt', str(messages))
     # Call OpenAI API
     client = OpenAI(api_key=current_app.config['OPENAI_API_KEY'], base_url=current_app.config['OPENAI_BASE_URL'])
     response = client.chat.completions.create(
@@ -73,11 +71,20 @@ def send_message():
     )
     bot_response = response.choices[0].message.content
 
+    # Record the time after receiving the response
+    end_time = time.time()
+
     # Add bot response to the database
     bot_message = Message(content=bot_response, from_user=False, conversation_id=chat.conversation_id,
                           sender_id=current_user.id)
     db.session.add(bot_message)
     db.session.commit()
+
+    # add the process data to the file
+    util.write_to_file('./temp_data_dir/result_1.txt', f'-------------------{conversation_id}-------------------\n')
+    util.write_to_file('./temp_data_dir/result_1.txt',
+                       str(messages + [({"role": "assistant", "content": bot_response})]), True)
+    util.write_to_file('./temp_data_dir/result_1.txt', f'\n本次请求耗时{round(end_time - start_time, 3)}秒\n')
 
     return jsonify(
         {'status': 'success', 'conversation_id': chat.conversation_id, 'message': 'Message sent successfully'})

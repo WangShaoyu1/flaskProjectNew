@@ -58,8 +58,15 @@ $(document).ready(function () {
                 data.forEach(message => {
                     // const messageClass = message.from_user ? 'from-user' : 'from-bot';
                     // chatMessages.append(`<div class="chat-message ${messageClass}"><p>${message.content}</p></div>`);
-                    var messageElement = $('<div>').addClass(message.from_user ? 'user-message' : 'bot-message');
-                    var contentElement = $('<div>').addClass('message-content').text(message.content);
+                    var messageElement = $('<div>').addClass(message.from_user ? 'user-message' : 'bot-message'),
+                        contentElement = null;
+
+                    if (!message.from_user) {
+                        // 将 Markdown 内容转换为 HTML
+                        contentElement = $('<div>').addClass('message-content').html(marked.parse(message.content));
+                    } else {
+                        contentElement = $('<div>').addClass('message-content').text(message.content);
+                    }
 
                     messageElement.append(contentElement);
                     $('#chat-messages').append(messageElement)
@@ -89,16 +96,16 @@ $(document).ready(function () {
             data: JSON.stringify({message, conversation_id: currentChatId}),
             success: function (response) {
                 if (response.status === 'success') {
-                    currentChatId = response.conversation_id; // Update current chat ID for new chats
-                    loadMessages(currentChatId);
-                    loadChatHistory(); // Refresh chat list to show new chat
+                    if (currentChatId) {
+                        loadMessages(response.conversation_id);
+                        // loadChatHistory(); // Refresh chat list to show new chat
 
-                    if (!currentChatId) {
+                        $('#chat-message').val('');// 清空输入框
+                    } else {
                         // If the user is creating a new chat, redirect to it
-                        window.location = window.location.pathname + '?chat_id=' + currentChatId;
+                        window.location = window.location.pathname + '?chat_id=' + response.conversation_id;
                     }
-                    // 清空输入框
-                    $('#chat-message').val('');
+
                 } else {
                     alert(response.message);
                 }
@@ -125,6 +132,8 @@ $(document).ready(function () {
                         // If the user is creating a new chat, redirect to it
                         if (chatHistoryList.length > 0) {
                             window.location = window.location.pathname + '?chat_id=' + chatHistoryList[0].conversation_id;
+                        } else {
+                            window.location = window.location.pathname;
                         }
                     });
 

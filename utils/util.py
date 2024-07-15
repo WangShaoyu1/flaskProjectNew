@@ -1,18 +1,18 @@
 import os
+import stat
 import json
-import tempfile
 
 
-def write_to_file(file_path, data):
+def write_to_file(file_path, data, need_json=False):
     try:
-        # 格式化数据
-        formatted_data = format_json_lines(data)
-        if not formatted_data:
-            raise ValueError("数据格式化失败")
-
-        # 写入临时文件
-        write_to_temp_file(formatted_data)
-
+        if need_json:
+            # 格式化数据
+            formatted_data = format_json_lines(data)
+            if not formatted_data:
+                raise ValueError("数据格式化失败")
+        else:
+            formatted_data = data
+            
         # 使用绝对路径
         abs_file_path = os.path.abspath(file_path)
 
@@ -23,10 +23,14 @@ def write_to_file(file_path, data):
 
         # 检查写入权限
         if not os.access(abs_file_path, os.W_OK):
-            raise PermissionError(f"文件不可写入：{abs_file_path}")
+            print(f"文件不可写入：{abs_file_path},正在尝试修改权限。")
+            # 修改文件权限为可写
+            os.chmod(abs_file_path, stat.S_IWUSR | stat.S_IWGRP | stat.S_IWOTH)
+            if not os.access(abs_file_path, os.W_OK):
+                raise PermissionError(f"无法修改文件权限：{abs_file_path}")
 
         # 打开文件并写入数据
-        with open(abs_file_path, 'w') as f:
+        with open(abs_file_path, 'a') as f:
             f.write(formatted_data)
             print(f"数据已成功写入 {abs_file_path}")
 
@@ -40,17 +44,6 @@ def write_to_file(file_path, data):
         print(f"写入文件时出错: 操作系统错误 - {oe}")
     except Exception as e:
         print(f"写入文件时出错: 未知错误 - {e}")
-
-
-def write_to_temp_file(data):
-    try:
-        # 获取临时文件路径
-        with tempfile.NamedTemporaryFile(delete=False, mode='w', suffix='.txt') as tmp_file:
-            tmp_file.write(data)
-            print(f"数据已成功写入临时文件 {tmp_file.name}")
-
-    except Exception as e:
-        print(f"写入临时文件时出错: {e}")
 
 
 def format_json_lines(raw_data):

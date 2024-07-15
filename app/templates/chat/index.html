@@ -2,7 +2,12 @@
 {% block content %}
     <div class="chat-container">
         <div class="chat-sidebar">
-            <h5 data-i18n="historyConvassation">历史会话</h5>
+            <div class="chat-sidebar-top">
+                <p data-i18n="historyConvassation">历史会话</p>
+                <a class="btn  btn-lg new-chat" href="{{ url_for('chat.view_chat',conversation_id=0) }}" role="button">
+                    <img src="{{ url_for('static', filename='img/new_chat_icon.svg') }}" alt="New Chat">
+                </a>
+            </div>
             <ul class="chat-history" id="chat-history">
                 <!-- Chat list will be populated by jQuery -->
             </ul>

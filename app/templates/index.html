@@ -7,7 +7,7 @@
         <hr class="my-4">
         <p>
             {% if current_user.is_authenticated %}
-                <a class="btn btn-primary btn-lg" href="{{ url_for('chat.view_chat',chat_id=0) }}" role="button"
+                <a class="btn btn-primary btn-lg" href="{{ url_for('chat.view_chat',conversation_id=0) }}" role="button"
                    data-i18n="startChat">Start Chatting</a>
             {% else %}
                 <a class="btn btn-primary btn-lg" href="{{ url_for('auth.login') }}" role="button" data-i18n="login">Login</a>
