@@ -1,4 +1,6 @@
-from flask import Blueprint, render_template, jsonify, request, current_app
+import flask
+from flask import Blueprint, render_template, jsonify, request, current_app, Response, stream_with_context
+
 from flask_login import login_required, current_user
 from app import db
 from app.models import Chat, Message
@@ -33,13 +35,6 @@ def get_messages(conversation_id):
 
 @chat.route('/api/send_message', methods=['POST'])
 @login_required
-def send_message():
-    if current_app.config["STREAM_ANSWER"]:
-        send_message_stream()
-    else:
-        send_message_no_stream()
-
-
 def send_message_no_stream():
     data = request.json
     content = data.get('message', '')
@@ -97,13 +92,17 @@ def send_message_no_stream():
         {'status': 'success', 'conversation_id': chat.conversation_id, 'message': 'Message sent successfully'})
 
 
+@chat.route('/api/send_message/stream', methods=['GET'])
 def send_message_stream():
-    data = request.json
+    data = request.args
     content = data.get('message', '')
     conversation_id = data.get('conversation_id', '')
+
     if not content:
         return jsonify({'status': 'error', 'message': 'Invalid data'})
     bot_response = ''
+    is_last_cha = False
+
     chat = Chat.query.filter_by(conversation_id=conversation_id).first()
     # If chat doesn't exist, create a new chat
     if not chat:
@@ -121,41 +120,11 @@ def send_message_stream():
     db.session.commit()
 
     # Get chat history for the current chat session
-    chat_history = Message.query.filter_by(conversation_id=chat.conversation_id).order_by(Message.timestamp.asc()).all()
+    chat_history = Message.query.filter_by(conversation_id=chat.conversation_id).order_by(
+        Message.timestamp.asc()).all()
     messages = [{"role": "user" if msg.from_user else "assistant", "content": msg.content} for msg in chat_history]
 
-    # Record the time before sending the request
-    start_time = time.time()
-
-    # Call OpenAI API
-    client = OpenAI(api_key=current_app.config['OPENAI_API_KEY'], base_url=current_app.config['OPENAI_BASE_URL'])
-    stream = client.chat.completions.create(
-        model="gpt-4o",
-        messages=messages,
-        stream=True
-    )
-    for chunk in stream:
-        if chunk.choices[0].delta.content is not None:
-            print(chunk.choices[0].delta.content, end="")
-            bot_response += chunk.choices[0].message.content
-
-    # Record the time after receiving the response
-    end_time = time.time()
-
-    # Add bot response to the database
-    bot_message = Message(content=bot_response, from_user=False, conversation_id=chat.conversation_id,
-                          sender_id=current_user.id)
-    db.session.add(bot_message)
-    db.session.commit()
-
-    # add the process data to the file
-    util.write_to_file('./temp_data_dir/result_1.txt', f'-------------------{conversation_id}-------------------\n')
-    util.write_to_file('./temp_data_dir/result_1.txt',
-                       str(messages + [({"role": "assistant", "content": bot_response})]), True)
-    util.write_to_file('./temp_data_dir/result_1.txt', f'\n本次请求耗时{round(end_time - start_time, 3)}秒\n')
-
-    return jsonify(
-        {'status': 'success', 'conversation_id': chat.conversation_id, 'message': 'Message sent successfully'})
+    return Response(stream_openai_response(messages, conversation_id), mimetype='text/event-stream')
 
 
 @chat.route('/api/chat/<string:conversation_id>', methods=['DELETE'])
@@ -173,3 +142,30 @@ def delete_chat(conversation_id):
     db.session.commit()
 
     return jsonify({'status': 'success', 'message': 'Chat deleted successfully'})
+
+
+def stream_openai_response(messages, conversation_id):
+    def generate():
+        bot_response = ''
+        # Call OpenAI API
+        client = OpenAI(api_key=current_app.config['OPENAI_API_KEY'], base_url=current_app.config['OPENAI_BASE_URL'])
+        stream = client.chat.completions.create(
+            model="gpt-4o",
+            messages=messages,
+            stream=True
+        )
+        for chunk in stream:
+            if chunk.choices[0].delta.content is not None:
+                print(chunk.choices[0].delta.content, end="")
+                bot_response += chunk.choices[0].delta.content
+                yield f"data:{chunk.choices[0].delta.content}\n\n"
+            else:
+                yield f"data:end\n\n"
+                # yield {"is_last_char": True, "bot_response": bot_response}
+        # Add bot response to the database
+        bot_message = Message(content=bot_response, from_user=False, conversation_id=conversation_id,
+                              sender_id=current_user.id)
+        db.session.add(bot_message)
+        db.session.commit()
+
+    return stream_with_context(generate())

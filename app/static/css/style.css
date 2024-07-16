@@ -219,7 +219,7 @@ a:hover, a:focus, a:active {
 
 .user-message .message-content {
     max-width: 80%; /* 防止文字太长 */
-    background-color: #f4f4f4;
+    background-color: #e3e8ed;
     padding: 10px 20px;
     border-radius: 20px;
 }
@@ -236,6 +236,9 @@ a:hover, a:focus, a:active {
 
 .bot-message .message-content {
     text-align: justify; /* 文字靠左对齐，保持可读性 */
+    background-color: #f1f1f1;
+    padding: 10px 20px;
+    border-radius: 10px;
 }
 
 .bot-message:before {
@@ -298,4 +301,35 @@ a:hover, a:focus, a:active {
     width: 24px;
     height: 24px;
     margin-right: 8px;
+}
+
+/*hightlight*/
+.hl-code-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #cbeaf1;
+
+    button {
+        border: none;
+        outline: none;
+        padding: 0;
+        background-color: #cbeaf1;
+        cursor: pointer;
+    }
+
+    .copy-done {
+        display: none;
+    }
+}
+
+.hljs {
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    word-wrap: break-word; /* 自动换行 */
+    background-color: #fff;
 }
