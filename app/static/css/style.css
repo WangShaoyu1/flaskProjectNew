@@ -99,7 +99,7 @@ a:hover, a:focus, a:active {
 
 .chat-sidebar {
     width: 25%;
-    max-width: 300px;
+    max-width: 240px;
     padding: 10px;
     height: calc(100vh - 62px);
     border-right: 0px solid #e0e0e0;
@@ -190,11 +190,11 @@ a:hover, a:focus, a:active {
     width: 75%;
 
     :first-child {
-        flex-basis: 90%
+        flex-basis: 86%
     }
 }
 
-#send-message {
+.chat-input button {
     min-width: 60px;
     background-color: #007bff;
     color: white;
@@ -203,7 +203,7 @@ a:hover, a:focus, a:active {
     cursor: pointer;
 }
 
-#send-message:hover {
+.chat-input button:hover {
     background-color: #0056b3;
 }
 

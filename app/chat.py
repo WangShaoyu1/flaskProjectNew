@@ -34,6 +34,13 @@ def get_messages(conversation_id):
 @chat.route('/api/send_message', methods=['POST'])
 @login_required
 def send_message():
+    if current_app.config["STREAM_ANSWER"]:
+        send_message_stream()
+    else:
+        send_message_no_stream()
+
+
+def send_message_no_stream():
     data = request.json
     content = data.get('message', '')
     conversation_id = data.get('conversation_id', '')
@@ -70,6 +77,67 @@ def send_message():
         messages=messages
     )
     bot_response = response.choices[0].message.content
+
+    # Record the time after receiving the response
+    end_time = time.time()
+
+    # Add bot response to the database
+    bot_message = Message(content=bot_response, from_user=False, conversation_id=chat.conversation_id,
+                          sender_id=current_user.id)
+    db.session.add(bot_message)
+    db.session.commit()
+
+    # add the process data to the file
+    util.write_to_file('./temp_data_dir/result_1.txt', f'-------------------{conversation_id}-------------------\n')
+    util.write_to_file('./temp_data_dir/result_1.txt',
+                       str(messages + [({"role": "assistant", "content": bot_response})]), True)
+    util.write_to_file('./temp_data_dir/result_1.txt', f'\n本次请求耗时{round(end_time - start_time, 3)}秒\n')
+
+    return jsonify(
+        {'status': 'success', 'conversation_id': chat.conversation_id, 'message': 'Message sent successfully'})
+
+
+def send_message_stream():
+    data = request.json
+    content = data.get('message', '')
+    conversation_id = data.get('conversation_id', '')
+    if not content:
+        return jsonify({'status': 'error', 'message': 'Invalid data'})
+    bot_response = ''
+    chat = Chat.query.filter_by(conversation_id=conversation_id).first()
+    # If chat doesn't exist, create a new chat
+    if not chat:
+        # If chat doesn't exist, create a new chat
+        title = content[:10]
+        conversation_id = str(uuid.uuid4())
+        chat = Chat(title=title, user_id=current_user.id, conversation_id=conversation_id)
+        db.session.add(chat)
+        db.session.commit()
+
+    # Add user message to the database
+    user_message = Message(content=content, from_user=True, conversation_id=chat.conversation_id,
+                           sender_id=current_user.id)
+    db.session.add(user_message)
+    db.session.commit()
+
+    # Get chat history for the current chat session
+    chat_history = Message.query.filter_by(conversation_id=chat.conversation_id).order_by(Message.timestamp.asc()).all()
+    messages = [{"role": "user" if msg.from_user else "assistant", "content": msg.content} for msg in chat_history]
+
+    # Record the time before sending the request
+    start_time = time.time()
+
+    # Call OpenAI API
+    client = OpenAI(api_key=current_app.config['OPENAI_API_KEY'], base_url=current_app.config['OPENAI_BASE_URL'])
+    stream = client.chat.completions.create(
+        model="gpt-4o",
+        messages=messages,
+        stream=True
+    )
+    for chunk in stream:
+        if chunk.choices[0].delta.content is not None:
+            print(chunk.choices[0].delta.content, end="")
+            bot_response += chunk.choices[0].message.content
 
     # Record the time after receiving the response
     end_time = time.time()
