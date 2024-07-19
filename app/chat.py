@@ -68,7 +68,7 @@ def send_message_no_stream():
     # Call OpenAI API
     client = OpenAI(api_key=current_app.config['OPENAI_API_KEY'], base_url=current_app.config['OPENAI_BASE_URL'])
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model=current_app.config['MODEL_NAME'],
         messages=messages
     )
     bot_response = response.choices[0].message.content
@@ -150,7 +150,7 @@ def stream_openai_response(messages, conversation_id):
         # Call OpenAI API
         client = OpenAI(api_key=current_app.config['OPENAI_API_KEY'], base_url=current_app.config['OPENAI_BASE_URL'])
         stream = client.chat.completions.create(
-            model="gpt-4o",
+            model=current_app.config['MODEL_NAME'],
             messages=messages,
             stream=True
         )
