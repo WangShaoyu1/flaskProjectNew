@@ -100,8 +100,6 @@ def send_message_stream():
 
     if not content:
         return jsonify({'status': 'error', 'message': 'Invalid data'})
-    bot_response = ''
-    is_last_cha = False
 
     chat = Chat.query.filter_by(conversation_id=conversation_id).first()
     # If chat doesn't exist, create a new chat
