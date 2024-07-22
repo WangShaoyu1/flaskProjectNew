@@ -57,9 +57,7 @@ def get_pm2_path():
         nvm_current_process = subprocess.run(command, capture_output=True, text=True, shell=True,
                                              executable='/bin/bash', check=True)
         current_node_version = nvm_current_process.stdout.strip()
-        print(f"当前使用的 Node 版本是，为什么不打印出来: {current_node_version}")
         if current_node_version == 'none':
-            print("当前没有 Node 版本，将安装 NVM 及最新版本的 Node.js")
             install_nvm_and_node()
             # 重新加载 NVM 环境并获取当前使用的 Node 版本
             nvm_current_process = subprocess.run(command, capture_output=True, text=True, shell=True,
@@ -68,7 +66,6 @@ def get_pm2_path():
 
         # 获取 NVM 安装目录
         nvm_dir = os.environ.get('NVM_HOME') or os.environ.get('NVM_DIR')
-        print(f"NVM 安装目录: {nvm_dir}")
         if not nvm_dir:
             raise RuntimeError("NVM 目录未找到。这可能是因为 NVM 没有正确安装或环境变量未设置")
 
@@ -77,16 +74,17 @@ def get_pm2_path():
         if not os.path.exists(npm_global_root):
             # 如果路径不存在，切换到没有 'versions' 和 'node' 级别的路径
             npm_global_root = os.path.join(nvm_dir, current_node_version)
-        print(f"npm 全局模块安装路径: {npm_global_root}")
         # 构建 pm2 可执行文件路径
         if os.name == 'nt':
             pm2_path = os.path.join(npm_global_root, 'pm2.cmd')
         else:
             pm2_path = os.path.join(npm_global_root, 'pm2', 'bin', 'pm2')
-        print(f"pm2 可执行文件路径: {pm2_path}")
         # 检查可执行文件是否存在
         if not os.path.exists(pm2_path):
             raise FileNotFoundError(f"pm2 不在全局路径 {npm_global_root} 中找到")
+        print(
+            f"当前使用的 Node 版本是，为什么不打印出来: {current_node_version}\n NVM 安装目录: {nvm_dir}\n "
+            f"npm 全局模块安装路径: {npm_global_root}\n pm2 可执行文件路径: {pm2_path}")
 
         return pm2_path
     except subprocess.CalledProcessError as e:
@@ -102,11 +100,9 @@ PROJECT_NAME = GIT_REPO_URL.split('/')[-1].replace('.git', '')
 @webHooks.route('/api/webHooks', methods=['POST'])
 def get_webHooks():
     data = request.json
-    print(f"BASE_PATH: {BASE_PATH}")
-    print(f"GIT_REPO_URL: {GIT_REPO_URL}")
-    print(f"PROJECT_NAME: {PROJECT_NAME}")
-    print(f"data: {data}")
-    print(f"收到来自 {data.get('repository', {}).get('name')} 的推送事件")
+    print(
+        f"BASE_PATH: {BASE_PATH}\n GIT_REPO_URL: {GIT_REPO_URL} PROJECT_NAME: {PROJECT_NAME}\n "
+        f"收到来自 {data.get('repository', {}).get('name')} 的推送事件")
     # 检查是否是push事件并且目标分支是master
     if data.get('ref') == 'refs/heads/master':
         # 确保目录在pull之前是存在的
