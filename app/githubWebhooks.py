@@ -31,8 +31,9 @@ def get_file_hash(file_path):
 def get_pm2_path():
     try:
         # 获取当前使用的 Node 版本
-        process = subprocess.run(['nvm', 'current'], capture_output=True, text=True, check=True)
-        current_node_version = process.stdout.strip()
+        node_version_process = subprocess.run(['node', '-v'], capture_output=True, text=True, check=True)
+        current_node_version = node_version_process.stdout.strip()
+        current_node_version = current_node_version.lstrip('v')  # 移除版本字符串中的 'v'
         if current_node_version == 'none':
             raise RuntimeError("NVM 没有使用任何 Node 版本")
 
