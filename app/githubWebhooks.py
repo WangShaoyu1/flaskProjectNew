@@ -57,7 +57,7 @@ def get_pm2_path():
         nvm_current_process = subprocess.run(command, capture_output=True, text=True, shell=True,
                                              executable='/bin/bash', check=True)
         current_node_version = nvm_current_process.stdout.strip()
-        print(f"当前使用的 Node 版本是: {current_node_version}")
+        print(f"当前使用的 Node 版本是，为什么不打印出来: {current_node_version}")
         if current_node_version == 'none':
             print("当前没有 Node 版本，将安装 NVM 及最新版本的 Node.js")
             install_nvm_and_node()
