@@ -57,7 +57,7 @@ def get_pm2_path():
         nvm_current_process = subprocess.run(command, capture_output=True, text=True, shell=True,
                                              executable='/bin/bash', check=True)
         current_node_version = nvm_current_process.stdout.strip()
-
+        print(f"当前使用的 Node 版本: {current_node_version}")
         if current_node_version == 'none':
             print("当前没有 Node 版本，将安装 NVM 及最新版本的 Node.js")
             install_nvm_and_node()
@@ -73,7 +73,7 @@ def get_pm2_path():
             raise RuntimeError("NVM 目录未找到。这可能是因为 NVM 没有正确安装或环境变量未设置")
 
         # 构建 npm 全局路径
-        npm_global_root = os.path.join(nvm_dir, 'versions', 'node', current_node_version, 'lib', 'node_modules')
+        npm_global_root = os.path.join(nvm_dir, 'versions', 'node', f'{current_node_version}', 'lib', 'node_modules')
         if not os.path.exists(npm_global_root):
             # 如果路径不存在，切换到没有 'versions' 和 'node' 级别的路径
             npm_global_root = os.path.join(nvm_dir, current_node_version)
