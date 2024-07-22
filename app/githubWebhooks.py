@@ -27,15 +27,44 @@ def get_file_hash(file_path):
         return hashlib.md5(f.read()).hexdigest()
 
 
+def install_nvm_and_node():
+    try:
+        # 下载并安装 NVM
+        if os.name == 'nt':
+            raise RuntimeError("请手动安装NVM并配置环境变量。")
+        else:
+            install_nvm_command = 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash'
+            subprocess.run(install_nvm_command, shell=True, executable='/bin/bash', check=True)
+
+        # 重新加载 shell 配置以确保 NVM 可用
+        load_nvm_command = 'export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
+        subprocess.run(load_nvm_command, shell=True, executable='/bin/bash', check=True)
+
+        # 安装最新的 Node.js 版本
+        install_node_command = 'nvm install node'
+        subprocess.run(f'{load_nvm_command} && {install_node_command}', shell=True, executable='/bin/bash', check=True)
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError("NVM 或 Node.js 安装失败") from e
+
+
 # 获取 npm 全局模块安装路径
 def get_pm2_path():
     try:
-        # 获取当前使用的 Node 版本
-        node_version_process = subprocess.run(['node', '-v'], capture_output=True, text=True, check=True)
-        current_node_version = node_version_process.stdout.strip()
-        current_node_version = current_node_version.lstrip('v')  # 移除版本字符串中的 'v'
+        # 手动加载 NVM 环境并获取当前使用的 Node 版本
+        load_nvm_command = 'export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
+        nvm_current_command = 'nvm current'
+        command = f'{load_nvm_command} && {nvm_current_command}'
+        nvm_current_process = subprocess.run(command, capture_output=True, text=True, shell=True,
+                                             executable='/bin/bash', check=True)
+        current_node_version = nvm_current_process.stdout.strip()
+
         if current_node_version == 'none':
-            raise RuntimeError("NVM 没有使用任何 Node 版本")
+            print("当前没有 Node 版本，将安装 NVM 及最新版本的 Node.js")
+            install_nvm_and_node()
+            # 重新加载 NVM 环境并获取当前使用的 Node 版本
+            nvm_current_process = subprocess.run(command, capture_output=True, text=True, shell=True,
+                                                 executable='/bin/bash', check=True)
+            current_node_version = nvm_current_process.stdout.strip()
 
         # 获取 NVM 安装目录
         nvm_dir = os.environ.get('NVM_HOME') or os.environ.get('NVM_DIR')
