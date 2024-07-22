@@ -82,7 +82,7 @@ def get_pm2_path():
         if os.name == 'nt':
             pm2_path = os.path.join(npm_global_root, 'pm2.cmd')
         else:
-            pm2_path = os.path.join(npm_global_root, 'pm2', 'pm2')
+            pm2_path = os.path.join(npm_global_root, 'pm2', 'bin', 'pm2')
         print(f"pm2 可执行文件路径: {pm2_path}")
         # 检查可执行文件是否存在
         if not os.path.exists(pm2_path):
