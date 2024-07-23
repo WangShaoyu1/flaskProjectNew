@@ -82,7 +82,7 @@ def send_message_no_stream():
 
     # add the process data to the file
     util.write_to_file('./temp_data_dir/result_1.txt',
-                       f'----------{send_message_no_stream}--{conversation_id}---------\n')
+                       f'----------send_message_no_stream--{conversation_id}---------\n')
     util.write_to_file('./temp_data_dir/result_1.txt',
                        str(messages + [({"role": "assistant", "content": bot_response})]), True)
     util.write_to_file('./temp_data_dir/result_1.txt', f'\n本次请求耗时{round(end_time - start_time, 3)}秒\n')
@@ -174,7 +174,7 @@ def stream_openai_response(messages, conversation_id):
         end_time_end = time.time()
         # add the process data to the file
         util.write_to_file('./temp_data_dir/result_1.txt',
-                           f'----------{send_message_stream}--{conversation_id}---------\n')
+                           f'----------send_message_stream--{conversation_id}---------\n')
         util.write_to_file('./temp_data_dir/result_1.txt',
                            str(messages + [({"role": "assistant", "content": bot_response})]), True)
         util.write_to_file('./temp_data_dir/result_1.txt',
