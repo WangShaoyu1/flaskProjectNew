@@ -4,10 +4,10 @@ from app.models import User
 from app import db, migrate, bcrypt
 from app.forms import LoginForm, RegisterForm
 
-auth = Blueprint('auth', __name__)
+auth_fun = Blueprint('auth', __name__)
 
 
-@auth.route("/login", methods=['GET', 'POST'])
+@auth_fun.route("/login", methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
@@ -23,7 +23,7 @@ def login():
     return render_template('auth/login.html', title='Login', form=form)
 
 
-@auth.route("/register", methods=['GET', 'POST'])
+@auth_fun.route("/register", methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
@@ -38,7 +38,7 @@ def register():
     return render_template('auth/register.html', title='Register', form=form)
 
 
-@auth.route('/logout')
+@auth_fun.route('/logout')
 @login_required
 def logout():
     logout_user()

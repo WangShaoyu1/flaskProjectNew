@@ -1,4 +1,3 @@
-import flask
 from flask import Blueprint, render_template, jsonify, request, current_app, Response, stream_with_context
 
 from flask_login import login_required, current_user
@@ -7,40 +6,39 @@ from app.models import Chat, Message
 from openai import OpenAI
 import uuid
 import time
-from litellm import completion
 from utils import util
 
-chat = Blueprint('chat', __name__)
+chat_fun = Blueprint('chat', __name__)
 
 
-@chat.route('/api/get_chats', methods=['GET'])
+@chat_fun.route('/api/get_chats', methods=['GET'])
 @login_required
 def get_chats():
     chats = Chat.query.filter_by(user_id=current_user.id).all()
-    return jsonify([{'conversation_id': chat.conversation_id, 'title': chat.title} for chat in chats])
+    return jsonify([{'conversation_id': elem.conversation_id, 'title': elem.title} for elem in chats])
 
 
-@chat.route('/<string:conversation_id>', methods=['GET'])
+@chat_fun.route('/<string:conversation_id>', methods=['GET'])
 @login_required
 def view_chat(conversation_id):
     return render_template('chat/index.html', conversation_id=conversation_id)
 
 
-@chat.route('/api/get_messages/<string:conversation_id>', methods=['GET'])
+@chat_fun.route('/api/get_messages/<string:conversation_id>', methods=['GET'])
 @login_required
 def get_messages(conversation_id):
     messages = Message.query.filter_by(conversation_id=conversation_id).order_by(Message.timestamp.asc()).all()
     return jsonify([{'content': message.content, 'from_user': message.from_user} for message in messages])
 
 
-@chat.route('/api/send_message', methods=['POST'])
+@chat_fun.route('/api/send_message', methods=['POST'])
 @login_required
 def send_message_no_stream():
     data = request.json
     content = data.get('message', '')
     conversation_id = data.get('conversation_id', '')
     if not content:
-        return jsonify({'status': 'error', 'message': 'Invalid data'})
+        return jsonify({'status': 'error', 'message': 'Empty data'})
 
     chat = Chat.query.filter_by(conversation_id=conversation_id).first()
     # If chat doesn't exist, create a new chat
@@ -83,16 +81,18 @@ def send_message_no_stream():
     db.session.commit()
 
     # add the process data to the file
-    util.write_to_file('./temp_data_dir/result_1.txt', f'-------------------{conversation_id}-------------------\n')
+    util.write_to_file('./temp_data_dir/result_1.txt',
+                       f'----------{send_message_no_stream}--{conversation_id}---------\n')
     util.write_to_file('./temp_data_dir/result_1.txt',
                        str(messages + [({"role": "assistant", "content": bot_response})]), True)
     util.write_to_file('./temp_data_dir/result_1.txt', f'\n本次请求耗时{round(end_time - start_time, 3)}秒\n')
 
-    return jsonify(
-        {'status': 'success', 'conversation_id': chat.conversation_id, 'message': 'Message sent successfully'})
+    return jsonify({'status': 'success', 'conversation_id': chat.conversation_id,
+                    'chat_data': {'user_message': content, 'bot_message': bot_response},
+                    'message': 'Message sent successfully'})
 
 
-@chat.route('/api/send_message/stream', methods=['GET'])
+@chat_fun.route('/api/send_message/stream', methods=['GET'])
 def send_message_stream():
     data = request.args
     content = data.get('message', '')
@@ -125,7 +125,7 @@ def send_message_stream():
     return Response(stream_openai_response(messages, conversation_id), mimetype='text/event-stream')
 
 
-@chat.route('/api/chat/<string:conversation_id>', methods=['DELETE'])
+@chat_fun.route('/api/chat/<string:conversation_id>', methods=['DELETE'])
 @login_required
 def delete_chat(conversation_id):
     chat = Chat.query.filter_by(conversation_id=conversation_id).first()
@@ -143,6 +143,9 @@ def delete_chat(conversation_id):
 
 
 def stream_openai_response(messages, conversation_id):
+    # Record the time before sending the request
+    start_time = time.time()
+
     def generate():
         bot_response = ''
         # Call OpenAI API
@@ -152,18 +155,31 @@ def stream_openai_response(messages, conversation_id):
             messages=messages,
             stream=True
         )
+        # Record the time after receiving the response
+        end_time_start = time.time()
         for chunk in stream:
             if chunk.choices[0].delta.content is not None:
                 print(chunk.choices[0].delta.content, end="")
                 bot_response += chunk.choices[0].delta.content
                 yield f"data:{chunk.choices[0].delta.content}\n\n"
             else:
-                yield f"data:end\n\n"
-                # yield {"is_last_char": True, "bot_response": bot_response}
+                # yield f"data:end\n\n"
+                yield f'data:{{"is_last_char": true, "conversation_id": "{conversation_id}"}}\n\n'
         # Add bot response to the database
         bot_message = Message(content=bot_response, from_user=False, conversation_id=conversation_id,
                               sender_id=current_user.id)
         db.session.add(bot_message)
         db.session.commit()
+
+        end_time_end = time.time()
+        # add the process data to the file
+        util.write_to_file('./temp_data_dir/result_1.txt',
+                           f'----------{send_message_stream}--{conversation_id}---------\n')
+        util.write_to_file('./temp_data_dir/result_1.txt',
+                           str(messages + [({"role": "assistant", "content": bot_response})]), True)
+        util.write_to_file('./temp_data_dir/result_1.txt',
+                           f'\n本次首字符请求耗时{round(end_time_start - start_time, 3)}秒\n')
+        util.write_to_file('./temp_data_dir/result_1.txt',
+                           f'\n本次完整请求耗时{round(end_time_end - start_time, 3)}秒\n')
 
     return stream_with_context(generate())

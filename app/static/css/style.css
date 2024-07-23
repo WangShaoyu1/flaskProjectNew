@@ -102,7 +102,7 @@ a:hover, a:focus, a:active {
     max-width: 240px;
     padding: 10px;
     height: calc(100vh - 62px);
-    border-right: 0px solid #e0e0e0;
+    border-right: 0 solid #e0e0e0;
     overflow-y: auto; /* Prevent scrolling */
     background-color: #F0F0F0;
 }
@@ -110,14 +110,15 @@ a:hover, a:focus, a:active {
 .chat-sidebar-top {
     display: flex;
     justify-content: space-between;
-
-    p {
-        margin: 0;
-        padding: 2px 10px;
-        border-radius: 5px;
-        background-color: #beede4;
-    }
 }
+
+.chat-sidebar-top p {
+    margin: 0;
+    padding: 2px 10px;
+    border-radius: 5px;
+    background-color: #beede4;
+}
+
 
 .chat-history {
     list-style: none;
@@ -132,13 +133,18 @@ a:hover, a:focus, a:active {
     background-color: #f9f9f9;
     cursor: pointer;
     transition: background-color 0.3s;
-
-    a {
-        display: inline-block;
-        width: 90%;
-        height: 100%;
-    }
 }
+
+.chat-history li:hover .delete-icon {
+    display: inline-block;
+}
+
+.chat-history li a {
+    display: inline-block;
+    width: 90%;
+    height: 100%;
+}
+
 
 .delete-icon {
     display: none;
@@ -150,11 +156,12 @@ a:hover, a:focus, a:active {
 
 .chat-history .chat-history-active {
     background-color: #e0e0e0;
-
-    .delete-icon {
-        display: inline-block;
-    }
 }
+
+.chat-history .chat-history-active .delete-icon {
+    display: inline-block;
+}
+
 
 .chat-history li:hover {
     background-color: #e0e0e0;
@@ -167,11 +174,11 @@ a:hover, a:focus, a:active {
     position: relative;
 }
 
-.chat-header {
-    h2 {
-        display: none
-    }
+
+.chat-header h2 {
+    display: none
 }
+
 
 .chat-messages {
     flex-grow: 1;
@@ -188,11 +195,12 @@ a:hover, a:focus, a:active {
     bottom: 30px;
     padding: 10px 180px;
     width: 75%;
-
-    :first-child {
-        flex-basis: 86%
-    }
 }
+
+.chat-input :first-child {
+    flex-basis: 86%
+}
+
 
 .chat-input button {
     min-width: 60px;
@@ -236,9 +244,13 @@ a:hover, a:focus, a:active {
 
 .bot-message .message-content {
     text-align: justify; /* 文字靠左对齐，保持可读性 */
-    background-color: #f1f1f1;
+    background-color: #e9f1ea;
     padding: 10px 20px;
     border-radius: 10px;
+}
+
+.bot-message .message-content p:last-child {
+    margin-bottom: 0;
 }
 
 .bot-message:before {
@@ -303,7 +315,7 @@ a:hover, a:focus, a:active {
     margin-right: 8px;
 }
 
-/*hightlight*/
+/*highlight */
 .hl-code-header {
     display: flex;
     justify-content: space-between;
@@ -312,19 +324,20 @@ a:hover, a:focus, a:active {
     font-weight: bold;
     border-radius: 5px;
     background-color: #cbeaf1;
-
-    button {
-        border: none;
-        outline: none;
-        padding: 0;
-        background-color: #cbeaf1;
-        cursor: pointer;
-    }
-
-    .copy-done {
-        display: none;
-    }
 }
+
+.hl-code-header button {
+    border: none;
+    outline: none;
+    padding: 0;
+    background-color: #cbeaf1;
+    cursor: pointer;
+}
+
+.copy-done {
+    display: none;
+}
+
 
 .hljs {
     padding: 10px 20px;

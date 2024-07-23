@@ -3,7 +3,7 @@ import subprocess
 import hashlib
 from flask import Blueprint, render_template, redirect, url_for, request, jsonify
 
-webHooks = Blueprint('webHooks', __name__)
+web_hooks = Blueprint('webHooks', __name__)
 
 
 # 动态获取Git仓库URL
@@ -97,8 +97,8 @@ GIT_REPO_URL = get_git_repo_url()
 PROJECT_NAME = GIT_REPO_URL.split('/')[-1].replace('.git', '')
 
 
-@webHooks.route('/api/webHooks', methods=['POST'])
-def get_webHooks():
+@web_hooks.route('/api/webHooks', methods=['POST'])
+def get_web_hooks():
     data = request.json
     print(
         f"BASE_PATH: {BASE_PATH}\n GIT_REPO_URL: {GIT_REPO_URL} PROJECT_NAME: {PROJECT_NAME}\n "

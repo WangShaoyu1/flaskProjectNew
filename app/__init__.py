@@ -10,7 +10,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 bcrypt = Bcrypt()
 login = LoginManager()
-login.login_view = 'auth.login'
+login.login_view = 'auth_fun.login'
 
 
 def create_app(config_class=Config):
@@ -31,14 +31,14 @@ def create_app(config_class=Config):
     from app.routes import main
     app.register_blueprint(main)
 
-    from app.auth import auth as auth_bp
-    app.register_blueprint(auth_bp, url_prefix='/auth')
+    from app.auth import auth_fun
+    app.register_blueprint(auth_fun, url_prefix='/auth')
 
-    from app.chat import chat as chat_bp
-    app.register_blueprint(chat_bp, url_prefix='/chat')
+    from app.chat import chat_fun
+    app.register_blueprint(chat_fun, url_prefix='/chat')
 
-    from app.githubWebhooks import webHooks as webHooks_bp
-    app.register_blueprint(webHooks_bp, url_prefix='/github')
+    from app.githubWebhooks import web_hooks
+    app.register_blueprint(web_hooks, url_prefix='/github')
 
     @app.cli.command('reset_db')
     def reset_db():
