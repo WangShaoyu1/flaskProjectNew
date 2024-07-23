@@ -82,7 +82,7 @@ window.$(document).ready(function () {
             let messageElement = window.$('<div>').addClass(message.from_user ? 'user-message' : 'bot-message'),
                 contentElement;
 
-            if (!message.from_user) {
+            if (message.from_user) {
                 contentElement = window.$('<div>').addClass('message-content').text(message.content);
             } else {
                 // 将 Markdown 内容转换为 HTML
