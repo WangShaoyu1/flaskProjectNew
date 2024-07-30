@@ -1,0 +1,287 @@
+--------------------age年龄----------------------
+{
+    "code": 0,
+    "data": {
+        "fileList": [
+            {
+                "code": 0,
+                "file_name": "/cloud-api/storage-0831/2024-07-30/18-7/5ba9e28e8906cca4027dddff/17223367790150.817925003215277.jpeg",
+                "label": 6,
+                "name": "test2-boy-o.jpg",
+                "rate": 0.43629035,
+                "review": false,
+                "subLabels": []
+            }
+        ],
+        "reviewCount": 0,
+        "topNStatistic": [
+            {
+                "count": 1,
+                "label": 6
+            }
+        ]
+    },
+    "desc": "success",
+    "sid": "tup00010fd1@dx435f1a04120aa00100"
+}
+--------------------age耗时：0.625秒----------------------
+--------------------sex性别----------------------
+{
+    "code": 0,
+    "data": {
+        "fileList": [
+            {
+                "code": 0,
+                "file_name": "/cloud-api/storage-0831/2024-07-30/18-7/5ba9e25f8906cca4027dddfb/17223367795680.8855978699559965.jpeg",
+                "label": 0,
+                "name": "test2-boy-o.jpg",
+                "rate": 0.88637435,
+                "review": false,
+                "subLabels": []
+            }
+        ],
+        "reviewCount": 0,
+        "statistic": [
+            1,
+            0,
+            0,
+            0
+        ]
+    },
+    "desc": "success",
+    "sid": "tup001cf9c4@dx40af1a04120b1aba00"
+}
+--------------------age耗时：0.508秒----------------------
+--------------------face_score颜值----------------------
+{
+    "code": 0,
+    "data": {
+        "fileList": [
+            {
+                "label": 2,
+                "name": "test2-boy-o.jpg",
+                "rate": 0.9967608,
+                "review": false,
+                "subLabels": []
+            }
+        ],
+        "reviewCount": 0,
+        "statistic": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+        ]
+    },
+    "desc": "success",
+    "sid": "tup001cf9c5@dx40af1a0412181aba00"
+}
+--------------------face_score耗时：13.409秒----------------------
+--------------------expression表情----------------------
+{
+    "code": 0,
+    "data": {
+        "fileList": [
+            {
+                "code": 0,
+                "file_name": "/cloud-api/storage-0831/2024-07-30/18-7/5ba9e2d5b80487a3fda9f10b/17223367934970.08225753557753235.jpeg",
+                "label": 2,
+                "name": "test2-boy-o.jpg",
+                "rate": 0.8486983,
+                "review": true,
+                "subLabels": []
+            }
+        ],
+        "reviewCount": 1,
+        "statistic": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+        ]
+    },
+    "desc": "success",
+    "sid": "tup00010fd2@dx435f1a041219a00100"
+}
+--------------------expression耗时：0.475秒--------------------------------------------------age年龄------------------------------
+
+--------------------age耗时：13.439秒----------------------
+----------------------------sex性别------------------------------
+{
+    "code": 0,
+    "data": {
+        "fileList": [
+            {
+                "code": 0,
+                "file_name": "/cloud-api/storage-0831/2024-07-30/22-7/5ba9e25f8906cca4027dddfb/17223482762480.04609755390293735.jpeg",
+                "label": 0,
+                "name": "test2-boy-o.jpg",
+                "rate": 0.88637435,
+                "review": false,
+                "subLabels": []
+            }
+        ],
+        "reviewCount": 0,
+        "statistic": [
+            1,
+            0,
+            0,
+            0
+        ]
+    },
+    "desc": "success",
+    "sid": "tup001cf9e2@dx40af1a043ef41aba00"
+}
+--------------------age耗时：0.388秒----------------------
+----------------------------face_score颜值------------------------------
+{
+    "code": 0,
+    "data": {
+        "fileList": [
+            {
+                "label": 2,
+                "name": "test2-boy-o.jpg",
+                "rate": 0.9967608,
+                "review": false,
+                "subLabels": []
+            }
+        ],
+        "reviewCount": 0,
+        "statistic": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+        ]
+    },
+    "desc": "success",
+    "sid": "tup001cf9e3@dx40af1a043ef41aba00"
+}
+--------------------face_score耗时：0.53秒----------------------
+----------------------------expression表情------------------------------
+{
+    "code": 0,
+    "data": {
+        "fileList": [
+            {
+                "code": 0,
+                "file_name": "/cloud-api/storage-0831/2024-07-30/22-7/5ba9e2d5b80487a3fda9f10b/17223482771840.9872415903734495.jpeg",
+                "label": 2,
+                "name": "test2-boy-o.jpg",
+                "rate": 0.8486983,
+                "review": true,
+                "subLabels": []
+            }
+        ],
+        "reviewCount": 1,
+        "statistic": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+        ]
+    },
+    "desc": "success",
+    "sid": "tup001cf9e4@dx40af1a043ef51aba00"
+}
+--------------------expression耗时：0.442秒----------------------
+----------------------------age年龄------------------------------
+31-40岁
+--------------------age耗时：13.751秒----------------------
+----------------------------sex性别------------------------------
+{
+    "code": 0,
+    "data": {
+        "fileList": [
+            {
+                "code": 0,
+                "file_name": "/cloud-api/storage-0831/2024-07-30/22-7/5ba9e25f8906cca4027dddfb/17223483377180.6299580550476471.jpeg",
+                "label": 0,
+                "name": "test2-boy-o.jpg",
+                "rate": 0.88637435,
+                "review": false,
+                "subLabels": []
+            }
+        ],
+        "reviewCount": 0,
+        "statistic": [
+            1,
+            0,
+            0,
+            0
+        ]
+    },
+    "desc": "success",
+    "sid": "tup00010fea@dx435f1a043f31a00100"
+}
+--------------------age耗时：0.44秒----------------------
+----------------------------face_score颜值------------------------------
+{
+    "code": 0,
+    "data": {
+        "fileList": [
+            {
+                "label": 2,
+                "name": "test2-boy-o.jpg",
+                "rate": 0.9967608,
+                "review": false,
+                "subLabels": []
+            }
+        ],
+        "reviewCount": 0,
+        "statistic": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+        ]
+    },
+    "desc": "success",
+    "sid": "tup001cf9e5@dx40af1a043f321aba00"
+}
+--------------------face_score耗时：0.918秒----------------------
+----------------------------expression表情------------------------------
+{
+    "code": 0,
+    "data": {
+        "fileList": [
+            {
+                "code": 0,
+                "file_name": "/cloud-api/storage-0831/2024-07-30/22-7/5ba9e2d5b80487a3fda9f10b/17223483391140.01805027412121052.jpeg",
+                "label": 2,
+                "name": "test2-boy-o.jpg",
+                "rate": 0.8486983,
+                "review": true,
+                "subLabels": []
+            }
+        ],
+        "reviewCount": 1,
+        "statistic": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+        ]
+    },
+    "desc": "success",
+    "sid": "tup00010feb@dx435f1a043f32a00100"
+}
+--------------------expression耗时：0.473秒----------------------
