@@ -7,7 +7,7 @@ import hashlib
 import base64
 from utils.iflytek import APPID, API_KEY, ImageName, ImageUrl, FilePath, getHeader, getBody
 
-URL = "http://tupapi.xfyun.cn/v1/age"
+URL = "https://tupapi.xfyun.cn/v1/age"
 label_age_dict = {
     "0": {range: [0, 1], "descriptions": "0-1岁"},
     "1": {range: [2, 5], "descriptions": "2-5岁"},
@@ -26,9 +26,24 @@ label_age_dict = {
 # Record the time before sending the request
 start_time = time.time()
 
-r_response = requests.post(URL, data=getBody(FilePath), headers=getHeader(ImageName, ImageUrl)).json()
-label_age = r_response["data"]["fileList"][0]["label"]
-r_age = label_age_dict.get(str(label_age))["descriptions"]
+r_response = requests.post(URL, data=getBody(FilePath), headers=getHeader(ImageName, ImageUrl))
+
+# 检查 HTTP 响应状态码
+if r_response.status_code == 200:
+    try:
+        data = r_response.json()
+        # 根据返回内容中的 'code' 字段进行不同的操作
+        if data["code"] == 0:
+            # 获取返回内容中的 'data' 字段
+            r_data = r_response.json()["data"]
+            label_age = (r_data["fileList"] or [])[0]["label"]
+            r_age = {"desc": label_age_dict[str(label_age)]["descriptions"], "label_age": label_age}
+
+            print(f"age: {r_data}")
+    except NameError:
+        print("Error response code: %d" % r_response.status_code)
+else:
+    print("Error response code: %d" % r_response.status_code)
 
 # r = requests.post(URL, headers=getHeader(ImageName, ImageUrl))
 
@@ -36,4 +51,4 @@ r_age = label_age_dict.get(str(label_age))["descriptions"]
 end_time = time.time()
 
 duratation_age = round(end_time - start_time, 3)
-print(r_age)
+print(f"r_age: {r_age}")
