@@ -6,7 +6,7 @@ from app.models import Chat, Message
 from openai import OpenAI
 import uuid
 import time
-from utils import util
+from utils import util, log
 
 chat_fun = Blueprint('chat', __name__)
 
@@ -172,14 +172,11 @@ def stream_openai_response(messages, conversation_id):
         db.session.commit()
 
         end_time_end = time.time()
-        # add the process data to the file
-        util.write_to_file('./temp_data_dir/result_1.txt',
-                           f'----------send_message_stream--{conversation_id}---------\n')
-        util.write_to_file('./temp_data_dir/result_1.txt',
-                           str(messages + [({"role": "assistant", "content": bot_response})]), True)
-        util.write_to_file('./temp_data_dir/result_1.txt',
-                           f'\n本次首字符请求耗时{round(end_time_start - start_time, 3)}秒\n')
-        util.write_to_file('./temp_data_dir/result_1.txt',
-                           f'\n本次完整请求耗时{round(end_time_end - start_time, 3)}秒\n')
+
+        logger = log.setup_structlog("logs/example.log")
+        logger.info(f'----------send_message_stream--{conversation_id}---------')
+        logger.info(str(messages + [({"role": "assistant", "content": bot_response})]))
+        logger.info(f'----------本次首字符请求耗时{round(end_time_start - start_time, 3)}秒----------')
+        logger.info(f'----------本次完整请求耗时{round(end_time_end - start_time, 3)}秒----------')
 
     return stream_with_context(generate())
