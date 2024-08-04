@@ -9,5 +9,6 @@ flask_migrate>=4.0
 email_validator>=2.1.1
 litellm
 Structlog
-logging
 jsonpickle
+aiohttp
+asyncio
