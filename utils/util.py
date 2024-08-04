@@ -60,6 +60,7 @@ def format_json_lines(raw_data):
     try:
         # 如果输入是字符串，则尝试解析为Python对象
         if isinstance(raw_data, str):
+            raw_data = raw_data.replace("'", '"')
             raw_data = json.loads(raw_data)  # 使用json.loads解析JSON字符串
 
         # 处理不同类型的 JSON 数据

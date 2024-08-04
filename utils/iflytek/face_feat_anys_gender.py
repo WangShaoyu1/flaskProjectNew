@@ -7,20 +7,17 @@ import aiohttp
 from aiohttp import ClientError, ClientResponseError
 from utils.iflytek import APPID, API_KEY, ImageName, ImageUrl, FilePath, getHeader, getBody
 
-# 人脸特征分析颜值webapi接口地址
-URL = "http://tupapi.xfyun.cn/v1/face_score"
-label_face_score_dict = {
-    "0": {"desc": "漂亮"},
-    "1": {"desc": "好看"},
-    "2": {"desc": "普通"},
-    "3": {"desc": "难看"},
-    "4": {"desc": "其他"},
-    "5": {"desc": "半人脸"},
-    "6": {"desc": "多人"},
+# 人脸特征分析性别webapi接口地址
+URL = "http://tupapi.xfyun.cn/v1/sex"
+label_gender_dict = {
+    "0": {"desc": "男人"},
+    "1": {"desc": "女人"},
+    "2": {"desc": "难以辨认"},
+    "3": {"desc": "多人"},
 }
 
 
-async def fetch_face_score(session, image_name, file_path, retries=1, delay=2):
+async def fetch_gender(session, image_name, file_path, retries=1, delay=2):
     start_time = time.time()
     for attempt in range(retries):
         try:
@@ -32,9 +29,9 @@ async def fetch_face_score(session, image_name, file_path, retries=1, delay=2):
                 if data["code"] == 0:
                     r_data = data["data"]
                     label = (r_data["fileList"] or [])[0]["label"]
-                    r_face_score = {"desc": label_face_score_dict[str(label)]["desc"], "label": label}
-                    print(f"r_face_score: {r_data}")
-                    return r_face_score, round(time.time() - start_time, 2)
+                    r_gender = {"desc": label_gender_dict[str(label)]["desc"], "label": label}
+                    print(f"r_gender: {r_data}")
+                    return r_gender, round(time.time() - start_time, 2)
                 else:
                     print(f"API Error: {data['desc']}")
         except (ClientResponseError, ClientError, Exception) as e:
@@ -46,10 +43,10 @@ async def fetch_face_score(session, image_name, file_path, retries=1, delay=2):
     return None, round(time.time() - start_time, 2)
 
 
-def fetch_face_score_requests():
+def fetch_gender_requests():
     # Record the time before sending the request
     start_time = time.time()
-    r_face_score = {}
+    r_gender = {}
     r_response = requests.post(URL, data=getBody(FilePath), headers=getHeader(ImageName, ImageUrl))
 
     # 检查 HTTP 响应状态码
@@ -60,10 +57,9 @@ def fetch_face_score_requests():
             if data["code"] == 0:
                 # 获取返回内容中的 'data' 字段
                 r_data = r_response.json()["data"]
-                label_face_score = (r_data["fileList"] or [])[0]["label"]
-                r_face_score = {"desc": label_face_score_dict[str(label_face_score)]["desc"],
-                                "label_face_score": label_face_score}
-                print(f"face_score: {r_data}")
+                label_gender = (r_data["fileList"] or [])[0]["label"]
+                r_gender = {"desc": label_gender_dict[str(label_gender)]["desc"], "label_gender": label_gender}
+                print(f"gender: {r_data}")
         except NameError:
             print("Error response code: %d" % r_response.status_code)
     else:
@@ -73,16 +69,16 @@ def fetch_face_score_requests():
     end_time = time.time()
 
     duratation = round(end_time - start_time, 2)
-    print(f"face_score:{r_face_score}")
-    return r_face_score, duratation
+    print(f"r_gender: {r_gender}")
+    return r_gender, duratation
 
 
 # 添加主函数部分
 if __name__ == "__main__":
     async def main():
         async with aiohttp.ClientSession() as session:
-            r_expression, duration = await fetch_face_score(session)
-            print(f"Result: {r_expression}, Duration: {duration}秒")
+            r_gender, duration = await fetch_gender(session)
+            print(f"Result: {r_gender}, Duration: {duration}秒")
 
 
     asyncio.run(main())

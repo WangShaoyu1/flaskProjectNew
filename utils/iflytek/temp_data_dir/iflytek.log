@@ -1,0 +1,323 @@
+
+
+--------------------test1-boy-c.jpg----------------------
+{'desc': '其他', 'label': 11}---年龄age耗时：1.06秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.79秒
+{'desc': '其他', 'label': 11}---年龄age耗时：14.01秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.97秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.94秒
+{'desc': '其他', 'label': 11}---年龄age耗时：13.71秒
+{'desc': '其他', 'label': 11}---年龄age耗时：13.79秒
+{'desc': '其他', 'label': 11}---年龄age耗时：14.23秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.88秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.82秒
+
+{'desc': '女人', 'label': 1}---性别gender耗时：14.46秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.65秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.63秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.57秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.67秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.73秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.62秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.61秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.64秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.57秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.79秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.95秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.61秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.8秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.55秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.69秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.72秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.77秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.62秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.63秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.8秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.58秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.49秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.86秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.65秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.53秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：13.65秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.54秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.78秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.65秒
+
+
+--------------------test2-boy-o.jpg----------------------
+None---年龄age耗时：0.04秒
+None---年龄age耗时：0.04秒
+None---年龄age耗时：0.05秒
+None---年龄age耗时：0.04秒
+None---年龄age耗时：0.05秒
+None---年龄age耗时：0.05秒
+None---年龄age耗时：0.04秒
+None---年龄age耗时：0.04秒
+None---年龄age耗时：0.05秒
+None---年龄age耗时：0.05秒
+
+None---性别gender耗时：0.08秒
+None---性别gender耗时：0.13秒
+None---性别gender耗时：0.13秒
+None---性别gender耗时：0.12秒
+None---性别gender耗时：0.1秒
+None---性别gender耗时：0.23秒
+None---性别gender耗时：0.17秒
+None---性别gender耗时：0.23秒
+None---性别gender耗时：0.17秒
+None---性别gender耗时：0.14秒
+
+None---颜值face_score耗时：0.08秒
+None---颜值face_score耗时：0.09秒
+None---颜值face_score耗时：0.09秒
+None---颜值face_score耗时：0.09秒
+None---颜值face_score耗时：0.09秒
+None---颜值face_score耗时：0.09秒
+None---颜值face_score耗时：0.09秒
+None---颜值face_score耗时：0.09秒
+None---颜值face_score耗时：0.08秒
+None---颜值face_score耗时：0.1秒
+
+None---表情expression耗时：0.09秒
+None---表情expression耗时：0.09秒
+None---表情expression耗时：0.09秒
+None---表情expression耗时：0.16秒
+None---表情expression耗时：0.1秒
+None---表情expression耗时：0.1秒
+None---表情expression耗时：0.08秒
+None---表情expression耗时：0.1秒
+None---表情expression耗时：0.1秒
+None---表情expression耗时：0.09秒
+
+
+--------------------test3-boy.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.51秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：13.41秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：13.44秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.46秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：13.6秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.46秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：13.34秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.59秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：13.62秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.44秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.34秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.44秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.37秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.29秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.35秒
+{'desc': '男人', 'label': 0}---性别gender耗时：13.52秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.28秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.43秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.56秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.32秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.25秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.61秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.4秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.36秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.53秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.38秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.53秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.58秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.38秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.31秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.3秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：13.26秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.3秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.29秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.41秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：13.17秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.43秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：13.66秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.35秒
+
+
+--------------------test4-boy.jpg----------------------
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.65秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.41秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.68秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.51秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.48秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.51秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.53秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.37秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.4秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.43秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.4秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.38秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.34秒
+{'desc': '男人', 'label': 0}---性别gender耗时：13.25秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.38秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.4秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.38秒
+{'desc': '男人', 'label': 0}---性别gender耗时：13.55秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.53秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.79秒
+
+{'desc': '漂亮', 'label': 0}---颜值face_score耗时：0.38秒
+{'desc': '漂亮', 'label': 0}---颜值face_score耗时：0.39秒
+{'desc': '漂亮', 'label': 0}---颜值face_score耗时：0.39秒
+{'desc': '漂亮', 'label': 0}---颜值face_score耗时：0.44秒
+{'desc': '漂亮', 'label': 0}---颜值face_score耗时：0.33秒
+{'desc': '漂亮', 'label': 0}---颜值face_score耗时：0.45秒
+{'desc': '漂亮', 'label': 0}---颜值face_score耗时：0.43秒
+{'desc': '漂亮', 'label': 0}---颜值face_score耗时：0.46秒
+{'desc': '漂亮', 'label': 0}---颜值face_score耗时：0.4秒
+{'desc': '漂亮', 'label': 0}---颜值face_score耗时：0.41秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.74秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.37秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.36秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.45秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.31秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.39秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.36秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.48秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.39秒
+
+
+--------------------test5-two-men.jpg----------------------
+{'desc': '其他', 'label': 11}---年龄age耗时：0.36秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.45秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.42秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.39秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.47秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.67秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.39秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.61秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.4秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.37秒
+
+{'desc': '多人', 'label': 3}---性别gender耗时：0.36秒
+{'desc': '多人', 'label': 3}---性别gender耗时：0.48秒
+{'desc': '多人', 'label': 3}---性别gender耗时：0.34秒
+{'desc': '多人', 'label': 3}---性别gender耗时：0.48秒
+{'desc': '多人', 'label': 3}---性别gender耗时：0.38秒
+{'desc': '多人', 'label': 3}---性别gender耗时：0.39秒
+{'desc': '多人', 'label': 3}---性别gender耗时：0.49秒
+{'desc': '多人', 'label': 3}---性别gender耗时：0.48秒
+{'desc': '多人', 'label': 3}---性别gender耗时：0.36秒
+{'desc': '多人', 'label': 3}---性别gender耗时：0.37秒
+
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.5秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.48秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.5秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.42秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.46秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.45秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.83秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.64秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.39秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.38秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.41秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.52秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.35秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.35秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.39秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.46秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.31秒
+
+
+--------------------test6-two-oldmen.jpg----------------------
+{'desc': '其他', 'label': 11}---年龄age耗时：0.44秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.41秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.44秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.41秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.37秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.45秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.38秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.76秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.39秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.44秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.36秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.32秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.41秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.56秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.42秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.38秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.34秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.42秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.42秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.41秒
+
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.39秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.41秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.54秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.51秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.41秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.42秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.46秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.54秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.4秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.41秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.38秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.37秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.41秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.41秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.31秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.36秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.33秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.42秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.43秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.35秒
+
+
+--------------------test7-girl-glass.jpg----------------------
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.36秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.28秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.3秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.31秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.3秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.26秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.3秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.34秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.36秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.38秒
+
+{'desc': '女人', 'label': 1}---性别gender耗时：0.24秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.42秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.28秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.35秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.3秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.37秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.36秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.33秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.27秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.28秒
+
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.32秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.37秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.27秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.27秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.29秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.27秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.25秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.27秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.34秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.26秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.3秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.36秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.29秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.36秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.39秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.51秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.29秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.28秒
+--------------------all success----------------------

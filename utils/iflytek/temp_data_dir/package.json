@@ -1,0 +1,18 @@
+{
+  "header": {
+    "code": 0,
+    "message": "success",
+    "sid": "ase000fa6aa@hu19106f7153205c2882"
+  },
+  "payload": {
+    "face_detect_result": {
+      "compress": "raw",
+      "encoding": "utf8",
+      "format": "json",
+      "seq": "0",
+      "status": "3",
+      "text": "ewoJImZhY2VfMSIgOiAKCXsKCQkiaCIgOiAxNDEsCgkJInNjb3JlIiA6IDAuOTk3MDM0Nzg4MTMxNzEzODcsCgkJInciIDogMTEwLAoJCSJ4IiA6IDIzMiwKCQkieSIgOiAxMjkKCX0sCgkiZmFjZV9udW0iIDogMSwKCSJyZXQiIDogMAp9Cg=="
+    }
+  },
+  "all_data": []
+}

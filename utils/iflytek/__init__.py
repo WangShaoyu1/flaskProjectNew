@@ -8,11 +8,11 @@ APPID = "0703d0ec"
 # 接口密钥(webapi类型应用开通人脸特征分析服务后，控制台--我的应用---人脸特征分析---服务的apikey)
 # API_KEY = "4bd46c063d171c6d6ed23d7bbdcce8a4"
 API_KEY = "6091cc62afeb1daa392e69fbda93e123"
-ImageName = "test2-boy-o.jpg"
+ImageName = "test4-boy.jpg"
 ImageUrl = "http://hbimg.b0.upaiyun.com/a09289289df694cd6157f997ffa017cc44d4ca9e288fb-OehMYA_fw658"
 # 图片数据可以通过两种方式上传，第一种在请求头设置image_url参数，第二种将图片二进制数据写入请求体中。若同时设置，以第一种为准。
 # 此demo使用第一种方式进行上传图片地址，如果想使用第二种方式，将图片二进制数据写入请求体即可。
-FilePath = r"D:\gitlab\flaskProjectNew\app\static\img\test3-boy.jpg"
+FilePath = fr"D:\gitlab\flaskProjectNew\app\static\img\{ImageName}"
 
 
 def getHeader(image_name, image_url=None):
@@ -28,7 +28,8 @@ def getHeader(image_name, image_url=None):
 
     header = {
         'X-CurTime': curTime,
-        'X-Param': parambase64,
+        # 'X-Param': parambase64,
+        'X-Param': tmp,
         'X-Appid': APPID,
         'X-CheckSum': checksum,
     }
