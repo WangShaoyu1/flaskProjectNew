@@ -12,3 +12,6 @@ Structlog
 jsonpickle
 aiohttp
 asyncio
+win32security
+ntsecuritycon
+pywin32
