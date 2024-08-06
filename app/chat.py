@@ -6,6 +6,8 @@ from app.models import Chat, Message
 from openai import OpenAI
 import uuid
 import time
+import stat
+import platform
 from utils import util, log
 
 chat_fun = Blueprint('chat', __name__)
@@ -80,12 +82,13 @@ def send_message_no_stream():
     db.session.add(bot_message)
     db.session.commit()
 
-    # add the process data to the file
-    util.write_to_file('./temp_data_dir/result_1.txt',
-                       f'----------send_message_no_stream--{conversation_id}---------\n')
-    util.write_to_file('./temp_data_dir/result_1.txt',
-                       str(messages + [({"role": "assistant", "content": bot_response})]), True)
-    util.write_to_file('./temp_data_dir/result_1.txt', f'\n本次请求耗时{round(end_time - start_time, 3)}秒\n')
+    if platform.system() == 'Windows':
+        # add the process data to the file
+        util.write_to_file('./temp_data_dir/result_1.txt',
+                           f'----------send_message_no_stream--{conversation_id}---------\n')
+        util.write_to_file('./temp_data_dir/result_1.txt',
+                           str(messages + [({"role": "assistant", "content": bot_response})]), True)
+        util.write_to_file('./temp_data_dir/result_1.txt', f'\n本次请求耗时{round(end_time - start_time, 3)}秒\n')
 
     return jsonify({'status': 'success', 'conversation_id': chat.conversation_id,
                     'chat_data': {'user_message': content, 'bot_message': bot_response},

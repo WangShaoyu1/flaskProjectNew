@@ -1,5 +1,7 @@
 import json
 import os
+import stat
+import platform
 
 import ntsecuritycon as con
 import win32security
@@ -81,14 +83,22 @@ def format_json_lines(raw_data):
 
 def grant_write_access(file_path):
     """授予当前用户对文件的写入权限"""
-    user, domain, type = win32security.LookupAccountName("", os.getlogin())
-    sd = win32security.GetFileSecurity(file_path, win32security.DACL_SECURITY_INFORMATION)
-    dacl = sd.GetSecurityDescriptorDacl()
-    new_dacl = win32security.ACL()
-    if dacl:
-        for i in range(dacl.GetAceCount()):
-            new_dacl.AddAce(*dacl.GetAce(i))
-    new_dacl.AddAccessAllowedAce(win32security.ACL_REVISION, con.FILE_GENERIC_WRITE, user)
-    sd.SetSecurityDescriptorDacl(1, new_dacl, 0)
-    win32security.SetFileSecurity(file_path, win32security.DACL_SECURITY_INFORMATION, sd)
-    print(f"已授予用户 {os.getlogin()} 对文件 {file_path} 的写权限")
+    if platform.system() == 'Windows':
+        user, domain, type = win32security.LookupAccountName("", os.getlogin())
+        sd = win32security.GetFileSecurity(file_path, win32security.DACL_SECURITY_INFORMATION)
+        dacl = sd.GetSecurityDescriptorDacl()
+        new_dacl = win32security.ACL()
+        if dacl:
+            for i in range(dacl.GetAceCount()):
+                new_dacl.AddAce(*dacl.GetAce(i))
+        new_dacl.AddAccessAllowedAce(win32security.ACL_REVISION, con.FILE_GENERIC_WRITE, user)
+        sd.SetSecurityDescriptorDacl(1, new_dacl, 0)
+        win32security.SetFileSecurity(file_path, win32security.DACL_SECURITY_INFORMATION, sd)
+        print(f"已授予用户 {os.getlogin()} 对文件 {file_path} 的写权限")
+    elif platform.system() == 'Linux':
+        # 对于Linux系统，使用os.chmod授予写权限
+        try:
+            os.chmod(file_path, stat.S_IWUSR | stat.S_IRUSR | stat.S_IRGRP | stat.S_IROTH)
+            print(f"已授予用户对文件 {file_path} 的写权限")
+        except Exception as e:
+            print(f"授予写权限时出错: {e}")
