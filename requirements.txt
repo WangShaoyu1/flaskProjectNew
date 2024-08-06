@@ -12,6 +12,7 @@ Structlog
 jsonpickle
 aiohttp
 asyncio
-win32security
-ntsecuritycon
 pywin32
+opencv-python-headless
+pillow
+wget

@@ -11,7 +11,7 @@ from face_feat_anys_expression import fetch_expression
 
 # 记录次数的文件路径
 times_file = 'temp_data_dir/times.txt'
-FilePath = fr"D:\gitlab\flaskProjectNew\app\static\img\test"
+FilePath = fr"D:\gitlab\flaskProjectNew\app\static\img\crop"
 # 初始化 times 的值
 if os.path.exists(times_file):
     with open(times_file, 'r') as f:
@@ -101,24 +101,32 @@ def write_txt(all_data):
             for j in range(len(result[i])):
                 util.write_to_file('temp_data_dir/iflytek.log', f"{result[i][j]['age']['data']}")
                 util.write_to_file('temp_data_dir/iflytek.log', f"---年龄age耗时：{result[i][j]['age']['duration']}秒\n")
+                util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-age.txt",
+                                   f"{result[i][j]['age']['data']}---年龄age耗时：{result[i][j]['age']['duration']}秒\n")
             util.write_to_file('temp_data_dir/iflytek.log', f"\n")
 
             for j in range(len(result[i])):
                 util.write_to_file('temp_data_dir/iflytek.log', f"{result[i][j]['gender']['data']}")
                 util.write_to_file('temp_data_dir/iflytek.log',
                                    f"---性别gender耗时：{result[i][j]['gender']['duration']}秒\n")
+                util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-age.txt",
+                                   f"{result[i][j]['gender']['data']}---年龄age耗时：{result[i][j]['gender']['duration']}秒\n")
             util.write_to_file('temp_data_dir/iflytek.log', f"\n")
 
             for j in range(len(result[i])):
                 util.write_to_file('temp_data_dir/iflytek.log', f"{result[i][j]['face_score']['data']}")
                 util.write_to_file('temp_data_dir/iflytek.log',
                                    f"---颜值face_score耗时：{result[i][j]['face_score']['duration']}秒\n")
+                util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-age.txt",
+                                   f"{result[i][j]['face_score']['data']}---年龄age耗时：{result[i][j]['face_score']['duration']}秒\n")
             util.write_to_file('temp_data_dir/iflytek.log', f"\n")
 
             for j in range(len(result[i])):
                 util.write_to_file('temp_data_dir/iflytek.log', f"{result[i][j]['expression']['data']}")
                 util.write_to_file('temp_data_dir/iflytek.log',
                                    f"---表情expression耗时：{result[i][j]['expression']['duration']}秒\n")
+                util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-age.txt",
+                                   f"{result[i][j]['expression']['data']}---年龄age耗时：{result[i][j]['expression']['duration']}秒\n")
 
         print(f'--------------------all success----------------------\n')
         util.write_to_file('temp_data_dir/iflytek.log', f'--------------------all success----------------------\n')
@@ -169,7 +177,7 @@ async def process_all_images():
 async def main():
     global times
     all_data = []
-    for i in range(10):
+    for i in range(1):
         times += 1
         result = await process_all_images()
         all_data.extend(result)  # 将每批图片处理的结果添加到总的结果列表中
