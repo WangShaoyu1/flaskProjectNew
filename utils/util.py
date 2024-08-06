@@ -3,9 +3,6 @@ import os
 import stat
 import platform
 
-import ntsecuritycon as con
-import win32security
-
 
 def write_to_file(file_path, data, need_json=False):
     try:
@@ -84,6 +81,8 @@ def format_json_lines(raw_data):
 def grant_write_access(file_path):
     """授予当前用户对文件的写入权限"""
     if platform.system() == 'Windows':
+        import ntsecuritycon as con
+        import win32security
         user, domain, type = win32security.LookupAccountName("", os.getlogin())
         sd = win32security.GetFileSecurity(file_path, win32security.DACL_SECURITY_INFORMATION)
         dacl = sd.GetSecurityDescriptorDacl()
