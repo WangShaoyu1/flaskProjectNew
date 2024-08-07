@@ -102,7 +102,11 @@ def get_web_hooks():
     data = request.json
     print(
         f"BASE_PATH: {BASE_PATH}\n GIT_REPO_URL: {GIT_REPO_URL} PROJECT_NAME: {PROJECT_NAME}\n "
-        f"收到来自 {data.get('repository', {}).get('name')} 的推送事件")
+        f"收到来自 {data.get('repository', {}).get('name')} 的推送事件\n 推送分支是 {data.get('ref')}"
+        f"提交的commit message为{data.get('commits')[-1].get('message')},"
+        f"提交者是 {data.get('commits')[-1].get('committer').get('username')}"
+        f"提交的commit url是 {data.get('commits')[-1].get('url')}"
+    )
     # 检查是否是push事件并且目标分支是master
     if data.get('ref') == 'refs/heads/master':
         # 确保目录在pull之前是存在的
