@@ -40,7 +40,7 @@ def create_app(config_class=Config):
     app.register_blueprint(chat_fun, url_prefix='/gpt/chat')
 
     from app.githubWebhooks import web_hooks
-    app.register_blueprint(web_hooks, url_prefix='/gpt/github')
+    app.register_blueprint(web_hooks, url_prefix='/github')
 
     @app.route('/')
     def index():
