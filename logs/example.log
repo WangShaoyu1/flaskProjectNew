@@ -16,3 +16,46 @@
 127.0.0.1 - - [31/Jul/2024 10:25:17] "[36mGET /static/img/robot-icon.png HTTP/1.1[0m" 304 -
 127.0.0.1 - - [31/Jul/2024 10:25:17] "GET /static/img/copy-code.svg HTTP/1.1" 200 -
  * Detected change in 'D:\\gitlab\\flaskProjectNew\\utils\\iflytek\\face_detect.py', reloading
+----------send_message_stream--6be2fc55-05fb-4c27-a99b-62b1bbfef1e5---------
+{
+    "event": "[{'role': 'user', 'content': '现在没有内容'}, {'role': 'assistant', 'content': '没有内容没关系，有什么想讨论或者询问的问题吗？我很乐意帮助你！'}, {'role': 'user', 'content': '你好，我们现在开始聊聊，好么'}, {'role': 'assistant', 'content': '当然可以！你想聊什么呢？无论是兴趣爱好、最近的新闻，还是其他任何话题，我都很乐意和你交流。'}, {'role': 'user', 'content': '告诉我特朗普是下一任美国总统么？可能性有多大'}, {'role': 'assistant', 'content': '关于唐纳德·特朗普是否会成为下一任美国总统的问题目前仍然充满不确定性。特朗普在2024年美国总统选举中再次竞选的可能性取决于多个因素，包括他的政治支持、选民的反应、以及他与其他潜在候选人的竞争。\\n\\n目前的情况是：\\n\\n1. **支持率**：特朗普在一些民意调查中显示出较强的支持，但选民情绪可能会随着时间变化。\\n2. **党内竞争**：如果他成为共和党提名候选人，他仍然需要在初选中击败其他候选人。\\n3. **法律问题**：特朗普面临一些法律挑战，这可能会影响他的竞选活动和选民支持。\\n4. **选民情绪**：美国政治环境不稳定，选民的实际投票选择可能会受到经济、社会和国际事件的影响。\\n\\n综合来看，尽管特朗普在共和党内拥有强大的基础，但他能否顺利当选仍然取决于复杂的政治动态。选举结果通常难以预测，建议关注接下来的政治发展和民意调查。'}, {'role': 'user', 'content': '好吧，这么说也对'}, {'role': 'assistant', 'content': '谢谢理解！如果你对特朗普或其他政治话题还有更多问题，或者想讨论其他任何感兴趣的内容，随时告诉我！我在这里随时乐意分享信息和观点。'}, {'role': 'user', 'content': '不要浪费时间啦'}, {'role': 'assistant', 'content': '明白了！那我们可以直接聊你感兴趣的主题。你想讨论什么呢？或者有什么问题我可以帮你解答的？'}, {'role': 'user', 'content': '现在应该可以了吧'}, {'role': 'assistant', 'content': '当然可以！请问你有什么想讨论的或者需要了解的信息吗？我在这里随时准备好回答你的问题。'}, {'role': 'user', 'content': '还是不对怕'}, {'role': 'assistant', 'content': '抱歉让你感到困扰。请告诉我具体想要讨论的内容，或者有什么我可以帮助你的地方。我会尽力做到更好！'}, {'role': 'user', 'content': '现在应该看起来正常一些'}, {'role': 'assistant', 'content': '好的，如果现在看起来正常一些，那就太好了！如果你有任何想讨论的话题或问题，请随时告诉我。我在这里帮助你！'}, {'role': 'user', 'content': '没有其他的请求日志了'}, {'role': 'assistant', 'content': '明白了，如果你没有其他的请求或者话题需要讨论，那也没关系。随时欢迎你回来聊天或询问问题。希望你有个愉快的一天！如果有任何需要，随时联系我。'}, {'role': 'user', 'content': '正常显示中文了？'}, {'role': 'assistant', 'content': '是的，现在可以正常显示中文了！如果你有任何问题或者想讨论的话题，请随时告诉我。我很高兴能帮助你！'}, {'role': 'user', 'content': '还没有'}, {'role': 'assistant', 'content': '如果你在显示中文方面遇到问题，请尝试刷新页面或检查你的设置。有时候网络或浏览器问题会影响显示。如果这个问题仍然存在，告诉我你遇到的具体情况，我会尽量帮你解决！'}, {'role': 'user', 'content': '现在呢'}, {'role': 'assistant', 'content': '现在看起来正常！如果你有什么问题或者想聊的话题，请随时告诉我。我会尽力帮助你。'}, {'role': 'user', 'content': '显示中文啊兄弟'}, {'role': 'assistant', 'content': '是的，现在我可以正常显示中文！如果你有任何问题或者需要讨论的内容，请随时提出来，我在这里乐意帮助你！'}, {'role': 'user', 'content': '不正常'}, {'role': 'assistant', 'content': '抱歉让你感到困扰。如果目前还是无法正常显示中文，可能是系统或设置方面的问题。我会尽力帮助解决你遇到的问题。请告诉我具体的情况，或者你希望我做些什么。'}, {'role': 'user', 'content': '报销流程怎么走'}, {'role': 'assistant', 'content': '报销流程通常依据公司或组织的具体政策而有所不同，但一般来说，常见的报销流程通常包括以下几个步骤：\\n\\n1. **了解报销政策**：首先，了解你的公司或组织的报销政策，包括哪些费用可以报销、报销的限额以及所需的材料。\\n\\n2. **收集相关凭证**：在支出后，确保收集所有相关的原始凭证，例如发票、收据等。这些凭证通常需要提交作为报销的证明。\\n\\n3. **填写报销申请**：根据公司的要求，填写报销申请表格。表格中通常需要注明费用的详情，比如费用类别、金额、发生时间等。\\n\\n4. **提交申请**：将填写好的报销申请表和相关凭证提交给相关的审批人。在有些公司，可能需要通过电子系统提交申请。\\n\\n5. **审批**：提交申请后，相关负责人会对你的报销申请进行审核和批准。\\n\\n6. **费用报销**：一旦申请得到批准，财务部门会处理报销，通常会在一定时间内将金额打入你的银行账户，或在下次工资中抵扣。\\n\\n7. **记录保留**：保留一份已提交的报销申请和相关凭证的复印件，以备将来查阅。\\n\\n建议你查看公司内部的具体流程文件，或者向人力资源或财务部门咨询，以获取准确的信息。如果有任何具体问题，欢迎告诉我！'}, {'role': 'user', 'content': '很好很棒'}, {'role': 'assistant', 'content': '谢谢夸奖！很高兴能帮到你。如果你还有其他问题或者想讨论的话题，随时都可以告诉我！'}, {'role': 'user', 'content': '时间戳没有了'}, {'role': 'assistant', 'content': '时间戳的显示情况可能与平台或应用的设置有关。如果你指的是某个特定工具或软件中的时间戳缺失，可能需要检查设置或更新版本。具体情况可能因使用的设备和软件不同而有所差异。\\n\\n如果你能具体说明一下上下文，或者你希望从哪个方面进行讨论，我会尽力提供相关的帮助或建议！'}, {'role': 'user', 'content': '你好牛逼哦'}, {'role': 'assistant', 'content': '谢谢你的夸奖！我会继续努力为你提供帮助。如果你有任何问题或想讨论的内容，请随时告诉我！'}]",
+    "level": "info"
+}
+----------本次首字符请求耗时1.739秒----------
+----------本次完整请求耗时1.954秒----------
+127.0.0.1 - - [10/Aug/2024 11:43:06] "GET /gpt/chat/0?chat_id=6be2fc55-05fb-4c27-a99b-62b1bbfef1e5 HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2024 11:43:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:06] "[36mGET /static/img/new_chat_icon.svg HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:06] "[36mGET /static/js/i18n.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:06] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:06] "GET /gpt/chat/api/get_chats HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2024 11:43:06] "GET /gpt/chat/api/get_messages/6be2fc55-05fb-4c27-a99b-62b1bbfef1e5 HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2024 11:43:07] "GET /gpt/chat/0?chat_id=6be2fc55-05fb-4c27-a99b-62b1bbfef1e5 HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2024 11:43:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:07] "[36mGET /static/img/new_chat_icon.svg HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:07] "[36mGET /static/js/i18n.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:07] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:07] "GET /gpt/chat/api/get_chats HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2024 11:43:07] "GET /gpt/chat/api/get_messages/6be2fc55-05fb-4c27-a99b-62b1bbfef1e5 HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2024 11:43:32] "GET /gpt/chat/0?chat_id=6be2fc55-05fb-4c27-a99b-62b1bbfef1e5 HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2024 11:43:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:32] "[36mGET /static/img/new_chat_icon.svg HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:32] "[36mGET /static/js/i18n.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:32] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:32] "GET /gpt/chat/api/get_chats HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2024 11:43:32] "GET /gpt/chat/api/get_messages/6be2fc55-05fb-4c27-a99b-62b1bbfef1e5 HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2024 11:43:44] "GET /gpt/chat/0?chat_id=6be2fc55-05fb-4c27-a99b-62b1bbfef1e5 HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2024 11:43:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:44] "[36mGET /static/img/new_chat_icon.svg HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:44] "[36mGET /static/js/i18n.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:44] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:44] "GET /gpt/chat/api/get_chats HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2024 11:43:44] "GET /gpt/chat/api/get_messages/6be2fc55-05fb-4c27-a99b-62b1bbfef1e5 HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2024 11:43:54] "GET /gpt/chat/0?chat_id=6be2fc55-05fb-4c27-a99b-62b1bbfef1e5 HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2024 11:43:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:54] "[36mGET /static/img/new_chat_icon.svg HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:54] "[36mGET /static/js/i18n.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:54] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [10/Aug/2024 11:43:54] "GET /gpt/chat/api/get_chats HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2024 11:43:54] "GET /gpt/chat/api/get_messages/6be2fc55-05fb-4c27-a99b-62b1bbfef1e5 HTTP/1.1" 200 -
+ * Detected change in 'D:\\gitlab\\flaskProjectNew\\app\\githubWebhooks.py', reloading

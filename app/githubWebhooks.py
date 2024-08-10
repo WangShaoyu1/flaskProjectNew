@@ -83,7 +83,7 @@ def get_pm2_path():
         if not os.path.exists(pm2_path):
             raise FileNotFoundError(f"pm2 不在全局路径 {npm_global_root} 中找到")
         print(
-            f"当前使用的 Node 版本是，为什么不打印出来: {current_node_version}\n NVM 安装目录: {nvm_dir}\n "
+            f"当前使用的 Node 版本是: {current_node_version}\n NVM 安装目录: {nvm_dir}\n "
             f"npm 全局模块安装路径: {npm_global_root}\n pm2 可执行文件路径: {pm2_path}")
 
         return pm2_path
@@ -103,7 +103,7 @@ def get_web_hooks():
     print(
         f"BASE_PATH: {BASE_PATH}\n GIT_REPO_URL: {GIT_REPO_URL} PROJECT_NAME: {PROJECT_NAME}\n "
         f"收到来自 {data.get('repository', {}).get('name')} 的推送事件\n 推送分支是 {data.get('ref')}"
-        f"提交的commit message为{data.get('commits')[-1].get('message')},"
+        f"提交的commit message为：{data.get('commits')[-1].get('message')},"
         f"提交者是 {data.get('commits')[-1].get('committer').get('username')}"
         f"提交的commit url是 {data.get('commits')[-1].get('url')}"
     )
@@ -131,4 +131,22 @@ def get_web_hooks():
         pm2_path = get_pm2_path()
 
         subprocess.call([pm2_path, 'restart', PROJECT_NAME])
+
+        # 新加入的功能: 拷贝nginx配置并重新启动nginx服务
+        copy_nginx_config()
+        restart_nginx()
     return jsonify({'status': 'success'}), 200
+
+
+def copy_nginx_config():
+    project_nginx_conf = os.path.join(BASE_PATH, 'nginx.conf')
+    system_nginx_conf = '/etc/nginx/nginx.conf'
+
+    if not os.path.exists(project_nginx_conf):
+        raise FileNotFoundError(f"项目中的 nginx.conf 文件未找到在 {project_nginx_conf}")
+
+    subprocess.run(['sudo', 'cp', project_nginx_conf, system_nginx_conf], check=True)
+
+
+def restart_nginx():
+    subprocess.run(['sudo', 'systemctl', 'restart', 'nginx'], check=True)
