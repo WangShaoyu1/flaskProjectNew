@@ -10,12 +10,16 @@ import stat
 import json
 import platform
 import queue
+from flask_socketio import SocketIO, emit
 from utils import util, log
 
 chat_fun = Blueprint('chat', __name__)
 
 # 队列来存储推送消息
 message_queue = queue.Queue()
+
+# 初始化 SocketIO
+socketio = SocketIO(current_app, cors_allowed_origins="*")
 
 
 @chat_fun.route('/api/get_chats', methods=['GET'])
@@ -150,8 +154,8 @@ def delete_chat(conversation_id):
     return jsonify({'status': 'success', 'message': 'Chat deleted successfully'})
 
 
-@chat_fun.route('/api/shoot_send', methods=['POST'])
-def send_content():
+@chat_fun.route('/api/shoot_send_sse', methods=['POST'])
+def send_content_SSE():
     try:
         data = request.json
         if not data or "text" not in data:
@@ -163,14 +167,13 @@ def send_content():
         # 推送消息到队列
         message_queue.put(message)
         # 输出当前队列长度
-        print(f'当前队列长度-before：{message_queue.qsize()}')
         return jsonify({"code": "000000", "data": [], "msg": message}), 200
     except Exception as e:
         return jsonify({"code": "111111", "data": [], "msg": str(e)}), 500
 
 
-@chat_fun.route('/api/shoot_stream', methods=['GET'])
-def events():
+@chat_fun.route('/api/shoot_sse', methods=['GET'])
+def events_SSE():
     def event_stream():
         # 发送初始化消息，确保首次连接时能立即接收消息
         yield f'data: {json.dumps({"message": "init"}, ensure_ascii=False)}\n\n'
@@ -188,6 +191,44 @@ def events():
                 yield f'data: {json.dumps({"message": "error"}, ensure_ascii=False)}\n\n'
 
     return Response(event_stream(), mimetype='text/event-stream')
+
+
+@chat_fun.route('/api/shoot_send_ws', methods=['POST'])
+def send_content_ws():
+    try:
+        data = request.json
+        if not data or "text" not in data:
+            return jsonify({"error": "Invalid data"}), 400
+
+        text = data["text"]
+        message = f"{text}"
+
+        # 推送消息到队列
+        message_queue.put(message)
+
+        # 输出当前队列长度
+        print(f'当前队列长度：{message_queue.qsize()}')
+
+        # 通知所有已连接的客户端
+        while not message_queue.empty():
+            message_to_send = message_queue.get()
+            socketio.emit('push_message', {'message': message_to_send})
+
+        return jsonify({"code": "000000", "data": [], "msg": message}), 200
+    except Exception as e:
+        print(f'Error in send_content: {str(e)}')
+        return jsonify({"code": "111111", "data": [], "msg": str(e)}), 500
+
+
+@socketio.on('connect')
+def handle_connect():
+    print("客户端已连接")
+    emit('push_message', {'message': '连接已建立'})
+
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    print("客户端已断开连接")
 
 
 def stream_openai_response(messages, conversation_id):
