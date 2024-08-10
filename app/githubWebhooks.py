@@ -144,7 +144,7 @@ def copy_nginx_config():
 
     if not os.path.exists(project_nginx_conf):
         raise FileNotFoundError(f"项目中的 nginx.conf 文件未找到在 {project_nginx_conf}")
-
+    print(f"从{project_nginx_conf}开始拷贝项目中的 nginx.conf 到 {system_nginx_conf}")
     subprocess.run(['sudo', 'cp', project_nginx_conf, system_nginx_conf], check=True)
 
 
