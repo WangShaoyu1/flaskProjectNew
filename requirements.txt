@@ -17,3 +17,5 @@ opencv-python-headless
 pillow
 wget
 flask_cors
+flask-socketio
+eventlet

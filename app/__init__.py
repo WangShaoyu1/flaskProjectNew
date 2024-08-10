@@ -6,18 +6,24 @@ from flask_login import LoginManager
 from app.config import Config
 import os
 from flask_cors import CORS
+from flask_socketio import SocketIO
 
 db = SQLAlchemy()
 migrate = Migrate()
 bcrypt = Bcrypt()
 login = LoginManager()
 login.login_view = 'auth_fun.login'
+socketio = SocketIO()
 
 
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
-    CORS(app, resources={r"/*": {"origins": "http://localhost:5174"}})
+
+    CORS(app, resources={r"/*": {"origins": "*"}})
+
+    # 初始化 SocketIO
+    socketio.init_app(app, cors_allowed_origins="*")
 
     db.init_app(app)
     migrate.init_app(app, db)
