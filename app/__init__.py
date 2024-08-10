@@ -1,10 +1,11 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, request, Response
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from app.config import Config
 import os
+from flask_cors import CORS
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -16,6 +17,7 @@ login.login_view = 'auth_fun.login'
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
+    CORS(app, resources={r"/*": {"origins": "http://localhost:5174"}})
 
     db.init_app(app)
     migrate.init_app(app, db)
@@ -43,6 +45,19 @@ def create_app(config_class=Config):
     @app.route('/')
     def index():
         return redirect(url_for('main.home'))
+
+    @app.before_request
+    def before_request_func():
+        if request.method == 'OPTIONS':
+            return _build_cors_prelight_response()
+
+    def _build_cors_prelight_response():
+        # 添加响应的基本方法
+        response = Response()
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
+        response.headers.add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS")
+        return response
 
     @app.cli.command('reset_db')
     def reset_db():

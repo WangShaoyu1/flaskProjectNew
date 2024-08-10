@@ -7,10 +7,15 @@ from openai import OpenAI
 import uuid
 import time
 import stat
+import json
 import platform
+import queue
 from utils import util, log
 
 chat_fun = Blueprint('chat', __name__)
+
+# 队列来存储推送消息
+message_queue = queue.Queue()
 
 
 @chat_fun.route('/api/get_chats', methods=['GET'])
@@ -143,6 +148,46 @@ def delete_chat(conversation_id):
     db.session.commit()
 
     return jsonify({'status': 'success', 'message': 'Chat deleted successfully'})
+
+
+@chat_fun.route('/api/shoot_send', methods=['POST'])
+def send_content():
+    try:
+        data = request.json
+        if not data or "text" not in data:
+            return jsonify({"error": "Invalid data"}), 400
+
+        text = data["text"]
+        message = f"{text}"
+
+        # 推送消息到队列
+        message_queue.put(message)
+        # 输出当前队列长度
+        print(f'当前队列长度-before：{message_queue.qsize()}')
+        return jsonify({"code": "000000", "data": [], "msg": message}), 200
+    except Exception as e:
+        return jsonify({"code": "111111", "data": [], "msg": str(e)}), 500
+
+
+@chat_fun.route('/api/shoot_stream', methods=['GET'])
+def events():
+    def event_stream():
+        # 发送初始化消息，确保首次连接时能立即接收消息
+        yield f'data: {json.dumps({"message": "init"}, ensure_ascii=False)}\n\n'
+        while True:
+            try:
+                print(f'当前队列长度-after：{message_queue.qsize()}')
+                # 等待队列消息
+                message = message_queue.get(timeout=10)
+                yield f'data: {json.dumps({"message": message}, ensure_ascii=False)}\n\n'
+            except queue.Empty:
+                # 超时则发送心跳包以保持连接
+                yield f'data: {json.dumps({"message": "heartbeat"}, ensure_ascii=False)}\n\n'
+            except Exception as e:
+                # 发生异常则关闭连接
+                yield f'data: {json.dumps({"message": "error"}, ensure_ascii=False)}\n\n'
+
+    return Response(event_stream(), mimetype='text/event-stream')
 
 
 def stream_openai_response(messages, conversation_id):
