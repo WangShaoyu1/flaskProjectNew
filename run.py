@@ -1,4 +1,4 @@
-from app import create_app, db, socketio
+from app import create_app, db
 
 app = create_app()
 
@@ -9,4 +9,4 @@ def initialize_database():
 
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, port=5002, host='0.0.0.0')
+    app.run(debug=True, port=5002, host='0.0.0.0')

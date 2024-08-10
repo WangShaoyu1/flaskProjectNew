@@ -224,6 +224,31 @@ def handle_connect():
     emit('push_message', {'message': '连接已建立'})
 
 
+@socketio.on('send_message')
+def handle_send_message(data):
+    try:
+        if 'text' not in data:
+            emit('push_message', {'message': 'Invalid data'})
+            return
+
+        text = data['text']
+        message = f"{text}"
+
+        # 推送消息到队列
+        message_queue.put(message)
+
+        # 输出当前队列长度
+        print(f'当前队列长度：{message_queue.qsize()}')
+
+        # 通知所有已连接的客户端
+        while not message_queue.empty():
+            message_to_send = message_queue.get()
+            emit('push_message', {'message': message_to_send}, broadcast=True)
+    except Exception as e:
+        print(f'Error in handle_send_message: {str(e)}')
+        emit('push_message', {'message': 'Error processing message'})
+
+
 @socketio.on('disconnect')
 def handle_disconnect():
     print("客户端已断开连接")
