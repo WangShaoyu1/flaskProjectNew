@@ -133,7 +133,7 @@ def get_web_hooks():
         # 新加入的功能: 拷贝nginx配置并重新启动nginx服务
         copy_nginx_config()
         restart_nginx()
-        
+
         subprocess.call([pm2_path, 'restart', PROJECT_NAME])
 
     return jsonify({'status': 'success'}), 200
@@ -142,10 +142,9 @@ def get_web_hooks():
 def copy_nginx_config():
     project_nginx_conf = os.path.join(BASE_PATH, 'nginx.conf')
     system_nginx_conf = '/etc/nginx/nginx.conf'
-
+    print(f"从{project_nginx_conf}开始拷贝项目中的 nginx.conf 到 {system_nginx_conf}")
     if not os.path.exists(project_nginx_conf):
         raise FileNotFoundError(f"项目中的 nginx.conf 文件未找到在 {project_nginx_conf}")
-    print(f"从{project_nginx_conf}开始拷贝项目中的 nginx.conf 到 {system_nginx_conf}")
     subprocess.run(['sudo', 'cp', project_nginx_conf, system_nginx_conf], check=True)
 
 
