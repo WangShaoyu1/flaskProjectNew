@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
@@ -29,16 +29,20 @@ def create_app(config_class=Config):
         return User.query.get(int(user_id))
 
     from app.routes import main
-    app.register_blueprint(main)
+    app.register_blueprint(main, url_prefix='/gpt')
 
     from app.auth import auth_fun
-    app.register_blueprint(auth_fun, url_prefix='/auth')
+    app.register_blueprint(auth_fun, url_prefix='/gpt/auth')
 
     from app.chat import chat_fun
-    app.register_blueprint(chat_fun, url_prefix='/chat')
+    app.register_blueprint(chat_fun, url_prefix='/gpt/chat')
 
     from app.githubWebhooks import web_hooks
-    app.register_blueprint(web_hooks, url_prefix='/github')
+    app.register_blueprint(web_hooks, url_prefix='/gpt/github')
+
+    @app.route('/')
+    def index():
+        return redirect(url_for('main.home'))
 
     @app.cli.command('reset_db')
     def reset_db():

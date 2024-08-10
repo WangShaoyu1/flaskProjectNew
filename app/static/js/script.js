@@ -3,7 +3,7 @@ window.$(document).ready(function () {
     function loadChatHistory(cb) {
         const chat_id = utils.getQueryParam('chat_id');
         window.$.ajax({
-            url: '/chat/api/get_chats', method: 'GET', success: function (data) {
+            url: '/gpt/chat/api/get_chats', method: 'GET', success: function (data) {
                 window.$('#chat-history').empty();
                 data.forEach(function (chat) {
                     // 创建聊天会话元素
@@ -44,7 +44,7 @@ window.$(document).ready(function () {
     // Fetch and render message history
     function loadMessages(chatId) {
         window.$.ajax({
-            url: `/chat/api/get_messages/${chatId}`, method: 'GET', success: function (data) {
+            url: `/gpt/chat/api/get_messages/${chatId}`, method: 'GET', success: function (data) {
                 window.$('#chat-messages').empty();
 
                 data.forEach(message => {
@@ -114,7 +114,7 @@ window.$(document).ready(function () {
             return a;
         }, []).join('&');
         // 创建包含查询参数的 URL
-        const requestUrl = `/chat/api/send_message/stream?${query}`;
+        const requestUrl = `/gpt/chat/api/send_message/stream?${query}`;
 
         const evtSource = new EventSource(requestUrl);
         const lastBotDom = window.$('#chat-messages div:last');
@@ -159,7 +159,7 @@ window.$(document).ready(function () {
         window.$('#send-message').prop('disabled', true).text('思考中...');
 
         window.$.ajax({
-            url: `/chat/api/send_message`,
+            url: `/gpt/chat/api/send_message`,
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({message, conversation_id: chat_id}),
@@ -192,7 +192,7 @@ window.$(document).ready(function () {
     // Function to delete chat
     function deleteChat(chatId) {
         window.$.ajax({
-            url: '/chat/api/chat/' + chatId, method: 'DELETE', success: function (response) {
+            url: '/gpt/chat/api/chat/' + chatId, method: 'DELETE', success: function (response) {
                 if (response.status === 'success') {
                     loadChatHistory(data => {
                         window.$('#chat-title').text('');

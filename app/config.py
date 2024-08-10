@@ -10,4 +10,6 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
     OPENAI_BASE_URL = os.getenv('OPENAI_API_BASE_URL')
-    MODEL_NAME = os.getenv('MODEL_NAME')
+    GPT_MODEL_NAME = os.getenv('GPT_MODEL_NAME')
+    ZHIPU_API_KEY = os.getenv('ZHIPU_API_KEY')
+    ZHIPU_MODEL_NAME = os.getenv('ZHIPU_MODEL_NAME')

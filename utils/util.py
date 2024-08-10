@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import stat
 import platform
 
@@ -101,3 +102,20 @@ def grant_write_access(file_path):
             print(f"已授予用户对文件 {file_path} 的写权限")
         except Exception as e:
             print(f"授予写权限时出错: {e}")
+
+
+def extract_code_block(text, language='json'):
+    """
+    提取文本中的指定语言的代码块，并返回代码块的字符串内容。
+    :param text: 包含代码块的字符串
+    :param language: 代码块语言标记，例如'json', 'python', 'java'等
+    :return: 提取的代码块内容字符串，如果未找到则返回None
+    """
+    pattern = re.compile(rf'```{language}\n(.*?)\n```', re.DOTALL)
+    match = pattern.search(text)
+
+    if match:
+        return match.group(1)
+    else:
+        print(f"未找到 {language} 代码块")
+        return None
