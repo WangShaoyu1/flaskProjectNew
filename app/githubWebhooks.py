@@ -130,11 +130,12 @@ def get_web_hooks():
 
         pm2_path = get_pm2_path()
 
-        subprocess.call([pm2_path, 'restart', PROJECT_NAME])
-
         # 新加入的功能: 拷贝nginx配置并重新启动nginx服务
         copy_nginx_config()
         restart_nginx()
+        
+        subprocess.call([pm2_path, 'restart', PROJECT_NAME])
+
     return jsonify({'status': 'success'}), 200
 
 
