@@ -175,7 +175,7 @@ def events_SSE():
         yield f'data: {json.dumps({"message": "init"}, ensure_ascii=False)}\n\n'
         while True:
             try:
-                print(f'当前队列长度-after：{message_queue.qsize()}')
+                # print(f'当前队列长度-after：{message_queue.qsize()}')
                 # 等待队列消息
                 message = message_queue.get(timeout=10)
                 yield f'data: {json.dumps({"message": message}, ensure_ascii=False)}\n\n'

@@ -51,14 +51,6 @@ def create_app(config_class=Config):
         if request.method == 'OPTIONS':
             return _build_cors_prelight_response()
 
-    @app.after_request
-    def add_header(response):
-        if response.content_type == 'text/html; charset=utf-8':
-            response.headers['Content-Type'] = 'text/html; charset=utf-8'
-        elif response.content_type == 'application/json; charset=utf-8':
-            response.headers['Content-Type'] = 'application/json; charset=utf-8'
-        return response
-
     def _build_cors_prelight_response():
         # 添加响应的基本方法
         response = Response()
