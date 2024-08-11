@@ -10,12 +10,10 @@ import stat
 import json
 import platform
 import queue
-from flask_socketio import emit
 from utils import util, log
-from app import socketio
+from app.socketio import socketio
 
 chat_fun = Blueprint('chat', __name__)
-
 # 队列来存储推送消息
 message_queue = queue.Queue()
 
@@ -191,67 +189,19 @@ def events_SSE():
     return Response(event_stream(), mimetype='text/event-stream')
 
 
-@chat_fun.route('/api/shoot_send_ws', methods=['POST'])
-def send_content_ws():
-    try:
-        data = request.json
-        if not data or "text" not in data:
-            return jsonify({"error": "Invalid data"}), 400
+@chat_fun.route('/api/shoot_send_msg', methods=['POST'])
+def send_message_shoot():
+    data = request.json
+    message = data.get('message', '')
 
-        text = data["text"]
-        message = f"{text}"
+    if not message:
+        return jsonify({'status': 'error', 'message': 'Empty data'})
 
-        # 推送消息到队列
-        message_queue.put(message)
+    # 发信息给智能设备
+    socketio.emit('to_smart_client_message', {"message": message}, namespace='/smart_client')
 
-        # 输出当前队列长度
-        print(f'当前队列长度：{message_queue.qsize()}')
-
-        # 通知所有已连接的客户端
-        while not message_queue.empty():
-            message_to_send = message_queue.get()
-            socketio.emit('push_message', {'message': message_to_send})
-
-        return jsonify({"code": "000000", "data": [], "msg": message}), 200
-    except Exception as e:
-        print(f'Error in send_content: {str(e)}')
-        return jsonify({"code": "111111", "data": [], "msg": str(e)}), 500
-
-
-@socketio.on('connect')
-def handle_connect():
-    print("客户端已连接")
-    emit('push_message', {'message': '连接已建立'})
-
-
-@socketio.on('send_message')
-def handle_send_message(data):
-    try:
-        if 'text' not in data:
-            emit('push_message', {'message': 'Invalid data'})
-            return
-
-        text = data['text']
-        message = f"{text}"
-
-        # 推送消息到队列
-        message_queue.put(message)
-
-        # 输出当前队列长度
-        print(f'当前队列长度：{message_queue.qsize()}')
-
-        # 通知所有已连接的客户端
-        while not message_queue.empty():
-            message_to_send = message_queue.get()
-            emit('push_message', {'message': message_to_send}, broadcast=True)
-    except Exception as e:
-        print(f'Error in handle_send_message: {str(e)}')
-        emit('push_message', {'message': 'Error processing message'})
-
-
-@socketio.on('disconnect')
-def handle_disconnect():
-    print("客户端已断开连接")
+    # 简单地返回接收到的消息
+    return jsonify({'status': 'success', 'message': '发送成功', 'received_message': message})
 
 
 def stream_openai_response(messages, conversation_id):

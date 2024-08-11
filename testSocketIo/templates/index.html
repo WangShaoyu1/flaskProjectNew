@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天</title>
+    <style>
+        .container {
+            text-align: center;
+        }
+
+        .chat-box {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ccc;
+            margin: 20px auto
+        }
+
+        input {
+            height: 36px;
+        }
+
+        button {
+            height: 36px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        var baseUrl = "http://localhost:5002", namespace = "/smart_client"
+        document.addEventListener('DOMContentLoaded', function () {
+            {#var socket = io.connect('http://' + document.domain + ':' + location.port);#}
+            var socket = io(`${baseUrl}${namespace}`, {
+                reconnection: true,
+            });
+            socket.on('connect', function () {
+                socket.send('连接成功');
+                socket.emit('join_room', {room: 123})
+            });
+            socket.on('to_smart_client_message', function (msg) {
+                console.log("333:", msg);
+                var p = document.createElement('p');
+                p.innerHTML = msg.message;
+                document.getElementById('messages').appendChild(p);
+            });
+            socket.on('message', function (msg) {
+                console.log("666:", msg);
+            })
+            document.getElementById('sendbutton').onclick = function () {
+                var message = document.getElementById('myMessage').value;
+                socket.send(message);
+                document.getElementById('myMessage').value = '';
+            };
+
+            // 按回车键发送消息
+            document.getElementById('myMessage').addEventListener('keypress', function (e) {
+                if (e.which == 13) {
+                    var message = document.getElementById('myMessage').value;
+                    socket.send(message);
+                    document.getElementById('myMessage').value = '';
+                    e.preventDefault(); // 防止默认的表单提交
+                }
+            });
+
+            // 获取聊天记录
+            $.get('/messages', function (data) {
+                data.forEach(function (msg) {
+                    var p = document.createElement('p');
+                    p.innerHTML = msg;
+                    document.getElementById('messages').appendChild(p);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>Chat</h1>
+    <div id="messages" class="chat-box"></div>
+    <input type="text" id="myMessage" placeholder="输入消息">
+    <button id="sendbutton">发送</button>
+</div>
+</body>
+</html>
