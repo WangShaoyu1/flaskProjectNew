@@ -182,5 +182,14 @@
     "modified": [
       "README.md"
     ]
+  },
+  "others": {
+    "CPU_Info": "ARMv8 Processor rev 1 (v8l)",
+    "Disk_Info": "Total: 118976 MB, Available: 38188 MB",
+    "Hostname": "dw223",
+    "IP": "172.19.50.39",
+    "MAC": "f4:ce:23:bc:53:3b",
+    "memory_Info": "Total:7650308 kB,Available:2578292 kB",
+    "OS_Info": "Linux 5.10.120-tegra"
   }
 }

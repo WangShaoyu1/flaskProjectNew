@@ -86,4 +86,45 @@ def auto_function(functions_list):
     return funcs
 
 
-auto_function([suwukong_function])
+# 定义一个DataFrame
+df = pd.DataFrame({'x1': [1, 2], 'x2': [3, 4]})  # 调用函数，并传入数据集
+df_str = df.to_string()
+
+print(df_str)
+
+messages = [
+    {"role": "system", "content": "数据集data:%s，数据集以字符串的形式呈现" % df_str},
+    {"role": "user", "content": "请在数据集data上执行孙悟空算算法"}
+]
+
+function_list = auto_function([suwukong_function])
+
+
+def run_conversation(messages, func_list=None, model=Config.ZHIPU_MODEL_NAME):
+    if func_list is None:
+        response = client.chat.completions.create(
+            model=Config.ZHIPU_MODEL_NAME,
+            messages=messages
+        )
+        response_message = json.loads(response.choices[0].message)
+        final_response = response_message.content
+    else:
+        tools = func_list
+
+        # 常见外部函数库字典
+        available_functions = {func.__name__ for func in func_list}
+        # 第一次调用大模型
+        response = client.chat.completions.create(
+            model=Config.ZHIPU_MODEL_NAME,
+            messages=messages,
+            tools=tools,
+            tool_choice="auto"
+        )
+        response_message = json.loads(response.choices[0].message)
+        tool_calls = response_message.tool_calls
+
+        if tool_calls:
+            print("ok")
+            for tool_call in tool_calls:
+                function_name = tool_call.function_name
+                function_args = tool_call.function_args
