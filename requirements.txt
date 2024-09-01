@@ -19,3 +19,9 @@ wget
 flask_cors
 flask-socketio
 eventlet
+langchain
+gradio
+langsmith
+fitz
+ragas
+langchain-openai
