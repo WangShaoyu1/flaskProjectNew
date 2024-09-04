@@ -1,0 +1,25 @@
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.45秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：13.7秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.47秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.46秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.4秒
+---年龄age循环4次，平均耗时：3.1秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.33秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.4秒
+{'desc': '男人', 'label': 0}---性别gender耗时：13.43秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.4秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.28秒
+---性别gender循环4次，平均耗时：2.97秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.27秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.41秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.45秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.6秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.72秒
+---颜值face_score循环4次，平均耗时：8.29秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.33秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.41秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.31秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.3秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.3秒
+---表情expression循环4次---表情expression，平均耗时：0.33秒
+-----------------如上是09月01日 11时44分58秒-----------------

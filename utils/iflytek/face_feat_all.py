@@ -1,6 +1,8 @@
 ﻿# -*- coding: utf-8 -*-
 import datetime
 import os
+import time
+
 from utils import util
 import asyncio
 import aiohttp
@@ -11,7 +13,7 @@ from face_feat_anys_expression import fetch_expression
 
 # 记录次数的文件路径
 times_file = 'temp_data_dir/times.txt'
-FilePath = fr"D:\gitlab\flaskProjectNew\app\static\img\crop"
+FilePath = fr"D:\gitlab\flaskProjectNew\utils\iflytek\img\crop"
 # 初始化 times 的值
 if os.path.exists(times_file):
     with open(times_file, 'r') as f:
@@ -90,6 +92,10 @@ def write_txt(all_data):
         image_count = get_image_count(FilePath)
         cycle_times = len(all_data) // image_count
         result = []
+        a_average = 0
+        b_average = 0
+        c_average = 0
+        d_average = 0
         for i in range(image_count):
             result.append([[] for _ in range(cycle_times)])
             for j in range(cycle_times):
@@ -99,35 +105,61 @@ def write_txt(all_data):
             util.write_to_file('temp_data_dir/iflytek.log',
                                f"\n\n--------------------{result[i][0]['image_name']}----------------------\n")
             for j in range(len(result[i])):
+                a_average += result[i][j]['age']['duration']
                 util.write_to_file('temp_data_dir/iflytek.log', f"{result[i][j]['age']['data']}")
                 util.write_to_file('temp_data_dir/iflytek.log', f"---年龄age耗时：{result[i][j]['age']['duration']}秒\n")
-                util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-age.txt",
+                util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-all.txt",
                                    f"{result[i][j]['age']['data']}---年龄age耗时：{result[i][j]['age']['duration']}秒\n")
+                if j == len(result[i]) - 1:
+                    util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-all.txt",
+                                       f"---年龄age循环{j+1}次，平均耗时：{round(a_average / (j + 1), 2)}秒\n")
+                    a_average = 0
+
             util.write_to_file('temp_data_dir/iflytek.log', f"\n")
 
             for j in range(len(result[i])):
+                b_average += result[i][j]['gender']['duration']
                 util.write_to_file('temp_data_dir/iflytek.log', f"{result[i][j]['gender']['data']}")
                 util.write_to_file('temp_data_dir/iflytek.log',
                                    f"---性别gender耗时：{result[i][j]['gender']['duration']}秒\n")
-                util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-age.txt",
-                                   f"{result[i][j]['gender']['data']}---年龄age耗时：{result[i][j]['gender']['duration']}秒\n")
+                util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-all.txt",
+                                   f"{result[i][j]['gender']['data']}---性别gender耗时：{result[i][j]['gender']['duration']}秒\n")
+
+                if j == len(result[i]) - 1:
+                    util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-all.txt",
+                                       f"---性别gender循环{j+1}次，平均耗时：{round(b_average / (j + 1), 2)}秒\n")
+                    b_average = 0
+
             util.write_to_file('temp_data_dir/iflytek.log', f"\n")
 
             for j in range(len(result[i])):
+                c_average += result[i][j]['face_score']['duration']
                 util.write_to_file('temp_data_dir/iflytek.log', f"{result[i][j]['face_score']['data']}")
                 util.write_to_file('temp_data_dir/iflytek.log',
                                    f"---颜值face_score耗时：{result[i][j]['face_score']['duration']}秒\n")
-                util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-age.txt",
-                                   f"{result[i][j]['face_score']['data']}---年龄age耗时：{result[i][j]['face_score']['duration']}秒\n")
+                util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-all.txt",
+                                   f"{result[i][j]['face_score']['data']}---颜值face_score耗时：{result[i][j]['face_score']['duration']}秒\n")
+                if j == len(result[i]) - 1:
+                    util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-all.txt",
+                                       f"---颜值face_score循环{j+1}次，平均耗时：{round(c_average / (j + 1), 2)}秒\n")
+                    c_average = 0
+
             util.write_to_file('temp_data_dir/iflytek.log', f"\n")
 
             for j in range(len(result[i])):
+                d_average += result[i][j]['expression']['duration']
                 util.write_to_file('temp_data_dir/iflytek.log', f"{result[i][j]['expression']['data']}")
                 util.write_to_file('temp_data_dir/iflytek.log',
                                    f"---表情expression耗时：{result[i][j]['expression']['duration']}秒\n")
-                util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-age.txt",
-                                   f"{result[i][j]['expression']['data']}---年龄age耗时：{result[i][j]['expression']['duration']}秒\n")
+                util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-all.txt",
+                                   f"{result[i][j]['expression']['data']}---表情expression耗时：{result[i][j]['expression']['duration']}秒\n")
 
+                if j == len(result[i]) - 1:
+                    util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-all.txt",
+                                       f"---表情expression循环{j+1}次---表情expression，平均耗时：{round(d_average / (j + 1), 2)}秒\n")
+                    d_average = 0
+            util.write_to_file(f"temp_data_dir/detail/{result[i][0]['image_name'].rsplit('.', 1)[0]}-all.txt",
+                               f'-----------------如上是{datetime.datetime.now().strftime("%m月%d日 %H时%M分%S秒")}-----------------')
         print(f'--------------------all success----------------------\n')
         util.write_to_file('temp_data_dir/iflytek.log', f'--------------------all success----------------------\n')
 
@@ -177,7 +209,8 @@ async def process_all_images():
 async def main():
     global times
     all_data = []
-    for i in range(1):
+    start_time = time.time()
+    for i in range(5):
         times += 1
         result = await process_all_images()
         all_data.extend(result)  # 将每批图片处理的结果添加到总的结果列表中
@@ -185,6 +218,7 @@ async def main():
 
     print(f"all_data: {len(all_data)}")
     write_txt(all_data)
+    print(f"本次数据花费时间为: {round(time.time() - start_time, 2)}秒")
 
     # 保存 times 的值
     with open(times_file, 'w') as f:

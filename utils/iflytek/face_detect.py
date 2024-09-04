@@ -26,7 +26,8 @@ URL = "https://api.xf-yun.com/v1/private/"
 API_KEY = "e419795a1e6fb57f49a3cdedf14e2bdc"
 API_Secret = "YWNhNDljYzFkNjRjODc0YTE3ODRhMDM5"
 SERVER_ID = "s67c9c78c"
-FilePath = r"D:\gitlab\flaskProjectNew\app\static\img\test1-boy-c.jpg"
+IMAGE_EXTENSIONS = ('.png', '.jpg', '.jpeg', '.bmp')
+FilePath = r"D:\gitlab\flaskProjectNew\utils\iflytek\img\crop"
 
 hair_dict = {
     "0": {"desc": "光头"},
@@ -152,7 +153,7 @@ def gen_body(appid, img_path, server_id):
     return json.dumps(body)
 
 
-def run(appid, apikey, apisecret, img_path, server_id='s67c9c78c'):
+def run(appid, apikey, apisecret, img_path, server_id='s67c9c78c', file=''):
     url = f'{URL}{server_id}'.format(server_id)
     request_url = assemble_ws_auth_url(url, "POST", apikey, apisecret)
     headers = {'content-type': "application/json", 'host': 'api.xf-yun.com', 'app_id': appid}
@@ -161,55 +162,69 @@ def run(appid, apikey, apisecret, img_path, server_id='s67c9c78c'):
     # resp_data = json.loads(response.content.decode('utf-8'))
     resp_data = response.json()
     resp_data_text = base64.b64decode(resp_data['payload']['face_detect_result']['text']).decode()
-    final_data = handle_data(json.loads(resp_data_text))
+    print(f"resp_data_text: {resp_data_text}")
+    final_data = handle_data(json.loads(resp_data_text))[0]
+    final_string = handle_data(json.loads(resp_data_text))[1]
     print(f"final_data: {final_data}")
-    util.write_to_file('temp_data_dir/iflytek.log', f'------------face_detect\n')
-    util.write_to_file('temp_data_dir/iflytek.log', f"{final_data}", need_json=True)
+    util.write_to_file('temp_data_dir/iflytek.log', f'\n--------------------face_detect--------------------\n')
+    # util.write_to_file('temp_data_dir/iflytek.log', f"{final_data}", need_json=True)
+    util.write_to_file('temp_data_dir/iflytek.log', f"\n{file}--{final_string}")
 
 
 def handle_data(data):
     temp = {}
-    for i in range(data["face_num"]):
-        temp[f"{i}"] = {
-            "gender": {
-                "desc": gender_dict[str(data[f"face_{i + 1}"]["property"]["gender"])]["desc"],
-                "value": data[f"face_{i + 1}"]["property"]["gender"]
-            },
-            "glass": {
-                "desc": glass_dict[str(data[f"face_{i + 1}"]["property"]["glass"])]["desc"],
-                "value": data[f"face_{i + 1}"]["property"]["glass"]
-            },
-            "hair": {
-                "desc": hair_dict[str(data[f"face_{i + 1}"]["property"]["hair"])]["desc"],
-                "value": data[f"face_{i + 1}"]["property"]["hair"]
-            },
-            "expression": {
-                "desc": expression_dict[str(data[f"face_{i + 1}"]["property"]["expression"])]["desc"],
-                "value": data[f"face_{i + 1}"]["property"]["expression"]
-            },
-            "beard": {
-                "desc": beard_dict[str(data[f"face_{i + 1}"]["property"]["beard"])]["desc"],
-                "value": data[f"face_{i + 1}"]["property"]["beard"]
-            },
-            "mask": {
-                "desc": mask_dict[str(data[f"face_{i + 1}"]["property"]["mask"])]["desc"],
-                "value": data[f"face_{i + 1}"]["property"]["mask"]
-            },
-        }
-    return temp
+    if data["ret"] == 0:
+        for i in range(data["face_num"]):
+            temp[f"{i}"] = {
+                "gender": {
+                    "desc": gender_dict[str(data[f"face_{i + 1}"]["property"]["gender"])]["desc"],
+                    "value": data[f"face_{i + 1}"]["property"]["gender"]
+                },
+                "glass": {
+                    "desc": glass_dict[str(data[f"face_{i + 1}"]["property"]["glass"])]["desc"],
+                    "value": data[f"face_{i + 1}"]["property"]["glass"]
+                },
+                "hair": {
+                    "desc": hair_dict[str(data[f"face_{i + 1}"]["property"]["hair"])]["desc"],
+                    "value": data[f"face_{i + 1}"]["property"]["hair"]
+                },
+                "expression": {
+                    "desc": expression_dict[str(data[f"face_{i + 1}"]["property"]["expression"])]["desc"],
+                    "value": data[f"face_{i + 1}"]["property"]["expression"]
+                },
+                "beard": {
+                    "desc": beard_dict[str(data[f"face_{i + 1}"]["property"]["beard"])]["desc"],
+                    "value": data[f"face_{i + 1}"]["property"]["beard"]
+                },
+                "mask": {
+                    "desc": mask_dict[str(data[f"face_{i + 1}"]["property"]["mask"])]["desc"],
+                    "value": data[f"face_{i + 1}"]["property"]["mask"]
+                },
+            }
+        string = f"这是一名{temp['0']['gender']['desc']}性，{temp['0']['glass']['desc']}，{temp['0']['hair']['desc']}，表情{temp['0']['expression']['desc']}，{temp['0']['beard']['desc']}，{temp['0']['mask']['desc']}。"
+        return temp, string
+    else:
+        return temp, "未检测到人脸"
+
+
+# Function to process all images in a folder
+def process_images_in_folder(folder_path, appid, apikey, apisecret, server_id):
+    for root, _, files in os.walk(folder_path):
+        for file in files:
+            if file.lower().endswith(IMAGE_EXTENSIONS):
+                img_path = os.path.join(root, file)
+                run(appid, apikey, apisecret, img_path, server_id, file)
+                print(f"Processed {file}. Waiting 2 seconds before next request...")
+                time.sleep(2)  # 延时5秒
 
 
 # 请填写控制台获取的APPID、APISecret、APIKey以及要检测的图片路径
 if __name__ == '__main__':
     # Record the time before sending the request
     start_time = time.time()
-    run(
-        appid=APPID,
-        apisecret=API_Secret,
-        apikey=API_KEY,
-        img_path=fr'{FilePath}',
-    )
+    process_images_in_folder(FilePath, APPID, API_KEY, API_Secret, SERVER_ID)
     # Record the time after receiving the response
     end_time = time.time()
 
-    util.write_to_file('temp_data_dir/iflytek.log', f'\n------face_detect耗时：{round(end_time - start_time, 3)}秒\n')
+    util.write_to_file('temp_data_dir/iflytek.log',
+                       f'\n--------------------face_detect耗时：{round(end_time - start_time, 3)}秒--------------------\n')

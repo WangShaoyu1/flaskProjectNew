@@ -25,3 +25,4 @@ langsmith
 fitz
 ragas
 langchain-openai
+dlib

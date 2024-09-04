@@ -1,82 +1,960 @@
 
+--------------------face_detect--------------------
 
---------------------test1-boy-c.jpg----------------------
-{'desc': '其他', 'label': 11}---年龄age耗时：15.13秒
+cropped_IMG_20240729_221016.jpg--这是一名男性，戴眼镜，短发，表情正常，没有胡子，没戴口罩。
+--------------------face_detect--------------------
 
-{'desc': '女人', 'label': 1}---性别gender耗时：0.77秒
+cropped_IMG_20240729_221022.jpg--这是一名男性，戴眼镜，短发，表情正常，没有胡子，没戴口罩。
+--------------------face_detect--------------------
 
-{'desc': '普通', 'label': 2}---颜值face_score耗时：1.27秒
+cropped_IMG_20240729_221031.jpg--这是一名男性，戴眼镜，短发，表情正常，没有胡子，没戴口罩。
+--------------------face_detect--------------------
 
-{'desc': '喜悦', 'label': 2}---表情expression耗时：13.83秒
+cropped_IMG_20240805_155828.jpg--这是一名男性，戴眼镜，短发，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_155832.jpg--这是一名男性，不戴眼镜，短发，表情悲伤，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_155834.jpg--这是一名男性，不戴眼镜，短发，表情正常，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_155843.jpg--这是一名女性，不戴眼镜，长发，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_155846.jpg--这是一名男性，不戴眼镜，短发，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_155849.jpg--这是一名男性，不戴眼镜，短发，表情正常，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_155938.jpg--这是一名女性，不戴眼镜，长发，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_155939.jpg--这是一名男性，戴眼镜，短发，表情正常，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_155956.jpg--这是一名男性，戴眼镜，短发，表情正常，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_155957.jpg--这是一名男性，戴眼镜，短发，表情正常，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_155959.jpg--这是一名女性，戴眼镜，短发，表情正常，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160020.jpg--未检测到人脸
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160048.jpg--这是一名女性，戴眼镜，长发，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160049.jpg--这是一名女性，戴眼镜，短发，表情正常，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160058.jpg--这是一名女性，戴眼镜，长发，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160059.jpg--这是一名女性，戴眼镜，长发，表情正常，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160112.jpg--这是一名女性，戴眼镜，长发，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160113.jpg--这是一名男性，戴眼镜，短发，表情正常，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160114.jpg--这是一名男性，戴眼镜，短发，表情正常，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160124.jpg--这是一名女性，不戴眼镜，长发，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160128.jpg--这是一名女性，戴眼镜，长发，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160143.jpg--这是一名女性，不戴眼镜，光头，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160146.jpg--这是一名女性，不戴眼镜，长发，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160149.jpg--这是一名女性，戴眼镜，长发，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160227.jpg--这是一名女性，不戴眼镜，长发，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160228.jpg--这是一名女性，不戴眼镜，长发，表情悲伤，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160231.jpg--这是一名女性，不戴眼镜，长发，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160242.jpg--这是一名女性，不戴眼镜，长发，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160245.jpg--这是一名女性，戴眼镜，长发，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect--------------------
+
+cropped_IMG_20240805_160247.jpg--这是一名女性，戴眼镜，长发，表情高兴，没有胡子，没戴口罩。
+--------------------face_detect耗时：75.693秒--------------------
 
 
---------------------test2-boy-o.jpg----------------------
-None---年龄age耗时：0.04秒
+--------------------cropped_IMG_20240729_221016.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.71秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：13.95秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.71秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.66秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：13.63秒
 
-None---性别gender耗时：0.1秒
+{'desc': '男人', 'label': 0}---性别gender耗时：13.61秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.39秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.45秒
+{'desc': '男人', 'label': 0}---性别gender耗时：13.3秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.38秒
 
-None---颜值face_score耗时：0.09秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.57秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.44秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.43秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.34秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.36秒
 
-None---表情expression耗时：0.09秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.48秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：13.7秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.37秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.46秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：13.37秒
 
 
---------------------test3-boy.jpg----------------------
+--------------------cropped_IMG_20240729_221022.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：13.31秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.47秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.4秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.43秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.38秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.77秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.35秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.34秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.42秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.4秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.45秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.47秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.45秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.32秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.33秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.44秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.39秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.35秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.45秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.37秒
+
+
+--------------------cropped_IMG_20240729_221031.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.43秒
 {'desc': '31-40岁', 'label': 6}---年龄age耗时：0.44秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.39秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.34秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.4秒
 
-{'desc': '男人', 'label': 0}---性别gender耗时：0.32秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.42秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.42秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.33秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.42秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.38秒
 
-{'desc': '普通', 'label': 2}---颜值face_score耗时：13.43秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.54秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.54秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.51秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.4秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.39秒
 
-{'desc': '喜悦', 'label': 2}---表情expression耗时：0.3秒
-
-
---------------------test4-boy.jpg----------------------
-{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.43秒
-
-{'desc': '男人', 'label': 0}---性别gender耗时：13.37秒
-
-{'desc': '漂亮', 'label': 0}---颜值face_score耗时：0.53秒
-
-{'desc': '喜悦', 'label': 2}---表情expression耗时：0.42秒
---------------------all success----------------------
-
-
---------------------test1-boy-c.jpg----------------------
-{'desc': '其他', 'label': 11}---年龄age耗时：13.87秒
-
-{'desc': '女人', 'label': 1}---性别gender耗时：0.84秒
-
-{'desc': '普通', 'label': 2}---颜值face_score耗时：0.91秒
-
-{'desc': '喜悦', 'label': 2}---表情expression耗时：13.66秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.41秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.35秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.41秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.38秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
 
 
---------------------test2-boy-o.jpg----------------------
-None---年龄age耗时：0.05秒
+--------------------cropped_IMG_20240805_155828.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.35秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.38秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.42秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.32秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.32秒
 
-None---性别gender耗时：0.11秒
-
-None---颜值face_score耗时：0.09秒
-
-None---表情expression耗时：0.1秒
-
-
---------------------test3-boy.jpg----------------------
-{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.49秒
-
-{'desc': '男人', 'label': 0}---性别gender耗时：13.55秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.39秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.36秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.39秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.38秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.33秒
 
 {'desc': '普通', 'label': 2}---颜值face_score耗时：0.38秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.32秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.35秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.35秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.37秒
 
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.36秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.36秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.37秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.36秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.38秒
+
+
+--------------------cropped_IMG_20240805_155832.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.47秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.38秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：13.65秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.45秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.33秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.37秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.39秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.34秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.34秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.36秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.38秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.35秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.33秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.31秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.34秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.39秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.37秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.33秒
 {'desc': '喜悦', 'label': 2}---表情expression耗时：0.32秒
 
 
---------------------test4-boy.jpg----------------------
-{'desc': '26-30岁', 'label': 12}---年龄age耗时：13.67秒
+--------------------cropped_IMG_20240805_155834.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.4秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.37秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.37秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.34秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.35秒
 
+{'desc': '男人', 'label': 0}---性别gender耗时：0.34秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.33秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.39秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.32秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.41秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.3秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.34秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.36秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.38秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.34秒
+
+{'desc': '中性', 'label': 7}---表情expression耗时：0.31秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.37秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.33秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.35秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.38秒
+
+
+--------------------cropped_IMG_20240805_155843.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.35秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.36秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.46秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.38秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.35秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.35秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.33秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.35秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.42秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.43秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.31秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.4秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.39秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.3秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.38秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.37秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.4秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.35秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.41秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.38秒
+
+
+--------------------cropped_IMG_20240805_155846.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.36秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.35秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.41秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.34秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.37秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.36秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.35秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.58秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.4秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.39秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.32秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.34秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.35秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.31秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.29秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.44秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.33秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.46秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.38秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
+
+
+--------------------cropped_IMG_20240805_155849.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.36秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.38秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.36秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.43秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.38秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.39秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.36秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.44秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.4秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.34秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.43秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.39秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.36秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.37秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.32秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.39秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.29秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.3秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.31秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
+
+
+--------------------cropped_IMG_20240805_155938.jpg----------------------
+{'desc': '其他', 'label': 11}---年龄age耗时：0.35秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.34秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.41秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.35秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.47秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.42秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.44秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.34秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.33秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.3秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.42秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.41秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.42秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.4秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.39秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.35秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.33秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.31秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.36秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.31秒
+
+
+--------------------cropped_IMG_20240805_155939.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.44秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.35秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.42秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.35秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.34秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.43秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.33秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.37秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.33秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.35秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.35秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.34秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.36秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.34秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.29秒
+
+{'desc': '中性', 'label': 7}---表情expression耗时：0.34秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.32秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.32秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.48秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.39秒
+
+
+--------------------cropped_IMG_20240805_155956.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.41秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.39秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.34秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.36秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.36秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.42秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.37秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.37秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.39秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.32秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.32秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.4秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.34秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.29秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.32秒
+
+{'desc': '中性', 'label': 7}---表情expression耗时：0.36秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.3秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.29秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.33秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.31秒
+
+
+--------------------cropped_IMG_20240805_155957.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.41秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.34秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.34秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.42秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.44秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.41秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.35秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.41秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.33秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.36秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.33秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.41秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.38秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.3秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.32秒
+
+{'desc': '中性', 'label': 7}---表情expression耗时：0.35秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.28秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.35秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.35秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.42秒
+
+
+--------------------cropped_IMG_20240805_155959.jpg----------------------
+{'desc': '41-50岁', 'label': 7}---年龄age耗时：0.37秒
+{'desc': '41-50岁', 'label': 7}---年龄age耗时：0.5秒
+{'desc': '41-50岁', 'label': 7}---年龄age耗时：0.36秒
+{'desc': '41-50岁', 'label': 7}---年龄age耗时：0.38秒
+{'desc': '41-50岁', 'label': 7}---年龄age耗时：0.37秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.38秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.44秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.34秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.4秒
 {'desc': '男人', 'label': 0}---性别gender耗时：0.37秒
 
-{'desc': '漂亮', 'label': 0}---颜值face_score耗时：0.37秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.24秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.46秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.44秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.28秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.24秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.35秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.41秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.38秒
+
+
+--------------------cropped_IMG_20240805_160020.jpg----------------------
+{'desc': '其他', 'label': 11}---年龄age耗时：0.44秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.34秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.35秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.36秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.34秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.37秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.31秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.36秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.33秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.34秒
+
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.41秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.44秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.41秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.36秒
+{'desc': '多人', 'label': 6}---颜值face_score耗时：0.4秒
+
+{'desc': '中性', 'label': 7}---表情expression耗时：0.34秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.35秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.4秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.32秒
+{'desc': '中性', 'label': 7}---表情expression耗时：0.45秒
+
+
+--------------------cropped_IMG_20240805_160048.jpg----------------------
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.39秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.37秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.33秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.36秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.35秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.33秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.33秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.34秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.37秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.39秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.33秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.42秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.34秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.32秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.28秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.46秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.29秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.37秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.38秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.36秒
+
+
+--------------------cropped_IMG_20240805_160049.jpg----------------------
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.38秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.4秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.35秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.38秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.48秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.42秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.42秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.35秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.36秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.37秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.33秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.38秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.42秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.33秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.33秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.51秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.36秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.44秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.33秒
+
+
+--------------------cropped_IMG_20240805_160058.jpg----------------------
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.39秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.36秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.41秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.39秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.39秒
+
+{'desc': '女人', 'label': 1}---性别gender耗时：0.47秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.33秒
+{'desc': '女人', 'label': 1}---性别gender耗时：13.64秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.42秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.34秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.38秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.39秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.4秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.28秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.34秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.41秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.28秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.41秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.33秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.4秒
+
+
+--------------------cropped_IMG_20240805_160059.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.32秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.41秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.35秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.33秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.3秒
+
+{'desc': '女人', 'label': 1}---性别gender耗时：0.31秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.39秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.32秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.41秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.35秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.35秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.36秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.4秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.28秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.36秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.3秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.33秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.35秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.35秒
+
+
+--------------------cropped_IMG_20240805_160112.jpg----------------------
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.35秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.39秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.4秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.34秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.39秒
+
+{'desc': '女人', 'label': 1}---性别gender耗时：0.34秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.41秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.35秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.38秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.33秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.42秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.46秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.41秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.37秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.45秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.37秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.35秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.29秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.38秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.39秒
+
+
+--------------------cropped_IMG_20240805_160113.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.38秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.35秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.41秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.33秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.38秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.38秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.39秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.33秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.41秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.35秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.29秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.37秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.44秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.36秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.32秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.31秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.3秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.38秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.38秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.45秒
+
+
+--------------------cropped_IMG_20240805_160114.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.38秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.32秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.43秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.41秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.33秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.42秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.36秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.41秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.4秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.33秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.28秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.41秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.33秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.32秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.34秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.43秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.3秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.46秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.38秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.32秒
+
+
+--------------------cropped_IMG_20240805_160124.jpg----------------------
+{'desc': '其他', 'label': 11}---年龄age耗时：0.32秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.33秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.41秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.43秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.34秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.41秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.38秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.41秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.34秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.31秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.39秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.51秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.54秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.5秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.43秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.31秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.38秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.36秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.33秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.39秒
+
+
+--------------------cropped_IMG_20240805_160128.jpg----------------------
+{'desc': '其他', 'label': 11}---年龄age耗时：0.41秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.38秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.41秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.34秒
+{'desc': '其他', 'label': 11}---年龄age耗时：0.35秒
+
+{'desc': '男人', 'label': 0}---性别gender耗时：0.36秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.39秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.36秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.33秒
+{'desc': '男人', 'label': 0}---性别gender耗时：0.36秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.46秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.44秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.41秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.38秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.38秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.38秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.35秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.46秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.41秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.37秒
+
+
+--------------------cropped_IMG_20240805_160143.jpg----------------------
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.41秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.34秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.36秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.36秒
+{'desc': '21-25岁', 'label': 5}---年龄age耗时：0.32秒
+
+{'desc': '女人', 'label': 1}---性别gender耗时：0.35秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.35秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.35秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.36秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.32秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.29秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.36秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.4秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.28秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.32秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.38秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.28秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.33秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.32秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.42秒
+
+
+--------------------cropped_IMG_20240805_160146.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.42秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.35秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.39秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.39秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.42秒
+
+{'desc': '女人', 'label': 1}---性别gender耗时：0.36秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.37秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.35秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.34秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.31秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.35秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.4秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.38秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.32秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.35秒
 
 {'desc': '喜悦', 'label': 2}---表情expression耗时：0.36秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.29秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.45秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.41秒
+
+
+--------------------cropped_IMG_20240805_160149.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.38秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.37秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.37秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.39秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.41秒
+
+{'desc': '女人', 'label': 1}---性别gender耗时：0.37秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.39秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.41秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.67秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.38秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.22秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.43秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.4秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.28秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：13.28秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.35秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.33秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.42秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.33秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.35秒
+
+
+--------------------cropped_IMG_20240805_160227.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.47秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.34秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.37秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.32秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.36秒
+
+{'desc': '女人', 'label': 1}---性别gender耗时：0.37秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.35秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.47秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.35秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.32秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.28秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.34秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.4秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.3秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.28秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.39秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.4秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.39秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.4秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.42秒
+
+
+--------------------cropped_IMG_20240805_160228.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.34秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.39秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.34秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.42秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.52秒
+
+{'desc': '女人', 'label': 1}---性别gender耗时：0.64秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.37秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.37秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.32秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.4秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.4秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.44秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.44秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.38秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.34秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.37秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.33秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.3秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.42秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.42秒
+
+
+--------------------cropped_IMG_20240805_160231.jpg----------------------
+{'desc': '41-50岁', 'label': 7}---年龄age耗时：0.34秒
+{'desc': '41-50岁', 'label': 7}---年龄age耗时：0.33秒
+{'desc': '41-50岁', 'label': 7}---年龄age耗时：0.39秒
+{'desc': '41-50岁', 'label': 7}---年龄age耗时：0.4秒
+{'desc': '41-50岁', 'label': 7}---年龄age耗时：0.33秒
+
+{'desc': '女人', 'label': 1}---性别gender耗时：0.45秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.45秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.35秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.36秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.35秒
+
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.29秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.33秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.36秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.4秒
+{'desc': '普通', 'label': 2}---颜值face_score耗时：0.33秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.43秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.38秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.32秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.41秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.36秒
+
+
+--------------------cropped_IMG_20240805_160242.jpg----------------------
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.34秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.36秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：13.6秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.38秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.4秒
+
+{'desc': '女人', 'label': 1}---性别gender耗时：0.38秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.32秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.45秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.37秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.31秒
+
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.39秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.34秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.4秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.3秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.31秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.35秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.3秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.31秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.32秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.39秒
+
+
+--------------------cropped_IMG_20240805_160245.jpg----------------------
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.43秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.37秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.38秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.39秒
+{'desc': '26-30岁', 'label': 12}---年龄age耗时：0.43秒
+
+{'desc': '女人', 'label': 1}---性别gender耗时：0.44秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.43秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.37秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.43秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.41秒
+
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.34秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.41秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.32秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.3秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.33秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.34秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.37秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.3秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.32秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.42秒
+
+
+--------------------cropped_IMG_20240805_160247.jpg----------------------
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.36秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.35秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.45秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.38秒
+{'desc': '31-40岁', 'label': 6}---年龄age耗时：0.35秒
+
+{'desc': '女人', 'label': 1}---性别gender耗时：0.35秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.35秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.37秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.39秒
+{'desc': '女人', 'label': 1}---性别gender耗时：0.39秒
+
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.57秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.41秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.39秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.3秒
+{'desc': '好看', 'label': 1}---颜值face_score耗时：0.33秒
+
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.38秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.33秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.32秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.42秒
+{'desc': '喜悦', 'label': 2}---表情expression耗时：0.33秒
 --------------------all success----------------------
