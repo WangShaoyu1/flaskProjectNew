@@ -26,3 +26,6 @@ fitz
 ragas
 langchain-openai
 dlib
+ffmpeg-python
+imageio[ffmpeg]
+opencv-python
