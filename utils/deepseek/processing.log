@@ -1,0 +1,567 @@
+2025-03-12 15:37:00,297 - INFO - 启动文件选择对话框...
+2025-03-12 15:37:11,740 - WARNING - 用户取消文件选择
+2025-03-12 15:37:16,375 - INFO - 启动文件选择对话框...
+2025-03-12 15:37:53,665 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/new.txt
+2025-03-12 15:37:53,665 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/new.txt
+2025-03-12 15:37:53,665 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/new.txt
+2025-03-12 15:37:53,666 - INFO - 成功读取文件，字符数: 758
+2025-03-12 15:37:53,666 - INFO - 开始生成TXT版本...
+2025-03-12 15:37:53,666 - INFO - 正在调用API生成内容...
+2025-03-12 15:37:54,290 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-12 15:38:59,288 - INFO - API调用成功，生成内容完成
+2025-03-12 15:38:59,289 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article\results\new_processed.txt
+2025-03-12 15:38:59,290 - INFO - 文件写入成功，字节数: 2727
+2025-03-12 15:38:59,290 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article\results\new_processed.txt
+2025-03-12 15:38:59,290 - INFO - 开始生成MD版本...
+2025-03-12 15:38:59,290 - INFO - 正在调用API生成内容...
+2025-03-12 15:38:59,653 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-12 15:40:54,482 - INFO - 启动文件选择对话框...
+2025-03-12 15:40:59,332 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/new.txt
+2025-03-12 15:40:59,332 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/new.txt
+2025-03-12 15:40:59,332 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/new.txt
+2025-03-12 15:40:59,333 - INFO - 成功读取文件，字符数: 758
+2025-03-12 15:40:59,333 - INFO - 开始生成TXT版本...
+2025-03-12 15:40:59,333 - INFO - 正在调用API生成内容...
+2025-03-12 15:41:00,162 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-12 15:47:29,126 - INFO - 启动文件选择对话框...
+2025-03-12 15:47:35,772 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/new.txt
+2025-03-12 15:47:35,772 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/new.txt
+2025-03-12 15:47:35,772 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/new.txt
+2025-03-12 15:47:35,773 - INFO - 成功读取文件，字符数: 758
+2025-03-12 15:47:35,773 - INFO - 开始生成TXT版本...
+2025-03-12 15:47:35,773 - INFO - 正在调用API生成内容...
+2025-03-12 15:47:36,358 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-12 15:48:29,088 - INFO - API调用成功，生成内容完成
+2025-03-12 15:48:29,089 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article\results\new_processed.txt
+2025-03-12 15:48:29,093 - INFO - 文件写入成功，字节数: 2349
+2025-03-12 15:48:29,093 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article\results\new_processed.txt
+2025-03-12 15:48:29,093 - INFO - 开始生成MD版本...
+2025-03-12 15:48:29,093 - INFO - 正在调用API生成内容...
+2025-03-12 15:48:29,693 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-12 15:49:32,082 - INFO - API调用成功，生成内容完成
+2025-03-12 15:49:32,082 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article\results\new_processed.md
+2025-03-12 15:49:32,083 - INFO - 文件写入成功，字节数: 1958
+2025-03-12 15:49:32,084 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article\results\new_processed.md
+2025-03-12 15:49:32,084 - INFO - 处理完成，总耗时: 116.31秒
+========================================
+
+2025-03-12 16:12:58,682 - INFO - 启动文件选择对话框...
+2025-03-12 16:13:04,027 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/new.txt
+2025-03-12 16:13:04,027 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/new.txt
+2025-03-12 16:13:04,027 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/new.txt
+2025-03-12 16:13:04,027 - INFO - 成功读取文件，字符数: 758
+2025-03-12 16:13:04,028 - INFO - 开始生成TXT版本...
+2025-03-12 16:13:04,028 - INFO - 正在调用API生成内容...
+2025-03-12 16:13:04,668 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-12 16:13:58,386 - INFO - API调用成功，生成内容完成
+2025-03-12 16:13:58,386 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article\results\new_processed.txt
+2025-03-12 16:13:58,392 - INFO - 文件写入成功，字节数: 2377
+2025-03-12 16:13:58,392 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article\results\new_processed.txt
+2025-03-12 16:13:58,392 - INFO - 开始生成MD版本...
+2025-03-12 16:13:58,392 - INFO - 正在调用API生成内容...
+2025-03-12 16:13:58,991 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-12 16:15:11,921 - INFO - API调用成功，生成内容完成
+2025-03-12 16:15:11,921 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article\results\new_processed.md
+2025-03-12 16:15:11,923 - INFO - 文件写入成功，字节数: 1773
+2025-03-12 16:15:11,923 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article\results\new_processed.md
+2025-03-12 16:15:11,923 - INFO - 处理完成，总耗时: 127.90秒
+========================================
+
+2025-03-12 16:32:01,698 - INFO - 启动文件选择对话框...
+2025-03-12 16:32:07,535 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/new.txt
+2025-03-12 16:32:07,535 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/new.txt
+2025-03-12 16:32:07,535 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/new.txt
+2025-03-12 16:32:07,535 - INFO - 成功读取文件，字符数: 758
+2025-03-12 16:32:07,537 - INFO - 开始生成TXT版本...
+2025-03-12 16:32:07,537 - INFO - 正在调用API生成内容...
+2025-03-12 16:32:08,240 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-12 16:33:06,906 - INFO - API调用成功，生成内容完成
+2025-03-12 16:33:06,907 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article\results\new_processed.txt
+2025-03-12 16:33:06,908 - INFO - 文件写入成功，字节数: 2392
+2025-03-12 16:33:06,909 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article\results\new_processed.txt
+2025-03-12 16:33:06,909 - INFO - 开始生成MD版本...
+2025-03-12 16:33:06,909 - INFO - 正在调用API生成内容...
+2025-03-12 16:33:07,274 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-12 16:34:25,739 - INFO - API调用成功，生成内容完成
+2025-03-12 16:34:25,740 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article\results\new_processed.md
+2025-03-12 16:34:25,742 - INFO - 文件写入成功，字节数: 3095
+2025-03-12 16:34:25,742 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article\results\new_processed.md
+2025-03-12 16:34:25,743 - INFO - 处理完成，总耗时: 138.21秒
+========================================
+
+2025-03-12 23:32:43,287 - INFO - 启动文件选择对话框...
+2025-03-12 23:32:51,143 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-12 23:32:51,145 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-12 23:32:51,146 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-12 23:32:51,146 - INFO - 成功读取文件，字符数: 2889
+2025-03-12 23:32:51,146 - INFO - 开始生成TXT版本...
+2025-03-12 23:32:51,146 - INFO - 正在调用API生成内容...
+2025-03-12 23:32:51,832 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-12 23:34:44,225 - INFO - API调用成功，生成内容完成
+2025-03-12 23:34:44,225 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.txt
+2025-03-12 23:34:44,227 - INFO - 文件写入成功，字节数: 8780
+2025-03-12 23:34:44,227 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.txt
+2025-03-12 23:34:44,227 - INFO - 开始生成MD版本...
+2025-03-12 23:34:44,227 - INFO - 正在调用API生成内容...
+2025-03-12 23:34:44,709 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-12 23:36:02,812 - INFO - API调用成功，生成内容完成
+2025-03-12 23:36:02,812 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.md
+2025-03-12 23:36:02,813 - INFO - 文件写入成功，字节数: 3019
+2025-03-12 23:36:02,813 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.md
+2025-03-12 23:36:02,814 - INFO - 处理完成，总耗时: 191.67秒
+========================================
+
+2025-03-12 23:52:16,791 - INFO - 启动文件选择对话框...
+2025-03-12 23:52:20,889 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-12 23:52:20,889 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-12 23:52:20,890 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-12 23:52:20,890 - INFO - 成功读取文件，字符数: 2889
+2025-03-12 23:52:20,890 - INFO - 开始生成TXT版本...
+2025-03-12 23:52:20,890 - INFO - 正在调用API生成内容...
+2025-03-12 23:52:21,446 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-12 23:54:02,770 - INFO - API调用成功，生成内容完成
+2025-03-12 23:54:02,770 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.txt
+2025-03-12 23:54:02,772 - INFO - 文件写入成功，字节数: 8746
+2025-03-12 23:54:02,772 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.txt
+2025-03-12 23:54:02,772 - INFO - 开始生成MD版本...
+2025-03-12 23:54:02,772 - INFO - 正在调用API生成内容...
+2025-03-12 23:54:03,179 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-12 23:55:05,617 - INFO - API调用成功，生成内容完成
+2025-03-12 23:55:05,617 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.md
+2025-03-12 23:55:05,619 - INFO - 文件写入成功，字节数: 2828
+2025-03-12 23:55:05,619 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.md
+2025-03-12 23:55:05,619 - INFO - 处理完成，总耗时: 164.73秒
+========================================
+
+2025-03-13 00:00:24,733 - INFO - 启动文件选择对话框...
+2025-03-13 00:01:23,838 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-13 00:01:23,839 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-13 00:01:23,839 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-13 00:01:23,839 - INFO - 成功读取文件，字符数: 2889
+2025-03-13 00:01:23,839 - INFO - 开始生成TXT版本...
+2025-03-13 00:01:23,839 - INFO - 正在调用API生成内容...
+2025-03-13 00:01:24,364 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-13 00:03:11,515 - INFO - API调用成功，生成内容完成
+2025-03-13 00:03:11,516 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.txt
+2025-03-13 00:03:11,518 - INFO - 文件写入成功，字节数: 8773
+2025-03-13 00:03:11,518 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.txt
+2025-03-13 00:03:11,518 - INFO - 开始生成MD版本...
+2025-03-13 00:03:11,518 - INFO - 正在调用API生成内容...
+2025-03-13 00:03:11,904 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-13 00:04:01,150 - INFO - API调用成功，生成内容完成
+2025-03-13 00:04:01,150 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.md
+2025-03-13 00:04:01,152 - INFO - 文件写入成功，字节数: 1889
+2025-03-13 00:04:01,152 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.md
+2025-03-13 00:04:01,152 - INFO - 处理完成，总耗时: 157.31秒
+========================================
+
+2025-03-13 00:05:46,842 - INFO - 启动文件选择对话框...
+2025-03-13 00:05:51,561 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-13 00:05:51,562 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-13 00:05:51,562 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-13 00:05:51,562 - INFO - 成功读取文件，字符数: 2889
+2025-03-13 00:05:51,562 - INFO - 开始生成TXT版本...
+2025-03-13 00:05:51,563 - INFO - 正在调用API生成内容...
+2025-03-13 00:05:52,113 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-13 00:07:24,336 - INFO - API调用成功，生成内容完成
+2025-03-13 00:07:24,336 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.txt
+2025-03-13 00:07:24,338 - INFO - 文件写入成功，字节数: 8770
+2025-03-13 00:07:24,338 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.txt
+2025-03-13 00:07:24,338 - INFO - 开始生成MD版本...
+2025-03-13 00:07:24,338 - INFO - 正在调用API生成内容...
+2025-03-13 00:07:24,792 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-13 00:08:32,251 - INFO - API调用成功，生成内容完成
+2025-03-13 00:08:32,251 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.md
+2025-03-13 00:08:32,253 - INFO - 文件写入成功，字节数: 3178
+2025-03-13 00:08:32,253 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.md
+2025-03-13 00:08:32,253 - INFO - 处理完成，总耗时: 160.69秒
+========================================
+
+2025-03-13 00:20:38,859 - INFO - 启动文件选择对话框...
+2025-03-13 00:20:42,376 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-13 00:20:42,376 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-13 00:20:42,376 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-13 00:20:42,377 - INFO - 成功读取文件，字符数: 2889
+2025-03-13 00:20:42,377 - INFO - 开始生成TXT版本...
+2025-03-13 00:20:42,377 - INFO - 正在调用API生成内容...
+2025-03-13 00:20:42,951 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-13 00:22:19,137 - INFO - API调用成功，生成内容完成
+2025-03-13 00:22:19,137 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.txt
+2025-03-13 00:22:19,139 - INFO - 文件写入成功，字节数: 8821
+2025-03-13 00:22:19,139 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.txt
+2025-03-13 00:22:19,139 - INFO - 开始生成MD版本...
+2025-03-13 00:22:19,139 - INFO - 正在调用API生成内容...
+2025-03-13 00:22:19,761 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-13 00:24:13,186 - INFO - API调用成功，生成内容完成
+2025-03-13 00:24:13,186 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.md
+2025-03-13 00:24:13,187 - INFO - 文件写入成功，字节数: 9101
+2025-03-13 00:24:13,187 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.md
+2025-03-13 00:24:13,188 - INFO - 处理完成，总耗时: 210.81秒
+========================================
+
+2025-03-13 00:26:25,415 - INFO - 启动文件选择对话框...
+2025-03-13 00:26:39,001 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-13 00:26:39,002 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-13 00:26:39,002 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/怎么选择黄金赛道用数据经营.txt
+2025-03-13 00:26:39,002 - INFO - 成功读取文件，字符数: 2889
+2025-03-13 00:26:39,002 - INFO - 开始生成TXT版本...
+2025-03-13 00:26:39,002 - INFO - 正在调用API生成内容...
+2025-03-13 00:26:39,625 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-13 00:28:17,661 - INFO - API调用成功，生成内容完成
+2025-03-13 00:28:17,661 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.txt
+2025-03-13 00:28:17,662 - INFO - 文件写入成功，字节数: 8767
+2025-03-13 00:28:17,663 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.txt
+2025-03-13 00:28:17,663 - INFO - 开始生成MD版本...
+2025-03-13 00:28:17,663 - INFO - 正在调用API生成内容...
+2025-03-13 00:28:18,099 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-13 00:29:11,536 - INFO - API调用成功，生成内容完成
+2025-03-13 00:29:11,536 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.md
+2025-03-13 00:29:11,539 - INFO - 文件写入成功，字节数: 2264
+2025-03-13 00:29:11,539 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\怎么选择黄金赛道用数据经营_processed.md
+2025-03-13 00:29:11,539 - INFO - 处理完成，总耗时: 152.54秒
+========================================
+
+2025-03-15 00:07:39,767 - INFO - 启动文件选择对话框...
+2025-03-15 00:07:43,975 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/油车为什么没有智驾.txt
+2025-03-15 00:07:43,982 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/油车为什么没有智驾.txt
+2025-03-15 00:07:43,982 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/油车为什么没有智驾.txt
+2025-03-15 00:07:43,983 - INFO - 成功读取文件，字符数: 1110
+2025-03-15 00:07:43,983 - INFO - 开始生成TXT版本...
+2025-03-15 00:07:43,983 - INFO - 正在调用API生成内容...
+2025-03-15 00:07:44,918 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-15 00:08:39,303 - INFO - API调用成功，生成内容完成
+2025-03-15 00:08:39,304 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\油车为什么没有智驾_processed.txt
+2025-03-15 00:08:39,305 - INFO - 文件写入成功，字节数: 1811
+2025-03-15 00:08:39,305 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\油车为什么没有智驾_processed.txt
+2025-03-15 00:08:39,306 - INFO - 开始生成MD版本...
+2025-03-15 00:08:39,306 - INFO - 正在调用API生成内容...
+2025-03-15 00:08:39,931 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-15 00:09:30,387 - INFO - API调用成功，生成内容完成
+2025-03-15 00:09:30,387 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\油车为什么没有智驾_processed.md
+2025-03-15 00:09:30,389 - INFO - 文件写入成功，字节数: 2066
+2025-03-15 00:09:30,389 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\油车为什么没有智驾_processed.md
+2025-03-15 00:09:30,395 - INFO - 处理完成，总耗时: 106.41秒
+========================================
+
+2025-03-15 01:21:57,813 - INFO - 启动文件选择对话框...
+2025-03-15 01:22:00,813 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/油车为什么没有智驾.txt
+2025-03-15 01:22:00,814 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/油车为什么没有智驾.txt
+2025-03-15 01:22:00,814 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/油车为什么没有智驾.txt
+2025-03-15 01:22:00,814 - INFO - 成功读取文件，字符数: 1110
+2025-03-15 01:22:00,814 - INFO - 开始生成TXT版本...
+2025-03-15 01:22:00,814 - INFO - 正在调用API生成内容...
+2025-03-15 01:22:01,703 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-15 01:22:50,166 - INFO - API调用成功，生成内容完成
+2025-03-15 01:22:50,167 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\油车为什么没有智驾_processed.txt
+2025-03-15 01:22:50,168 - INFO - 文件写入成功，字节数: 3293
+2025-03-15 01:22:50,168 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\油车为什么没有智驾_processed.txt
+2025-03-15 01:22:50,168 - INFO - 开始生成MD版本...
+2025-03-15 01:22:50,168 - INFO - 正在调用API生成内容...
+2025-03-15 01:22:50,820 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-15 01:23:48,051 - INFO - API调用成功，生成内容完成
+2025-03-15 01:23:48,051 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\油车为什么没有智驾_processed.md
+2025-03-15 01:23:48,052 - INFO - 文件写入成功，字节数: 3511
+2025-03-15 01:23:48,052 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\油车为什么没有智驾_processed.md
+2025-03-15 01:23:48,052 - INFO - 处理完成，总耗时: 107.24秒
+========================================
+
+2025-03-15 18:37:26,467 - INFO - 启动文件选择对话框...
+2025-03-15 18:41:04,089 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/油车为什么没有智驾.txt
+2025-03-15 18:41:04,090 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/油车为什么没有智驾.txt
+2025-03-15 18:41:04,090 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/油车为什么没有智驾.txt
+2025-03-15 18:41:04,097 - INFO - 成功读取文件，字符数: 1110
+2025-03-15 18:41:04,097 - INFO - 开始生成TXT版本...
+2025-03-15 18:41:04,097 - INFO - 正在调用API生成内容...
+2025-03-15 18:41:05,048 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-15 18:41:55,759 - INFO - API调用成功，生成内容完成
+2025-03-15 18:41:55,759 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\油车为什么没有智驾_processed.txt
+2025-03-15 18:41:55,761 - INFO - 文件写入成功，字节数: 1906
+2025-03-15 18:41:55,761 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\油车为什么没有智驾_processed.txt
+2025-03-15 18:41:55,761 - INFO - 开始生成MD版本...
+2025-03-15 18:41:55,761 - INFO - 正在调用API生成内容...
+2025-03-15 18:41:56,382 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-15 18:43:08,923 - INFO - API调用成功，生成内容完成
+2025-03-15 18:43:08,923 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\油车为什么没有智驾_processed.md
+2025-03-15 18:43:08,925 - INFO - 文件写入成功，字节数: 3048
+2025-03-15 18:43:08,925 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\油车为什么没有智驾_processed.md
+2025-03-15 18:43:08,925 - INFO - 处理完成，总耗时: 124.83秒
+========================================
+
+2025-03-15 23:18:02,828 - INFO - 启动文件选择对话框...
+2025-03-15 23:18:05,819 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/油车为什么没有智驾.txt
+2025-03-15 23:18:05,821 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/油车为什么没有智驾.txt
+2025-03-15 23:18:05,822 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/油车为什么没有智驾.txt
+2025-03-15 23:18:05,822 - INFO - 成功读取文件，字符数: 1110
+2025-03-15 23:18:05,822 - INFO - 开始生成TXT版本...
+2025-03-15 23:18:05,823 - INFO - 正在调用API生成内容...
+2025-03-15 23:18:06,623 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-15 23:18:46,715 - INFO - API调用成功，生成内容完成
+2025-03-15 23:18:46,715 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\油车为什么没有智驾_processed.txt
+2025-03-15 23:18:46,717 - INFO - 文件写入成功，字节数: 1764
+2025-03-15 23:18:46,717 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\油车为什么没有智驾_processed.txt
+2025-03-15 23:18:46,717 - INFO - 开始生成MD版本...
+2025-03-15 23:18:46,717 - INFO - 正在调用API生成内容...
+2025-03-15 23:18:47,335 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-15 23:19:45,234 - INFO - API调用成功，生成内容完成
+2025-03-15 23:19:45,234 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\油车为什么没有智驾_processed.md
+2025-03-15 23:19:45,235 - INFO - 文件写入成功，字节数: 2470
+2025-03-15 23:19:45,235 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\油车为什么没有智驾_processed.md
+2025-03-15 23:19:45,235 - INFO - 处理完成，总耗时: 99.41秒
+========================================
+
+2025-03-16 13:53:52,554 - INFO - 启动文件选择对话框...
+2025-03-16 13:53:55,636 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/赚大钱的规律_不确定性.txt
+2025-03-16 13:53:55,637 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/赚大钱的规律_不确定性.txt
+2025-03-16 13:53:55,637 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/赚大钱的规律_不确定性.txt
+2025-03-16 13:53:55,638 - INFO - 成功读取文件，字符数: 469
+2025-03-16 13:53:55,638 - INFO - 开始生成TXT版本...
+2025-03-16 13:53:55,638 - INFO - 正在调用API生成内容...
+2025-03-16 13:53:56,616 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 13:54:40,794 - INFO - API调用成功，生成内容完成
+2025-03-16 13:54:40,794 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\赚大钱的规律_不确定性_processed.txt
+2025-03-16 13:54:40,796 - INFO - 文件写入成功，字节数: 1200
+2025-03-16 13:54:40,796 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\赚大钱的规律_不确定性_processed.txt
+2025-03-16 13:54:40,796 - INFO - 开始生成MD版本...
+2025-03-16 13:54:40,796 - INFO - 正在调用API生成内容...
+2025-03-16 13:54:41,588 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 13:55:45,824 - INFO - API调用成功，生成内容完成
+2025-03-16 13:55:45,824 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\赚大钱的规律_不确定性_processed.md
+2025-03-16 13:55:45,829 - INFO - 文件写入成功，字节数: 2266
+2025-03-16 13:55:45,829 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\赚大钱的规律_不确定性_processed.md
+2025-03-16 13:55:45,829 - INFO - 处理完成，总耗时: 110.19秒
+========================================
+
+2025-03-16 13:57:08,427 - INFO - 启动文件选择对话框...
+2025-03-16 13:57:14,464 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/赚大钱的规律_不确定性.txt
+2025-03-16 13:57:14,464 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/赚大钱的规律_不确定性.txt
+2025-03-16 13:57:14,464 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/赚大钱的规律_不确定性.txt
+2025-03-16 13:57:14,465 - INFO - 成功读取文件，字符数: 469
+2025-03-16 13:57:14,465 - INFO - 开始生成TXT版本...
+2025-03-16 13:57:14,465 - INFO - 正在调用API生成内容...
+2025-03-16 13:57:15,532 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 13:57:48,745 - INFO - API调用成功，生成内容完成
+2025-03-16 13:57:48,745 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\赚大钱的规律_不确定性_processed.txt
+2025-03-16 13:57:48,747 - INFO - 文件写入成功，字节数: 1237
+2025-03-16 13:57:48,748 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\赚大钱的规律_不确定性_processed.txt
+2025-03-16 13:57:48,748 - INFO - 开始生成MD版本...
+2025-03-16 13:57:48,748 - INFO - 正在调用API生成内容...
+2025-03-16 13:57:49,583 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 13:58:34,885 - INFO - API调用成功，生成内容完成
+2025-03-16 13:58:34,885 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\赚大钱的规律_不确定性_processed.md
+2025-03-16 13:58:34,887 - INFO - 文件写入成功，字节数: 1304
+2025-03-16 13:58:34,887 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\赚大钱的规律_不确定性_processed.md
+2025-03-16 13:58:34,887 - INFO - 处理完成，总耗时: 80.42秒
+========================================
+
+2025-03-16 14:22:51,368 - INFO - 启动文件选择对话框...
+2025-03-16 14:22:54,468 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/装修行业如何赚钱.txt
+2025-03-16 14:22:54,468 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/装修行业如何赚钱.txt
+2025-03-16 14:22:54,468 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/装修行业如何赚钱.txt
+2025-03-16 14:22:54,469 - INFO - 成功读取文件，字符数: 806
+2025-03-16 14:22:54,469 - INFO - 开始生成TXT版本...
+2025-03-16 14:22:54,469 - INFO - 正在调用API生成内容...
+2025-03-16 14:22:55,076 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 14:23:52,570 - INFO - API调用成功，生成内容完成
+2025-03-16 14:23:52,570 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\装修行业如何赚钱_processed.txt
+2025-03-16 14:23:52,572 - INFO - 文件写入成功，字节数: 2268
+2025-03-16 14:23:52,573 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\装修行业如何赚钱_processed.txt
+2025-03-16 14:23:52,573 - INFO - 开始生成MD版本...
+2025-03-16 14:23:52,573 - INFO - 正在调用API生成内容...
+2025-03-16 14:23:53,036 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 14:24:55,847 - INFO - API调用成功，生成内容完成
+2025-03-16 14:24:55,847 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\装修行业如何赚钱_processed.md
+2025-03-16 14:24:55,849 - INFO - 文件写入成功，字节数: 2463
+2025-03-16 14:24:55,849 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\装修行业如何赚钱_processed.md
+2025-03-16 14:24:55,849 - INFO - 处理完成，总耗时: 121.38秒
+========================================
+
+2025-03-16 15:18:14,386 - INFO - 启动文件选择对话框...
+2025-03-16 15:18:17,121 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一人公司赚钱攻略.txt
+2025-03-16 15:18:17,122 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一人公司赚钱攻略.txt
+2025-03-16 15:18:17,122 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一人公司赚钱攻略.txt
+2025-03-16 15:18:17,122 - INFO - 成功读取文件，字符数: 0
+2025-03-16 15:18:17,122 - WARNING - 文件内容为空，终止处理流程
+2025-03-16 15:21:53,727 - INFO - 启动文件选择对话框...
+2025-03-16 15:22:00,234 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一人公司赚钱攻略.txt
+2025-03-16 15:22:00,234 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一人公司赚钱攻略.txt
+2025-03-16 15:22:00,234 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一人公司赚钱攻略.txt
+2025-03-16 15:22:00,234 - INFO - 成功读取文件，字符数: 900
+2025-03-16 15:22:00,234 - INFO - 开始生成TXT版本...
+2025-03-16 15:22:00,234 - INFO - 正在调用API生成内容...
+2025-03-16 15:22:00,778 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 15:22:57,452 - INFO - API调用成功，生成内容完成
+2025-03-16 15:22:57,452 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一人公司赚钱攻略_processed.txt
+2025-03-16 15:22:57,454 - INFO - 文件写入成功，字节数: 2633
+2025-03-16 15:22:57,454 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一人公司赚钱攻略_processed.txt
+2025-03-16 15:22:57,454 - INFO - 开始生成MD版本...
+2025-03-16 15:22:57,454 - INFO - 正在调用API生成内容...
+2025-03-16 15:22:57,846 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 15:24:03,514 - INFO - API调用成功，生成内容完成
+2025-03-16 15:24:03,514 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一人公司赚钱攻略_processed.md
+2025-03-16 15:24:03,516 - INFO - 文件写入成功，字节数: 1951
+2025-03-16 15:24:03,516 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一人公司赚钱攻略_processed.md
+2025-03-16 15:24:03,516 - INFO - 处理完成，总耗时: 123.28秒
+========================================
+
+2025-03-16 22:58:47,359 - INFO - 启动文件选择对话框...
+2025-03-16 22:59:04,854 - WARNING - 用户取消文件选择
+2025-03-16 22:59:11,094 - INFO - 启动文件选择对话框...
+2025-03-16 22:59:13,118 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一个人拥有哪些特质可以创业成功.txt
+2025-03-16 22:59:13,118 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一个人拥有哪些特质可以创业成功.txt
+2025-03-16 22:59:13,118 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一个人拥有哪些特质可以创业成功.txt
+2025-03-16 22:59:13,118 - INFO - 成功读取文件，字符数: 562
+2025-03-16 22:59:13,119 - INFO - 开始生成TXT版本...
+2025-03-16 22:59:13,119 - INFO - 正在调用API生成内容...
+2025-03-16 22:59:14,018 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 22:59:53,715 - INFO - API调用成功，生成内容完成
+2025-03-16 22:59:53,715 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.txt
+2025-03-16 22:59:53,717 - INFO - 文件写入成功，字节数: 1595
+2025-03-16 22:59:53,717 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.txt
+2025-03-16 22:59:53,717 - INFO - 开始生成MD版本...
+2025-03-16 22:59:53,717 - INFO - 正在调用API生成内容...
+2025-03-16 22:59:54,490 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 23:01:00,444 - INFO - API调用成功，生成内容完成
+2025-03-16 23:01:00,445 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.md
+2025-03-16 23:01:00,446 - INFO - 文件写入成功，字节数: 2232
+2025-03-16 23:01:00,446 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.md
+2025-03-16 23:01:00,446 - INFO - 处理完成，总耗时: 107.33秒
+========================================
+
+2025-03-16 23:11:00,494 - INFO - 启动文件选择对话框...
+2025-03-16 23:11:41,760 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一个人拥有哪些特质可以创业成功.txt
+2025-03-16 23:11:41,760 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一个人拥有哪些特质可以创业成功.txt
+2025-03-16 23:11:41,761 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一个人拥有哪些特质可以创业成功.txt
+2025-03-16 23:11:41,761 - INFO - 成功读取文件，字符数: 3729
+2025-03-16 23:11:41,762 - INFO - 开始生成TXT版本...
+2025-03-16 23:11:41,762 - INFO - 正在调用API生成内容...
+2025-03-16 23:11:42,720 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 23:14:00,637 - INFO - API调用成功，生成内容完成
+2025-03-16 23:14:00,637 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.txt
+2025-03-16 23:14:00,639 - INFO - 文件写入成功，字节数: 10825
+2025-03-16 23:14:00,639 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.txt
+2025-03-16 23:14:00,639 - INFO - 开始生成MD版本...
+2025-03-16 23:14:00,639 - INFO - 正在调用API生成内容...
+2025-03-16 23:14:01,562 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 23:15:16,600 - INFO - API调用成功，生成内容完成
+2025-03-16 23:15:16,601 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.md
+2025-03-16 23:15:16,602 - INFO - 文件写入成功，字节数: 2919
+2025-03-16 23:15:16,602 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.md
+2025-03-16 23:15:16,602 - INFO - 处理完成，总耗时: 214.84秒
+========================================
+
+2025-03-16 23:19:16,292 - INFO - 启动文件选择对话框...
+2025-03-16 23:19:19,280 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一个人拥有哪些特质可以创业成功.txt
+2025-03-16 23:19:19,280 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一个人拥有哪些特质可以创业成功.txt
+2025-03-16 23:19:19,280 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一个人拥有哪些特质可以创业成功.txt
+2025-03-16 23:19:19,283 - INFO - 成功读取文件，字符数: 3729
+2025-03-16 23:19:19,284 - INFO - 开始生成TXT版本...
+2025-03-16 23:19:19,284 - INFO - 正在调用API生成内容...
+2025-03-16 23:19:20,354 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 23:21:33,030 - INFO - API调用成功，生成内容完成
+2025-03-16 23:21:33,030 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.txt
+2025-03-16 23:21:33,032 - INFO - 文件写入成功，字节数: 10943
+2025-03-16 23:21:33,032 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.txt
+2025-03-16 23:21:33,032 - INFO - 开始生成MD版本...
+2025-03-16 23:21:33,032 - INFO - 正在调用API生成内容...
+2025-03-16 23:21:33,944 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 23:22:49,224 - INFO - API调用成功，生成内容完成
+2025-03-16 23:22:49,224 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.md
+2025-03-16 23:22:49,226 - INFO - 文件写入成功，字节数: 3146
+2025-03-16 23:22:49,226 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.md
+2025-03-16 23:22:49,226 - INFO - 处理完成，总耗时: 209.95秒
+========================================
+
+2025-03-16 23:24:29,881 - INFO - 启动文件选择对话框...
+2025-03-16 23:24:32,262 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一个人拥有哪些特质可以创业成功.txt
+2025-03-16 23:24:32,262 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一个人拥有哪些特质可以创业成功.txt
+2025-03-16 23:24:32,263 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一个人拥有哪些特质可以创业成功.txt
+2025-03-16 23:24:32,263 - INFO - 成功读取文件，字符数: 3729
+2025-03-16 23:24:32,263 - INFO - 开始生成TXT版本...
+2025-03-16 23:24:32,263 - INFO - 正在调用API生成内容...
+2025-03-16 23:24:33,234 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 23:26:39,195 - INFO - API调用成功，生成内容完成
+2025-03-16 23:26:39,195 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.txt
+2025-03-16 23:26:39,197 - INFO - 文件写入成功，字节数: 11015
+2025-03-16 23:26:39,197 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.txt
+2025-03-16 23:26:39,197 - INFO - 开始生成MD版本...
+2025-03-16 23:26:39,197 - INFO - 正在调用API生成内容...
+2025-03-16 23:26:40,581 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 23:29:26,647 - INFO - API调用成功，生成内容完成
+2025-03-16 23:29:26,647 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.md
+2025-03-16 23:29:26,650 - INFO - 文件写入成功，字节数: 2425
+2025-03-16 23:29:26,650 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.md
+2025-03-16 23:29:26,650 - INFO - 处理完成，总耗时: 294.39秒
+========================================
+
+2025-03-16 23:35:54,285 - INFO - 启动文件选择对话框...
+2025-03-16 23:35:57,389 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一个人拥有哪些特质可以创业成功.txt
+2025-03-16 23:35:57,390 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一个人拥有哪些特质可以创业成功.txt
+2025-03-16 23:35:57,390 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/一个人拥有哪些特质可以创业成功.txt
+2025-03-16 23:35:57,391 - INFO - 成功读取文件，字符数: 3729
+2025-03-16 23:35:57,391 - INFO - 开始生成TXT版本...
+2025-03-16 23:35:57,391 - INFO - 正在调用API生成内容...
+2025-03-16 23:35:58,412 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 23:38:11,108 - INFO - API调用成功，生成内容完成
+2025-03-16 23:38:11,108 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.txt
+2025-03-16 23:38:11,110 - INFO - 文件写入成功，字节数: 10314
+2025-03-16 23:38:11,110 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.txt
+2025-03-16 23:38:11,111 - INFO - 开始生成MD版本...
+2025-03-16 23:38:11,111 - INFO - 正在调用API生成内容...
+2025-03-16 23:38:11,932 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-03-16 23:39:20,824 - INFO - API调用成功，生成内容完成
+2025-03-16 23:39:20,824 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.md
+2025-03-16 23:39:20,826 - INFO - 文件写入成功，字节数: 3416
+2025-03-16 23:39:20,826 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\一个人拥有哪些特质可以创业成功_processed.md
+2025-03-16 23:39:20,826 - INFO - 处理完成，总耗时: 203.44秒
+========================================
+
