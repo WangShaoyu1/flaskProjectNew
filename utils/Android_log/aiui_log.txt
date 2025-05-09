@@ -1,0 +1,65 @@
+ 2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=4
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=3
+2025-05-08 00:40:09 [INFO - NlpDemo] {"angle":0,"beam":0,"ivw_result":{"angle":0,"beam":0,"end_ms":205100,"keyword":"xiao3 li4 xiao3 li4","physical":0,"power":0,"score":1572,"start_ms":204330},"type":0}
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] sub = iat;content = {"cnt_id":"0","dte":"utf8"};cnt_id = 0;sid = wgw000b046d@dx196ab9e6e9fa153532;tag = null
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=1
+2025-05-08 00:40:09 [INFO - NlpDemo] cntStr = {"text":{"bg":0,"ed":0,"ls":false,"pgs":"apd","rst":"pgs","sn":1,"ws":[{"bg":0,"cw":[{"sc":0,"w":"为"}]},{"bg":0,"cw":[{"sc":0,"w":"什"}]},{"bg":0,"cw":[{"sc":0,"w":"么"}]}]}}
+2025-05-08 00:40:09 [INFO - NlpDemo] asr_result: 为什么
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=1
+2025-05-08 00:40:09 [INFO - NlpDemo] sub = iat;content = {"cnt_id":"0","dte":"utf8"};cnt_id = 0;sid = wgw000b046d@dx196ab9e6e9fa153532;tag = null
+2025-05-08 00:40:09 [INFO - NlpDemo] asr_result: 为什么呢
+2025-05-08 00:40:09 [INFO - NlpDemo] cntStr = {"text":{"bg":0,"ed":0,"ls":false,"pgs":"rpl","rg":[1,1],"rst":"pgs","sn":2,"ws":[{"bg":0,"cw":[{"sc":0,"w":"为"}]},{"bg":0,"cw":[{"sc":0,"w":"什"}]},{"bg":0,"cw":[{"sc":0,"w":"么"}]},{"bg":0,"cw":[{"sc":0,"w":"呢"}]}]}}
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:09 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=1
+2025-05-08 00:40:10 [INFO - NlpDemo] sub = iat;content = {"cnt_id":"0","dte":"utf8"};cnt_id = 0;sid = wgw000b046d@dx196ab9e6e9fa153532;tag = null
+2025-05-08 00:40:10 [INFO - NlpDemo] cntStr = {"text":{"bg":0,"ed":0,"ls":false,"pgs":"rpl","rg":[1,2],"rst":"pgs","sn":3,"ws":[{"bg":0,"cw":[{"ng":"0.00","ph":"","sc":0,"w":"为","wb":0,"wc":1,"we":0,"wp":"n"}],"eos":30000},{"bg":0,"cw":[{"ng":"0.00","ph":"","sc":0,"w":"什","wb":0,"wc":1,"we":0,"wp":"n"}]},{"bg":0,"cw":[{"ng":"0.00","ph":"","sc":0,"w":"么","wb":0,"wc":1,"we":0,"wp":"n"}]},{"bg":0,"cw":[{"ng":"0.00","ph":"","sc":0,"w":"呢","wb":0,"wc":1,"we":0,"wp":"n"}]}]}}
+2025-05-08 00:40:10 [INFO - NlpDemo] asr_result: 为什么呢
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=6
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=5
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=3
+2025-05-08 00:40:10 [INFO - NlpDemo] cntStr = {"nlp":{"compress":"raw","encoding":"utf8","format":"plain","seq":1,"status":2,"text":"{\"intent\":{\"rc\":4,\"sid\":\"wgw000b046d@dx196ab9e6e9fa153532\",\"text\":\"干什么呢\",\"uuid\":\"wgw000b046d@dx196ab9e6e9fa153532\"}}"}}
+2025-05-08 00:40:10 [INFO - NlpDemo] sub = nlp;content = {"cnt_id":"0","dte":"utf8"};cnt_id = 0;sid = wgw000b046d@dx196ab9e6e9fa153532;tag = null
+2025-05-08 00:40:10 [INFO - NlpDemo] asr_result: 干什么呢
+2025-05-08 00:40:10 [INFO - NlpDemo] sub = iat;content = {"cnt_id":"0","dte":"utf8"};cnt_id = 0;sid = wgw000b046d@dx196ab9e6e9fa153532;tag = null
+2025-05-08 00:40:10 [INFO - NlpDemo] cntStr = {"text":{"bg":0,"ed":0,"ls":false,"pgs":"rpl","rg":[1,3],"rst":"rlt","sn":4,"ws":[{"bg":0,"cw":[{"sc":0,"w":"干什么"}]},{"bg":0,"cw":[{"sc":0,"w":"呢"}]}]}}
+2025-05-08 00:40:10 [INFO - NlpDemo] sub = iat;content = {"cnt_id":"0","dte":"utf8"};cnt_id = 0;sid = wgw000b046d@dx196ab9e6e9fa153532;tag = null
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=1
+2025-05-08 00:40:10 [INFO - NlpDemo] asr_result: 
+2025-05-08 00:40:10 [INFO - NlpDemo] cntStr = {"text":{"bg":0,"ed":0,"ls":true,"pgs":"apd","rst":"rlt","sn":5,"ws":[{"bg":0,"cw":[{"sc":0,"w":""}]}]}}
+2025-05-08 00:40:10 [INFO - NlpDemo] onEvent, eventType=1
+2025-05-08 00:40:43 [INFO - NlpDemo] onEvent, eventType=14

@@ -565,3 +565,660 @@
 2025-03-16 23:39:20,826 - INFO - 处理完成，总耗时: 203.44秒
 ========================================
 
+2025-04-05 15:45:19,441 - INFO - 启动文件选择对话框...
+2025-04-05 15:45:28,466 - WARNING - 用户取消文件选择
+2025-04-05 15:45:39,847 - INFO - 启动文件选择对话框...
+2025-04-05 15:46:00,635 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/选赚钱赛道靠运气还是技术.txt
+2025-04-05 15:46:00,636 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/选赚钱赛道靠运气还是技术.txt
+2025-04-05 15:46:00,636 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/选赚钱赛道靠运气还是技术.txt
+2025-04-05 15:46:00,636 - INFO - 成功读取文件，字符数: 2439
+2025-04-05 15:46:00,637 - INFO - 开始生成TXT版本...
+2025-04-05 15:46:00,637 - INFO - 正在调用API生成内容...
+2025-04-05 15:46:01,503 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-05 15:46:57,563 - INFO - API调用成功，生成内容完成
+2025-04-05 15:46:57,563 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\选赚钱赛道靠运气还是技术_processed.txt
+2025-04-05 15:46:57,566 - INFO - 文件写入成功，字节数: 2388
+2025-04-05 15:46:57,566 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\选赚钱赛道靠运气还是技术_processed.txt
+2025-04-05 15:46:57,567 - INFO - 开始生成MD版本...
+2025-04-05 15:46:57,567 - INFO - 正在调用API生成内容...
+2025-04-05 15:46:58,149 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-05 15:47:51,377 - INFO - API调用成功，生成内容完成
+2025-04-05 15:47:51,377 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\选赚钱赛道靠运气还是技术_processed.md
+2025-04-05 15:47:51,379 - INFO - 文件写入成功，字节数: 1911
+2025-04-05 15:47:51,379 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\选赚钱赛道靠运气还是技术_processed.md
+2025-04-05 15:47:51,387 - INFO - 处理完成，总耗时: 110.74秒
+========================================
+
+2025-04-05 15:59:55,761 - INFO - 启动文件选择对话框...
+2025-04-05 16:00:11,356 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/选赚钱赛道靠运气还是技术.txt
+2025-04-05 16:00:11,356 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/选赚钱赛道靠运气还是技术.txt
+2025-04-05 16:00:11,356 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/选赚钱赛道靠运气还是技术.txt
+2025-04-05 16:00:11,357 - INFO - 成功读取文件，字符数: 2439
+2025-04-05 16:00:11,357 - INFO - 开始生成TXT版本...
+2025-04-05 16:00:11,357 - INFO - 正在调用API生成内容...
+2025-04-05 16:00:12,324 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-05 16:01:16,115 - INFO - API调用成功，生成内容完成
+2025-04-05 16:01:16,115 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\选赚钱赛道靠运气还是技术_processed.txt
+2025-04-05 16:01:16,117 - INFO - 文件写入成功，字节数: 3112
+2025-04-05 16:01:16,118 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\选赚钱赛道靠运气还是技术_processed.txt
+2025-04-05 16:01:16,118 - INFO - 开始生成MD版本...
+2025-04-05 16:01:16,118 - INFO - 正在调用API生成内容...
+2025-04-05 16:01:16,662 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-05 16:02:25,317 - INFO - API调用成功，生成内容完成
+2025-04-05 16:02:25,318 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\选赚钱赛道靠运气还是技术_processed.md
+2025-04-05 16:02:25,321 - INFO - 文件写入成功，字节数: 2281
+2025-04-05 16:02:25,321 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\选赚钱赛道靠运气还是技术_processed.md
+2025-04-05 16:02:25,321 - INFO - 处理完成，总耗时: 133.97秒
+========================================
+
+2025-04-05 16:15:32,660 - INFO - 启动文件选择对话框...
+2025-04-05 16:15:36,346 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/小米是高端品牌么.txt
+2025-04-05 16:15:36,346 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/小米是高端品牌么.txt
+2025-04-05 16:15:36,346 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/小米是高端品牌么.txt
+2025-04-05 16:15:36,346 - INFO - 成功读取文件，字符数: 1416
+2025-04-05 16:15:36,346 - INFO - 开始生成TXT版本...
+2025-04-05 16:15:36,346 - INFO - 正在调用API生成内容...
+2025-04-05 16:15:36,927 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-05 16:16:37,915 - INFO - API调用成功，生成内容完成
+2025-04-05 16:16:37,915 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\小米是高端品牌么_processed.txt
+2025-04-05 16:16:37,926 - INFO - 文件写入成功，字节数: 4078
+2025-04-05 16:16:37,926 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\小米是高端品牌么_processed.txt
+2025-04-05 16:16:37,926 - INFO - 开始生成MD版本...
+2025-04-05 16:16:37,926 - INFO - 正在调用API生成内容...
+2025-04-05 16:16:38,445 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-05 16:17:35,902 - INFO - API调用成功，生成内容完成
+2025-04-05 16:17:35,903 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\小米是高端品牌么_processed.md
+2025-04-05 16:17:35,906 - INFO - 文件写入成功，字节数: 2155
+2025-04-05 16:17:35,906 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\小米是高端品牌么_processed.md
+2025-04-05 16:17:35,906 - INFO - 处理完成，总耗时: 119.56秒
+========================================
+
+2025-04-05 17:07:35,233 - INFO - 启动文件选择对话框...
+2025-04-05 17:07:47,723 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/小米是高端品牌么.txt
+2025-04-05 17:07:47,724 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/小米是高端品牌么.txt
+2025-04-05 17:07:47,724 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/小米是高端品牌么.txt
+2025-04-05 17:07:47,725 - INFO - 成功读取文件，字符数: 1416
+2025-04-05 17:07:47,725 - INFO - 开始生成TXT版本...
+2025-04-05 17:07:47,725 - INFO - 正在调用API生成内容...
+2025-04-05 17:07:48,499 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-05 17:08:41,882 - INFO - API调用成功，生成内容完成
+2025-04-05 17:08:41,882 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\小米是高端品牌么_processed.txt
+2025-04-05 17:08:41,885 - INFO - 文件写入成功，字节数: 3215
+2025-04-05 17:08:41,885 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\小米是高端品牌么_processed.txt
+2025-04-05 17:08:41,885 - INFO - 开始生成MD版本...
+2025-04-05 17:08:41,885 - INFO - 正在调用API生成内容...
+2025-04-05 17:08:42,413 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-05 17:09:36,688 - INFO - API调用成功，生成内容完成
+2025-04-05 17:09:36,688 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\小米是高端品牌么_processed.md
+2025-04-05 17:09:36,691 - INFO - 文件写入成功，字节数: 1998
+2025-04-05 17:09:36,691 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\小米是高端品牌么_processed.md
+2025-04-05 17:09:36,698 - INFO - 处理完成，总耗时: 108.97秒
+========================================
+
+2025-04-05 17:20:56,693 - INFO - 启动文件选择对话框...
+2025-04-05 17:20:59,440 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/小米是高端品牌么.txt
+2025-04-05 17:20:59,441 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/小米是高端品牌么.txt
+2025-04-05 17:20:59,441 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/小米是高端品牌么.txt
+2025-04-05 17:20:59,441 - INFO - 成功读取文件，字符数: 1416
+2025-04-05 17:20:59,441 - INFO - 开始生成TXT版本...
+2025-04-05 17:20:59,441 - INFO - 正在调用API生成内容...
+2025-04-05 17:21:00,026 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-05 17:22:04,545 - INFO - API调用成功，生成内容完成
+2025-04-05 17:22:04,545 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\小米是高端品牌么_processed.txt
+2025-04-05 17:22:04,547 - INFO - 文件写入成功，字节数: 4078
+2025-04-05 17:22:04,547 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\小米是高端品牌么_processed.txt
+2025-04-05 17:22:04,547 - INFO - 开始生成MD版本...
+2025-04-05 17:22:04,548 - INFO - 正在调用API生成内容...
+2025-04-05 17:22:05,082 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-05 17:23:03,527 - INFO - API调用成功，生成内容完成
+2025-04-05 17:23:03,528 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\小米是高端品牌么_processed.md
+2025-04-05 17:23:03,531 - INFO - 文件写入成功，字节数: 2304
+2025-04-05 17:23:03,531 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\小米是高端品牌么_processed.md
+2025-04-05 17:23:03,531 - INFO - 处理完成，总耗时: 124.09秒
+========================================
+
+2025-04-05 19:02:46,977 - INFO - 启动文件选择对话框...
+2025-04-05 19:02:49,987 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/小米是高端品牌么.txt
+2025-04-05 19:02:49,987 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/小米是高端品牌么.txt
+2025-04-05 19:02:49,987 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/小米是高端品牌么.txt
+2025-04-05 19:02:49,988 - INFO - 成功读取文件，字符数: 1417
+2025-04-05 19:02:49,988 - INFO - 开始生成TXT版本...
+2025-04-05 19:02:49,988 - INFO - 正在调用API生成内容...
+2025-04-05 19:02:51,004 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-05 19:03:38,827 - INFO - API调用成功，生成内容完成
+2025-04-05 19:03:38,827 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\小米是高端品牌么_processed.txt
+2025-04-05 19:03:38,829 - INFO - 文件写入成功，字节数: 3416
+2025-04-05 19:03:38,829 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\小米是高端品牌么_processed.txt
+2025-04-05 19:03:38,829 - INFO - 开始生成MD版本...
+2025-04-05 19:03:38,829 - INFO - 正在调用API生成内容...
+2025-04-05 19:03:39,485 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-05 19:04:43,242 - INFO - API调用成功，生成内容完成
+2025-04-05 19:04:43,243 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\小米是高端品牌么_processed.md
+2025-04-05 19:04:43,246 - INFO - 文件写入成功，字节数: 2268
+2025-04-05 19:04:43,246 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\小米是高端品牌么_processed.md
+2025-04-05 19:04:43,246 - INFO - 处理完成，总耗时: 113.26秒
+========================================
+
+2025-04-06 12:53:21,265 - INFO - 启动文件选择对话框...
+2025-04-06 12:53:31,390 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 12:53:31,391 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 12:53:31,391 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 12:53:31,392 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 12:53:31,392 - INFO - 开始生成TXT版本...
+2025-04-06 12:53:31,392 - INFO - 正在调用API生成内容...
+2025-04-06 12:53:32,152 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 12:55:34,272 - INFO - API调用成功，生成内容完成
+2025-04-06 12:55:34,272 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\YU7肯定会爆_processed.txt
+2025-04-06 12:55:34,273 - INFO - 文件写入成功，字节数: 8725
+2025-04-06 12:55:34,273 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\YU7肯定会爆_processed.txt
+2025-04-06 12:55:34,274 - INFO - 开始生成MD版本...
+2025-04-06 12:55:34,274 - INFO - 正在调用API生成内容...
+2025-04-06 12:55:34,754 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 12:56:24,053 - INFO - API调用成功，生成内容完成
+2025-04-06 12:56:24,053 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\YU7肯定会爆_processed.md
+2025-04-06 12:56:24,062 - INFO - 文件写入成功，字节数: 2221
+2025-04-06 12:56:24,062 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\YU7肯定会爆_processed.md
+2025-04-06 12:56:24,063 - INFO - 处理完成，总耗时: 172.67秒
+========================================
+
+2025-04-06 14:12:01,639 - INFO - 启动文件选择对话框...
+2025-04-06 14:12:06,033 - INFO - 用户选择文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 14:12:06,033 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 14:12:06,033 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 14:12:06,033 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 14:12:06,033 - INFO - 开始生成TXT版本...
+2025-04-06 14:12:06,033 - INFO - 正在调用API生成内容...
+2025-04-06 14:12:07,021 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 14:14:14,520 - INFO - API调用成功，生成内容完成
+2025-04-06 14:14:14,522 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\YU7肯定会爆_processed.txt
+2025-04-06 14:14:14,524 - INFO - 文件写入成功，字节数: 8967
+2025-04-06 14:14:14,524 - INFO - TXT文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\YU7肯定会爆_processed.txt
+2025-04-06 14:14:14,524 - INFO - 开始生成MD版本...
+2025-04-06 14:14:14,524 - INFO - 正在调用API生成内容...
+2025-04-06 14:14:15,540 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 14:15:16,210 - INFO - API调用成功，生成内容完成
+2025-04-06 14:15:16,210 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\YU7肯定会爆_processed.md
+2025-04-06 14:15:16,214 - INFO - 文件写入成功，字节数: 3148
+2025-04-06 14:15:16,214 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\results\YU7肯定会爆_processed.md
+2025-04-06 14:15:16,214 - INFO - 处理完成，总耗时: 190.18秒
+========================================
+
+2025-04-06 14:59:28,075 - INFO - 启动文件选择对话框...
+2025-04-06 14:59:32,385 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 14:59:32,385 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 14:59:32,386 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 14:59:32,388 - INFO - 正在调用API生成内容...
+2025-04-06 14:59:34,116 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 15:01:15,948 - INFO - API调用成功，生成内容完成
+2025-04-06 15:01:15,949 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_145932.txt
+2025-04-06 15:01:15,953 - INFO - 文件写入成功，字节数: 8932
+2025-04-06 15:01:15,954 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_145932.txt
+2025-04-06 15:01:15,955 - INFO - 正在调用API生成内容...
+2025-04-06 15:01:17,726 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 15:02:19,343 - INFO - API调用成功，生成内容完成
+2025-04-06 15:02:19,344 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_145932.md
+2025-04-06 15:02:19,348 - INFO - 文件写入成功，字节数: 3469
+2025-04-06 15:02:19,349 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_145932.md
+2025-04-06 15:02:19,349 - INFO - 处理完成，总耗时: 166.96秒
+========================================
+
+2025-04-06 15:11:58,612 - INFO - 启动文件选择对话框...
+2025-04-06 15:12:04,412 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 15:12:04,412 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 15:12:04,413 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 15:12:04,414 - INFO - 正在调用API生成内容...
+2025-04-06 15:12:06,051 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 15:13:46,557 - INFO - API调用成功，生成内容完成
+2025-04-06 15:13:46,557 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed.txt
+2025-04-06 15:13:46,559 - INFO - 文件写入成功，字节数: 8896
+2025-04-06 15:13:46,559 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed.txt
+2025-04-06 15:13:46,559 - INFO - 正在调用API生成内容...
+2025-04-06 15:13:47,724 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 15:14:46,635 - INFO - API调用成功，生成内容完成
+2025-04-06 15:14:46,636 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured.md
+2025-04-06 15:14:46,641 - INFO - 文件写入成功，字节数: 2973
+2025-04-06 15:14:46,642 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured.md
+2025-04-06 15:14:46,642 - INFO - 处理完成，总耗时: 162.23秒
+========================================
+
+2025-04-06 15:51:33,949 - INFO - 启动文件选择对话框...
+2025-04-06 15:51:36,960 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 15:51:36,960 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 15:51:36,960 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 15:51:36,961 - INFO - 正在调用API生成内容...
+2025-04-06 15:51:37,930 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 15:53:14,754 - INFO - API调用成功，生成内容完成
+2025-04-06 15:53:14,754 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_155136.txt
+2025-04-06 15:53:14,756 - INFO - 文件写入成功，字节数: 8711
+2025-04-06 15:53:14,756 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_155136.txt
+2025-04-06 15:53:14,756 - INFO - 正在调用API生成内容...
+2025-04-06 15:53:15,892 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 15:54:04,075 - INFO - API调用成功，生成内容完成
+2025-04-06 15:54:04,075 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_155136.md
+2025-04-06 15:54:04,077 - INFO - 文件写入成功，字节数: 2404
+2025-04-06 15:54:04,078 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_155136.md
+2025-04-06 15:54:04,078 - INFO - 处理完成，总耗时: 147.12秒
+========================================
+
+2025-04-06 15:58:40,592 - INFO - 启动文件选择对话框...
+2025-04-06 15:58:43,871 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 15:58:43,871 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 15:58:43,871 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 15:58:43,872 - INFO - 正在调用API生成内容...
+2025-04-06 15:58:44,820 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 16:00:17,566 - INFO - API调用成功，生成内容完成
+2025-04-06 16:00:17,566 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_155843.txt
+2025-04-06 16:00:17,568 - INFO - 文件写入成功，字节数: 8661
+2025-04-06 16:00:17,568 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_155843.txt
+2025-04-06 16:00:17,568 - INFO - 正在调用API生成内容...
+2025-04-06 16:00:18,456 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 16:01:11,401 - INFO - API调用成功，生成内容完成
+2025-04-06 16:01:11,401 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_155843.md
+2025-04-06 16:01:11,405 - INFO - 文件写入成功，字节数: 2750
+2025-04-06 16:01:11,405 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_155843.md
+2025-04-06 16:01:11,405 - INFO - 处理完成，总耗时: 147.53秒
+========================================
+
+2025-04-06 16:14:31,932 - INFO - 启动文件选择对话框...
+2025-04-06 16:16:40,373 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 16:16:40,373 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 16:16:40,373 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 16:16:40,375 - INFO - 正在调用API生成内容...
+2025-04-06 16:16:41,388 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 16:18:24,828 - INFO - API调用成功，生成内容完成
+2025-04-06 16:18:24,829 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_161640.txt
+2025-04-06 16:18:24,839 - INFO - 文件写入成功，字节数: 8727
+2025-04-06 16:18:24,839 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_161640.txt
+2025-04-06 16:18:24,839 - INFO - 正在调用API生成内容...
+2025-04-06 16:18:25,728 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 16:19:22,156 - INFO - API调用成功，生成内容完成
+2025-04-06 16:19:22,157 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_161640.md
+2025-04-06 16:19:22,160 - INFO - 文件写入成功，字节数: 2597
+2025-04-06 16:19:22,161 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_161640.md
+2025-04-06 16:19:22,161 - INFO - 处理完成，总耗时: 161.79秒
+========================================
+
+2025-04-06 17:04:35,963 - INFO - 启动文件选择对话框...
+2025-04-06 17:04:40,685 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 17:04:40,685 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 17:04:40,686 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 17:04:40,687 - INFO - 正在调用API生成内容...
+2025-04-06 17:04:41,950 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 17:06:18,479 - INFO - API调用成功，生成内容完成
+2025-04-06 17:06:18,479 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_170440.txt
+2025-04-06 17:06:18,481 - INFO - 文件写入成功，字节数: 8698
+2025-04-06 17:06:18,482 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_170440.txt
+2025-04-06 17:06:18,482 - INFO - 正在调用API生成内容...
+2025-04-06 17:06:19,686 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 17:07:19,183 - INFO - API调用成功，生成内容完成
+2025-04-06 17:07:19,183 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_170440.md
+2025-04-06 17:07:19,187 - INFO - 文件写入成功，字节数: 2686
+2025-04-06 17:07:19,187 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_170440.md
+2025-04-06 17:07:19,187 - INFO - 处理完成，总耗时: 158.50秒
+========================================
+
+2025-04-06 17:14:38,389 - INFO - 启动文件选择对话框...
+2025-04-06 17:14:42,722 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 17:14:42,723 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 17:14:42,723 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 17:14:42,724 - INFO - 正在调用API生成内容...
+2025-04-06 17:14:44,014 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 17:16:26,068 - INFO - API调用成功，生成内容完成
+2025-04-06 17:16:26,068 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_171442.txt
+2025-04-06 17:16:26,071 - INFO - 文件写入成功，字节数: 8693
+2025-04-06 17:16:26,071 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_171442.txt
+2025-04-06 17:16:26,071 - INFO - 正在调用API生成内容...
+2025-04-06 17:16:27,205 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 17:17:28,309 - INFO - API调用成功，生成内容完成
+2025-04-06 17:17:28,309 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_171442.md
+2025-04-06 17:17:28,313 - INFO - 文件写入成功，字节数: 2902
+2025-04-06 17:17:28,313 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_171442.md
+2025-04-06 17:17:28,313 - INFO - 处理完成，总耗时: 165.59秒
+========================================
+
+2025-04-06 17:20:52,466 - INFO - 启动文件选择对话框...
+2025-04-06 17:23:32,672 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 17:23:32,674 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 17:23:32,674 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 17:23:32,674 - INFO - 正在调用API生成内容...
+2025-04-06 17:23:34,001 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 17:25:13,885 - INFO - API调用成功，生成内容完成
+2025-04-06 17:25:13,885 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_172332.txt
+2025-04-06 17:25:13,920 - INFO - 文件写入成功，字节数: 9322
+2025-04-06 17:25:13,920 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_172332.txt
+2025-04-06 17:25:13,920 - INFO - 正在调用API生成内容...
+2025-04-06 17:25:15,115 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 17:26:20,184 - INFO - API调用成功，生成内容完成
+2025-04-06 17:26:20,184 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_172332.md
+2025-04-06 17:26:20,188 - INFO - 文件写入成功，字节数: 2791
+2025-04-06 17:26:20,189 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_172332.md
+2025-04-06 17:26:20,189 - INFO - 处理完成，总耗时: 167.52秒
+========================================
+
+2025-04-06 17:29:46,607 - INFO - 启动文件选择对话框...
+2025-04-06 17:29:49,972 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 17:29:49,972 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 17:29:49,973 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 17:29:49,973 - INFO - 正在调用API生成内容...
+2025-04-06 17:29:51,325 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 17:31:21,721 - INFO - API调用成功，生成内容完成
+2025-04-06 17:31:21,721 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_172949.txt
+2025-04-06 17:31:21,727 - INFO - 文件写入成功，字节数: 8902
+2025-04-06 17:31:21,727 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_172949.txt
+2025-04-06 17:31:21,727 - INFO - 正在调用API生成内容...
+2025-04-06 17:31:23,632 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 17:32:13,112 - INFO - API调用成功，生成内容完成
+2025-04-06 17:32:13,113 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_172949.md
+2025-04-06 17:32:13,115 - INFO - 文件写入成功，字节数: 2298
+2025-04-06 17:32:13,115 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_172949.md
+2025-04-06 17:32:13,116 - INFO - 处理完成，总耗时: 143.14秒
+========================================
+
+2025-04-06 18:01:01,210 - INFO - 启动文件选择对话框...
+2025-04-06 18:01:04,736 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 18:01:04,737 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 18:01:04,737 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 18:01:04,738 - INFO - 正在调用API生成内容...
+2025-04-06 18:01:06,327 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 18:02:19,064 - INFO - API调用成功，生成内容完成
+2025-04-06 18:02:19,065 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_180104.txt
+2025-04-06 18:02:19,068 - INFO - 文件写入成功，字节数: 5935
+2025-04-06 18:02:19,068 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_180104.txt
+2025-04-06 18:02:19,068 - INFO - 正在调用API生成内容...
+2025-04-06 18:02:20,173 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 18:03:05,495 - INFO - API调用成功，生成内容完成
+2025-04-06 18:03:05,495 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_180104.md
+2025-04-06 18:03:05,500 - INFO - 文件写入成功，字节数: 2321
+2025-04-06 18:03:05,500 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_180104.md
+2025-04-06 18:03:05,501 - INFO - 处理完成，总耗时: 120.77秒
+========================================
+
+2025-04-06 20:59:05,009 - INFO - 启动文件选择对话框...
+2025-04-06 20:59:07,887 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 20:59:07,888 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 20:59:07,888 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 20:59:07,889 - INFO - 正在调用API生成内容...
+2025-04-06 20:59:09,179 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 21:00:53,215 - INFO - API调用成功，生成内容完成
+2025-04-06 21:00:53,215 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_205907.txt
+2025-04-06 21:00:53,218 - INFO - 文件写入成功，字节数: 9568
+2025-04-06 21:00:53,219 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_205907.txt
+2025-04-06 21:00:53,219 - INFO - 正在调用API生成内容...
+2025-04-06 21:00:54,179 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 21:01:47,743 - INFO - API调用成功，生成内容完成
+2025-04-06 21:01:47,743 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_205907.md
+2025-04-06 21:01:47,745 - INFO - 文件写入成功，字节数: 2374
+2025-04-06 21:01:47,745 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_205907.md
+2025-04-06 21:01:47,745 - INFO - 处理完成，总耗时: 159.86秒
+========================================
+
+2025-04-06 21:18:26,359 - INFO - 启动文件选择对话框...
+2025-04-06 21:18:28,698 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 21:18:28,698 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 21:18:28,699 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 21:18:28,700 - INFO - 正在调用API生成内容...
+2025-04-06 21:18:29,529 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 21:19:48,668 - INFO - API调用成功，生成内容完成
+2025-04-06 21:19:48,668 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_211828.txt
+2025-04-06 21:19:48,670 - INFO - 文件写入成功，字节数: 5246
+2025-04-06 21:19:48,670 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_211828.txt
+2025-04-06 21:19:48,670 - INFO - 正在调用API生成内容...
+2025-04-06 21:19:49,427 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 21:20:41,614 - INFO - API调用成功，生成内容完成
+2025-04-06 21:20:41,614 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_211828.md
+2025-04-06 21:20:41,617 - INFO - 文件写入成功，字节数: 2025
+2025-04-06 21:20:41,617 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_211828.md
+2025-04-06 21:20:41,617 - INFO - 处理完成，总耗时: 132.92秒
+========================================
+
+2025-04-06 21:31:25,073 - INFO - 启动文件选择对话框...
+2025-04-06 21:31:27,539 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 21:31:27,539 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 21:31:27,540 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 21:31:27,540 - INFO - 正在调用API生成内容...
+2025-04-06 21:31:28,427 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 21:33:10,214 - INFO - API调用成功，生成内容完成
+2025-04-06 21:33:10,215 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_213127.txt
+2025-04-06 21:33:10,217 - INFO - 文件写入成功，字节数: 8671
+2025-04-06 21:33:10,217 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_213127.txt
+2025-04-06 21:33:10,217 - INFO - 正在调用API生成内容...
+2025-04-06 21:33:11,080 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 21:34:08,490 - INFO - API调用成功，生成内容完成
+2025-04-06 21:34:08,490 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_213127.md
+2025-04-06 21:34:08,492 - INFO - 文件写入成功，字节数: 2434
+2025-04-06 21:34:08,492 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_213127.md
+2025-04-06 21:34:08,492 - INFO - 处理完成，总耗时: 160.95秒
+========================================
+
+2025-04-06 22:34:41,750 - INFO - 启动文件选择对话框...
+2025-04-06 22:34:43,946 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 22:34:43,947 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 22:34:43,951 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 22:34:43,952 - INFO - 正在调用API生成内容...
+2025-04-06 22:34:44,936 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 22:36:21,358 - INFO - API调用成功，生成内容完成
+2025-04-06 22:36:21,358 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_223443.txt
+2025-04-06 22:36:21,362 - INFO - 文件写入成功，字节数: 8780
+2025-04-06 22:36:21,362 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_223443.txt
+2025-04-06 22:36:21,362 - INFO - 正在调用API生成内容...
+2025-04-06 22:36:22,170 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 22:37:54,636 - INFO - API调用成功，生成内容完成
+2025-04-06 22:37:54,636 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_223443.md
+2025-04-06 22:37:54,637 - INFO - 文件写入成功，字节数: 8772
+2025-04-06 22:37:54,637 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_223443.md
+2025-04-06 22:37:54,637 - INFO - 处理完成，总耗时: 190.69秒
+========================================
+
+2025-04-06 22:39:21,245 - INFO - 启动文件选择对话框...
+2025-04-06 22:39:23,886 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 22:39:23,886 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 22:39:23,887 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 22:39:23,887 - INFO - 正在调用API生成内容...
+2025-04-06 22:39:24,735 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 22:40:23,245 - INFO - API调用成功，生成内容完成
+2025-04-06 22:40:23,245 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_223923.txt
+2025-04-06 22:40:23,246 - INFO - 文件写入成功，字节数: 4447
+2025-04-06 22:40:23,246 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_223923.txt
+2025-04-06 22:40:23,246 - INFO - 正在调用API生成内容...
+2025-04-06 22:40:24,000 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 22:41:05,438 - INFO - API调用成功，生成内容完成
+2025-04-06 22:41:05,438 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_223923.md
+2025-04-06 22:41:05,440 - INFO - 文件写入成功，字节数: 1875
+2025-04-06 22:41:05,440 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_223923.md
+2025-04-06 22:41:05,440 - INFO - 处理完成，总耗时: 101.55秒
+========================================
+
+2025-04-06 22:42:20,492 - INFO - 启动文件选择对话框...
+2025-04-06 22:42:22,838 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 22:42:22,838 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 22:42:22,838 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 22:42:22,839 - INFO - 正在调用API生成内容...
+2025-04-06 22:42:23,686 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 22:43:58,883 - INFO - API调用成功，生成内容完成
+2025-04-06 22:43:58,884 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_224222.txt
+2025-04-06 22:43:58,885 - INFO - 文件写入成功，字节数: 8846
+2025-04-06 22:43:58,885 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_224222.txt
+2025-04-06 22:43:58,885 - INFO - 正在调用API生成内容...
+2025-04-06 22:43:59,598 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 22:44:48,970 - INFO - API调用成功，生成内容完成
+2025-04-06 22:44:48,970 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_224222.docx
+2025-04-06 22:44:48,972 - INFO - 文件写入成功，字节数: 2107
+2025-04-06 22:44:48,972 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_224222.docx
+2025-04-06 22:44:48,972 - INFO - 处理完成，总耗时: 146.13秒
+========================================
+
+2025-04-06 22:51:51,074 - INFO - 启动文件选择对话框...
+2025-04-06 22:51:53,150 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 22:51:53,150 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 22:51:53,151 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 22:51:53,153 - INFO - 正在调用API生成内容...
+2025-04-06 22:51:54,092 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 22:53:25,443 - INFO - API调用成功，生成内容完成
+2025-04-06 22:53:25,443 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_225153.txt
+2025-04-06 22:53:25,446 - INFO - 文件写入成功，字节数: 8723
+2025-04-06 22:53:25,446 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_225153.txt
+2025-04-06 22:53:25,446 - INFO - 正在调用API生成内容...
+2025-04-06 22:53:26,350 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 22:54:25,345 - INFO - API调用成功，生成内容完成
+2025-04-06 22:54:25,345 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_225153.docx
+2025-04-06 22:54:25,347 - INFO - 文件写入成功，字节数: 2820
+2025-04-06 22:54:25,347 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_225153.docx
+2025-04-06 22:54:25,347 - INFO - 处理完成，总耗时: 152.20秒
+========================================
+
+2025-04-06 22:55:34,534 - INFO - 启动文件选择对话框...
+2025-04-06 22:55:36,572 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 22:55:36,572 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/YU7肯定会爆.txt
+2025-04-06 22:55:36,572 - INFO - 成功读取文件，字符数: 2984
+2025-04-06 22:55:36,573 - INFO - 正在调用API生成内容...
+2025-04-06 22:55:37,388 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 22:57:15,826 - INFO - API调用成功，生成内容完成
+2025-04-06 22:57:15,826 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_225536.txt
+2025-04-06 22:57:15,829 - INFO - 文件写入成功，字节数: 8817
+2025-04-06 22:57:15,829 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_processed_20250406_225536.txt
+2025-04-06 22:57:15,829 - INFO - 正在调用API生成内容...
+2025-04-06 22:57:16,578 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 22:58:24,423 - INFO - API调用成功，生成内容完成
+2025-04-06 22:58:24,423 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_225536.docx
+2025-04-06 22:58:24,425 - INFO - 文件写入成功，字节数: 3410
+2025-04-06 22:58:24,425 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\YU7肯定会爆_structured_20250406_225536.docx
+2025-04-06 22:58:24,425 - INFO - 处理完成，总耗时: 167.85秒
+========================================
+
+2025-04-06 23:21:59,929 - INFO - 启动文件选择对话框...
+2025-04-06 23:22:02,636 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/为什么特斯拉利润高.txt
+2025-04-06 23:22:02,637 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/为什么特斯拉利润高.txt
+2025-04-06 23:22:02,637 - INFO - 成功读取文件，字符数: 1034
+2025-04-06 23:22:02,637 - INFO - 正在调用API生成内容...
+2025-04-06 23:28:19,396 - INFO - 启动文件选择对话框...
+2025-04-06 23:28:22,387 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/为什么特斯拉利润高.txt
+2025-04-06 23:28:22,387 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/为什么特斯拉利润高.txt
+2025-04-06 23:28:22,387 - INFO - 成功读取文件，字符数: 1034
+2025-04-06 23:28:22,388 - INFO - 正在调用API生成内容...
+2025-04-06 23:32:32,565 - INFO - 启动文件选择对话框...
+2025-04-06 23:32:36,776 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/为什么特斯拉利润高.txt
+2025-04-06 23:32:36,776 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/为什么特斯拉利润高.txt
+2025-04-06 23:32:36,776 - INFO - 成功读取文件，字符数: 1034
+2025-04-06 23:32:36,777 - INFO - 正在调用API生成内容...
+2025-04-06 23:33:37,570 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 23:41:20,753 - INFO - 启动文件选择对话框...
+2025-04-06 23:41:23,427 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/为什么那么多人骂华为.txt
+2025-04-06 23:41:23,428 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/为什么那么多人骂华为.txt
+2025-04-06 23:41:23,428 - INFO - 成功读取文件，字符数: 3350
+2025-04-06 23:41:23,428 - INFO - 正在调用API生成内容...
+2025-04-06 23:41:24,412 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 23:44:44,848 - INFO - API调用成功，生成内容完成
+2025-04-06 23:44:44,849 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\为什么那么多人骂华为_processed_20250406_234123.txt
+2025-04-06 23:44:44,850 - INFO - 文件写入成功，字节数: 10338
+2025-04-06 23:44:44,851 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\为什么那么多人骂华为_processed_20250406_234123.txt
+2025-04-06 23:44:44,851 - INFO - 正在调用API生成内容...
+2025-04-06 23:44:45,780 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 23:46:00,050 - INFO - API调用成功，生成内容完成
+2025-04-06 23:46:00,051 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\为什么那么多人骂华为_structured_20250406_234123.docx
+2025-04-06 23:46:00,052 - INFO - 文件写入成功，字节数: 2833
+2025-04-06 23:46:00,052 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\为什么那么多人骂华为_structured_20250406_234123.docx
+2025-04-06 23:46:00,052 - INFO - 处理完成，总耗时: 276.62秒
+========================================
+
+2025-04-06 23:52:38,062 - INFO - 启动文件选择对话框...
+2025-04-06 23:52:41,245 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/为什么那么多人骂华为.txt
+2025-04-06 23:52:41,245 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/为什么那么多人骂华为.txt
+2025-04-06 23:52:41,246 - INFO - 成功读取文件，字符数: 3350
+2025-04-06 23:52:41,246 - INFO - 正在调用API生成内容...
+2025-04-06 23:52:42,467 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 23:54:31,585 - INFO - API调用成功，生成内容完成
+2025-04-06 23:54:31,585 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\为什么那么多人骂华为_processed_20250406_235241.txt
+2025-04-06 23:54:31,587 - INFO - 文件写入成功，字节数: 10018
+2025-04-06 23:54:31,587 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\为什么那么多人骂华为_processed_20250406_235241.txt
+2025-04-06 23:54:31,587 - INFO - 正在调用API生成内容...
+2025-04-06 23:54:32,329 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-06 23:55:22,796 - INFO - API调用成功，生成内容完成
+2025-04-06 23:55:22,796 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\为什么那么多人骂华为_structured_20250406_235241.docx
+2025-04-06 23:55:22,800 - INFO - 文件写入成功，字节数: 1893
+2025-04-06 23:55:22,800 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\为什么那么多人骂华为_structured_20250406_235241.docx
+2025-04-06 23:55:22,800 - INFO - 处理完成，总耗时: 161.55秒
+========================================
+
+2025-04-07 09:20:35,687 - INFO - 启动文件选择对话框...
+2025-04-07 09:20:39,606 - INFO - 
+========================================
+开始处理文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/为什么那么多人骂华为.txt
+2025-04-07 09:20:39,606 - INFO - 开始读取文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins/为什么那么多人骂华为.txt
+2025-04-07 09:20:39,606 - INFO - 成功读取文件，字符数: 3350
+2025-04-07 09:20:39,607 - INFO - 正在调用API生成内容...
+2025-04-07 09:20:40,620 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-07 09:22:31,863 - INFO - API调用成功，生成内容完成
+2025-04-07 09:22:31,863 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\为什么那么多人骂华为_processed_20250407_092039.txt
+2025-04-07 09:22:31,865 - INFO - 文件写入成功，字节数: 9833
+2025-04-07 09:22:31,865 - INFO - 中间文件保存成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\为什么那么多人骂华为_processed_20250407_092039.txt
+2025-04-07 09:22:31,865 - INFO - 正在调用API生成内容...
+2025-04-07 09:22:32,790 - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-04-07 09:23:49,096 - INFO - API调用成功，生成内容完成
+2025-04-07 09:23:49,096 - INFO - 准备写入文件: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\为什么那么多人骂华为_structured_20250407_092039.docx
+2025-04-07 09:23:49,098 - INFO - 文件写入成功，字节数: 2676
+2025-04-07 09:23:49,098 - INFO - MD文件生成成功: D:/gitlab/flaskProjectNew/utils/deepseek/article/origins\output\为什么那么多人骂华为_structured_20250407_092039.docx
+2025-04-07 09:23:49,098 - INFO - 处理完成，总耗时: 189.49秒
+========================================
+

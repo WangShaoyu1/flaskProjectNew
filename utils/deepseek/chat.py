@@ -19,8 +19,8 @@ logging.basicConfig(
 def select_file():
     """弹出系统文件选择对话框"""
     root = tk.Tk()
-    root.withdraw()  # 隐藏主窗口
-    root.attributes('-topmost', True)  # 确保窗口置顶
+    root.withdraw()
+    root.attributes('-topmost', True)
 
     file_path = filedialog.askopenfilename(
         title="选择要处理的文本文件",
@@ -46,11 +46,8 @@ def read_txt_file(file_path):
 def generate_content(system_prompt, user_content):
     """调用API生成内容"""
     logging.info("正在调用API生成内容...")
-    logging.debug(f"系统提示: {system_prompt[:50]}...")  # 截短长文本
-    logging.debug(f"用户内容: {user_content[:100]}...")
-
     try:
-        client = OpenAI(api_key="sk-4ad51255d1974fe68da91d6a8a8b4b35", base_url="https://api.deepseek.com")
+        client = OpenAI(api_key="sk-c2756c6b7267452e9880739d8f0da054", base_url="https://api.deepseek.com")
         response = client.chat.completions.create(
             model="deepseek-reasoner",
             messages=[
@@ -91,40 +88,51 @@ def process_file(input_file_path):
         logging.warning("文件内容为空，终止处理流程")
         return
 
-    # 获取基础文件名
+    # 生成带时间戳的输出路径
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     base_name = os.path.splitext(os.path.basename(input_file_path))[0]
+    output_dir = os.path.join(os.path.dirname(input_file_path), "output")
+    os.makedirs(output_dir, exist_ok=True)
 
-    # 生成并保存txt结果
-    txt_system_prompt = "如下内容，不要修改已有的文本，你只负责短句，加上标点符号，同时分好段落"
-    logging.info("开始生成TXT版本...")
-    if txt_result := generate_content(txt_system_prompt, input_content):
-        txt_output_path = os.path.join(
-            os.path.dirname(input_file_path),
-            "results",
-            f"{base_name}_processed.txt"
-        )
-        if write_to_file(txt_result, txt_output_path):
-            logging.info(f"TXT文件生成成功: {txt_output_path}")
-        else:
-            logging.error("TXT文件生成失败")
-    else:
-        logging.error("TXT内容生成失败，跳过后续处理")
+    # ================== 新增功能开始 ==================
+    # 生成并保存基础处理结果
+    txt_system_prompt = "如下内容，不要修改已有的文本，你只负责断句，加上标点符号，同时按照word文档段落层次分好段落"
+    txt_result = generate_content(txt_system_prompt, input_content)
+
+    if not txt_result:
+        logging.error("TXT内容生成失败，终止处理流程")
         return
 
-    # 生成并保存md结果
-    md_system_prompt = "简单美化下文章，略带商业文风，口语多一些，可以带点脏字，整体改动不能超过10%。并将txt格式修改成md格式，并加粗一些文字。"
-    # md_system_prompt = "不改变原文，将txt格式修改成md格式，并加粗一些文字。"
-    logging.info("开始生成MD版本...")
-    if md_result := generate_content(md_system_prompt, txt_result):
-        md_output_path = os.path.join(
-            os.path.dirname(input_file_path),
-            "results",
-            f"{base_name}_processed.md"
-        )
+    # 保存基础处理结果（带时间戳）
+    txt_output_path = os.path.join(output_dir, f"{base_name}_processed_{timestamp}.txt")
+    if write_to_file(txt_result, txt_output_path):
+        logging.info(f"中间文件保存成功: {txt_output_path}")
+    else:
+        logging.error("中间文件保存失败")
+        return
+
+    # 生成结构化MD文档（基于处理后的文本）
+    md_prompt = """你是一个专业文档编辑助手，请将以下的文本转换为结构清晰的Word格式的文档：
+    - 只整理格式，不修改内容，仅少量总结内容
+    - 关键信息使用**加粗**或*斜体*强调
+    - 保持word排版风格
+    - 保持朴实的小说文风、细节丰富、饱含感情，娓娓道来、宏大叙事，不要AI味
+    - 口语化表达，少量的正式、专业表达  
+    - 整体原有的文字改动不超过5%，输出的文本长度和输入的文本长度保持一致，保持输入文字的原意
+    """
+
+    md_result = generate_content(md_prompt, txt_result)  # 改 为使用处理后的文本
+    # ================== 新增功能结束 ==================
+
+    # 保存最终结果（带时间戳）
+    if md_result:
+        md_output_path = os.path.join(output_dir, f"{base_name}_structured_{timestamp}.docx")
         if write_to_file(md_result, md_output_path):
             logging.info(f"MD文件生成成功: {md_output_path}")
+            # 控制台输出双路径
+            print(f"\n生成结果已保存至:\nTXT文件: {txt_output_path}\nMD文件: {md_output_path}")
         else:
-            logging.error("MD文件生成失败")
+            logging.error("MD文件保存失败")
     else:
         logging.error("MD内容生成失败")
 
@@ -143,18 +151,11 @@ if __name__ == "__main__":
             print("操作已取消")
             exit(0)
 
-        logging.info(f"用户选择文件: {input_path}")
-
-        # 验证文件有效性
-        if not os.path.isfile(input_path):
-            logging.error("无效文件路径")
-            print("错误：文件不存在")
-        elif not input_path.lower().endswith('.txt'):
+        if not input_path.lower().endswith('.txt'):
             logging.error("非文本文件类型")
             print("错误：仅支持.txt文件")
         else:
             process_file(input_path)
-            print("文件处理完成！")
 
     except Exception as e:
         logging.exception("发生未捕获的异常:")
