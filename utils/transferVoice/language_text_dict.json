@@ -1,0 +1,132 @@
+{
+  "an_nishuo.WAV": {
+    "chinese": "你说",
+    "english": "You say?",
+    "tone": "unknown"
+  },
+  "close_door_tips.WAV": {
+    "chinese": "请先关闭微波炉炉门",
+    "english": "Please close the microwave oven door first.",
+    "tone": "unknown"
+  },
+  "dan_laile.WAV": {
+    "chinese": "来了",
+    "english": "Here I come",
+    "tone": "unknown"
+  },
+  "dan_wozai.WAV": {
+    "chinese": "我在",
+    "english": "I'm here",
+    "tone": "unknown"
+  },
+  "download_avatar.WAV": {
+    "chinese": "新形象加载中，请稍候",
+    "english": "The new avatar is loading, please wait",
+    "tone": "unknown"
+  },
+  "error_recognition_boy.WAV": {
+    "chinese": "努力寻找方案中，请稍等",
+    "english": "I'm trying to find a recipe. Please wait a moment.",
+    "tone": "boy"
+  },
+  "error_recognition_danbao.WAV": {
+    "chinese": "努力寻找方案中，请稍等",
+    "english": "I'm trying to find a recipe. Please wait a moment",
+    "tone": "danbao"
+  },
+  "error_recognition_girl.WAV": {
+    "chinese": "努力寻找方案中，请稍等",
+    "english": "Please wait while we search for a recipe",
+    "tone": "girl"
+  },
+  "failed_empty.WAV": {
+    "chinese": "请检查是否已放入食物",
+    "english": "Please check if the food has been put in",
+    "tone": "unknown"
+  },
+  "failed_move_food.WAV": {
+    "chinese": "食物识别失败，请移动一下食物后重试",
+    "english": "Food recognition failed. Please move the food and try again",
+    "tone": "unknown"
+  },
+  "failed_network_error.WAV": {
+    "chinese": "网络异常请，检查网络并尝试再次开关门",
+    "english": "Network abnormality, please check the network and try opening or closing the door again",
+    "tone": "unknown"
+  },
+  "failed_not_support.WAV": {
+    "chinese": "暂不支持组合菜品建模",
+    "english": "Cannot support modeling of combination dishes",
+    "tone": "unknown"
+  },
+  "failed_no_food.WAV": {
+    "chinese": "菜品不存在，请检查食品",
+    "english": "The dish does not exist. Please check the food.",
+    "tone": "unknown"
+  },
+  "failed_reboot.WAV": {
+    "chinese": "食物识别失败，请重启后再试",
+    "english": "Food recognition failed. Please restart and try again",
+    "tone": "unknown"
+  },
+  "failed_reopen_door.WAV": {
+    "chinese": "识别失败，请开炉门重试一下",
+    "english": "Recognition failed,  please open the microwave oven door first and try again",
+    "tone": "unknown"
+  },
+  "failed_search.WAV": {
+    "chinese": "识别失败，主人试试手动搜索菜谱吧",
+    "english": "Recognition failed, master. Try  to search for recipes manually",
+    "tone": "unknown"
+  },
+  "failed_self_cook.WAV": {
+    "chinese": "主人试试自助烹饪吧",
+    "english": "Master, try self-cooking",
+    "tone": "unknown"
+  },
+  "failed_upgrade.WAV": {
+    "chinese": "炉端程序过旧，请联系管理员升级",
+    "english": "The programe is too old, please contact the administrator to upgrade",
+    "tone": "unknown"
+  },
+  "mei_zaine.WAV": {
+    "chinese": "在呢",
+    "english": "Yes,I`m here",
+    "tone": "unknown"
+  },
+  "network_exception.WAV": {
+    "chinese": "网络异常，请更换网络后再尝试",
+    "english": "Network abnormality, please replace the network and try again",
+    "tone": "unknown"
+  },
+  "no_net_boy.WAV": {
+    "chinese": "小万接受不到信号了，主人先检查一下网络吧",
+    "english": "Xiao Wan can't receive the signal. Master, please check the network first",
+    "tone": "boy"
+  },
+  "no_net_danbao.WAV": {
+    "chinese": "小万接受不到信号了，主人先检查一下网络吧",
+    "english": "Xiao Wan can't receive the signal. Master, please check the network first",
+    "tone": "danbao"
+  },
+  "no_net_girl.WAV": {
+    "chinese": "小万接受不到信号了，主人先检查一下网络吧",
+    "english": "Xiao Wan can't receive the signal. Master, please check the network first",
+    "tone": "girl"
+  },
+  "recognition_boy.WAV": {
+    "chinese": "努力识别中，请稍等",
+    "english": "Please wait while trying to identify",
+    "tone": "boy"
+  },
+  "recognition_danbao.WAV": {
+    "chinese": "努力识别中，请稍候",
+    "english": "Please make an effort to identify",
+    "tone": "danbao"
+  },
+  "recognition_girl.WAV": {
+    "chinese": "努力识别中，请稍等",
+    "english": "Please wait while trying to identify",
+    "tone": "girl"
+  }
+}
