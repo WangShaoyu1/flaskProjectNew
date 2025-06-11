@@ -47,7 +47,9 @@ def generate_content(system_prompt, user_content):
     """调用API生成内容"""
     logging.info("正在调用API生成内容...")
     try:
-        client = OpenAI(api_key="sk-c2756c6b7267452e9880739d8f0da054", base_url="https://api.deepseek.com")
+        client = OpenAI(
+            api_key=os.getenv("DEEPSEEK_API_KEY"),
+            base_url="https://api.deepseek.com")
         response = client.chat.completions.create(
             model="deepseek-reasoner",
             messages=[

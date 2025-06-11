@@ -1,0 +1,451 @@
+{
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "volume_control",
+        "description": "调节音量：调高（增大/提高/升高）、调低（减小/降低/调小）、设置音量为目标值、设置最高音量、设置静音和解除静音。\n\t - 缺少音量值时，如果是设置音量为目标值，则需要询问用户具体的音量值，其他情况无需询问默认音量值为10 \n\t - 超出音量值范围时，必须询问用户正确的音量值",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "操作类型：调高[up]\n调低[down]\n设置目标值[value]\n设置最高[max]\n设置静音[mute]\n解除静音[unmute]",
+              "enum": [
+                "up",
+                "down",
+                "value",
+                "max",
+                "mute",
+                "unmute"
+              ]
+            },
+            "volume_value": {
+              "type": "number",
+              "description": "调节的音量值，取值范围[1,100]，支持百分比：35% \u003d 35"
+            }
+          },
+          "required": [
+            "type"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "bright_control",
+        "description": "调节屏幕亮度：调高（增大/提高/升高）、调低（减小/降低/调小）、设置目标值、设置最高亮度、设置最低亮度。\n\t - 缺少屏幕亮度值时，如果是设置屏幕亮度值为目标值，则需要询问用户具体的亮度值，其他情况无需询问默认亮度值为10  \n\t - 超出亮度值范围时，必须询问用户正确的亮度值",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "操作类型：调高[up]\n调低[down]\n设置目标值[value]\n设置最高[max]\n设置最低[min]",
+              "enum": [
+                "up",
+                "down",
+                "value",
+                "max",
+                "min"
+              ]
+            },
+            "bright_value": {
+              "type": "number",
+              "description": "调节的屏幕亮度值，取值范围[1,100]，支持百分比：35% \u003d 35"
+            }
+          },
+          "required": [
+            "type"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "cooking_control",
+        "description": "烹饪控制：启动、暂停、继续和终止万得厨微波炉的烹饪进程",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "烹饪控制类型：启动[start]\n暂停[pause]\n继续[continue]\n终止[stop]",
+              "enum": [
+                "start",
+                "pause",
+                "continue",
+                "stop"
+              ]
+            }
+          },
+          "required": [
+            "type"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "screen_off_mode",
+        "description": "设置息屏模式：设置若干时间后息屏（息灭/关闭/熄灭/休眠/黑屏）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "type": "string",
+              "description": "息屏模式：取值范围必须在enum中，当用户指明的参数值不属于enum时（如40秒、3分钟等），必须再次询问用户",
+              "enum": [
+                "now",
+                "15秒",
+                "30秒",
+                "1分钟",
+                "2分钟",
+                "5分钟",
+                "10分钟",
+                "永不"
+              ]
+            }
+          },
+          "required": []
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "child_lock",
+        "description": "锁定和解锁儿童锁",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "switch": {
+              "type": "string",
+              "description": "儿童锁开关：锁定[on]\n解锁[off]",
+              "enum": [
+                "on",
+                "off"
+              ]
+            }
+          },
+          "required": [
+            "switch"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "change_resource",
+        "description": "切换资源：切换角色（虚拟人/语音助手）、切换主题（风格/样式/背景）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "切换资源类型：角色[role]\n主题[theme]",
+              "enum": [
+                "role",
+                "theme"
+              ]
+            },
+            "ordinal": {
+              "type": "number",
+              "description": "切换的序号：\n - 指明参数值时：第N表示N，倒数第N表示-N，N的取值范围为[1, 100] \n - 未指明参数值时：表示随机切换"
+            }
+          },
+          "required": [
+            "type"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "jump_to_page",
+        "description": "跳转（打开/进入/切换）到指定页面",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "page_name": {
+              "type": "string",
+              "description": "打开的页面名称：首页[index]\n使用帮助页（帮助、指南、说明）[help]\n语言切换页（语言更换、选择语言）[language]\n设备信息页（设备详情信息）[device]\n网络设置页（网络、联网、WiFi）[network]\n设置页（系统设置）[setting]\n返回（退出、上一页、退出页面）[back]",
+              "enum": [
+                "index",
+                "help",
+                "language",
+                "device",
+                "network",
+                "setting",
+                "back"
+              ]
+            }
+          },
+          "required": [
+            "page_name"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "set_foodtype_taste",
+        "description": "选择食物品类或口感， 用户明确其中一个参数即可调用该函数，不必再次询问，如：我要做[食物]，这个是[食物]，烹饪[食物]，帮我烹饪[食物]，煮得[口感]点，我想吃[口感]点等",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "food": {
+              "type": "string",
+              "description": "要烹饪的食物，例如清烹饪韭菜、爆炒肥肠、牛肉、鸡肉等等。"
+            },
+            "taste": {
+              "type": "string",
+              "enum": [
+                "脆嫩",
+                "Q弹",
+                "紧实",
+                "绵软",
+                "软糯",
+                "软烂",
+                "嫩滑",
+                "脆爽",
+                "爽滑",
+                "默认",
+                "焦一点"
+              ],
+              "description": "要设置的口感，取值范围不能超出’enum‘， 但若有相近值可转化为’enum‘中的值。\n脆爽的相近值有[脆一点、爽脆、脆脆的]\n嫩滑的相近值有[滑嫩、软滑]\n软烂的相近值有[烂一点、老一点、软软、软一点]\n软糯的相近值有[糯一点、糯糯、糯叽叽、糯滑、粘糯]\n焦一点的相近值有[焦一点、焦焦的]\n默认的相近值有[推荐]\nQ弹的相近值有[弹韧、QQ弹弹、有弹性]\n紧实的相近值有[紧致、密实、筋道、有嚼劲、劲道]。"
+            }
+          },
+          "required": []
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "cooking_mode",
+        "description": "选择烹饪模式： \n\t 智能烹饪[ai]（AI烹饪、智慧烹饪） \n\t 智能复热[heat]（复热、定温加热、恒温加热、定温烹饪、恒温烹饪、加热、加热页面） \n\t 解冻[unfreeze]（对冷冻食物进行解冻）\n\t 自助烹饪[diy]（DIY烹饪、手动烹饪）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "type": "string",
+              "description": "烹饪模式 ∈ [ai, heat, unfreeze, diy]",
+              "enum": [
+                "ai",
+                "heat",
+                "unfreeze",
+                "diy"
+              ]
+            }
+          },
+          "required": []
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "set_firepower_time",
+        "description": "设置火力或时间，帮助用户设置烹饪或加热的火力模式或时间，用户明确其中一个参数即可直接调用函数，不必再次询问，如：设置[火力]，小火，五分钟，设置10分钟等",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "firepower": {
+              "type": "string",
+              "enum": [
+                "小火",
+                "中火",
+                "大火"
+              ],
+              "description": "小火 ∈ [低火、微火、最小火]\n 中火 ∈ [中等火力、中档火] \n 大火 ∈[高火、最大火力、最高火力、最大火、最高火]"
+            },
+            "duration": {
+              "type": "number",
+              "description": "要设置的烹饪烹饪时长，单位为秒，时间最长为40分钟"
+            }
+          },
+          "required": []
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "set_cooking_temp",
+        "description": "设置烹饪温度，加热到指定温度值，食物名称非必填，缺失时可直接调用该函数，不必询问",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "cooking_temp": {
+              "type": "number",
+              "description": "烹饪温度，单位为摄氏度，取值范围[20,100]"
+            },
+            "food": {
+              "type": "string",
+              "description": "要烹饪的食品名称，例如红糖糍粑、阿粤广式猪肉肠粉、安井黑椒牛肉酥皮馅饼、奥尔良鸡翅、白米饭等"
+            }
+          },
+          "required": [
+            "cooking_temp"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "select_list_id",
+        "description": "选择序号，帮助用户在当前页面选择/打开指定序号的食谱/菜谱",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "ordinal": {
+              "type": "string",
+              "description": "要选择的序号，第N表示N，倒数第N表示-N，N的取值范围为[1, 100]。例如：第1\u003d编号1\u003d序号1\u003d1、倒数第1\u003d最后1\u003d-1"
+            }
+          },
+          "required": [
+            "ordinal"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "remaining_cooking_time_query",
+        "description": "播报烹饪剩余时间，告知用户当前万得厨微波炉烹饪的剩余时长"
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "set_theme_previous",
+        "description": "换回上一个主题，帮助用户切回/换回/改为上一个主题/风格/样式/背景"
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "search_website",
+        "description": "实时联网搜索，精准获取最新互联网资讯与数据",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "questions": {
+              "description": "联网搜索的问题，分析用户原始问题并转化为至多两个相似问题",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "questions"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "getCurrentWeather",
+        "description": "提供天气查询功能，所有参数均为可选。若参数缺失，系统将自动调用默认值或通过内部逻辑处理，无需再次向用户确认",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "province": {
+              "description": "省级行政区，包括省、自治区、直辖市、特别行政区等，如：广东省、广西壮族自治区、北京市、香港特别行政区等",
+              "type": "string"
+            },
+            "city": {
+              "description": "地级行政区，包括地级市、地区、自治州、盟等，如：广州市、阿里地区、延边朝鲜族自治州、兴安盟等",
+              "type": "string"
+            },
+            "district": {
+              "description": "县级行政区，包括县级市、市辖区、县、自治县、旗、自治旗、特区、林区等，如：江阴市、天河区、遂溪县、乳源瑶族自治县、阿拉善左旗、鄂伦春自治旗、大兴安岭特区、神农架林区等",
+              "type": "string"
+            }
+          },
+          "required": []
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "holidays",
+        "description": "获取当年的节假日列表"
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "news",
+        "description": "查询热点（头条）新闻，支持按新闻类别（如科技、娱乐、体育等）筛选，但不支持关键字和具体地区等查询",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "size": {
+              "description": "新闻数量，默认3条",
+              "type": "integer"
+            },
+            "type": {
+              "description": "新闻分类，top(默认)，guonei(国内)，guoji(国际)，yule(娱乐)，tiyu(体育)，junshi(军事)，keji(科技)，caijing(财经)，youxi(游戏)，qiche(汽车)，jiankang(健康)",
+              "type": "string"
+            }
+          },
+          "required": []
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "ticker",
+        "description": "实时获取当日股票市场数据，包括但不限于股票价格、涨跌幅、成交量等关键指标",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "description": "股票代码",
+              "type": "string"
+            },
+            "name": {
+              "description": "股票名称",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "getCustomSql",
+        "description": "获取可执行的SQL查询脚本",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "sql": {
+              "description": "SQL查询语句",
+              "type": "string"
+            }
+          },
+          "required": [
+            "sql"
+          ]
+        }
+      }
+    }
+  ]
+}
