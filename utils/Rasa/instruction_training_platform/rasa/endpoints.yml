@@ -1,0 +1,52 @@
+# Rasa 端点配置文件
+# 定义了 Rasa 服务的各种端点配置
+
+# 自定义动作服务器端点
+action_endpoint:
+  url: "http://localhost:5055/webhook"
+
+# 模型服务器端点 (如果使用远程模型服务器)
+# model_server:
+#   url: "http://localhost:5000"
+#   token: "YOUR_MODEL_SERVER_TOKEN"
+#   wait_time_between_pulls: 10
+
+# 事件代理端点 (用于事件流)
+# event_broker:
+#   type: pika
+#   url: localhost
+#   username: guest
+#   password: guest
+#   queue: rasa_events
+
+# 跟踪存储端点 (用于对话历史存储)
+# tracker_store:
+#   type: redis
+#   url: localhost
+#   port: 6379
+#   db: 0
+#   password: YOUR_PASSWORD
+#   record_exp: 30000
+
+# 或者使用 SQL 数据库存储
+# tracker_store:
+#   type: SQL
+#   dialect: "postgresql"
+#   url: "localhost"
+#   port: 5432
+#   username: "rasa"
+#   password: "YOUR_PASSWORD"
+#   database: "rasa_tracker"
+
+# 锁存储端点 (用于多实例部署时的锁机制)
+# lock_store:
+#   type: "redis"
+#   url: "localhost"
+#   port: 6379
+#   password: "YOUR_PASSWORD"
+#   db: 1
+
+# NLU 服务端点 (如果使用独立的 NLU 服务)
+# nlu_endpoint:
+#   url: "http://localhost:5000"
+

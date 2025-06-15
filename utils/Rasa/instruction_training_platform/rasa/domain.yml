@@ -1,0 +1,153 @@
+# Rasa Domain 文件
+# Domain 定义了助手的"世界" - 它知道什么，能做什么
+
+version: "3.1"
+
+# 意图定义
+# 这些是用户可能表达的意图类型
+intents:
+  - greet                    # 问候
+  - goodbye                  # 告别
+  - affirm                   # 确认
+  - deny                     # 否认
+  - mood_great              # 心情好
+  - mood_unhappy            # 心情不好
+  - bot_challenge           # 询问是否是机器人
+  - ask_weather             # 询问天气
+  - book_flight             # 预订航班
+  - cancel_booking          # 取消预订
+  - ask_help                # 寻求帮助
+
+# 实体定义
+# 这些是可以从用户消息中提取的信息片段
+entities:
+  - city                    # 城市
+  - date                    # 日期
+  - time                    # 时间
+  - person_name             # 人名
+  - booking_id              # 预订ID
+
+# 槽位定义
+# 槽位用于存储对话过程中的信息
+slots:
+  departure_city:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: city
+      
+  arrival_city:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: city
+      
+  travel_date:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: date
+      
+  passenger_name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: person_name
+
+# 响应模板
+# 定义助手可以发送给用户的消息
+responses:
+  utter_greet:
+    - text: "您好！我是智能助手，有什么可以帮您的吗？"
+    - text: "你好！欢迎使用我们的服务，请问需要什么帮助？"
+    
+  utter_goodbye:
+    - text: "再见！祝您生活愉快！"
+    - text: "谢谢使用我们的服务，再见！"
+    
+  utter_affirm:
+    - text: "好的，我明白了。"
+    - text: "收到，我会为您处理。"
+    
+  utter_deny:
+    - text: "好的，我理解您的意思。"
+    - text: "明白了，那我们换个方式。"
+    
+  utter_mood_great:
+    - text: "太好了！很高兴听到您心情不错！"
+    - text: "真棒！保持好心情！"
+    
+  utter_mood_unhappy:
+    - text: "很抱歉听到这个消息。希望我能帮助您改善心情。"
+    - text: "我理解您的感受。有什么我可以为您做的吗？"
+    
+  utter_bot_challenge:
+    - text: "是的，我是一个AI助手。我在这里为您提供帮助！"
+    - text: "我是一个智能机器人，专门为您提供服务。"
+    
+  utter_ask_weather:
+    - text: "抱歉，我目前还不能查询天气信息。您可以尝试使用天气应用或网站。"
+    - text: "天气查询功能正在开发中，请稍后再试。"
+    
+  utter_book_flight:
+    - text: "好的，我来帮您预订航班。请告诉我出发城市、目的地城市和出行日期。"
+    - text: "航班预订服务为您开启！请提供出发地、目的地和日期信息。"
+    
+  utter_cancel_booking:
+    - text: "我来帮您取消预订。请提供您的预订号码。"
+    - text: "取消预订服务已启动，请告诉我您的预订ID。"
+    
+  utter_ask_help:
+    - text: "我很乐意帮助您！我可以协助您进行航班预订、回答问题等。请告诉我您需要什么帮助。"
+    - text: "当然可以帮您！我能处理预订、查询等多种服务。请说明您的具体需求。"
+    
+  utter_fallback:
+    - text: "抱歉，我没有理解您的意思。请您再说一遍，或者换个方式表达。"
+    - text: "不好意思，我没听明白。您能重新描述一下您的需求吗？"
+    - text: "我可能没有理解正确。请尝试用不同的方式告诉我您需要什么帮助。"
+    
+  utter_default:
+    - text: "我正在学习中，感谢您的耐心。请告诉我您需要什么帮助。"
+    - text: "这个问题有点复杂，让我为您转接到人工客服。"
+
+# 表单定义
+# 用于收集用户信息的结构化对话
+forms:
+  flight_booking_form:
+    required_slots:
+      - departure_city
+      - arrival_city
+      - travel_date
+      - passenger_name
+
+# 动作定义
+# 包括自定义动作和内置动作
+actions:
+  - action_hello_world
+  - action_book_flight
+  - action_cancel_booking
+  - action_search_flights
+  - validate_flight_booking_form
+  - utter_greet
+  - utter_goodbye
+  - utter_affirm
+  - utter_deny
+  - utter_mood_great
+  - utter_mood_unhappy
+  - utter_bot_challenge
+  - utter_ask_weather
+  - utter_book_flight
+  - utter_cancel_booking
+  - utter_ask_help
+  - utter_fallback
+  - utter_default
+
+# 会话配置
+session_config:
+  session_expiration_time: 60    # 会话过期时间（分钟）
+  carry_over_slots_to_new_session: true  # 是否在新会话中保留槽位值
+

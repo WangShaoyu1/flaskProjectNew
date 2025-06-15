@@ -1,0 +1,114 @@
+# Rasa 规则文件
+# 规则定义了必须始终遵循的对话模式
+
+version: "3.1"
+
+rules:
+
+# Fallback 规则 - 当置信度低时触发
+- rule: 激活 fallback
+  steps:
+  - intent: nlu_fallback
+  - action: utter_fallback
+
+# 表单激活规则
+- rule: 激活航班预订表单
+  condition:
+  - active_loop: null
+  steps:
+  - intent: book_flight
+  - action: flight_booking_form
+  - active_loop: flight_booking_form
+
+# 表单提交规则
+- rule: 提交航班预订表单
+  condition:
+  - active_loop: flight_booking_form
+  steps:
+  - action: flight_booking_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_book_flight
+
+# 处理表单中断
+- rule: 处理表单中的问候
+  condition:
+  - active_loop: flight_booking_form
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: flight_booking_form
+  - active_loop: flight_booking_form
+
+# 处理表单中的告别
+- rule: 处理表单中的告别
+  condition:
+  - active_loop: flight_booking_form
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+  - action: action_deactivate_loop
+  - active_loop: null
+
+# 处理表单中的否认
+- rule: 处理表单中的否认
+  condition:
+  - active_loop: flight_booking_form
+  steps:
+  - intent: deny
+  - action: utter_deny
+  - action: action_deactivate_loop
+  - active_loop: null
+
+# 基本响应规则
+- rule: 回应问候
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: 回应告别
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: 回应确认
+  steps:
+  - intent: affirm
+  - action: utter_affirm
+
+- rule: 回应否认
+  steps:
+  - intent: deny
+  - action: utter_deny
+
+- rule: 回应好心情
+  steps:
+  - intent: mood_great
+  - action: utter_mood_great
+
+- rule: 回应坏心情
+  steps:
+  - intent: mood_unhappy
+  - action: utter_mood_unhappy
+
+- rule: 回应机器人询问
+  steps:
+  - intent: bot_challenge
+  - action: utter_bot_challenge
+
+- rule: 回应天气询问
+  steps:
+  - intent: ask_weather
+  - action: utter_ask_weather
+
+- rule: 回应帮助请求
+  steps:
+  - intent: ask_help
+  - action: utter_ask_help
+
+- rule: 回应取消预订
+  steps:
+  - intent: cancel_booking
+  - action: utter_cancel_booking
+
