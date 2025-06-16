@@ -151,7 +151,7 @@ const Dashboard = () => {
   if (loading) {
     return (
       <div className="loading-container">
-        <Spin size="large" tip="正在加载仪表板数据..." />
+        <Spin size="large" tip="正在加载仪表板数据..." fullscreen />
       </div>
     );
   }

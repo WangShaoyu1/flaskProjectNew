@@ -123,7 +123,7 @@ const App = () => {
   if (loading) {
     return (
       <div className="loading-container">
-        <Spin size="large" tip="正在初始化应用..." />
+        <Spin size="large" tip="正在初始化应用..." fullscreen/>
       </div>
     );
   }

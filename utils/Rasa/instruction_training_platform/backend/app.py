@@ -132,7 +132,7 @@ async def get_api_info():
 if __name__ == "__main__":
     # 获取配置参数
     host = os.getenv("HOST", "0.0.0.0")
-    port = int(os.getenv("PORT", 8000))
+    port = int(os.getenv("PORT", 8081))
     debug = os.getenv("DEBUG", "false").lower() == "true"
     
     logger.info(f"启动服务: http://{host}:{port}")

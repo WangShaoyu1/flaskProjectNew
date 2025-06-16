@@ -147,6 +147,7 @@ nlu:
     - 不要这个航班了
     - 取消行程
     - 退订
+    - 我的订单号是 [CD456](booking_id)
 
 # 寻求帮助
 - intent: ask_help

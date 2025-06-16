@@ -1,95 +1,68 @@
 # Rasa 配置文件
-# 详细配置说明: https://rasa.com/docs/rasa/model-configuration
+# 详细文档：https://rasa.com/docs/rasa/model-configuration
 
-# 使用默认配方，适合大多数用例
+# 使用默认训练配方（覆盖大多数场景）
 recipe: default.v1
 
 # 语言设置 - 中文
 language: zh
 
 # NLU 管道配置
-# 管道定义了文本处理的步骤，从原始文本到意图和实体识别
 pipeline:
-  # 1. 分词器 - 将文本分割成词汇
-  - name: WhitespaceTokenizer
-    # 基于空格的简单分词器
-    
-  - name: JiebaTokenizer
-    # 中文分词器，专门处理中文文本
-    # 需要安装: pip install jieba
-    
-  # 2. 正则表达式特征提取器
-  - name: RegexFeaturizer
-    # 使用正则表达式提取特征，有助于识别模式
-    
-  # 3. 词汇和语法特征提取器
-  - name: LexicalSyntacticFeaturizer
-    # 提取词汇和语法特征
-    
-  # 4. 计数向量特征提取器
-  - name: CountVectorsFeaturizer
-    # 将文本转换为词频向量
-    analyzer: char_wb
-    min_ngram: 1
-    max_ngram: 4
-    
-  # 5. 预训练语言模型特征提取器
-  - name: LanguageModelFeaturizer
-    # 使用预训练的语言模型提取深度特征
-    model_name: "bert"
-    model_weights: "rasa/bert-base-chinese"
-    # 注意: 这需要下载中文 BERT 模型
-    # 如果没有 GPU 或模型，可以注释掉这个组件
-    
-  # 6. DIET 分类器 - 核心的意图分类和实体提取组件
-  - name: DIETClassifier
-    # Dual Intent and Entity Transformer
-    # 同时处理意图分类和实体提取
-    epochs: 100                    # 训练轮次
-    constrain_resources: false     # 允许使用所有可用资源（包括GPU）
-    entity_recognition: true       # 启用实体识别
-    intent_classification: true    # 启用意图分类
-    use_masked_language_model: true # 使用掩码语言模型
-    
-  # 7. 实体同义词映射器
-  - name: EntitySynonymMapper
-    # 将实体值映射到标准形式
-    
-  # 8. 响应选择器
-  - name: ResponseSelector
-    # 用于选择合适的响应，特别适用于FAQ和闲聊
-    epochs: 100
-    constrain_resources: false
-    
-  # 9. Fallback 分类器
-  - name: FallbackClassifier
-    # 当置信度低于阈值时触发 fallback
-    threshold: 0.3
-    ambiguity_threshold: 0.1
+  # --- 中文预处理组件 ---
+  - name: SpacyNLP  # 加载 spaCy 中文模型（替代 BERT）
+    model: "zh_core_web_md"  # 中型模型平衡精度与速度 [7,11](@ref)
 
-# 对话管理策略配置
+  - name: SpacyTokenizer  # spaCy 中文分词器（替代 Jieba）
+
+  - name: SpacyFeaturizer  # 生成词向量特征
+    pooling: mean  # 均值池化降低计算量 [11](@ref)
+
+  - name: SpacyEntityExtractor  # 提取通用实体（如日期/人名/地点）
+    dimensions: ["DATE", "PERSON", "GPE"]  # 仅启用关键实体类型 [7](@ref)
+
+  # --- 基础特征工程 ---
+  - name: RegexFeaturizer  # 正则匹配特征（增强模式识别）
+
+  - name: LexicalSyntacticFeaturizer  # 词法+句法特征组合
+
+  - name: CountVectorsFeaturizer  # 字符级 N-Gram 特征
+    analyzer: char_wb  # 按词边界分割字符 [7](@ref)
+    min_ngram: 1  # 最小 N-Gram 长度
+    max_ngram: 4  # 最大 N-Gram 长度
+
+  # --- 核心分类器 ---
+  - name: DIETClassifier  # 联合意图分类+实体识别
+    epochs: 100  # 训练轮次（CPU 建议 ≤100）
+    entity_recognition: true  # 启用实体识别
+    intent_classification: true  # 启用意图分类
+    constrain_resources: false  # 允许使用所有 CPU 资源
+
+  # --- 后处理组件 ---
+  - name: EntitySynonymMapper  # 实体同义词标准化（如“北京” → “北京市”）
+
+  - name: ResponseSelector  # 响应选择器（处理 FAQ/闲聊）
+    epochs: 50  # 可降低轮次（减少训练时间）
+
+  - name: FallbackClassifier  # 低置信度兜底
+    threshold: 0.3  # 意图置信度阈值
+    ambiguity_threshold: 0.1  # 多意图歧义阈值
+
+# 对话策略配置
 policies:
-  # 1. 记忆策略 - 记住训练故事中的对话路径
+  # 1. 记忆策略：基于训练故事匹配
   - name: MemoizationPolicy
-    max_history: 5
-    
-  # 2. 规则策略 - 处理基于规则的对话流程
-  - name: RulePolicy
-    # 处理 rules.yml 中定义的规则
-    
-  # 3. 意外意图策略 - 处理训练数据中未见过的意图
-  - name: UnexpecTEDIntentPolicy
-    max_history: 5
-    epochs: 100
-    constrain_resources: false
-    
-  # 4. TED 策略 - 主要的对话管理策略
-  - name: TEDPolicy
-    # Transformer Embedding Dialogue Policy
-    max_history: 5
-    epochs: 100
-    constrain_resources: false     # 允许使用GPU加速
-    
-# 助手ID - 用于跟踪和分析
-assistant_id: instruction_training_platform
+    max_history: 5  # 记忆最近 5 轮对话
 
+  # 2. 规则策略：处理 rules.yml 中定义的硬规则
+  - name: RulePolicy
+    core_fallback_threshold: 0.4  # 规则触发置信度 [7](@ref)
+
+  # 3. 机器学习策略：Transformer 模型学习对话
+  - name: TEDPolicy
+    max_history: 5  # 输入对话历史长度
+    epochs: 100  # 训练轮次
+    constrain_resources: false  # 允许使用多核 CPU
+
+# 助手标识（用于日志跟踪）
+assistant_id: instruction_training_platform
