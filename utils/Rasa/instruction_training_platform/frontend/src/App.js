@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { Layout, Menu, Typography, Spin, Alert } from 'antd';
 import {
   DashboardOutlined,
@@ -7,8 +7,10 @@ import {
   RobotOutlined,
   ToolOutlined,
   SettingOutlined,
-  ApiOutlined
+  ApiOutlined,
+  ThunderboltOutlined
 } from '@ant-design/icons';
+import { applyTheme } from './styles/colors';
 
 // 导入页面组件
 import Dashboard from './pages/Dashboard';
@@ -28,6 +30,7 @@ const App = () => {
   const [rasaStatus, setRasaStatus] = useState('checking');
   const [loading, setLoading] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
 
   // 菜单项配置
   const menuItems = [
@@ -77,6 +80,11 @@ const App = () => {
   useEffect(() => {
     const initApp = async () => {
       setLoading(true);
+      
+      // 初始化主题
+      const savedTheme = localStorage.getItem('buttonTheme') || 'classic';
+      applyTheme(savedTheme);
+      
       await checkRasaStatus();
       setLoading(false);
     };
@@ -129,13 +137,14 @@ const App = () => {
   }
 
   return (
-    <Layout className="app-container" style={{ minHeight: '100vh' }}>
+    <Layout className={`app-container ${collapsed ? 'collapsed' : ''}`}>
       <Sider 
         collapsible 
         collapsed={collapsed} 
         onCollapse={setCollapsed}
         theme="dark"
         width={250}
+        collapsedWidth={80}
       >
         <div style={{ 
           height: 64, 
@@ -144,16 +153,25 @@ const App = () => {
           justifyContent: 'center',
           borderBottom: '1px solid #303030'
         }}>
-          <Title 
-            level={4} 
-            style={{ 
-              color: 'white', 
-              margin: 0,
-              fontSize: collapsed ? '16px' : '18px'
-            }}
-          >
-            {collapsed ? 'ITP' : '指令训练平台'}
-          </Title>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <ThunderboltOutlined 
+              style={{ 
+                color: '#1890ff', 
+                fontSize: collapsed ? '20px' : '24px',
+                marginRight: collapsed ? 0 : 8
+              }} 
+            />
+            <Title 
+              level={4} 
+              style={{ 
+                color: 'white', 
+                margin: 0,
+                fontSize: collapsed ? '16px' : '18px'
+              }}
+            >
+              {collapsed ? 'ITP' : '指令训练平台'}
+            </Title>
+          </div>
         </div>
         
         <Menu
@@ -162,20 +180,16 @@ const App = () => {
           selectedKeys={[location.pathname]}
           items={menuItems}
           onClick={({ key }) => {
-            window.history.pushState(null, '', key);
-            window.dispatchEvent(new PopStateEvent('popstate'));
+            navigate(key);
           }}
         />
       </Sider>
 
       <Layout>
         <Header style={{ 
-          background: 'white', 
-          padding: '0 24px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between',
-          borderBottom: '1px solid #f0f0f0'
+          justifyContent: 'space-between'
         }}>
           <Title level={3} style={{ margin: 0 }}>
             {getCurrentPageTitle()}

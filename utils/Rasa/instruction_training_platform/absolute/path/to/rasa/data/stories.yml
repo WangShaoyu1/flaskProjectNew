@@ -1,0 +1,21 @@
+- story: 预订航班流程
+  steps:
+    - intent: book_flight
+    - action: flight_booking_form  # 直接激活表单，与规则保持一致
+    - active_loop: flight_booking_form
+    - intent: goodbye
+    - action: utter_goodbye        # 使用规则定义的告别动作
+
+- story: 预订后中断处理-告别
+  steps:
+    - intent: book_flight
+    - action: flight_booking_form  # 与规则统一
+    - intent: goodbye
+    - action: utter_goodbye        # 使用规则定义的告别动作
+
+- story: 预订后中断处理-否认
+  steps:
+    - intent: book_flight
+    - action: flight_booking_form  # 与规则统一
+    - intent: deny
+    - action: utter_deny           # 使用规则定义的否认动作

@@ -7,6 +7,7 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: false, // 解决跨域问题
 });
 
 // 请求拦截器
@@ -50,7 +51,7 @@ api.interceptors.response.use(
 // API 接口定义
 export const intentAPI = {
   // 获取意图列表
-  getIntents: (params = {}) => api.get('/api/intents', { params }),
+  getIntents: (params = {}) => api.get('/api/intents/', { params }),
   
   // 获取意图详情
   getIntent: (id) => api.get(`/api/intents/${id}`),
@@ -63,6 +64,9 @@ export const intentAPI = {
   
   // 删除意图
   deleteIntent: (id) => api.delete(`/api/intents/${id}`),
+  
+  // 获取所有相似问（包含意图信息）
+  getAllUtterances: () => api.get('/api/intents/utterances/all'),
   
   // 获取相似问
   getUtterances: (intentId) => api.get(`/api/intents/${intentId}/utterances`),

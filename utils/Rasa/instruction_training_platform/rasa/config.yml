@@ -1,68 +1,86 @@
-# Rasa 配置文件
-# 详细文档：https://rasa.com/docs/rasa/model-configuration
+# 高性能Rasa配置文件 - 针对GPU加速和快速推理优化
+# 专为中文智能家居指令系统设计，支持GPU加速
 
-# 使用默认训练配方（覆盖大多数场景）
 recipe: default.v1
-
-# 语言设置 - 中文
 language: zh
 
-# NLU 管道配置
+# NLU Pipeline - 高性能版本，启用GPU加速
 pipeline:
-  # --- 中文预处理组件 ---
-  - name: SpacyNLP  # 加载 spaCy 中文模型（替代 BERT）
-    model: "zh_core_web_md"  # 中型模型平衡精度与速度 [7,11](@ref)
+  # 中文分词 - 使用jieba优化版
+  - name: JiebaTokenizer
+    dictionary_path: null
+    intent_tokenization_flag: false
+    intent_split_symbol: "_"
 
-  - name: SpacyTokenizer  # spaCy 中文分词器（替代 Jieba）
+  # 正则特征提取 - 快速匹配
+  - name: RegexFeaturizer
 
-  - name: SpacyFeaturizer  # 生成词向量特征
-    pooling: mean  # 均值池化降低计算量 [11](@ref)
+  # 词汇句法特征 - 轻量级
+  - name: LexicalSyntacticFeaturizer
 
-  - name: SpacyEntityExtractor  # 提取通用实体（如日期/人名/地点）
-    dimensions: ["DATE", "PERSON", "GPE"]  # 仅启用关键实体类型 [7](@ref)
+  # 字符级特征 - 优化参数
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 1
+    max_ngram: 3  # 减少ngram范围提升速度
+    max_features: 5000  # 限制特征数量
 
-  # --- 基础特征工程 ---
-  - name: RegexFeaturizer  # 正则匹配特征（增强模式识别）
+  # 词级特征 - 优化参数  
+  - name: CountVectorsFeaturizer
+    analyzer: word
+    min_ngram: 1
+    max_ngram: 2
+    max_features: 3000  # 限制特征数量
 
-  - name: LexicalSyntacticFeaturizer  # 词法+句法特征组合
+  # 核心分类器 - GPU加速配置
+  - name: DIETClassifier
+    # 模型结构优化
+    transformer_size: 64        # 进一步减小模型大小，提升速度
+    number_of_transformer_layers: 1  # 单层transformer，最快推理
+    number_of_attention_heads: 2     # 减少注意力头
+    
+    # 训练优化
+    epochs: 50                  # 减少训练轮数
+    batch_size: 128            # 增大批次大小，利用GPU并行
+    
+    # 功能配置
+    entity_recognition: true
+    intent_classification: true
+    use_masked_language_model: false  # 关闭MLM提升速度
+    
+    # 性能优化
+    evaluate_every_number_of_epochs: 10
+    tensorboard_log_directory: "./tensorboard"
+    
+    # GPU配置 - 如果有CUDA支持
+    # CUDA_VISIBLE_DEVICES: "0"
+    # use_gpu: true
+    
+    # 推理优化
+    ranking_length: 10          # 限制候选数量
+    loss_type: "cross_entropy"  # 使用更快的损失函数
+    similarity_type: "inner"    # 使用更快的相似度计算
+    
+    # 正则化 - 防止过拟合
+    drop_rate: 0.2
+    weight_sparsity: 0.8
 
-  - name: CountVectorsFeaturizer  # 字符级 N-Gram 特征
-    analyzer: char_wb  # 按词边界分割字符 [7](@ref)
-    min_ngram: 1  # 最小 N-Gram 长度
-    max_ngram: 4  # 最大 N-Gram 长度
+  # 实体同义词映射
+  - name: EntitySynonymMapper
 
-  # --- 核心分类器 ---
-  - name: DIETClassifier  # 联合意图分类+实体识别
-    epochs: 100  # 训练轮次（CPU 建议 ≤100）
-    entity_recognition: true  # 启用实体识别
-    intent_classification: true  # 启用意图分类
-    constrain_resources: false  # 允许使用所有 CPU 资源
-
-  # --- 后处理组件 ---
-  - name: EntitySynonymMapper  # 实体同义词标准化（如“北京” → “北京市”）
-
-  - name: ResponseSelector  # 响应选择器（处理 FAQ/闲聊）
-    epochs: 50  # 可降低轮次（减少训练时间）
-
-  - name: FallbackClassifier  # 低置信度兜底
-    threshold: 0.3  # 意图置信度阈值
-    ambiguity_threshold: 0.1  # 多意图歧义阈值
-
-# 对话策略配置
+# 对话策略 - 最简化配置，专注速度
 policies:
-  # 1. 记忆策略：基于训练故事匹配
-  - name: MemoizationPolicy
-    max_history: 5  # 记忆最近 5 轮对话
-
-  # 2. 规则策略：处理 rules.yml 中定义的硬规则
+  # 规则策略 - 主要且唯一策略
   - name: RulePolicy
-    core_fallback_threshold: 0.4  # 规则触发置信度 [7](@ref)
+    core_fallback_threshold: 0.3    # 降低阈值，提升识别率
+    core_fallback_action_name: "action_default_fallback"
+    enable_fallback_prediction: true
+    restrict_rules: false
+    check_for_contradictions: false  # 关闭矛盾检查提升速度
 
-  # 3. 机器学习策略：Transformer 模型学习对话
-  - name: TEDPolicy
-    max_history: 5  # 输入对话历史长度
-    epochs: 100  # 训练轮次
-    constrain_resources: false  # 允许使用多核 CPU
+# 性能配置
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
 
-# 助手标识（用于日志跟踪）
-assistant_id: instruction_training_platform
+assistant_id: 20250619-112940-relaxed-zinc

@@ -1,0 +1,1601 @@
+(venv) (base) PS D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend> python .\app.py
+D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\app.py:42: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\app.py:66: DeprecationWarning:
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+
+  @app.on_event("shutdown")
+INFO:__main__:启动服务: http://0.0.0.0:8081
+INFO:     Started server process [35712]
+INFO:     Waiting for application startup.
+INFO:app:数据库表创建成功
+INFO:app:Rasa 项目目录: D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\rasa
+INFO:app:指令训练平台后端服务启动成功
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8081 (Press CTRL+C to quit)
+INFO:     127.0.0.1:58369 - "GET /api/rasa/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58372 - "GET /api/tools/models HTTP/1.1" 200 OK
+ERROR:app:未处理的异常: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+INFO:     127.0.0.1:58372 - "GET /api/intents/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 327, in app
+    content = await serialize_response(
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 176, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+ERROR:app:未处理的异常: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+INFO:     127.0.0.1:58369 - "GET /api/intents/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 327, in app
+    content = await serialize_response(
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 176, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+INFO:     127.0.0.1:58374 - "GET /api/rasa/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58374 - "GET /api/rasa/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58418 - "GET /api/tools/system-info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58374 - "GET /api/tools/system-info HTTP/1.1" 200 OK
+ERROR:app:未处理的异常: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+INFO:     127.0.0.1:58416 - "GET /api/intents/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 327, in app
+    content = await serialize_response(
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 176, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+INFO:     127.0.0.1:58417 - "GET /api/tools/models?limit=10 HTTP/1.1" 200 OK
+ERROR:app:未处理的异常: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+INFO:     127.0.0.1:58374 - "GET /api/intents/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 327, in app
+    content = await serialize_response(
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 176, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+INFO:     127.0.0.1:58417 - "GET /api/tools/models?limit=10 HTTP/1.1" 200 OK
+ERROR:app:未处理的异常: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+INFO:     127.0.0.1:58418 - "GET /api/intents/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 327, in app
+    content = await serialize_response(
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 176, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+ERROR:app:未处理的异常: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+INFO:     127.0.0.1:58417 - "GET /api/intents/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 327, in app
+    content = await serialize_response(
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 176, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+ERROR:app:未处理的异常: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+INFO:     127.0.0.1:58419 - "GET /api/intents/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 327, in app
+    content = await serialize_response(
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 176, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+INFO:     127.0.0.1:58430 - "GET /api/tools/models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58430 - "GET /api/tools/models HTTP/1.1" 200 OK
+ERROR:app:未处理的异常: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+INFO:     127.0.0.1:58430 - "GET /api/intents/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 327, in app
+    content = await serialize_response(
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 176, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+ERROR:app:未处理的异常: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+INFO:     127.0.0.1:58431 - "GET /api/intents/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 327, in app
+    content = await serialize_response(
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 176, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+ERROR:app:未处理的异常: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+INFO:     127.0.0.1:58439 - "GET /api/intents/ HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 327, in app
+    content = await serialize_response(
+  File "D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend\venv\lib\site-packages\fastapi\routing.py", line 176, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 54 validation errors:
+  {'loc': ('response', 0), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 1), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 2), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 3), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 4), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 5), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 6), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 7), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 8), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 9), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 10), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 11), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 12), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 13), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 14), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 15), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 16), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 17), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 18), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 19), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 20), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 21), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 22), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 23), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 24), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 25), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 26), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 27), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 28), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 29), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 30), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 31), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 32), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 33), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 34), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 35), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 36), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 37), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 38), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 39), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 40), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 41), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 42), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 43), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 44), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 45), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 46), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 47), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 48), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 49), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 50), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 51), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 52), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+  {'loc': ('response', 53), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+INFO:     127.0.0.1:58440 - "GET /api/tools/models?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58440 - "GET /api/tools/models/active HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:58440 - "GET /api/tools/models?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58448 - "GET /api/rasa/status HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:app:指令训练平台后端服务正在关闭...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [35712]
+(venv) (base) PS D:\gitlab\flaskProjectNew\utils\Rasa\instruction_training_platform\backend>
+
+
+
+
+
+
+
+

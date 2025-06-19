@@ -207,3 +207,16 @@ uvicorn.run(
 
 更多详细信息请参考 `docs/技术设计方案.md`
 
+------2025.6.18晚上11:30优化后的代码，执行细则------
+# 启动后端服务
+cd backend && python app.py
+
+# 测试Rasa模型
+cd rasa && rasa shell --model models/20250618-231507-central-hoagie.tar.gz
+
+# 重新训练模型（使用完整数据）
+cd public && python generate_rasa_data.py
+cd ../rasa && rasa train --config config.yml --force
+
+# 查看API文档
+# 浏览器访问: http://localhost:8081/docs

@@ -11,10 +11,60 @@ from services.database_service import IntentService, UtteranceService, ResponseS
 
 router = APIRouter(prefix="/api/intents", tags=["intents"])
 
-@router.get("/", response_model=List[Intent])
+@router.get("/")
 async def get_intents(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     """获取意图列表"""
-    return IntentService.get_intents(db, skip=skip, limit=limit)
+    try:
+        # 直接查询数据库，避免ORM序列化问题
+        from database import engine
+        with engine.connect() as conn:
+            result = conn.execute(
+                "SELECT id, intent_name, description, created_at, updated_at FROM intents ORDER BY id LIMIT ? OFFSET ?",
+                (limit, skip)
+            )
+            intents = []
+            for row in result:
+                intents.append({
+                    "id": row[0],
+                    "intent_name": row[1],
+                    "description": row[2] or "",
+                    "created_at": row[3],
+                    "updated_at": row[4]
+                })
+            return intents
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取意图列表失败: {str(e)}")
+
+@router.get("/utterances/all")
+async def get_all_utterances(db: Session = Depends(get_db)):
+    """获取所有相似问（包含所属意图信息）"""
+    try:
+        # 直接查询数据库，避免ORM序列化问题
+        from database import engine
+        with engine.connect() as conn:
+            result = conn.execute(
+                """
+                SELECT u.id, u.text, u.entities, u.created_at, 
+                       i.id as intent_id, i.intent_name, i.description
+                FROM utterances u
+                JOIN intents i ON u.intent_id = i.id
+                ORDER BY i.intent_name, u.id
+                """
+            )
+            utterances = []
+            for row in result:
+                utterances.append({
+                    "id": row[0],
+                    "text": row[1],
+                    "entities": row[2],
+                    "created_at": row[3],
+                    "intent_id": row[4],
+                    "intent_name": row[5],
+                    "intent_description": row[6]
+                })
+            return utterances
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取所有相似问失败: {str(e)}")
 
 @router.get("/{intent_id}", response_model=IntentDetail)
 async def get_intent(intent_id: int, db: Session = Depends(get_db)):

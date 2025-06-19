@@ -1,114 +1,174 @@
-# Rasa 规则文件
-# 规则定义了必须始终遵循的对话模式
-
-version: "3.1"
-
+version: '3.1'
 rules:
-
-# Fallback 规则 - 当置信度低时触发
-- rule: 激活 fallback
+- rule: Rule for question_feedback
   steps:
-  - intent: nlu_fallback
-  - action: utter_fallback
-
-# 表单激活规则
-- rule: 激活航班预订表单
-  condition:
-  - active_loop: null
+  - intent: question_feedback
+  - action: utter_question_feedback
+- rule: Rule for child_lock_on
   steps:
-  - intent: book_flight
-  - action: flight_booking_form
-  - active_loop: flight_booking_form
-
-# 表单提交规则
-- rule: 提交航班预订表单
-  condition:
-  - active_loop: flight_booking_form
+  - intent: child_lock_on
+  - action: utter_child_lock_on
+- rule: Rule for child_lock_off
   steps:
-  - action: flight_booking_form
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_book_flight
-
-# 处理表单中断
-- rule: 处理表单中的问候
-  condition:
-  - active_loop: flight_booking_form
+  - intent: child_lock_off
+  - action: utter_child_lock_off
+- rule: Rule for role_switch
   steps:
-  - intent: greet
-  - action: utter_greet
-  - action: flight_booking_form
-  - active_loop: flight_booking_form
-
-# 处理表单中的告别
-- rule: 处理表单中的告别
-  condition:
-  - active_loop: flight_booking_form
+  - intent: role_switch
+  - action: utter_role_switch
+- rule: Rule for set_theme_next
   steps:
-  - intent: goodbye
-  - action: utter_goodbye
-  - action: action_deactivate_loop
-  - active_loop: null
-
-# 处理表单中的否认
-- rule: 处理表单中的否认
-  condition:
-  - active_loop: flight_booking_form
+  - intent: set_theme_next
+  - action: utter_set_theme_next
+- rule: Rule for set_theme_previous
   steps:
-  - intent: deny
-  - action: utter_deny
-  - action: action_deactivate_loop
-  - active_loop: null
-
-# 基本响应规则
-- rule: 回应问候
+  - intent: set_theme_previous
+  - action: utter_set_theme_previous
+- rule: Rule for volume_up
   steps:
-  - intent: greet
-  - action: utter_greet
-
-- rule: 回应告别
+  - intent: volume_up
+  - action: utter_volume_up
+- rule: Rule for volume_down
   steps:
-  - intent: goodbye
-  - action: utter_goodbye
-
-- rule: 回应确认
+  - intent: volume_down
+  - action: utter_volume_down
+- rule: Rule for volume_max
   steps:
-  - intent: affirm
-  - action: utter_affirm
-
-- rule: 回应否认
+  - intent: volume_max
+  - action: utter_volume_max
+- rule: Rule for volume_value
   steps:
-  - intent: deny
-  - action: utter_deny
-
-- rule: 回应好心情
+  - intent: volume_value
+  - action: utter_volume_value
+- rule: Rule for mute
   steps:
-  - intent: mood_great
-  - action: utter_mood_great
-
-- rule: 回应坏心情
+  - intent: mute
+  - action: utter_mute
+- rule: Rule for unmute
   steps:
-  - intent: mood_unhappy
-  - action: utter_mood_unhappy
-
-- rule: 回应机器人询问
+  - intent: unmute
+  - action: utter_unmute
+- rule: Rule for bright_up
   steps:
-  - intent: bot_challenge
-  - action: utter_bot_challenge
-
-- rule: 回应天气询问
+  - intent: bright_up
+  - action: utter_bright_up
+- rule: Rule for bright_down
   steps:
-  - intent: ask_weather
-  - action: utter_ask_weather
-
-- rule: 回应帮助请求
+  - intent: bright_down
+  - action: utter_bright_down
+- rule: Rule for bright_max
   steps:
-  - intent: ask_help
-  - action: utter_ask_help
-
-- rule: 回应取消预订
+  - intent: bright_max
+  - action: utter_bright_max
+- rule: Rule for bright_min
   steps:
-  - intent: cancel_booking
-  - action: utter_cancel_booking
-
+  - intent: bright_min
+  - action: utter_bright_min
+- rule: Rule for bright_value
+  steps:
+  - intent: bright_value
+  - action: utter_bright_value
+- rule: Rule for screen_off_timeout
+  steps:
+  - intent: screen_off_timeout
+  - action: utter_screen_off_timeout
+- rule: Rule for screen_off
+  steps:
+  - intent: screen_off
+  - action: utter_screen_off
+- rule: Rule for back_home_page
+  steps:
+  - intent: back_home_page
+  - action: utter_back_home_page
+- rule: Rule for voice_cmd_start_cooking
+  steps:
+  - intent: voice_cmd_start_cooking
+  - action: utter_voice_cmd_start_cooking
+- rule: Rule for voice_cmd_pause_cooking
+  steps:
+  - intent: voice_cmd_pause_cooking
+  - action: utter_voice_cmd_pause_cooking
+- rule: Rule for voice_cmd_continue_cooking
+  steps:
+  - intent: voice_cmd_continue_cooking
+  - action: utter_voice_cmd_continue_cooking
+- rule: Rule for voice_cmd_stop_cooking
+  steps:
+  - intent: voice_cmd_stop_cooking
+  - action: utter_voice_cmd_stop_cooking
+- rule: Rule for remaining_cooking_time_query
+  steps:
+  - intent: remaining_cooking_time_query
+  - action: utter_remaining_cooking_time_query
+- rule: Rule for set_firepower
+  steps:
+  - intent: set_firepower
+  - action: utter_set_firepower
+- rule: Rule for set_firepower_time
+  steps:
+  - intent: set_firepower_time
+  - action: utter_set_firepower_time
+- rule: Rule for set_cooking_time
+  steps:
+  - intent: set_cooking_time
+  - action: utter_set_cooking_time
+- rule: Rule for page_previous
+  steps:
+  - intent: page_previous
+  - action: utter_page_previous
+- rule: Rule for select_list_id
+  steps:
+  - intent: select_list_id
+  - action: utter_select_list_id
+- rule: Rule for set_cooking_temp
+  steps:
+  - intent: set_cooking_temp
+  - action: utter_set_cooking_temp
+- rule: Rule for jump_to_page
+  steps:
+  - intent: jump_to_page
+  - action: utter_jump_to_page
+- rule: Rule for set_taste
+  steps:
+  - intent: set_taste
+  - action: utter_set_taste
+- rule: Rule for set_foodtype
+  steps:
+  - intent: set_foodtype
+  - action: utter_set_foodtype
+- rule: Rule for set_foodtype_taste
+  steps:
+  - intent: set_foodtype_taste
+  - action: utter_set_foodtype_taste
+- rule: Rule for set_food_cooking_temp
+  steps:
+  - intent: set_food_cooking_temp
+  - action: utter_set_food_cooking_temp
+- rule: Rule for AI_cooking_page_open
+  steps:
+  - intent: AI_cooking_page_open
+  - action: utter_AI_cooking_page_open
+- rule: Rule for recognition_results_correct
+  steps:
+  - intent: recognition_results_correct
+  - action: utter_recognition_results_correct
+- rule: Rule for broadcast_mode_switch
+  steps:
+  - intent: broadcast_mode_switch
+  - action: utter_broadcast_mode_switch
+- rule: Rule for cooking_unfreeze
+  steps:
+  - intent: cooking_unfreeze
+  - action: utter_cooking_unfreeze
+- rule: Rule for heat_cooking_page_open
+  steps:
+  - intent: heat_cooking_page_open
+  - action: utter_heat_cooking_page_open
+- rule: Rule for set_category_size
+  steps:
+  - intent: set_category_size
+  - action: utter_set_category_size
+- rule: Rule for DIY_cooking_chef_mode
+  steps:
+  - intent: DIY_cooking_chef_mode
+  - action: utter_DIY_cooking_chef_mode

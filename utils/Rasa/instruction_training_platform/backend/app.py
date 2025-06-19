@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from contextlib import asynccontextmanager
 import uvicorn
 import os
 import logging
@@ -8,6 +9,7 @@ import logging
 # 导入数据库和API路由
 from database import create_tables
 from api import intents, rasa, tools
+from api_docs import custom_openapi
 
 # 配置日志
 logging.basicConfig(
@@ -16,32 +18,10 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# 创建 FastAPI 应用
-app = FastAPI(
-    title="指令训练平台 API",
-    description="基于 Rasa 3.6.21 的智能指令训练平台后端服务",
-    version="1.0.0",
-    docs_url="/docs",
-    redoc_url="/redoc"
-)
-
-# 配置 CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # 在生产环境中应该设置具体的域名
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# 注册 API 路由
-app.include_router(intents.router)
-app.include_router(rasa.router)
-app.include_router(tools.router)
-
-@app.on_event("startup")
-async def startup_event():
-    """应用启动时的初始化操作"""
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """应用生命周期管理"""
+    # 启动时的初始化操作
     try:
         # 创建数据库表
         create_tables()
@@ -62,11 +42,38 @@ async def startup_event():
     except Exception as e:
         logger.error(f"应用启动失败: {e}")
         raise
-
-@app.on_event("shutdown")
-async def shutdown_event():
-    """应用关闭时的清理操作"""
+    
+    yield
+    
+    # 关闭时的清理操作
     logger.info("指令训练平台后端服务正在关闭...")
+
+# 创建 FastAPI 应用
+app = FastAPI(
+    title="指令训练平台 API",
+    description="基于 Rasa 3.6.21 的智能指令训练平台后端服务",
+    version="1.0.0",
+    docs_url="/docs",
+    redoc_url="/redoc",
+    lifespan=lifespan
+)
+
+# 配置 CORS - 允许所有来源以解决跨域问题
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 允许所有来源
+    allow_credentials=False,  # 当allow_origins=["*"]时，必须设置为False
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"],
+    allow_headers=["*"],
+)
+
+# 注册 API 路由
+app.include_router(intents.router)
+app.include_router(rasa.router)
+app.include_router(tools.router)
+
+# 设置自定义 OpenAPI 文档
+app.openapi = lambda: custom_openapi(app)
 
 @app.exception_handler(Exception)
 async def global_exception_handler(request, exc):
@@ -84,7 +91,8 @@ async def root():
         "message": "指令训练平台后端服务",
         "version": "1.0.0",
         "status": "running",
-        "docs": "/docs"
+        "docs": "/docs",
+        "redoc": "/redoc"
     }
 
 @app.get("/health")
@@ -126,8 +134,15 @@ async def get_api_info():
             "语义理解",
             "批量测试",
             "数据导入导出"
-        ]
+        ],
+        "documentation": {
+            "swagger_ui": "/docs",
+            "redoc": "/redoc",
+            "openapi_json": "/openapi.json"
+        }
     }
+
+
 
 if __name__ == "__main__":
     # 获取配置参数
@@ -136,6 +151,8 @@ if __name__ == "__main__":
     debug = os.getenv("DEBUG", "false").lower() == "true"
     
     logger.info(f"启动服务: http://{host}:{port}")
+    logger.info(f"API 文档: http://{host}:{port}/docs")
+    logger.info(f"ReDoc 文档: http://{host}:{port}/redoc")
     
     # 启动服务
     uvicorn.run(

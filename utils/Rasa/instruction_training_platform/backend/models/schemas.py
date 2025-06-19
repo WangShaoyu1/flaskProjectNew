@@ -20,6 +20,9 @@ class Intent(IntentBase):
     
     class Config:
         from_attributes = True
+        json_encoders = {
+            datetime: lambda v: v.isoformat() if v else None
+        }
 
 # 相似问模型
 class UtteranceBase(BaseModel):
@@ -39,6 +42,9 @@ class Utterance(UtteranceBase):
     
     class Config:
         from_attributes = True
+        json_encoders = {
+            datetime: lambda v: v.isoformat() if v else None
+        }
 
 # 话术模型
 class ResponseBase(BaseModel):
@@ -58,6 +64,9 @@ class Response(ResponseBase):
     
     class Config:
         from_attributes = True
+        json_encoders = {
+            datetime: lambda v: v.isoformat() if v else None
+        }
 
 # 模型管理
 class ModelBase(BaseModel):
@@ -77,6 +86,9 @@ class Model(ModelBase):
     
     class Config:
         from_attributes = True
+        json_encoders = {
+            datetime: lambda v: v.isoformat() if v else None
+        }
 
 # 训练任务模型
 class TrainingTaskBase(BaseModel):

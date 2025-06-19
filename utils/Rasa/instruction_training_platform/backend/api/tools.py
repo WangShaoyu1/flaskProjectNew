@@ -141,7 +141,7 @@ async def export_data(format: str = "rasa", db: Session = Depends(get_db)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.get("/models", response_model=List[Model])
+@router.get("/models")
 async def get_models(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)):
     """
     获取模型列表
@@ -151,14 +151,32 @@ async def get_models(skip: int = 0, limit: int = 20, db: Session = Depends(get_d
         limit: 返回的记录数限制
         
     Returns:
-        List[Model]: 模型列表
+        List[Dict]: 模型列表
     """
     try:
-        models = ModelService.get_models(db, skip=skip, limit=limit)
-        return models
+        # 直接查询数据库，避免ORM序列化问题
+        from database import engine
+        with engine.connect() as conn:
+            result = conn.execute(
+                "SELECT id, version, file_path, training_time, data_version, status, metrics, is_active FROM models ORDER BY training_time DESC LIMIT ? OFFSET ?",
+                (limit, skip)
+            )
+            models = []
+            for row in result:
+                models.append({
+                    "id": row[0],
+                    "version": row[1],
+                    "file_path": row[2],
+                    "training_time": row[3],
+                    "data_version": row[4],
+                    "status": row[5],
+                    "metrics": row[6],
+                    "is_active": bool(row[7])
+                })
+            return models
         
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=f"获取模型列表失败: {str(e)}")
 
 @router.get("/models/active", response_model=Model)
 async def get_active_model(db: Session = Depends(get_db)):
