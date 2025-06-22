@@ -132,24 +132,22 @@ class TrainResponse(BaseModel):
     task_id: str
     model_version: Optional[str] = None
 
-# 批量测试
+# 批量测试 - 简化版
 class BatchTestRequest(BaseModel):
-    test_data: List[Dict[str, str]]  # [{"text": "...", "expected_intent": "..."}]
-    model_version: Optional[str] = None
+    test_data: List[Dict[str, str]]  # [{"text": "..."}] 只需要测试文本
+    confidence_threshold: Optional[float] = 0.8  # 置信度阈值
+    test_name: Optional[str] = None  # 测试名称（可选）
 
 class TestResult(BaseModel):
     text: str
-    expected_intent: str
     predicted_intent: Optional[str] = None
     confidence: Optional[float] = None
-    is_correct: bool = False
+    response_time: Optional[float] = None  # 响应时间（毫秒）
+    entities: Optional[List[Dict[str, Any]]] = []  # 实体信息
 
 class BatchTestResponse(BaseModel):
     total_tests: int
-    correct_predictions: int
-    accuracy: float
     results: List[TestResult]
-    confusion_matrix: Optional[Dict[str, Any]] = None
 
 # 完整意图信息（包含相似问和话术）
 class IntentDetail(Intent):
@@ -167,4 +165,76 @@ class DataUploadResponse(BaseModel):
     imported_utterances: int
     imported_responses: int
     errors: List[str] = []
+    upload_record_id: Optional[int] = None
+
+# 文件上传记录模型
+class UploadRecordBase(BaseModel):
+    filename: str
+    file_type: str  # csv, xlsx, txt, json等
+    file_size: int
+    upload_type: str  # batch-test, training-data
+    status: str  # success, error
+    records_count: int  # 解析到的记录数
+    error_message: Optional[str] = None
+
+class UploadRecordCreate(UploadRecordBase):
+    parsed_data: Optional[str] = None  # JSON格式存储解析后的数据
+
+class UploadRecordUpdate(BaseModel):
+    status: Optional[str] = None
+    records_count: Optional[int] = None
+    error_message: Optional[str] = None
+    parsed_data: Optional[str] = None
+
+class UploadRecord(UploadRecordBase):
+    id: int
+    upload_time: datetime
+    parsed_data: Optional[str] = None  # JSON格式存储解析后的数据
+    
+    class Config:
+        from_attributes = True
+        json_encoders = {
+            datetime: lambda v: v.isoformat() if v else None
+        }
+
+# 上传记录列表响应
+class UploadRecordListResponse(BaseModel):
+    total: int
+    records: List[Dict[str, Any]]  # 改为字典格式以避免序列化问题
+
+# 上传记录详情响应
+class UploadRecordDetailResponse(BaseModel):
+    record: Dict[str, Any]  # 改为字典格式以避免序列化问题
+    parsed_data_preview: List[Dict[str, Any]]  # 解析后数据的预览
+
+# 批量测试记录模型
+class BatchTestRecordBase(BaseModel):
+    test_name: Optional[str] = None  # 测试名称（可选）
+    total_tests: int
+    recognized_count: int  # 成功识别数量
+    recognition_rate: float  # 识别率
+    confidence_threshold: float  # 使用的置信度阈值
+    test_data: str  # JSON格式存储测试数据
+    test_results: str  # JSON格式存储测试结果
+
+class BatchTestRecordCreate(BatchTestRecordBase):
+    pass
+
+class BatchTestRecordUpdate(BaseModel):
+    test_name: Optional[str] = None
+
+class BatchTestRecord(BatchTestRecordBase):
+    id: int
+    created_at: datetime
+    
+    class Config:
+        from_attributes = True
+        json_encoders = {
+            datetime: lambda v: v.isoformat() if v else None
+        }
+
+# 批量测试记录列表响应
+class BatchTestRecordListResponse(BaseModel):
+    total: int
+    records: List[Dict[str, Any]]
 

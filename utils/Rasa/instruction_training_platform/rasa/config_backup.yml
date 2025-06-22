@@ -1,0 +1,60 @@
+# 最简化Rasa配置文件 - 无复杂依赖
+# 专为中文智能家居指令系统设计，快速启动
+
+recipe: default.v1
+language: zh
+
+# NLU Pipeline - 最简化版本
+pipeline:
+  # 中文分词 - 使用jieba
+  - name: JiebaTokenizer
+    dictionary_path: null
+    intent_tokenization_flag: false
+    intent_split_symbol: "_"
+
+  # 正则特征提取
+  - name: RegexFeaturizer
+
+  # 词汇句法特征
+  - name: LexicalSyntacticFeaturizer
+
+  # 字符级特征
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 1
+    max_ngram: 4
+    max_features: 10000
+
+  # 词级特征  
+  - name: CountVectorsFeaturizer
+    analyzer: word
+    min_ngram: 1
+    max_ngram: 2
+    max_features: 10000
+
+  # 关键词分类器 - 最简单的分类器
+  - name: KeywordIntentClassifier
+
+  # 实体提取器 - 轻量级
+  - name: CRFEntityExtractor
+    max_iterations: 50
+    L1_c: 0.1
+    L2_c: 0.1
+
+  # 实体同义词映射
+  - name: EntitySynonymMapper
+
+# 对话策略 - 简化配置
+policies:
+  # 规则策略
+  - name: RulePolicy
+    core_fallback_threshold: 0.3
+    core_fallback_action_name: "action_default_fallback"
+    enable_fallback_prediction: true
+
+# 性能配置
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+assistant_id: 20250620-minimal

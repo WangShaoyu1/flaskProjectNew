@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Row, Col, Statistic, Progress, List, Typography, Spin, Alert, Modal, Table, Tag, Collapse } from 'antd';
+import { Card, Row, Col, Statistic, Progress, List, Typography, Spin, Alert, Modal, Table, Tag, Collapse, Input } from 'antd';
 import { 
   BulbOutlined, 
   RobotOutlined, 
@@ -7,7 +7,8 @@ import {
   ClockCircleOutlined,
   TrophyOutlined,
   ApiOutlined,
-  EyeOutlined
+  EyeOutlined,
+  SearchOutlined
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { intentAPI, toolsAPI, rasaAPI } from '../api';
@@ -28,6 +29,17 @@ const Dashboard = () => {
   const [systemInfo, setSystemInfo] = useState(null);
   const [detailModalVisible, setDetailModalVisible] = useState(false);
   const [detailModalData, setDetailModalData] = useState({ type: '', title: '', data: [], loading: false });
+  const [searchText, setSearchText] = useState('');
+  const [filteredData, setFilteredData] = useState([]);
+  
+  // 添加分页状态管理
+  const [pagination, setPagination] = useState({
+    current: 1,
+    pageSize: 5,
+    showSizeChanger: true,
+    showQuickJumper: true,
+    pageSizeOptions: ['5', '10', '20', '50']
+  });
 
   useEffect(() => {
     loadDashboardData();
@@ -247,6 +259,10 @@ const Dashboard = () => {
     setDetailModalData({ type, title: '加载中...', data: [], loading: true });
     setDetailModalVisible(true);
     
+    // 重置搜索和分页状态
+    setSearchText('');
+    setPagination(prev => ({ ...prev, current: 1 }));
+    
     try {
       let data = [];
       let title = '';
@@ -290,15 +306,82 @@ const Dashboard = () => {
       }
       
       setDetailModalData({ type, title, data, loading: false });
+      setFilteredData(data); // 初始化过滤数据
     } catch (error) {
       console.error('获取详情数据失败:', error);
       setDetailModalData({ type, title: '加载失败', data: [], loading: false });
+      setFilteredData([]);
+    }
+  };
+
+  // 搜索过滤函数
+  const handleSearch = (value) => {
+    setSearchText(value);
+    
+    // 重置分页到第一页
+    setPagination(prev => ({ ...prev, current: 1 }));
+    
+    if (!value.trim()) {
+      setFilteredData(detailModalData.data);
+      return;
+    }
+
+    const { type, data } = detailModalData;
+    if (type === 'utterances') {
+      // 相似问搜索：搜索意图名称、描述和相似问内容
+      const filtered = data.filter(intentGroup => {
+        // 搜索意图名称和描述
+        const intentMatch = 
+          intentGroup.intent_name.toLowerCase().includes(value.toLowerCase()) ||
+          (intentGroup.intent_description && intentGroup.intent_description.toLowerCase().includes(value.toLowerCase()));
+        
+        // 搜索相似问内容
+        const utteranceMatch = intentGroup.utterances.some(utterance =>
+          utterance.text.toLowerCase().includes(value.toLowerCase())
+        );
+
+        return intentMatch || utteranceMatch;
+      }).map(intentGroup => {
+        // 如果匹配的是相似问内容，则高亮显示匹配的相似问
+        const filteredUtterances = intentGroup.utterances.filter(utterance =>
+          utterance.text.toLowerCase().includes(value.toLowerCase())
+        );
+
+        // 如果意图名称或描述匹配，显示所有相似问；否则只显示匹配的相似问
+        const shouldShowAll = 
+          intentGroup.intent_name.toLowerCase().includes(value.toLowerCase()) ||
+          (intentGroup.intent_description && intentGroup.intent_description.toLowerCase().includes(value.toLowerCase()));
+
+        return {
+          ...intentGroup,
+          utterances: shouldShowAll ? intentGroup.utterances : filteredUtterances
+        };
+      });
+      
+      setFilteredData(filtered);
+    } else if (type === 'intents') {
+      // 意图搜索：搜索意图名称和意图编码
+      const filtered = data.filter(item => {
+        const matchName = item.description?.toLowerCase().includes(value.toLowerCase());
+        const matchCode = item.intent_name?.toLowerCase().includes(value.toLowerCase());
+        return matchName || matchCode;
+      });
+      setFilteredData(filtered);
+    } else {
+      // 其他类型的搜索保持原有逻辑
+      const filtered = data.filter(item => {
+        return Object.values(item).some(val => 
+          val && val.toString().toLowerCase().includes(value.toLowerCase())
+        );
+      });
+      setFilteredData(filtered);
     }
   };
 
   // 渲染详情表格
   const renderDetailTable = () => {
-    const { type, data } = detailModalData;
+    const { type } = detailModalData;
+    const data = filteredData; // 使用过滤后的数据
     
     if (type === 'utterances') {
       // 专门为相似问设计的分组展示
@@ -400,8 +483,8 @@ const Dashboard = () => {
     switch (type) {
       case 'intents':
         columns = [
-          { title: '意图名称', dataIndex: 'intent_name', key: 'intent_name' },
-          { title: '意图编码', dataIndex: 'intent_code', key: 'intent_code' },
+          { title: '意图名称', dataIndex: 'description', key: 'description' },
+          { title: '意图编码', dataIndex: 'intent_name', key: 'intent_name' },
           { title: '描述', dataIndex: 'description', key: 'description', ellipsis: true },
           { 
             title: '创建时间', 
@@ -451,10 +534,17 @@ const Dashboard = () => {
         columns={columns}
         dataSource={data}
         rowKey="id"
+        scroll={undefined} // 移除固定的滚动条设置，让表格根据内容自适应
         pagination={{
-          showSizeChanger: true,
-          showQuickJumper: true,
-          showTotal: (total) => `共 ${total} 条记录`
+          ...pagination,
+          total: data.length,
+          showTotal: (total) => `共 ${total} 条记录`,
+          onChange: (page, pageSize) => {
+            setPagination(prev => ({ ...prev, current: page, pageSize }));
+          },
+          onShowSizeChange: (current, size) => {
+            setPagination(prev => ({ ...prev, current: 1, pageSize: size }));
+          }
         }}
       />
     );
@@ -592,7 +682,7 @@ const Dashboard = () => {
                     border: 'none',
                     boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
                   }}
-                  bodyStyle={{ padding: '24px 16px' }}
+                  styles={{ body: { padding: '24px 16px' } }}
                 >
                   <BulbOutlined style={{ fontSize: 40, color: '#3498db', marginBottom: 12 }} />
                   <div>
@@ -614,7 +704,7 @@ const Dashboard = () => {
                     border: 'none',
                     boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
                   }}
-                  bodyStyle={{ padding: '24px 16px' }}
+                  styles={{ body: { padding: '24px 16px' } }}
                 >
                   <RobotOutlined style={{ fontSize: 40, color: '#e67e22', marginBottom: 12 }} />
                   <div>
@@ -636,7 +726,7 @@ const Dashboard = () => {
                     border: 'none',
                     boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
                   }}
-                  bodyStyle={{ padding: '24px 16px' }}
+                  styles={{ body: { padding: '24px 16px' } }}
                 >
                   <ApiOutlined style={{ fontSize: 40, color: '#9b59b6', marginBottom: 12 }} />
                   <div>
@@ -654,17 +744,87 @@ const Dashboard = () => {
       <Modal
         title={detailModalData.title}
         open={detailModalVisible}
-        onCancel={() => setDetailModalVisible(false)}
+        onCancel={() => {
+          setDetailModalVisible(false);
+          setSearchText('');
+          setFilteredData([]);
+          setPagination(prev => ({ ...prev, current: 1 }));
+        }}
         footer={null}
-        width={800}
+        width={900}
         destroyOnClose
+        style={{ top: 60 }}
+        styles={{ 
+          body: {
+            maxHeight: 'calc(100vh - 200px)', 
+            overflowY: 'auto',
+            padding: '16px 24px'
+          }
+        }}
       >
         {detailModalData.loading ? (
-          <div style={{ textAlign: 'center', padding: '60px 0' }}>
-            <Spin size="large" tip="正在加载详情数据..." />
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            minHeight: '500px', // 固定最小高度，与内容区域一致
+            padding: '40px 0'
+          }}>
+            <div style={{
+              width: 40,
+              height: 40,
+              border: '3px solid #f3f3f3',
+              borderTop: '3px solid #1890ff',
+              borderRadius: '50%',
+              animation: 'spin 1s linear infinite',
+              marginBottom: 16
+            }} />
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: 16, fontWeight: 600, color: '#1890ff', marginBottom: 8 }}>
+                正在加载详情数据...
+              </div>
+              <div style={{ fontSize: 14, color: '#666' }}>
+                请稍候，正在获取最新数据
+              </div>
+            </div>
           </div>
         ) : (
-          renderDetailTable()
+          <>
+            {/* 搜索框 - 在意图详情和相似问详情时都显示 */}
+            {(detailModalData.type === 'utterances' || detailModalData.type === 'intents') && (
+              <div style={{ marginBottom: 16 }}>
+                <Input.Search
+                  placeholder={
+                    detailModalData.type === 'intents' 
+                      ? "搜索意图名称、意图编码..." 
+                      : "搜索意图名称、描述或相似问内容..."
+                  }
+                  allowClear
+                  enterButton={<SearchOutlined />}
+                  size="large"
+                  value={searchText}
+                  onChange={(e) => handleSearch(e.target.value)}
+                  onSearch={handleSearch}
+                  style={{ width: '100%' }}
+                />
+                {searchText && (
+                  <div style={{ marginTop: 8, color: '#666', fontSize: 12 }}>
+                    找到 {filteredData.length} 个匹配的{detailModalData.type === 'intents' ? '意图' : '意图组'}
+                  </div>
+                )}
+              </div>
+            )}
+            
+            {/* 内容区域 */}
+            <div style={{ 
+              maxHeight: detailModalData.type === 'utterances' ? '500px' : '600px', 
+              overflowY: 'auto',
+              paddingRight: '8px'
+            }}>
+              {renderDetailTable()}
+            </div>
+          </>
         )}
       </Modal>
     </div>

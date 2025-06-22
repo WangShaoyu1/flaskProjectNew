@@ -128,6 +128,16 @@ export const toolsAPI = {
     });
   },
   
+  // 批量测试文件上传 - 专门用于测试数据上传和解析
+  uploadBatchTestFile: (formData) => {
+    return api.post('/api/tools/upload-batch-test-file', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+      timeout: 60000, // 增加超时时间，因为文件解析可能需要较长时间
+    });
+  },
+  
   // 数据导出
   exportData: (format = 'rasa') => api.get('/api/tools/export-data', { params: { format } }),
   
@@ -145,6 +155,35 @@ export const toolsAPI = {
   
   // 获取系统信息
   getSystemInfo: () => api.get('/api/tools/system-info'),
+  
+  // 上传记录相关API
+  // 获取上传记录列表
+  getUploadRecords: (params = {}) => api.get('/api/tools/upload-records', { params }),
+  
+  // 获取上传记录详情
+  getUploadRecordDetail: (recordId) => api.get(`/api/tools/upload-records/${recordId}`),
+  
+  // 删除上传记录
+  deleteUploadRecord: (recordId) => api.delete(`/api/tools/upload-records/${recordId}`),
+  
+  // 下载上传记录的解析数据
+  downloadUploadRecordData: (recordId) => api.get(`/api/tools/upload-records/${recordId}/download`),
+  
+  // 批量测试记录相关API
+  // 获取批量测试记录列表
+  getBatchTestRecords: (params = {}) => api.get('/api/tools/batch-test-records', { params }),
+  
+  // 获取最新的批量测试记录
+  getLatestBatchTestRecord: () => api.get('/api/tools/batch-test-records/latest'),
+  
+  // 获取批量测试记录详情
+  getBatchTestRecordDetail: (recordId) => api.get(`/api/tools/batch-test-records/${recordId}`),
+  
+  // 删除批量测试记录
+  deleteBatchTestRecord: (recordId) => api.delete(`/api/tools/batch-test-records/${recordId}`),
+  
+  // 更新批量测试记录
+  updateBatchTestRecord: (recordId, data) => api.put(`/api/tools/batch-test-records/${recordId}`, data),
 };
 
 export default api;

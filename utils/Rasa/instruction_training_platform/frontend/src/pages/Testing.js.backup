@@ -1,0 +1,1678 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  Card, 
+  Input, 
+  Button, 
+  Typography, 
+  Space, 
+  Divider,
+  Upload,
+  Table,
+  Progress,
+  Alert,
+  message,
+  Tabs,
+  Form,
+  Row,
+  Col,
+  Modal,
+  InputNumber,
+  Collapse,
+  Tag,
+  List,
+  Spin,
+  Select,
+  Slider,
+  Switch,
+  Dropdown
+} from 'antd';
+
+import { 
+  SendOutlined, 
+  UploadOutlined, 
+  ApiOutlined,
+  FileTextOutlined,
+  BarChartOutlined,
+  SettingOutlined,
+  DownloadOutlined,
+  UserOutlined,
+  RobotOutlined,
+  ExpandAltOutlined,
+  CompressOutlined,
+  CodeOutlined,
+  EyeOutlined,
+  CheckCircleOutlined,
+  CloseCircleOutlined,
+  QuestionCircleOutlined,
+  ClockCircleOutlined,
+  ThunderboltOutlined,
+  ExperimentOutlined
+} from '@ant-design/icons';
+
+import { rasaAPI, toolsAPI } from '../api';
+import CustomLoading from '../components/CustomLoading';
+
+const { TextArea } = Input;
+const { Title, Text, Paragraph } = Typography;
+const { Option } = Select;
+
+const Testing = () => {
+  const [testText, setTestText] = useState('');
+  const [testHistory, setTestHistory] = useState([]);
+  const [latestRawResponse, setLatestRawResponse] = useState(null);
+  const [testing, setTesting] = useState(false);
+  
+  // 聊天历史容器的引用，用于自动滚动
+  const chatHistoryRef = useRef(null);
+  
+  // 模型和配置相关状态
+  const [availableModels, setAvailableModels] = useState([]);
+  const [selectedModel, setSelectedModel] = useState(null);
+  const [globalConfig, setGlobalConfig] = useState({
+    confidenceThreshold: 0.8, // 全局置信度阈值
+    showAdvanced: false // 是否显示高级设置
+  });
+  const [configModalVisible, setConfigModalVisible] = useState(false);
+  
+  // 原始响应弹框状态
+  const [rawResponseModalVisible, setRawResponseModalVisible] = useState(false);
+  const [currentRawResponse, setCurrentRawResponse] = useState(null);
+  
+  // 批量测试相关状态
+  const [batchModalVisible, setBatchModalVisible] = useState(false);
+  const [batchTestData, setBatchTestData] = useState([]);
+  const [batchTestResult, setBatchTestResult] = useState(null);
+  const [batchTesting, setBatchTesting] = useState(false);
+  const [batchTestConfig, setBatchTestConfig] = useState({
+    confidence_threshold: 0.8 // 使用全局配置的置信度阈值
+  });
+  
+  // 批量测试结果分页状态
+  const [batchPagination, setBatchPagination] = useState({
+    current: 1,
+    pageSize: 20
+  });
+  
+  // 详情弹窗状态
+  const [detailModalVisible, setDetailModalVisible] = useState(false);
+  const [detailType, setDetailType] = useState(''); // 'recognized' 或 'unrecognized'
+  const [detailData, setDetailData] = useState([]);
+
+  // 加载可用模型
+  useEffect(() => {
+    loadAvailableModels();
+  }, []);
+
+  // 自动滚动到底部 - 当测试历史更新时
+  useEffect(() => {
+    if (chatHistoryRef.current && testHistory.length > 0) {
+      // 使用 setTimeout 确保DOM更新完成后再滚动
+      setTimeout(() => {
+        const container = chatHistoryRef.current;
+        container.scrollTop = container.scrollHeight;
+      }, 100);
+    }
+  }, [testHistory]);
+
+  const loadAvailableModels = async () => {
+    try {
+      const response = await toolsAPI.getModels();
+      const models = response.data || [];
+      setAvailableModels(models);
+      
+      // 自动选择激活的模型
+      const activeModel = models.find(model => model.is_active);
+      if (activeModel) {
+        setSelectedModel(activeModel);
+      } else if (models.length > 0) {
+        setSelectedModel(models[0]);
+      }
+    } catch (error) {
+      console.error('加载模型失败:', error);
+      message.error('加载模型列表失败');
+    }
+  };
+
+  // 单条测试 - 对话式
+  const handleSingleTest = async () => {
+    if (!testText.trim()) {
+      message.warning('请输入测试文本');
+      return;
+    }
+
+    if (!selectedModel) {
+      message.warning('请先选择测试模型');
+      return;
+    }
+
+    setTesting(true);
+    const startTime = Date.now(); // 记录开始时间
+    
+    try {
+      const response = await rasaAPI.predict(testText);
+      const endTime = Date.now(); // 记录结束时间
+      const responseTime = endTime - startTime; // 计算响应时间
+      const result = response.data;
+      
+      // 显示响应时间提醒
+      if (responseTime > 3000) {
+        message.warning(`响应时间较长: ${responseTime}ms，建议检查模型性能`);
+      } else if (responseTime > 1000) {
+        message.info(`响应时间: ${responseTime}ms`);
+      } else {
+        message.success(`响应时间: ${responseTime}ms`);
+      }
+      
+      // 添加到对话历史
+      const newMessage = {
+        id: Date.now(),
+        type: 'user',
+        content: testText,
+        timestamp: new Date(),
+        responseTime: responseTime
+      };
+      
+      // 使用全局阈值判断意图识别状态 - 修复数据提取逻辑
+      const intentName = result.intent?.name || result.intent;
+      const intentConfidence = result.intent?.confidence || result.confidence || 0;
+      
+      // 关键调试信息
+      console.log('🔍 意图识别调试:');
+      console.log('📊 API响应:', result);
+      console.log('🎯 意图名称:', intentName, '类型:', typeof intentName);
+      console.log('📈 置信度:', intentConfidence, '类型:', typeof intentConfidence);
+      console.log('⚖️ 阈值:', globalConfig.confidenceThreshold, '类型:', typeof globalConfig.confidenceThreshold);
+      console.log('🔢 置信度比较:', intentConfidence, '>=', globalConfig.confidenceThreshold, '=', intentConfidence >= globalConfig.confidenceThreshold);
+      
+      const isRecognized = intentName && 
+                          intentName !== 'nlu_fallback' && 
+                          intentName !== 'out_of_scope' && 
+                          intentName.trim() !== '' &&
+                          intentConfidence >= globalConfig.confidenceThreshold; // 使用全局阈值
+      
+      console.log('✅ 最终识别结果:', isRecognized);
+      console.log('========================');
+      
+      const botResponse = {
+        id: Date.now() + 1,
+        type: 'bot',
+        content: {
+          text: testText,
+          intent: intentName, // 始终显示实际的意图名称
+          confidence: intentConfidence,
+          entities: result.entities || [],
+          raw: result,
+          responseTime: responseTime,
+          isRecognized: isRecognized,
+          modelInfo: selectedModel // 添加模型信息
+        },
+        timestamp: new Date()
+      };
+
+      setTestHistory(prev => [...prev, newMessage, botResponse]);
+      setLatestRawResponse(result);
+      setTestText(''); // 清空输入框
+    } catch (error) {
+      const endTime = Date.now();
+      const responseTime = endTime - startTime;
+      message.error(`测试失败 (耗时: ${responseTime}ms)`);
+      console.error('测试失败:', error);
+    } finally {
+      setTesting(false);
+    }
+  };
+
+  // 清空对话历史
+  const clearHistory = () => {
+    setTestHistory([]);
+    setLatestRawResponse(null);
+  };
+
+  // 显示原始响应
+  const showRawResponse = (rawData) => {
+    setCurrentRawResponse(rawData);
+    setRawResponseModalVisible(true);
+  };
+
+  // 显示详情弹窗
+  const showDetailModal = (type, results) => {
+    let filteredData = [];
+    
+    if (type === 'recognized') {
+      // 过滤出成功识别的数据
+      filteredData = results.filter(item => 
+        item.predicted_intent && 
+        item.predicted_intent !== 'nlu_fallback' && 
+        item.predicted_intent !== 'out_of_scope' &&
+        item.confidence >= globalConfig.confidenceThreshold
+      );
+    } else if (type === 'unrecognized') {
+      // 过滤出未识别的数据
+      filteredData = results.filter(item => 
+        !item.predicted_intent || 
+        item.predicted_intent === 'nlu_fallback' || 
+        item.predicted_intent === 'out_of_scope' ||
+        item.confidence < globalConfig.confidenceThreshold
+      );
+    }
+    
+    setDetailType(type);
+    setDetailData(filteredData);
+    setDetailModalVisible(true);
+  };
+
+  // 批量测试配置弹窗
+  const showBatchTestModal = () => {
+    setBatchModalVisible(true);
+  };
+
+  // 批量测试 - 简化版
+  const handleBatchTest = async () => {
+    if (batchTestData.length === 0) {
+      message.warning('请先上传测试数据');
+      return;
+    }
+
+    setBatchTesting(true);
+    try {
+      const response = await toolsAPI.batchTest({
+        test_data: batchTestData,
+        confidence_threshold: globalConfig.confidenceThreshold // 使用全局配置的阈值
+      });
+      setBatchTestResult(response.data);
+      message.success(`批量测试完成！共测试 ${batchTestData.length} 条数据`);
+      setBatchModalVisible(false);
+    } catch (error) {
+      message.error('批量测试失败');
+      console.error('批量测试失败:', error);
+    } finally {
+      setBatchTesting(false);
+    }
+  };
+
+  // 处理文件上传 - 简化版，直接上传到后端处理
+  const handleFileUpload = async (file) => {
+    // 检查文件类型
+    const allowedTypes = ['.xlsx', '.xls', '.csv', '.txt', '.json'];
+    const fileName = file.name.toLowerCase();
+    const isValidType = allowedTypes.some(type => fileName.endsWith(type));
+    
+    if (!isValidType) {
+      message.error('不支持的文件格式，请上传 Excel(.xlsx/.xls)、CSV(.csv)、文本(.txt) 或 JSON(.json) 文件');
+      return false;
+    }
+
+    // 检查文件大小 (限制5MB)
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    if (file.size > maxSize) {
+      message.error('文件大小不能超过5MB');
+      return false;
+    }
+
+    try {
+      message.loading('正在上传和解析文件...', 0);
+      
+      // 创建FormData对象
+      const formData = new FormData();
+      formData.append('file', file);
+      
+      // 调用后端接口上传文件
+      const response = await toolsAPI.uploadBatchTestFile(formData);
+      
+      message.destroy(); // 关闭loading
+      
+      if (response.data && response.data.test_data) {
+        setBatchTestData(response.data.test_data);
+        message.success(`文件上传成功！解析到 ${response.data.test_data.length} 条测试数据`);
+      } else {
+        message.warning('文件上传成功，但未找到有效的测试数据');
+      }
+      
+    } catch (error) {
+      message.destroy(); // 关闭loading
+      console.error('文件上传失败:', error);
+      
+      if (error.response && error.response.data && error.response.data.detail) {
+        message.error(`文件处理失败: ${error.response.data.detail}`);
+      } else {
+        message.error('文件上传失败，请检查文件格式和网络连接');
+      }
+    }
+    
+    return false; // 阻止Antd的默认上传行为
+  };
+
+  // 下载测试模板 - 支持多种格式
+  const downloadTemplate = (format = 'csv') => {
+    const testData = [
+      '查询北京天气',
+      '预订机票到上海',
+      '调整屏幕亮度',
+      '播放音乐',
+      '关闭客厅灯光',
+      '设置明天早上7点闹钟',
+      '查询当前时间',
+      '打开空调制冷模式',
+      '切换到CCTV1频道'
+    ];
+
+    let content, filename, mimeType;
+
+    switch (format) {
+      case 'csv':
+        content = '测试文本\n' + testData.join('\n');
+        filename = '批量测试模板.csv';
+        mimeType = 'text/csv;charset=utf-8';
+        break;
+      
+      case 'txt':
+        content = testData.join('\n');
+        filename = '批量测试模板.txt';
+        mimeType = 'text/plain;charset=utf-8';
+        break;
+      
+      case 'json':
+        content = JSON.stringify(testData, null, 2);
+        filename = '批量测试模板.json';
+        mimeType = 'application/json;charset=utf-8';
+        break;
+      
+      default:
+        content = '测试文本\n' + testData.join('\n');
+        filename = '批量测试模板.csv';
+        mimeType = 'text/csv;charset=utf-8';
+    }
+
+    const blob = new Blob([content], { type: mimeType });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+    
+    message.success(`已下载 ${format.toUpperCase()} 格式模板文件`);
+  };
+
+  // 渲染高亮文本（突出显示实体）
+  const renderHighlightedText = (text, entities) => {
+    if (!entities || entities.length === 0) {
+      return text;
+    }
+
+    // 按起始位置排序实体
+    const sortedEntities = [...entities]
+      .filter(entity => entity.start !== undefined && entity.end !== undefined)
+      .sort((a, b) => a.start - b.start);
+
+    if (sortedEntities.length === 0) {
+      return text;
+    }
+
+    const result = [];
+    let lastIndex = 0;
+
+    sortedEntities.forEach((entity, index) => {
+      // 添加实体前的文本
+      if (entity.start > lastIndex) {
+        result.push(text.substring(lastIndex, entity.start));
+      }
+
+      // 添加高亮的实体
+      const entityText = text.substring(entity.start, entity.end);
+      const confidence = entity.confidence || entity.confidence_entity || 1;
+      const confidencePercent = Math.round(confidence * 100);
+      
+      result.push(
+        <span
+          key={`entity-${index}`}
+          style={{
+            backgroundColor: confidencePercent > 80 ? '#e6f7ff' : 
+                           confidencePercent > 60 ? '#fff2e6' : '#fff1f0',
+            color: confidencePercent > 80 ? '#1890ff' : 
+                   confidencePercent > 60 ? '#fa8c16' : '#ff4d4f',
+            padding: '1px 3px',
+            borderRadius: 2,
+            fontWeight: 600,
+            border: `1px solid ${
+              confidencePercent > 80 ? '#91d5ff' : 
+              confidencePercent > 60 ? '#ffd591' : '#ffccc7'
+            }`,
+            cursor: 'help'
+          }}
+          title={`${entity.entity}: ${entity.value} (${confidencePercent}%)`}
+        >
+          {entityText}
+        </span>
+      );
+
+      lastIndex = entity.end;
+    });
+
+    // 添加最后剩余的文本
+    if (lastIndex < text.length) {
+      result.push(text.substring(lastIndex));
+    }
+
+    return result;
+  };
+
+  // 渲染消息
+  const renderMessage = (message) => {
+    if (message.type === 'user') {
+      return (
+        <div key={message.id} style={{ marginBottom: 12, textAlign: 'right', position: 'relative' }}>
+          {/* 时间戳 - 右上角，格式：年月日 时分秒 */}
+          <div style={{ 
+            position: 'absolute',
+            top: -18,
+            right: 0,
+            fontSize: 11, 
+            color: '#999'
+          }}>
+            {message.timestamp.toLocaleString('zh-CN', {
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit'
+            })}
+          </div>
+          <div style={{ 
+            display: 'inline-block', 
+            maxWidth: '70%', 
+            padding: '8px 12px',
+            backgroundColor: '#1890ff',
+            color: 'white',
+            borderRadius: '16px 16px 4px 16px',
+            wordBreak: 'break-word'
+          }}>
+            <UserOutlined style={{ marginRight: 6 }} />
+            {message.content}
+          </div>
+        </div>
+      );
+    } else {
+      // Bot消息 - 修复时间戳位置到回复框内部右上角
+      const { content } = message;
+      return (
+        <div key={message.id} style={{ marginBottom: 12, textAlign: 'left' }}>
+          <div style={{ 
+            display: 'inline-block', 
+            maxWidth: '85%', 
+            padding: '10px 14px',
+            backgroundColor: '#f5f5f5',
+            borderRadius: '16px 16px 16px 4px',
+            wordBreak: 'break-word',
+            position: 'relative' // 添加相对定位，用于时间戳的绝对定位
+          }}>
+            {/* 时间戳 - 移到回复框内部右上角 */}
+            <div style={{ 
+              position: 'absolute',
+              top: 8,
+              right: 12,
+              fontSize: 10, 
+              color: '#999',
+              backgroundColor: 'rgba(255, 255, 255, 0.8)',
+              padding: '2px 6px',
+              borderRadius: 4,
+              zIndex: 1
+            }}>
+              {message.timestamp.toLocaleString('zh-CN', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+              })}
+            </div>
+            
+            {/* 机器人图标和测试文本 */}
+            <div style={{ marginBottom: 8, paddingRight: 80 }}> {/* 添加右侧padding为时间戳留空间 */}
+              <RobotOutlined style={{ 
+                color: '#1890ff', 
+                marginRight: 6, 
+                fontSize: 14 
+              }} />
+              <span style={{ fontWeight: 500 }}>
+                {renderHighlightedText(content.text, content.entities)}
+              </span>
+            </div>
+            
+            {/* 识别状态、实体、响应时间一行显示 */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              gap: '8px',
+              padding: '6px 0',
+              borderTop: '1px solid #e8e8e8'
+            }}>
+              {/* 识别状态 - 修复置信度判断逻辑 */}
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                {content.isRecognized ? (
+                  <CheckCircleOutlined style={{ color: '#52c41a', marginRight: 4 }} />
+                ) : (
+                  <CloseCircleOutlined style={{ color: '#ff4d4f', marginRight: 4 }} />
+                )}
+                <Tag 
+                  color={content.isRecognized ? 'success' : 'error'}
+                  style={{ margin: 0, fontSize: 11 }}
+                >
+                  {content.isRecognized ? content.intent : '未识别'}
+                </Tag>
+                <span style={{ 
+                  color: '#666', 
+                  fontSize: 11, 
+                  marginLeft: 4 
+                }}>
+                  {Math.round(content.confidence * 100)}%
+                </span>
+              </div>
+
+              <Divider type="vertical" style={{ margin: 0, height: 14 }} />
+
+              {/* 实体情况 */}
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                {content.entities && content.entities.length > 0 ? (
+                  <>
+                    <EyeOutlined style={{ color: '#1890ff', marginRight: 4 }} />
+                    <span style={{ fontSize: 11, color: '#666' }}>
+                      {content.entities.length}个实体
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <QuestionCircleOutlined style={{ color: '#d9d9d9', marginRight: 4 }} />
+                    <span style={{ fontSize: 11, color: '#999' }}>无实体</span>
+                  </>
+                )}
+              </div>
+
+              <Divider type="vertical" style={{ margin: 0, height: 14 }} />
+
+              {/* 响应时间 */}
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <ClockCircleOutlined style={{ 
+                  color: content.responseTime > 3000 ? '#ff4d4f' : 
+                         content.responseTime > 1000 ? '#fa8c16' : '#52c41a',
+                  marginRight: 4 
+                }} />
+                <span style={{ 
+                  fontSize: 11, 
+                  color: content.responseTime > 3000 ? '#ff4d4f' : 
+                         content.responseTime > 1000 ? '#fa8c16' : '#52c41a'
+                }}>
+                  {content.responseTime}ms
+                </span>
+              </div>
+
+              <Divider type="vertical" style={{ margin: 0, height: 14 }} />
+
+              {/* 原始响应按钮 */}
+              <Button
+                type="text"
+                size="small"
+                icon={<CodeOutlined />}
+                onClick={() => showRawResponse(content.raw)}
+                style={{
+                  padding: '0 4px',
+                  height: 18,
+                  fontSize: 11,
+                  color: '#666'
+                }}
+              >
+                原始响应
+              </Button>
+            </div>
+
+            {/* 实体详情展示 */}
+            {content.entities && content.entities.length > 0 && (
+              <Collapse
+                ghost
+                size="small"
+                style={{ marginTop: 8 }}
+                items={[{
+                  key: 'entities',
+                  label: (
+                    <span style={{ fontSize: 11, color: '#666' }}>
+                      <EyeOutlined style={{ marginRight: 4 }} />
+                      实体详情 ({content.entities.length})
+                    </span>
+                  ),
+                  children: (
+                    <div style={{ paddingLeft: 8 }}>
+                      {content.entities.map((entity, index) => {
+                        const confidence = entity.confidence || entity.confidence_entity || 1;
+                        const confidencePercent = Math.round(confidence * 100);
+                        return (
+                          <Tag
+                            key={index}
+                            style={{
+                              marginBottom: 4,
+                              padding: '2px 8px',
+                              fontSize: 11,
+                              borderRadius: 4
+                            }}
+                            color={confidencePercent > 80 ? 'blue' : 
+                                   confidencePercent > 60 ? 'orange' : 'red'}
+                          >
+                            <strong>{entity.entity}:</strong> {entity.value} 
+                            <span style={{ opacity: 0.8 }}>
+                              ({confidencePercent}%)
+                            </span>
+                          </Tag>
+                        );
+                      })}
+                    </div>
+                  )
+                }]}
+              />
+            )}
+          </div>
+        </div>
+      );
+    }
+  };
+
+  // 渲染批量测试结果 - 简化版，只显示意图识别结果
+  const renderBatchTestResult = () => {
+    if (!batchTestResult) {
+      return (
+        <div style={{ 
+          flex: 1,
+          display: 'flex',
+          alignItems: 'center', 
+          justifyContent: 'center',
+          height: '100%',
+          textAlign: 'center',
+          color: '#999' 
+        }}>
+          <div>
+            <BarChartOutlined style={{ fontSize: 64, marginBottom: 24, color: '#d9d9d9' }} />
+            <div style={{ fontSize: 18, marginBottom: 8 }}>暂无测试结果</div>
+            <div style={{ fontSize: 14 }}>
+              点击"开始批量测试"上传文件并进行测试
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    const { total_tests, results } = batchTestResult;
+    
+    // 统计识别结果
+    const recognizedCount = results.filter(item => 
+      item.predicted_intent && 
+      item.predicted_intent !== 'nlu_fallback' && 
+      item.predicted_intent !== 'out_of_scope' &&
+      item.confidence >= globalConfig.confidenceThreshold
+    ).length;
+    
+          const unrecognizedCount = total_tests - recognizedCount;
+      const recognitionRate = total_tests > 0 ? Math.round((recognizedCount / total_tests) * 100) : 0;
+
+    const resultColumns = [
+      {
+        title: '序号',
+        key: 'index',
+        width: 60,
+        render: (text, record, index) => {
+          // 计算真实序号：(当前页码-1) * 每页条数 + 当前行索引 + 1
+          return (batchPagination.current - 1) * batchPagination.pageSize + index + 1;
+        },
+      },
+      {
+        title: '测试文本',
+        dataIndex: 'text',
+        key: 'text',
+        ellipsis: true,
+        width: '40%',
+      },
+      {
+        title: '识别意图',
+        dataIndex: 'predicted_intent',
+        key: 'predicted_intent',
+        width: '25%',
+        render: (text, record) => {
+          const isRecognized = text && 
+                               text !== 'nlu_fallback' && 
+                               text !== 'out_of_scope' &&
+                               record.confidence >= globalConfig.confidenceThreshold;
+          
+          return (
+            <Tag color={isRecognized ? 'success' : 'error'}>
+              {isRecognized ? text : '未识别'}
+            </Tag>
+          );
+        }
+      },
+      {
+        title: '置信度',
+        dataIndex: 'confidence',
+        key: 'confidence',
+        width: '20%',
+        render: (confidence) => {
+          const percent = Math.round((confidence || 0) * 100);
+          return (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <Progress 
+                percent={percent} 
+                size="small"
+                status={confidence >= globalConfig.confidenceThreshold ? 'success' : 'exception'}
+                style={{ flex: 1 }}
+              />
+              <span style={{ 
+                fontSize: 12, 
+                color: confidence >= globalConfig.confidenceThreshold ? '#52c41a' : '#ff4d4f',
+                fontWeight: 500 
+              }}>
+                {percent}%
+              </span>
+            </div>
+          );
+        }
+      },
+      {
+        title: '状态',
+        key: 'status',
+        width: '15%',
+        render: (text, record) => {
+          const isRecognized = record.predicted_intent && 
+                               record.predicted_intent !== 'nlu_fallback' && 
+                               record.predicted_intent !== 'out_of_scope' &&
+                               record.confidence >= globalConfig.confidenceThreshold;
+          
+          return (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+              {isRecognized ? (
+                <CheckCircleOutlined style={{ color: '#52c41a' }} />
+              ) : (
+                <CloseCircleOutlined style={{ color: '#ff4d4f' }} />
+              )}
+              <span style={{ 
+                fontSize: 12,
+                color: isRecognized ? '#52c41a' : '#ff4d4f',
+                fontWeight: 500
+              }}>
+                {isRecognized ? '已识别' : '未识别'}
+              </span>
+            </div>
+          );
+        }
+      }
+    ];
+
+    return (
+      <Card 
+        title="批量测试结果" 
+        style={{ 
+          marginTop: 24, 
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column'
+        }}
+        bodyStyle={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '24px'
+        }}
+      >
+        <Row gutter={16} style={{ marginBottom: 16 }}>
+          <Col span={6}>
+            <Card size="small">
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 24, fontWeight: 'bold', color: '#1890ff' }}>
+                  {total_tests}
+                </div>
+                <div>总测试数</div>
+              </div>
+            </Card>
+          </Col>
+          <Col span={6}>
+            <Card 
+              size="small" 
+              hoverable
+              onClick={() => showDetailModal('recognized', results)}
+              style={{ 
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                border: '1px solid #d9d9d9'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#52c41a';
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(82, 196, 26, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#d9d9d9';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 24, fontWeight: 'bold', color: '#52c41a' }}>
+                  {recognizedCount}
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
+                  <span>成功识别</span>
+                  <EyeOutlined style={{ fontSize: 12, color: '#52c41a' }} />
+                </div>
+              </div>
+            </Card>
+          </Col>
+          <Col span={6}>
+            <Card size="small">
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 24, fontWeight: 'bold', color: '#fa8c16' }}>
+                  {recognitionRate}%
+                </div>
+                <div>识别率</div>
+              </div>
+            </Card>
+          </Col>
+          <Col span={6}>
+            <Card 
+              size="small" 
+              hoverable
+              onClick={() => showDetailModal('unrecognized', results)}
+              style={{ 
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                border: '1px solid #d9d9d9'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#ff4d4f';
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(255, 77, 79, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#d9d9d9';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 24, fontWeight: 'bold', color: '#ff4d4f' }}>
+                  {unrecognizedCount}
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
+                  <span>未识别</span>
+                  <EyeOutlined style={{ fontSize: 12, color: '#ff4d4f' }} />
+                </div>
+              </div>
+            </Card>
+          </Col>
+        </Row>
+
+        <Table
+          columns={resultColumns}
+          dataSource={results}
+          rowKey={(record, index) => index}
+          pagination={{
+            current: batchPagination.current,
+            pageSize: batchPagination.pageSize,
+            showSizeChanger: true,
+            showQuickJumper: true,
+            showTotal: (total) => `共 ${total} 条记录`,
+            onChange: (page, size) => {
+              setBatchPagination({ current: page, pageSize: size || 20 });
+            },
+            onShowSizeChange: (current, size) => {
+              setBatchPagination({ current: 1, pageSize: size });
+            }
+          }}
+          scroll={{ y: 'calc(100vh - 520px)' }}
+          style={{ flex: 1 }}
+        />
+      </Card>
+    );
+  };
+
+  return (
+    <div>
+      <Tabs 
+        defaultActiveKey="single"
+        items={[
+          {
+            key: 'single',
+            label: (
+              <span>
+                <ApiOutlined />
+                单条测试
+              </span>
+            ),
+            children: (
+          {/* 模型选择和配置区域 */}
+          <Card style={{ marginBottom: 16 }} size="small">
+            <Row gutter={16} align="middle">
+              <Col span={8}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <ThunderboltOutlined style={{ color: '#1890ff' }} />
+                  <Text strong>测试模型:</Text>
+                  <Select
+                    value={selectedModel?.id}
+                    onChange={(modelId) => {
+                      const model = availableModels.find(m => m.id === modelId);
+                      setSelectedModel(model);
+                    }}
+                    style={{ minWidth: 200 }}
+                    placeholder="选择测试模型"
+                  >
+                    {availableModels.map(model => (
+                      <Option key={model.id} value={model.id}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                          <span>{model.version}</span>
+                          {model.is_active && <Tag size="small" color="green">激活</Tag>}
+                        </div>
+                      </Option>
+                    ))}
+                  </Select>
+                </div>
+              </Col>
+              <Col span={8}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <ExperimentOutlined style={{ color: '#52c41a' }} />
+                  <Text strong>置信度阈值:</Text>
+                  <Slider
+                    min={0}
+                    max={1}
+                    step={0.1}
+                    value={globalConfig.confidenceThreshold}
+                    onChange={(value) => setGlobalConfig(prev => ({ ...prev, confidenceThreshold: value }))}
+                    style={{ width: 120 }}
+                    tooltip={{ formatter: (value) => `${Math.round(value * 100)}%` }}
+                  />
+                  <Text type="secondary" style={{ fontSize: 12 }}>
+                    {Math.round(globalConfig.confidenceThreshold * 100)}%
+                  </Text>
+                </div>
+              </Col>
+              <Col span={8}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'flex-end' }}>
+                  <Button 
+                    icon={<SettingOutlined />}
+                    onClick={() => setConfigModalVisible(true)}
+                    size="small"
+                  >
+                    高级配置
+                  </Button>
+                  <Button 
+                    icon={<ApiOutlined />}
+                    onClick={loadAvailableModels}
+                    size="small"
+                    type="text"
+                  >
+                    刷新模型
+                  </Button>
+                </div>
+              </Col>
+            </Row>
+          </Card>
+
+          <Row gutter={24} style={{ height: 'calc(100vh - 280px)' }}>
+            {/* 左侧对话区 */}
+            <Col span={16}>
+              <Card 
+                title="语义理解测试" 
+                style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                extra={
+                  <Button size="small" onClick={clearHistory}>
+                    清空对话
+                  </Button>
+                }
+              >
+                <div 
+                  ref={chatHistoryRef}
+                  style={{ 
+                    flex: 1, 
+                    overflowY: 'auto', 
+                    padding: '24px 16px 0 16px',
+                    marginBottom: 16,
+                    border: '1px solid #f0f0f0',
+                    borderRadius: 6,
+                    backgroundColor: '#fafafa',
+                    maxHeight: '500px',
+                    scrollBehavior: 'smooth' // 添加平滑滚动效果
+                  }}
+                >
+                  {testHistory.length === 0 ? (
+                    <div style={{ 
+                      textAlign: 'center', 
+                      padding: 40, 
+                      color: '#999' 
+                    }}>
+                      开始测试对话吧！输入文本查看AI理解结果
+                    </div>
+                  ) : (
+                    testHistory.map(renderMessage)
+                  )}
+                </div>
+                
+                <div style={{ display: 'flex', gap: 8 }}>
+                  <Input
+                    value={testText}
+                    onChange={(e) => setTestText(e.target.value)}
+                    placeholder="输入要测试的文本..."
+                    onPressEnter={handleSingleTest}
+                    disabled={testing}
+                  />
+                  <Button 
+                    type="primary" 
+                    icon={<SendOutlined />}
+                    onClick={handleSingleTest}
+                    loading={testing}
+                  >
+                    发送
+                  </Button>
+                </div>
+              </Card>
+            </Col>
+
+            {/* 右侧原始响应 */}
+            <Col span={8}>
+              <Card 
+                title="原始响应" 
+                style={{ height: '100%' }}
+                extra={
+                  latestRawResponse && (
+                    <Text type="secondary" style={{ fontSize: 12 }}>
+                      {/* 显示最新测试的时间，格式：年月日 时分秒 */}
+                      {testHistory.length > 0 && testHistory[testHistory.length - 1].timestamp 
+                        ? testHistory[testHistory.length - 1].timestamp.toLocaleString('zh-CN', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit'
+                          })
+                        : new Date().toLocaleString('zh-CN', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit'
+                          })}
+                    </Text>
+                  )
+                }
+              >
+                {latestRawResponse ? (
+                  <div>
+                    <div style={{ marginBottom: 16 }}>
+                      <Text strong>置信度最高的前两条：</Text>
+                    </div>
+                    
+                    {/* 显示前两个最高置信度的意图 */}
+                    {latestRawResponse.intent_ranking && latestRawResponse.intent_ranking.slice(0, 2).map((intent, index) => (
+                      <div key={index} style={{ 
+                        marginBottom: 12, 
+                        padding: 12,
+                        border: '1px solid #f0f0f0',
+                        borderRadius: 6,
+                        backgroundColor: index === 0 ? '#f6ffed' : '#fafafa'
+                      }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                          <Text strong>{intent.name}</Text>
+                          <Tag color={index === 0 ? 'green' : 'default'}>
+                            {Math.round(intent.confidence * 100)}%
+                          </Tag>
+                        </div>
+                      </div>
+                    ))}
+
+                    <Divider />
+                    
+                    <Collapse 
+                      size="small" 
+                      defaultActiveKey={['full']}
+                      items={[{
+                        key: 'full',
+                        label: '完整原始响应',
+                        children: (
+                          <pre style={{ 
+                            fontSize: 11,
+                            backgroundColor: '#fafafa',
+                            padding: 12,
+                            borderRadius: 4,
+                            maxHeight: 300,
+                            overflow: 'auto'
+                          }}>
+                            {JSON.stringify(latestRawResponse, null, 2)}
+                          </pre>
+                        )
+                      }]}
+                    />
+                  </div>
+                ) : (
+                  <div style={{ 
+                    textAlign: 'center', 
+                    padding: 40, 
+                    color: '#999' 
+                  }}>
+                    <ApiOutlined style={{ fontSize: 48, marginBottom: 16 }} />
+                    <div>进行测试后，这里将显示详细的响应信息</div>
+                  </div>
+                )}
+              </Card>
+            </Col>
+          </Row>
+            )
+          },
+          {
+            key: 'batch',
+            label: (
+              <span>
+                <BarChartOutlined />
+                批量测试
+              </span>
+            ),
+            children: (
+              <div style={{ height: 'calc(100vh - 280px)' }}>
+                <Card 
+                  style={{ 
+                    height: '100%', 
+                    display: 'flex', 
+                    flexDirection: 'column' 
+                  }}
+                  styles={{ 
+                    body: {
+                      flex: 1, 
+                      display: 'flex', 
+                      flexDirection: 'column',
+                      padding: '24px'
+                    }
+                  }}
+                >
+                  <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Title level={4} style={{ margin: 0 }}>批量测试</Title>
+                    <Button 
+                      type="primary" 
+                      icon={<SettingOutlined />}
+                      onClick={showBatchTestModal}
+                      size="large"
+                    >
+                      开始批量测试
+                    </Button>
+                  </div>
+
+                  {batchTestData.length > 0 && (
+                    <Alert
+                      message={`已加载 ${batchTestData.length} 条测试数据`}
+                      type="success"
+                      style={{ marginBottom: 16 }}
+                      showIcon
+                    />
+                  )}
+
+                  <div style={{ flex: 1, overflow: 'hidden' }}>
+                    {renderBatchTestResult()}
+                  </div>
+                </Card>
+              </div>
+            )
+          }
+        ]}
+      />
+
+      {/* 高级配置弹窗 */}
+      <Modal
+        title={
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <SettingOutlined style={{ color: '#1890ff' }} />
+            <span style={{ fontSize: 18, fontWeight: 600 }}>测试配置</span>
+          </div>
+        }
+        open={configModalVisible}
+        onCancel={() => setConfigModalVisible(false)}
+        footer={null}
+        width={600}
+        centered
+      >
+        <div style={{ padding: '20px 0' }}>
+          <Form
+            layout="vertical"
+            initialValues={globalConfig}
+            onFinish={(values) => {
+              setGlobalConfig(values);
+              setConfigModalVisible(false);
+              message.success('配置已保存');
+            }}
+          >
+            <div style={{ 
+              backgroundColor: '#f8f9fa', 
+              padding: 20, 
+              borderRadius: 12, 
+              marginBottom: 24,
+              border: '1px solid #e9ecef'
+            }}>
+              <Title level={5} style={{ marginBottom: 16, color: '#495057' }}>
+                识别阈值配置
+              </Title>
+              
+              <Form.Item
+                name="confidenceThreshold"
+                label="置信度阈值"
+                help="低于此阈值的预测将被视为未识别"
+              >
+                <Slider
+                  min={0}
+                  max={1}
+                  step={0.05}
+                  marks={{
+                    0: '0%',
+                    0.3: '30%',
+                    0.5: '50%',
+                    0.7: '70%',
+                    1: '100%'
+                  }}
+                  tooltip={{ formatter: (value) => `${Math.round(value * 100)}%` }}
+                />
+              </Form.Item>
+            </div>
+
+            <div style={{ 
+              backgroundColor: '#f0f8ff', 
+              padding: 20, 
+              borderRadius: 12, 
+              marginBottom: 24,
+              border: '1px solid #91d5ff'
+            }}>
+              <Title level={5} style={{ marginBottom: 16, color: '#1890ff' }}>
+                显示选项
+              </Title>
+              
+              <Form.Item
+                name="showAdvanced"
+                valuePropName="checked"
+                label="显示高级信息"
+                help="在测试结果中显示更多技术细节"
+              >
+                <Switch />
+              </Form.Item>
+            </div>
+
+            <div style={{ textAlign: 'right' }}>
+              <Space>
+                <Button onClick={() => setConfigModalVisible(false)}>
+                  取消
+                </Button>
+                <Button type="primary" htmlType="submit">
+                  保存配置
+                </Button>
+              </Space>
+            </div>
+          </Form>
+        </div>
+      </Modal>
+
+      {/* 批量测试配置弹窗 */}
+      <Modal
+        title={
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <SettingOutlined style={{ color: '#1890ff' }} />
+            <span style={{ fontSize: 18, fontWeight: 600 }}>批量测试配置</span>
+          </div>
+        }
+        open={batchModalVisible}
+        onCancel={() => setBatchModalVisible(false)}
+        footer={null}
+        width={800}
+        centered
+      >
+        <div style={{ padding: '20px 0' }}>
+          <Form
+            layout="vertical"
+            onFinish={handleBatchTest}
+          >
+            {/* 测试配置区域 - 简化版 */}
+            <div style={{ 
+              backgroundColor: '#f8f9fa', 
+              padding: 20, 
+              borderRadius: 12, 
+              marginBottom: 24,
+              border: '1px solid #e9ecef'
+            }}>
+              <Title level={5} style={{ marginBottom: 16, color: '#495057' }}>
+                测试配置
+              </Title>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                <Text strong>置信度阈值:</Text>
+                <Slider
+                  min={0}
+                  max={1}
+                  step={0.1}
+                  value={globalConfig.confidenceThreshold}
+                  onChange={(value) => setGlobalConfig(prev => ({ ...prev, confidenceThreshold: value }))}
+                  style={{ width: 200 }}
+                  tooltip={{ formatter: (value) => `${Math.round(value * 100)}%` }}
+                />
+                <Text type="secondary">
+                  {Math.round(globalConfig.confidenceThreshold * 100)}%
+                </Text>
+              </div>
+              <Text type="secondary" style={{ fontSize: 12, marginTop: 8, display: 'block' }}>
+                低于此阈值的意图识别将被视为"未识别"
+              </Text>
+            </div>
+
+            {/* 数据上传区域 */}
+            <div style={{ 
+              backgroundColor: '#f0f8ff', 
+              padding: 20, 
+              borderRadius: 12, 
+              marginBottom: 24,
+              border: '1px solid #91d5ff'
+            }}>
+              <Title level={5} style={{ marginBottom: 16, color: '#1890ff' }}>
+                测试数据上传
+              </Title>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
+                <Upload
+                  accept=".csv,.json,.txt"
+                  beforeUpload={handleFileUpload}
+                  showUploadList={false}
+                >
+                  <Button 
+                    icon={<UploadOutlined />}
+                    size="large"
+                    style={{
+                      height: 60,
+                      width: 200,
+                      borderRadius: 8,
+                      fontSize: 16,
+                      fontWeight: 600,
+                      background: 'linear-gradient(45deg, #40a9ff 0%, #1890ff 100%)',
+                      border: 'none',
+                      color: 'white',
+                      boxShadow: '0 4px 12px rgba(24, 144, 255, 0.3)'
+                    }}
+                  >
+                    选择测试文件
+                  </Button>
+                </Upload>
+                
+                <Dropdown
+                  menu={{
+                    items: [
+                      {
+                        key: 'csv',
+                        label: 'CSV 格式模板',
+                        icon: <FileTextOutlined />,
+                        onClick: () => downloadTemplate('csv')
+                      },
+                      {
+                        key: 'txt',
+                        label: 'TXT 格式模板', 
+                        icon: <FileTextOutlined />,
+                        onClick: () => downloadTemplate('txt')
+                      },
+                      {
+                        key: 'json',
+                        label: 'JSON 格式模板',
+                        icon: <CodeOutlined />,
+                        onClick: () => downloadTemplate('json')
+                      }
+                    ]
+                  }}
+                  placement="bottomLeft"
+                  trigger={['click']}
+                >
+                  <Button 
+                    icon={<DownloadOutlined />}
+                    style={{
+                      height: 48,
+                      borderRadius: 6,
+                      color: '#1890ff',
+                      borderColor: '#1890ff'
+                    }}
+                  >
+                    下载模板 <span style={{ marginLeft: 4, fontSize: 12 }}>▼</span>
+                  </Button>
+                </Dropdown>
+              </div>
+
+              <div>
+                <Text type="secondary" style={{ fontSize: 13, display: 'block', marginBottom: 8 }}>
+                  支持 CSV、TXT 和 JSON 格式。CSV/TXT：每行一个测试文本；JSON：["文本1", "文本2"] 格式
+                </Text>
+                <Text type="secondary" style={{ fontSize: 12, color: '#fa8c16' }}>
+                  💡 提示：如果出现乱码，请将文件保存为 UTF-8 编码格式，或系统会自动尝试编码检测
+                </Text>
+              </div>
+
+              {batchTestData.length > 0 && (
+                <Alert
+                  message={`已成功加载 ${batchTestData.length} 条测试数据`}
+                  type="success"
+                  style={{ marginTop: 16 }}
+                  showIcon
+                />
+              )}
+            </div>
+
+            {/* 操作按钮区域 */}
+            <div style={{ textAlign: 'right', paddingTop: 16 }}>
+              <Space size="large">
+                <Button 
+                  size="large"
+                  onClick={() => setBatchModalVisible(false)}
+                  style={{ 
+                    borderRadius: 8,
+                    padding: '8px 24px',
+                    height: 48
+                  }}
+                >
+                  取消
+                </Button>
+                <Button 
+                  type="primary" 
+                  htmlType="submit"
+                  loading={batchTesting}
+                  disabled={batchTestData.length === 0}
+                  size="large"
+                  style={{ 
+                    borderRadius: 8,
+                    padding: '8px 32px',
+                    height: 48,
+                    fontSize: 16,
+                    fontWeight: 600
+                  }}
+                >
+                  开始批量测试
+                </Button>
+              </Space>
+            </div>
+          </Form>
+        </div>
+      </Modal>
+
+      {/* 原始响应弹框 */}
+      <Modal
+        title={
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <CodeOutlined style={{ color: '#1890ff' }} />
+            <span style={{ fontSize: 16, fontWeight: 600 }}>原始响应数据</span>
+          </div>
+        }
+        open={rawResponseModalVisible}
+        onCancel={() => setRawResponseModalVisible(false)}
+        footer={[
+          <Button 
+            key="close" 
+            onClick={() => setRawResponseModalVisible(false)}
+            style={{ borderRadius: 6 }}
+          >
+            关闭
+          </Button>
+        ]}
+        width={800}
+        centered
+        maskClosable={true}
+      >
+        <div style={{ 
+          maxHeight: 500, 
+          overflow: 'auto',
+          backgroundColor: '#f6f8fa',
+          border: '1px solid #d0d7de',
+          borderRadius: 8,
+          padding: 16
+        }}>
+          <pre style={{ 
+            margin: 0,
+            fontSize: 12,
+            lineHeight: 1.5,
+            color: '#24292f',
+            fontFamily: 'SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace',
+            whiteSpace: 'pre-wrap',
+            wordBreak: 'break-word'
+          }}>
+            {currentRawResponse ? JSON.stringify(currentRawResponse, null, 2) : '暂无数据'}
+          </pre>
+        </div>
+      </Modal>
+
+      {/* 详情弹窗 */}
+      <Modal
+        title={
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <EyeOutlined style={{ color: detailType === 'recognized' ? '#52c41a' : '#ff4d4f' }} />
+            <span style={{ fontSize: 16, fontWeight: 600 }}>
+              {detailType === 'recognized' ? '成功识别详情' : '未识别详情'}
+            </span>
+            <Tag color={detailType === 'recognized' ? 'success' : 'error'}>
+              {detailData.length} 条记录
+            </Tag>
+          </div>
+        }
+        open={detailModalVisible}
+        onCancel={() => setDetailModalVisible(false)}
+        footer={[
+          <Button 
+            key="close" 
+            onClick={() => setDetailModalVisible(false)}
+            style={{ borderRadius: 6 }}
+          >
+            关闭
+          </Button>
+        ]}
+        width={1000}
+        centered
+        maskClosable={true}
+      >
+        <div style={{ maxHeight: 600, overflow: 'hidden' }}>
+          <Table
+            columns={[
+              {
+                title: '序号',
+                key: 'index',
+                width: 60,
+                render: (text, record, index) => index + 1,
+              },
+              {
+                title: '测试文本',
+                dataIndex: 'text',
+                key: 'text',
+                ellipsis: true,
+                width: '35%',
+              },
+              {
+                title: '识别意图',
+                dataIndex: 'predicted_intent',
+                key: 'predicted_intent',
+                width: '25%',
+                render: (text, record) => {
+                  const isRecognized = text && 
+                                       text !== 'nlu_fallback' && 
+                                       text !== 'out_of_scope' &&
+                                       record.confidence >= globalConfig.confidenceThreshold;
+                  
+                  return (
+                    <Tag color={isRecognized ? 'success' : 'error'}>
+                      {isRecognized ? text : '未识别'}
+                    </Tag>
+                  );
+                }
+              },
+              {
+                title: '置信度',
+                dataIndex: 'confidence',
+                key: 'confidence',
+                width: '25%',
+                render: (confidence) => {
+                  const percent = Math.round((confidence || 0) * 100);
+                  return (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <Progress 
+                        percent={percent} 
+                        size="small"
+                        status={confidence >= globalConfig.confidenceThreshold ? 'success' : 'exception'}
+                        style={{ flex: 1 }}
+                      />
+                      <span style={{ 
+                        fontSize: 12, 
+                        color: confidence >= globalConfig.confidenceThreshold ? '#52c41a' : '#ff4d4f',
+                        fontWeight: 500 
+                      }}>
+                        {percent}%
+                      </span>
+                    </div>
+                  );
+                }
+              },
+              {
+                title: '状态',
+                key: 'status',
+                width: '15%',
+                render: (text, record) => {
+                  const isRecognized = record.predicted_intent && 
+                                       record.predicted_intent !== 'nlu_fallback' && 
+                                       record.predicted_intent !== 'out_of_scope' &&
+                                       record.confidence >= globalConfig.confidenceThreshold;
+                  
+                  return (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                      {isRecognized ? (
+                        <CheckCircleOutlined style={{ color: '#52c41a' }} />
+                      ) : (
+                        <CloseCircleOutlined style={{ color: '#ff4d4f' }} />
+                      )}
+                      <span style={{ 
+                        fontSize: 12,
+                        color: isRecognized ? '#52c41a' : '#ff4d4f',
+                        fontWeight: 500
+                      }}>
+                        {isRecognized ? '已识别' : '未识别'}
+                      </span>
+                    </div>
+                  );
+                }
+              }
+            ]}
+            dataSource={detailData}
+            rowKey={(record, index) => index}
+            pagination={{
+              showSizeChanger: true,
+              showQuickJumper: true,
+              showTotal: (total) => `共 ${total} 条记录`,
+              pageSize: 10
+            }}
+            scroll={{ y: 450 }}
+          />
+        </div>
+      </Modal>
+
+      {/* 批量测试loading */}
+      <CustomLoading 
+        visible={batchTesting} 
+        text="正在进行批量测试" 
+        description="正在处理测试数据，请稍候..."
+        size="large"
+      />
+    </div>
+  );
+};
+
+export default Testing;
+

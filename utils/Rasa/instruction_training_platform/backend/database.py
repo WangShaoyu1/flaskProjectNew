@@ -98,6 +98,37 @@ class TrainingTask(Base):
     model_id = Column(Integer, ForeignKey("models.id"))
 
 
+class UploadRecord(Base):
+    """文件上传记录表"""
+    __tablename__ = "upload_records"
+
+    id = Column(Integer, primary_key=True, index=True)
+    filename = Column(String(255), nullable=False)
+    file_type = Column(String(20), nullable=False)  # csv, xlsx, txt, json等
+    file_size = Column(Integer, nullable=False)
+    upload_type = Column(String(50), nullable=False)  # batch-test, training-data
+    status = Column(String(20), nullable=False)  # success, error
+    records_count = Column(Integer, default=0)  # 解析到的记录数
+    error_message = Column(Text)
+    parsed_data = Column(Text)  # JSON格式存储解析后的数据
+    upload_time = Column(DateTime(timezone=True), server_default=func.now())
+
+
+class BatchTestRecord(Base):
+    """批量测试记录表"""
+    __tablename__ = "batch_test_records"
+
+    id = Column(Integer, primary_key=True, index=True)
+    test_name = Column(String(255))  # 测试名称（可选）
+    total_tests = Column(Integer, nullable=False)  # 总测试数
+    recognized_count = Column(Integer, nullable=False)  # 成功识别数量
+    recognition_rate = Column(Float, nullable=False)  # 识别率
+    confidence_threshold = Column(Float, nullable=False)  # 使用的置信度阈值
+    test_data = Column(Text, nullable=False)  # JSON格式存储测试数据
+    test_results = Column(Text, nullable=False)  # JSON格式存储测试结果
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+
+
 # 创建所有表
 def create_tables():
     Base.metadata.create_all(bind=engine)

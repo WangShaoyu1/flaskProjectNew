@@ -53,7 +53,7 @@ python -c "from database import create_tables; create_tables()"
 cd backend
 python app.py
 ```
-访问：http://localhost:8000
+访问：http://localhost:8081
 
 #### 2. 启动 Rasa 服务
 ```bash
@@ -118,7 +118,7 @@ rasa run --debug
 
 ### 后端配置
 - 数据库：SQLite（默认）
-- API 端口：8000
+- API 端口：8081
 - 日志级别：INFO
 
 ### Rasa 配置
@@ -128,7 +128,7 @@ rasa run --debug
 
 ### 前端配置
 - 开发端口：3000
-- API 地址：http://localhost:8000
+- API 地址：http://localhost:8081
 - 构建输出：dist/
 
 ## 性能优化
@@ -175,7 +175,7 @@ if gpus:
 uvicorn.run(
     "app:app",
     host="0.0.0.0",
-    port=8000,
+    port=8081,
     workers=4,
     access_log=False
 )

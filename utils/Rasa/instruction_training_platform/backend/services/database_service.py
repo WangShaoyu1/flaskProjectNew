@@ -180,3 +180,146 @@ class TrainingTaskService:
             return True
         return False
 
+class UploadRecordService:
+    """文件上传记录服务"""
+    
+    @staticmethod
+    def create_record(db: Session, record_data: dict) -> 'UploadRecord':
+        """创建上传记录"""
+        from database import UploadRecord
+        
+        db_record = UploadRecord(**record_data)
+        db.add(db_record)
+        db.commit()
+        db.refresh(db_record)
+        return db_record
+    
+    @staticmethod
+    def get_record(db: Session, record_id: int) -> Optional['UploadRecord']:
+        """根据ID获取上传记录"""
+        from database import UploadRecord
+        
+        return db.query(UploadRecord).filter(UploadRecord.id == record_id).first()
+    
+    @staticmethod
+    def get_records(db: Session, skip: int = 0, limit: int = 20, upload_type: Optional[str] = None) -> List['UploadRecord']:
+        """获取上传记录列表"""
+        from database import UploadRecord
+        
+        query = db.query(UploadRecord)
+        if upload_type:
+            query = query.filter(UploadRecord.upload_type == upload_type)
+        
+        return query.order_by(UploadRecord.upload_time.desc()).offset(skip).limit(limit).all()
+    
+    @staticmethod
+    def get_records_count(db: Session, upload_type: Optional[str] = None) -> int:
+        """获取上传记录总数"""
+        from database import UploadRecord
+        
+        query = db.query(UploadRecord)
+        if upload_type:
+            query = query.filter(UploadRecord.upload_type == upload_type)
+        
+        return query.count()
+    
+    @staticmethod
+    def update_record(db: Session, record_id: int, update_data: dict) -> bool:
+        """更新上传记录"""
+        from database import UploadRecord
+        
+        db_record = db.query(UploadRecord).filter(UploadRecord.id == record_id).first()
+        if not db_record:
+            return False
+        
+        for key, value in update_data.items():
+            if hasattr(db_record, key) and value is not None:
+                setattr(db_record, key, value)
+        
+        db.commit()
+        return True
+    
+    @staticmethod
+    def delete_record(db: Session, record_id: int) -> bool:
+        """删除上传记录"""
+        from database import UploadRecord
+        
+        db_record = db.query(UploadRecord).filter(UploadRecord.id == record_id).first()
+        if not db_record:
+            return False
+        
+        db.delete(db_record)
+        db.commit()
+        return True
+
+class BatchTestRecordService:
+    """批量测试记录服务"""
+    
+    @staticmethod
+    def create_record(db: Session, record_data: dict) -> 'BatchTestRecord':
+        """创建批量测试记录"""
+        from database import BatchTestRecord
+        
+        db_record = BatchTestRecord(**record_data)
+        db.add(db_record)
+        db.commit()
+        db.refresh(db_record)
+        return db_record
+    
+    @staticmethod
+    def get_record(db: Session, record_id: int) -> Optional['BatchTestRecord']:
+        """根据ID获取批量测试记录"""
+        from database import BatchTestRecord
+        
+        return db.query(BatchTestRecord).filter(BatchTestRecord.id == record_id).first()
+    
+    @staticmethod
+    def get_records(db: Session, skip: int = 0, limit: int = 20) -> List['BatchTestRecord']:
+        """获取批量测试记录列表"""
+        from database import BatchTestRecord
+        
+        return db.query(BatchTestRecord).order_by(BatchTestRecord.created_at.desc()).offset(skip).limit(limit).all()
+    
+    @staticmethod
+    def get_records_count(db: Session) -> int:
+        """获取批量测试记录总数"""
+        from database import BatchTestRecord
+        
+        return db.query(BatchTestRecord).count()
+    
+    @staticmethod
+    def get_latest_record(db: Session) -> Optional['BatchTestRecord']:
+        """获取最新的批量测试记录"""
+        from database import BatchTestRecord
+        
+        return db.query(BatchTestRecord).order_by(BatchTestRecord.created_at.desc()).first()
+    
+    @staticmethod
+    def update_record(db: Session, record_id: int, update_data: dict) -> bool:
+        """更新批量测试记录"""
+        from database import BatchTestRecord
+        
+        db_record = db.query(BatchTestRecord).filter(BatchTestRecord.id == record_id).first()
+        if not db_record:
+            return False
+        
+        for key, value in update_data.items():
+            if hasattr(db_record, key) and value is not None:
+                setattr(db_record, key, value)
+        
+        db.commit()
+        return True
+    
+    @staticmethod
+    def delete_record(db: Session, record_id: int) -> bool:
+        """删除批量测试记录"""
+        from database import BatchTestRecord
+        
+        db_record = db.query(BatchTestRecord).filter(BatchTestRecord.id == record_id).first()
+        if not db_record:
+            return False
+        
+        db.delete(db_record)
+        db.commit()
+        return True
+

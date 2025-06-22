@@ -19,6 +19,7 @@ import Testing from './pages/Testing';
 import Training from './pages/Training';
 import Tools from './pages/Tools';
 import Settings from './pages/Settings';
+import BatchTestDetail from './pages/BatchTestDetail';
 
 import { rasaAPI } from './api';
 
@@ -214,6 +215,7 @@ const App = () => {
             <Route path="/intents" element={<IntentManagement />} />
             <Route path="/training" element={<Training />} />
             <Route path="/testing" element={<Testing />} />
+            <Route path="/testing/batch-detail/:recordId" element={<BatchTestDetail />} />
             <Route path="/tools" element={<Tools />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>

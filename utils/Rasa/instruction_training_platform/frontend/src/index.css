@@ -654,3 +654,29 @@ code {
   max-height: none !important;
 }
 
+.ant-table-wrapper .ant-spin-container .ant-spin {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* 隐藏表格滚动条但保持滚动功能 */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.hide-scrollbar .ant-table-body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.hide-scrollbar .ant-table-body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+

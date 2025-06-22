@@ -39,8 +39,335 @@ import { toolsAPI, intentAPI } from '../api';
 import CustomLoading from '../components/CustomLoading';
 
 const { Title, Text, Paragraph } = Typography;
-const { TabPane } = Tabs;
 const { TextArea } = Input;
+
+// 上传记录组件
+const UploadRecordsTab = () => {
+  const [records, setRecords] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [pagination, setPagination] = useState({
+    current: 1,
+    pageSize: 10,
+    total: 0
+  });
+  const [selectedRecord, setSelectedRecord] = useState(null);
+  const [detailModalVisible, setDetailModalVisible] = useState(false);
+  const [uploadTypeFilter, setUploadTypeFilter] = useState(null);
+
+  // 获取上传记录列表
+  const fetchUploadRecords = async (page = 1, pageSize = 10, uploadType = null) => {
+    setLoading(true);
+    try {
+      const params = {
+        skip: (page - 1) * pageSize,
+        limit: pageSize
+      };
+      if (uploadType) {
+        params.upload_type = uploadType;
+      }
+
+      const response = await toolsAPI.getUploadRecords(params);
+      setRecords(response.data.records || []);
+      setPagination({
+        current: page,
+        pageSize: pageSize,
+        total: response.data.total || 0
+      });
+    } catch (error) {
+      message.error('获取上传记录失败');
+      console.error('获取上传记录失败:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 查看记录详情
+  const viewRecordDetail = async (recordId) => {
+    try {
+      const response = await toolsAPI.getUploadRecordDetail(recordId);
+      setSelectedRecord(response.data);
+      setDetailModalVisible(true);
+    } catch (error) {
+      message.error('获取记录详情失败');
+      console.error('获取记录详情失败:', error);
+    }
+  };
+
+  // 删除记录
+  const deleteRecord = async (recordId) => {
+    try {
+      await toolsAPI.deleteUploadRecord(recordId);
+      message.success('记录删除成功');
+      fetchUploadRecords(pagination.current, pagination.pageSize, uploadTypeFilter);
+    } catch (error) {
+      message.error('删除记录失败');
+      console.error('删除记录失败:', error);
+    }
+  };
+
+  // 下载解析数据
+  const downloadRecordData = async (recordId) => {
+    try {
+      const response = await toolsAPI.downloadUploadRecordData(recordId);
+      const { record_info, data } = response.data;
+      
+      // 创建下载链接
+      const fileContent = JSON.stringify(data, null, 2);
+      const fileName = `${record_info.filename}_parsed_data.json`;
+      const dataBlob = new Blob([fileContent], { type: 'application/json' });
+      const url = URL.createObjectURL(dataBlob);
+      
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+      
+      message.success('数据下载成功');
+    } catch (error) {
+      message.error('下载数据失败');
+      console.error('下载数据失败:', error);
+    }
+  };
+
+  // 分页变化处理
+  const handlePaginationChange = (page, pageSize) => {
+    fetchUploadRecords(page, pageSize, uploadTypeFilter);
+  };
+
+  // 类型筛选变化处理
+  const handleTypeFilterChange = (value) => {
+    setUploadTypeFilter(value);
+    fetchUploadRecords(1, pagination.pageSize, value);
+  };
+
+  // 初始化数据
+  useEffect(() => {
+    fetchUploadRecords();
+  }, []);
+
+  // 表格列定义
+  const columns = [
+    {
+      title: 'ID',
+      dataIndex: 'id',
+      key: 'id',
+      width: 80,
+    },
+    {
+      title: '文件名',
+      dataIndex: 'filename',
+      key: 'filename',
+      ellipsis: true,
+    },
+    {
+      title: '文件类型',
+      dataIndex: 'file_type',
+      key: 'file_type',
+      width: 100,
+      render: (type) => (
+        <Tag color={type === 'xlsx' ? 'green' : type === 'csv' ? 'blue' : 'orange'}>
+          {type?.toUpperCase()}
+        </Tag>
+      ),
+    },
+    {
+      title: '上传类型',
+      dataIndex: 'upload_type',
+      key: 'upload_type',
+      width: 120,
+      render: (type) => (
+        <Tag color={type === 'batch-test' ? 'purple' : 'cyan'}>
+          {type === 'batch-test' ? '批量测试' : '训练数据'}
+        </Tag>
+      ),
+    },
+    {
+      title: '文件大小',
+      dataIndex: 'file_size',
+      key: 'file_size',
+      width: 100,
+      render: (size) => {
+        if (size < 1024) return `${size}B`;
+        if (size < 1024 * 1024) return `${(size / 1024).toFixed(1)}KB`;
+        return `${(size / (1024 * 1024)).toFixed(1)}MB`;
+      },
+    },
+    {
+      title: '记录数',
+      dataIndex: 'records_count',
+      key: 'records_count',
+      width: 100,
+    },
+    {
+      title: '状态',
+      dataIndex: 'status',
+      key: 'status',
+      width: 100,
+      render: (status) => (
+        <Tag color={status === 'success' ? 'green' : status === 'error' ? 'red' : 'orange'}>
+          {status === 'success' ? '成功' : status === 'error' ? '失败' : '处理中'}
+        </Tag>
+      ),
+    },
+    {
+      title: '上传时间',
+      dataIndex: 'upload_time',
+      key: 'upload_time',
+      width: 160,
+      render: (time) => new Date(time).toLocaleString(),
+    },
+    {
+      title: '操作',
+      key: 'actions',
+      width: 200,
+      render: (_, record) => (
+        <Space>
+          <Button 
+            type="primary" 
+            size="small"
+            onClick={() => viewRecordDetail(record.id)}
+          >
+            查看详情
+          </Button>
+          {record.parsed_data && (
+            <Button 
+              size="small"
+              onClick={() => downloadRecordData(record.id)}
+            >
+              下载数据
+            </Button>
+          )}
+          <Button 
+            type="primary" 
+            danger 
+            size="small"
+            onClick={() => deleteRecord(record.id)}
+          >
+            删除
+          </Button>
+        </Space>
+      ),
+    },
+  ];
+
+  return (
+    <Card title="文件上传记录">
+      <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div>
+          <Text>筛选类型：</Text>
+          <Select
+            style={{ width: 150, marginLeft: 8 }}
+            placeholder="全部类型"
+            allowClear
+            value={uploadTypeFilter}
+            onChange={handleTypeFilterChange}
+          >
+            <Select.Option value="batch-test">批量测试</Select.Option>
+            <Select.Option value="training-data">训练数据</Select.Option>
+          </Select>
+        </div>
+        <Button 
+          icon={<SwapOutlined />}
+          onClick={() => fetchUploadRecords(pagination.current, pagination.pageSize, uploadTypeFilter)}
+        >
+          刷新
+        </Button>
+      </div>
+
+      <Table
+        columns={columns}
+        dataSource={records}
+        loading={loading}
+        rowKey="id"
+        pagination={{
+          ...pagination,
+          showSizeChanger: true,
+          showQuickJumper: true,
+          showTotal: (total, range) => `第 ${range[0]}-${range[1]} 条，共 ${total} 条`,
+          onChange: handlePaginationChange,
+          onShowSizeChange: handlePaginationChange,
+        }}
+      />
+
+      {/* 详情弹窗 */}
+      <Modal
+        title="上传记录详情"
+        open={detailModalVisible}
+        onCancel={() => setDetailModalVisible(false)}
+        footer={null}
+        width={800}
+      >
+        {selectedRecord && (
+          <div>
+            <div style={{ marginBottom: 24 }}>
+              <Row gutter={16}>
+                <Col span={12}>
+                  <Text strong>文件名：</Text>
+                  <Text>{selectedRecord.record.filename}</Text>
+                </Col>
+                <Col span={12}>
+                  <Text strong>文件类型：</Text>
+                  <Tag color="blue">{selectedRecord.record.file_type?.toUpperCase()}</Tag>
+                </Col>
+              </Row>
+            </div>
+            
+            <div style={{ marginBottom: 24 }}>
+              <Row gutter={16}>
+                <Col span={12}>
+                  <Text strong>上传类型：</Text>
+                  <Tag color={selectedRecord.record.upload_type === 'batch-test' ? 'purple' : 'cyan'}>
+                    {selectedRecord.record.upload_type === 'batch-test' ? '批量测试' : '训练数据'}
+                  </Tag>
+                </Col>
+                <Col span={12}>
+                  <Text strong>状态：</Text>
+                  <Tag color={selectedRecord.record.status === 'success' ? 'green' : 'red'}>
+                    {selectedRecord.record.status === 'success' ? '成功' : '失败'}
+                  </Tag>
+                </Col>
+              </Row>
+            </div>
+
+            <div style={{ marginBottom: 24 }}>
+              <Row gutter={16}>
+                <Col span={12}>
+                  <Text strong>记录数：</Text>
+                  <Text>{selectedRecord.record.records_count}</Text>
+                </Col>
+                <Col span={12}>
+                  <Text strong>上传时间：</Text>
+                  <Text>{new Date(selectedRecord.record.upload_time).toLocaleString()}</Text>
+                </Col>
+              </Row>
+            </div>
+
+            {selectedRecord.record.error_message && (
+              <div style={{ marginBottom: 24 }}>
+                <Text strong>错误信息：</Text>
+                <Alert message={selectedRecord.record.error_message} type="error" />
+              </div>
+            )}
+
+            {selectedRecord.parsed_data_preview && selectedRecord.parsed_data_preview.length > 0 && (
+              <div>
+                <Text strong>解析数据预览（前10条）：</Text>
+                <div style={{ marginTop: 8, maxHeight: 300, overflow: 'auto' }}>
+                  <pre style={{ fontSize: 12, backgroundColor: '#f5f5f5', padding: 12, borderRadius: 4 }}>
+                    {JSON.stringify(selectedRecord.parsed_data_preview, null, 2)}
+                  </pre>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </Modal>
+    </Card>
+  );
+};
 
 const Tools = () => {
   const [uploadLoading, setUploadLoading] = useState(false);
@@ -828,6 +1155,18 @@ book_flight,"预订航班",success,"请告诉我您的出发地和目的地"`}</
             </Space>
           </Card>
         </TabPane>
+
+        <TabPane 
+          tab={
+            <span>
+              <DatabaseOutlined />
+              上传记录
+            </span>
+          } 
+          key="upload-records"
+        >
+          <UploadRecordsTab />
+        </TabPane>
       </Tabs>
 
       {/* 格式转换弹窗 */}
@@ -844,7 +1183,7 @@ book_flight,"预订航班",success,"请告诉我您的出发地和目的地"`}</
         width={1400}
         centered
         style={{ top: 10 }}
-        bodyStyle={{ padding: '24px' }}
+        styles={{ body: { padding: '24px' } }}
       >
         <div style={{ marginBottom: 16 }}>
           <Text type="secondary" style={{ fontSize: 14 }}>
@@ -870,7 +1209,7 @@ book_flight,"预订航班",success,"请告诉我您的出发地和目的地"`}</
                 size="small" 
                 style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 headStyle={{ borderBottom: '2px solid #f0f0f0' }}
-                bodyStyle={{ flex: 1, display: 'flex', flexDirection: 'column' }}
+                styles={{ body: { flex: 1, display: 'flex', flexDirection: 'column' } }}
               >
                 <TextArea
                   placeholder={`请粘贴要转换的数据...
@@ -1010,7 +1349,7 @@ book_flight,"预订航班",success,"请告诉我您的出发地和目的地"`}</
                 size="small" 
                 style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 headStyle={{ borderBottom: '2px solid #f0f0f0' }}
-                bodyStyle={{ flex: 1, display: 'flex', flexDirection: 'column' }}
+                styles={{ body: { flex: 1, display: 'flex', flexDirection: 'column' } }}
               >
                 <TextArea
                   placeholder={`转换结果将显示在这里...
@@ -1065,14 +1404,14 @@ book_flight,"预订航班",success,"请告诉我您的出发地和目的地"`}</
           centered
           maskClosable={false}
         >
-          <div style={{ padding: '20px 0', minHeight: 300 }}>
+          <div style={{ padding: '20px 0', minHeight: 400 }}>
             {statsData.loading ? (
               <div style={{ 
                 display: 'flex', 
                 flexDirection: 'column', 
                 alignItems: 'center', 
                 justifyContent: 'center',
-                height: 300,
+                minHeight: 400, // 与内容区域保持一致
                 gap: 16
               }}>
                 <div style={{
@@ -1241,14 +1580,14 @@ book_flight,"预订航班",success,"请告诉我您的出发地和目的地"`}</
            centered
            maskClosable={false}
          >
-           <div style={{ padding: '20px 0', minHeight: 250 }}>
+           <div style={{ padding: '20px 0', minHeight: 350 }}>
              {cleanResult.loading ? (
                <div style={{ 
                  display: 'flex', 
                  flexDirection: 'column', 
                  alignItems: 'center', 
                  justifyContent: 'center',
-                 height: 250,
+                 minHeight: 350, // 与内容区域保持一致
                  gap: 16
                }}>
                  <div style={{
@@ -1345,14 +1684,14 @@ book_flight,"预订航班",success,"请告诉我您的出发地和目的地"`}</
            centered
            maskClosable={false}
          >
-           <div style={{ padding: '20px 0', minHeight: 350 }}>
+           <div style={{ padding: '20px 0', minHeight: 450 }}>
              {validationResult.loading ? (
                <div style={{ 
                  display: 'flex', 
                  flexDirection: 'column', 
                  alignItems: 'center', 
                  justifyContent: 'center',
-                 height: 350,
+                 minHeight: 450, // 与内容区域保持一致
                  gap: 16
                }}>
                  <div style={{

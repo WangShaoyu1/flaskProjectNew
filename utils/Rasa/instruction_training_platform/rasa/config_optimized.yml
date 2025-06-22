@@ -1,0 +1,127 @@
+# 优化版Rasa配置文件 - 专为提高意图识别准确性设计
+# 针对"我放进去二点是青菜"类问题的优化配置
+
+recipe: default.v1
+language: zh
+
+# NLU Pipeline - 优化版本
+pipeline:
+  # 中文分词 - 使用jieba，优化参数
+  - name: JiebaTokenizer
+    dictionary_path: null
+    intent_tokenization_flag: false
+    intent_split_symbol: "_"
+    token_pattern: null
+
+  # 正则特征提取 - 增强版
+  - name: RegexFeaturizer
+    number_additional_patterns: 10
+    use_lookup_tables: true
+
+  # 词汇句法特征
+  - name: LexicalSyntacticFeaturizer
+
+  # 字符级特征 - 优化参数
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 1
+    max_ngram: 4
+    max_features: 15000
+    min_df: 1
+    max_df: 1.0
+
+  # 词级特征 - 优化参数
+  - name: CountVectorsFeaturizer
+    analyzer: word
+    min_ngram: 1
+    max_ngram: 3
+    max_features: 15000
+    min_df: 1
+    max_df: 1.0
+
+  # DIETClassifier - 强大的深度学习分类器
+  - name: DIETClassifier
+    epochs: 100
+    constrain_similarities: true
+    model_confidence: softmax
+    loss_type: cross_entropy
+    similarity_type: auto
+    eval_every_number_of_epochs: 20
+    tensorboard_log_directory: ./tensorboard
+    tensorboard_log_level: epoch
+    featurizers: []
+    entity_recognition: true
+    intent_classification: true
+    use_masked_language_model: false
+    BILOU_flag: true
+    return_confidences: true
+    split_entities_by_comma: true
+    constrain_similarities: true
+    checkpoint_model: false
+
+  # 实体提取器 - 优化参数
+  - name: CRFEntityExtractor
+    max_iterations: 100
+    L1_c: 0.1
+    L2_c: 0.1
+    features: [
+      ["low", "title", "upper"],
+      ["bias", "low", "prefix5", "prefix2", "suffix5", "suffix3", "suffix2", "upper", "title", "digit", "pattern"],
+      ["low", "title", "upper"]
+    ]
+    BILOU_flag: true
+    return_confidences: true
+
+  # 实体同义词映射
+  - name: EntitySynonymMapper
+
+  # 响应选择器 - 如果有响应数据
+  - name: ResponseSelector
+    epochs: 100
+    constrain_similarities: true
+    retrieval_intent: chitchat
+
+# 对话策略 - 优化配置
+policies:
+  # 记忆化策略
+  - name: MemoizationPolicy
+    max_history: 5
+
+  # 规则策略 - 优化参数
+  - name: RulePolicy
+    core_fallback_threshold: 0.3
+    core_fallback_action_name: "action_default_fallback"
+    enable_fallback_prediction: true
+    restrict_rules: true
+
+  # UnexpecTED Intent Policy - 处理未预期意图
+  - name: UnexpecTEDIntentPolicy
+    max_history: 5
+    epochs: 100
+
+  # TED Policy - 强大的对话策略
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 100
+    constrain_similarities: true
+    model_confidence: softmax
+    loss_type: cross_entropy
+    similarity_type: auto
+    eval_every_number_of_epochs: 20
+    tensorboard_log_directory: ./tensorboard
+    tensorboard_log_level: epoch
+    featurizers: []
+    entity_recognition: true
+    intent_classification: true
+    use_masked_language_model: false
+    BILOU_flag: true
+    return_confidences: true
+    split_entities_by_comma: true
+    checkpoint_model: false
+
+# 性能配置
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+assistant_id: 20250620-optimized 

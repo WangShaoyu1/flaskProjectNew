@@ -37,7 +37,8 @@ import {
   ToolOutlined,
   ArrowRightOutlined,
   MessageOutlined,
-  EyeOutlined
+  EyeOutlined,
+  SearchOutlined
 } from '@ant-design/icons';
 import { intentAPI, rasaAPI, toolsAPI } from '../api';
 import CustomLoading from '../components/CustomLoading';
@@ -71,6 +72,17 @@ const Training = () => {
   // 详情弹窗状态
   const [detailModalVisible, setDetailModalVisible] = useState(false);
   const [detailModalData, setDetailModalData] = useState({ type: '', title: '', data: [], loading: false });
+  const [searchText, setSearchText] = useState('');
+  const [filteredData, setFilteredData] = useState([]);
+  
+  // 添加分页状态管理
+  const [pagination, setPagination] = useState({
+    current: 1,
+    pageSize: 5,
+    showSizeChanger: true,
+    showQuickJumper: true,
+    pageSizeOptions: ['5', '10', '20', '50']
+  });
   
   // 模型详情弹窗状态
   const [modelDetailModalVisible, setModelDetailModalVisible] = useState(false);
@@ -106,7 +118,7 @@ const Training = () => {
 
   const loadDataStats = async () => {
     try {
-      // 并行获取真实的数据统计
+      // 使用与Dashboard完全相同的数据获取逻辑
       const [intentsRes, utterancesRes] = await Promise.allSettled([
         intentAPI.getIntents(),
         intentAPI.getAllUtterances()
@@ -115,12 +127,12 @@ const Training = () => {
       let totalIntents = 0;
       let totalUtterances = 0;
 
-      // 处理意图数据
+      // 处理意图数据 - 与Dashboard保持一致
       if (intentsRes.status === 'fulfilled' && intentsRes.value?.data) {
         totalIntents = intentsRes.value.data.length;
       }
 
-      // 处理相似问数据
+      // 处理相似问数据 - 与Dashboard保持一致  
       if (utterancesRes.status === 'fulfilled' && utterancesRes.value?.data) {
         totalUtterances = utterancesRes.value.data.length;
       }
@@ -133,7 +145,7 @@ const Training = () => {
       });
     } catch (error) {
       console.error('加载数据统计失败:', error);
-      // 发生错误时设置为0，而不是模拟数据
+      // 发生错误时设置为0，与Dashboard保持一致
       setImportedDataStats({
         totalIntents: 0,
         totalUtterances: 0,
@@ -353,12 +365,15 @@ const Training = () => {
     },
   ];
 
-  // 渲染训练步骤
   // 显示详情弹窗
   const showDetailModal = async (type) => {
     // 先显示弹窗，然后在弹窗内加载数据
     setDetailModalData({ type, title: '加载中...', data: [], loading: true });
     setDetailModalVisible(true);
+    
+    // 重置搜索和分页状态
+    setSearchText('');
+    setPagination(prev => ({ ...prev, current: 1 }));
     
     try {
       let data = [];
@@ -399,9 +414,75 @@ const Training = () => {
       }
       
       setDetailModalData({ type, title, data, loading: false });
+      setFilteredData(data); // 初始化过滤数据
     } catch (error) {
       console.error('获取详情数据失败:', error);
       setDetailModalData({ type, title: '加载失败', data: [], loading: false });
+      setFilteredData([]);
+    }
+  };
+
+  // 搜索过滤函数
+  const handleSearch = (value) => {
+    setSearchText(value);
+    
+    // 重置分页到第一页
+    setPagination(prev => ({ ...prev, current: 1 }));
+    
+    if (!value.trim()) {
+      setFilteredData(detailModalData.data);
+      return;
+    }
+
+    const { type, data } = detailModalData;
+    if (type === 'utterances') {
+      // 相似问搜索：搜索意图名称、描述和相似问内容
+      const filtered = data.filter(intentGroup => {
+        // 搜索意图名称和描述
+        const intentMatch = 
+          intentGroup.intent_name.toLowerCase().includes(value.toLowerCase()) ||
+          (intentGroup.intent_description && intentGroup.intent_description.toLowerCase().includes(value.toLowerCase()));
+        
+        // 搜索相似问内容
+        const utteranceMatch = intentGroup.utterances.some(utterance =>
+          utterance.text.toLowerCase().includes(value.toLowerCase())
+        );
+
+        return intentMatch || utteranceMatch;
+      }).map(intentGroup => {
+        // 如果匹配的是相似问内容，则高亮显示匹配的相似问
+        const filteredUtterances = intentGroup.utterances.filter(utterance =>
+          utterance.text.toLowerCase().includes(value.toLowerCase())
+        );
+
+        // 如果意图名称或描述匹配，显示所有相似问；否则只显示匹配的相似问
+        const shouldShowAll = 
+          intentGroup.intent_name.toLowerCase().includes(value.toLowerCase()) ||
+          (intentGroup.intent_description && intentGroup.intent_description.toLowerCase().includes(value.toLowerCase()));
+
+        return {
+          ...intentGroup,
+          utterances: shouldShowAll ? intentGroup.utterances : filteredUtterances
+        };
+      });
+      
+      setFilteredData(filtered);
+    } else if (type === 'intents') {
+      // 意图搜索：搜索意图名称和意图编码
+      const filtered = data.filter(item => {
+        const matchName = item.description?.toLowerCase().includes(value.toLowerCase());
+        const matchCode = item.intent_name?.toLowerCase().includes(value.toLowerCase());
+        return matchName || matchCode;
+      });
+      setFilteredData(filtered);
+    } else {
+      // 其他类型的搜索保持原有逻辑
+      const filtered = data.filter(item => {
+        return Object.values(item).some(val => 
+          val && val.toString().toLowerCase().includes(value.toLowerCase())
+        );
+      });
+      setFilteredData(filtered);
     }
   };
 
@@ -476,31 +557,31 @@ const Training = () => {
                     >
                       <DatabaseOutlined style={{ fontSize: 20 }} />
                       <div>手动输入训练数据</div>
-                    </Button>
+            </Button>
                   </Card>
 
                   {/* 快速开始训练 */}
                   {importedDataStats && (
                     <Card size="small" title="开始训练">
                       <div style={{ textAlign: 'center', padding: '20px 0' }}>
-                        <Button 
-                          type="primary"
+            <Button 
+              type="primary"
                           size="large"
-                          icon={<PlayCircleOutlined />}
-                          onClick={handleStartTraining}
-                          disabled={training}
+              icon={<PlayCircleOutlined />}
+              onClick={handleStartTraining}
+              disabled={training}
                           className="start-training-btn"
                           style={{ height: 50, fontSize: 16 }}
-                        >
+            >
                           开始智能训练
-                        </Button>
+            </Button>
                         <div style={{ marginTop: 8, color: '#666' }}>
                           使用当前数据训练新模型
                         </div>
                       </div>
                     </Card>
                   )}
-                </Space>
+          </Space>
               </Card>
             </TabPane>
 
@@ -514,18 +595,18 @@ const Training = () => {
               key="training"
             >
               <Card title="训练监控">
-                {training && (
-                  <div style={{ marginBottom: 24 }}>
+        {training && (
+          <div style={{ marginBottom: 24 }}>
                     <div style={{ marginBottom: 16 }}>
                       <Text strong>训练进度</Text>
-                      <Progress 
-                        percent={Math.round(trainingProgress)} 
-                        status={training ? 'active' : 'success'}
-                        strokeColor={{
-                          '0%': '#108ee9',
-                          '100%': '#87d068',
-                        }}
-                      />
+            <Progress 
+              percent={Math.round(trainingProgress)} 
+              status={training ? 'active' : 'success'}
+              strokeColor={{
+                '0%': '#108ee9',
+                '100%': '#87d068',
+              }}
+            />
                     </div>
                     
                     <Card 
@@ -533,11 +614,11 @@ const Training = () => {
                       title="训练日志" 
                       style={{ backgroundColor: '#fafafa' }}
                     >
-                      <div style={{ 
+            <div style={{ 
                         height: 200, 
                         overflowY: 'auto', 
-                        fontFamily: 'monospace',
-                        fontSize: 12,
+              fontFamily: 'monospace',
+              fontSize: 12,
                         lineHeight: 1.4,
                         whiteSpace: 'pre-wrap',
                         backgroundColor: '#001529',
@@ -546,10 +627,10 @@ const Training = () => {
                         borderRadius: 4
                       }}>
                         {trainingLog}
-                      </div>
+            </div>
                     </Card>
-                  </div>
-                )}
+          </div>
+        )}
 
                 {!training && !trainingLog && (
                   <div style={{ textAlign: 'center', padding: 40, color: '#999' }}>
@@ -634,8 +715,8 @@ const Training = () => {
                 <div style={{ marginTop: 8, color: '#666', fontSize: 12 }}>
                   训练时间: {activeModel.training_time ? new Date(activeModel.training_time).toLocaleString() : '未知'}
                 </div>
-              </div>
-            </Card>
+        </div>
+      </Card>
           )}
 
           {/* 快速操作 */}
@@ -730,124 +811,197 @@ const Training = () => {
         <Modal
           title={detailModalData.title}
           open={detailModalVisible}
-          onCancel={() => setDetailModalVisible(false)}
+          onCancel={() => {
+            setDetailModalVisible(false);
+            setSearchText('');
+            setFilteredData([]);
+            setPagination(prev => ({ ...prev, current: 1 })); // 重置分页
+          }}
           footer={null}
-          width={800}
+          width={900}
           destroyOnClose
+          style={{ top: 60 }}
+          styles={{ 
+            body: {
+              maxHeight: 'calc(100vh - 200px)', 
+              overflowY: 'auto',
+              padding: '16px 24px'
+            }
+          }}
         >
           {detailModalData.loading ? (
-            <div style={{ textAlign: 'center', padding: '60px 0' }}>
-              <Spin size="large" tip="正在加载详情数据..." />
-            </div>
-          ) : detailModalData.type === 'utterances' ? (
-            // 相似问详情使用卡片式展示（与Dashboard保持一致）
-            <div style={{ maxHeight: 600, overflowY: 'auto' }}>
-              {detailModalData.data.map((intentGroup) => (
-                <Card 
-                  key={intentGroup.intent_id}
-                  size="small" 
-                  style={{ marginBottom: 16 }}
-                  title={
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <div>
-                        <Text strong style={{ color: '#1890ff' }}>
-                          {intentGroup.intent_description || intentGroup.intent_name}
-                        </Text>
-                        <Text type="secondary" style={{ marginLeft: 8, fontSize: 12 }}>
-                          ({intentGroup.intent_name})
-                        </Text>
-                      </div>
-                      <Tag color="blue">
-                        {intentGroup.utterances.length} 条相似问
-                      </Tag>
-                    </div>
-                  }
-                >
-                  <Collapse 
-                    ghost 
-                    size="small"
-                    items={[
-                      {
-                        key: intentGroup.intent_id,
-                        label: (
-                          <Text style={{ color: '#666' }}>
-                            展开查看相似问内容
-                          </Text>
-                        ),
-                        children: (
-                          <div style={{ 
-                            maxHeight: 300, 
-                            overflowY: 'auto',
-                            padding: '8px 0'
-                          }}>
-                            {intentGroup.utterances.map((utterance, idx) => (
-                              <div 
-                                key={utterance.id}
-                                style={{ 
-                                  padding: '6px 12px',
-                                  margin: '4px 0',
-                                  backgroundColor: '#f8f9fa',
-                                  borderRadius: '4px',
-                                  borderLeft: '3px solid #1890ff'
-                                }}
-                              >
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                  <Text style={{ flex: 1 }}>
-                                    {utterance.text}
-                                  </Text>
-                                  <Text type="secondary" style={{ fontSize: 12, marginLeft: 12 }}>
-                                    #{idx + 1}
-                                  </Text>
-                                </div>
-                                {utterance.entities && utterance.entities !== '[]' && utterance.entities !== '' && (
-                                  <div style={{ marginTop: 4 }}>
-                                    <Text type="secondary" style={{ fontSize: 11 }}>
-                                      实体: {utterance.entities}
-                                    </Text>
-                                  </div>
-                                )}
-                              </div>
-                            ))}
-                          </div>
-                        )
-                      }
-                    ]}
-                  />
-                </Card>
-              ))}
-              
-              {detailModalData.data.length === 0 && (
-                <div style={{ textAlign: 'center', padding: '40px 0' }}>
-                  <Text type="secondary">暂无相似问数据</Text>
+            <div style={{ 
+              display: 'flex', 
+              flexDirection: 'column', 
+              alignItems: 'center', 
+              justifyContent: 'center',
+              minHeight: '500px', // 固定最小高度，与内容区域一致
+              padding: '40px 0'
+            }}>
+              <div style={{
+                width: 40,
+                height: 40,
+                border: '3px solid #f3f3f3',
+                borderTop: '3px solid #1890ff',
+                borderRadius: '50%',
+                animation: 'spin 1s linear infinite',
+                marginBottom: 16
+              }} />
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 16, fontWeight: 600, color: '#1890ff', marginBottom: 8 }}>
+                  正在加载详情数据...
                 </div>
-              )}
+                <div style={{ fontSize: 14, color: '#666' }}>
+                  请稍候，正在获取最新数据
+                </div>
+              </div>
             </div>
           ) : (
-            // 意图详情使用表格展示
-            <Table
-              columns={[
-                { 
-                  title: '意图名称', 
-                  dataIndex: 'description', 
-                  key: 'description',
-                  render: (text, record) => text || record.intent_name
-                },
-                { title: '意图编码', dataIndex: 'intent_name', key: 'intent_name' },
-                { 
-                  title: '创建时间', 
-                  dataIndex: 'created_at', 
-                  key: 'created_at',
-                  render: (text) => text ? new Date(text).toLocaleString() : '-'
-                }
-              ]}
-              dataSource={detailModalData.data}
-              rowKey="id"
-              pagination={{
-                showSizeChanger: true,
-                showQuickJumper: true,
-                showTotal: (total) => `共 ${total} 条记录`
-              }}
-            />
+            <>
+              {/* 搜索框 - 相似问和意图详情都显示 */}
+              {(detailModalData.type === 'utterances' || detailModalData.type === 'intents') && (
+                <div style={{ marginBottom: 16 }}>
+                  <Input.Search
+                    placeholder={
+                      detailModalData.type === 'utterances' 
+                        ? "搜索意图名称、描述或相似问内容..."
+                        : "搜索意图名称或编码..."
+                    }
+                    allowClear
+                    enterButton={<SearchOutlined />}
+                    size="large"
+                    value={searchText}
+                    onChange={(e) => handleSearch(e.target.value)}
+                    onSearch={handleSearch}
+                    style={{ width: '100%' }}
+                  />
+                  {searchText && (
+                    <div style={{ marginTop: 8, color: '#666', fontSize: 12 }}>
+                      找到 {filteredData.length} 个匹配的{detailModalData.type === 'utterances' ? '意图组' : '意图'}
+                    </div>
+                  )}
+                </div>
+              )}
+              
+              {/* 内容区域 */}
+              <div>
+                {detailModalData.type === 'utterances' ? (
+                  // 相似问详情使用卡片式展示（与Dashboard保持一致）
+                  <div>
+                    {filteredData.map((intentGroup) => (
+                      <Card 
+                        key={intentGroup.intent_id}
+                        size="small" 
+                        style={{ marginBottom: 16 }}
+                        title={
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div>
+                              <Text strong style={{ color: '#1890ff' }}>
+                                {intentGroup.intent_description || intentGroup.intent_name}
+                              </Text>
+                              <Text type="secondary" style={{ marginLeft: 8, fontSize: 12 }}>
+                                ({intentGroup.intent_name})
+                              </Text>
+                            </div>
+                            <Tag color="blue">
+                              {intentGroup.utterances.length} 条相似问
+                            </Tag>
+                          </div>
+                        }
+                      >
+                        <Collapse 
+                          ghost 
+                          size="small"
+                          items={[
+                            {
+                              key: intentGroup.intent_id,
+                              label: (
+                                <Text style={{ color: '#666' }}>
+                                  展开查看相似问内容
+                                </Text>
+                              ),
+                              children: (
+                                <div style={{ 
+                                  maxHeight: 300, 
+                                  overflowY: 'auto',
+                                  padding: '8px 0'
+                                }}>
+                                  {intentGroup.utterances.map((utterance, idx) => (
+                                    <div 
+                                      key={utterance.id}
+                                      style={{ 
+                                        padding: '6px 12px',
+                                        margin: '4px 0',
+                                        backgroundColor: '#f8f9fa',
+                                        borderRadius: '4px',
+                                        borderLeft: '3px solid #1890ff'
+                                      }}
+                                    >
+                                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <Text style={{ flex: 1 }}>
+                                          {utterance.text}
+                                        </Text>
+                                        <Text type="secondary" style={{ fontSize: 12, marginLeft: 12 }}>
+                                          #{idx + 1}
+                                        </Text>
+                                      </div>
+                                      {utterance.entities && utterance.entities !== '[]' && utterance.entities !== '' && (
+                                        <div style={{ marginTop: 4 }}>
+                                          <Text type="secondary" style={{ fontSize: 11 }}>
+                                            实体: {utterance.entities}
+                                          </Text>
+                                        </div>
+                                      )}
+                                    </div>
+                                  ))}
+                                </div>
+                              )
+                            }
+                          ]}
+                        />
+                      </Card>
+                    ))}
+                    
+                    {filteredData.length === 0 && (
+                      <div style={{ textAlign: 'center', padding: '40px 0' }}>
+                        <Text type="secondary">
+                          {searchText ? '未找到匹配的相似问数据' : '暂无相似问数据'}
+                        </Text>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  // 意图详情使用表格展示 - 与Dashboard保持一致，不设置外层滚动
+                  <Table
+                    columns={[
+                      { title: '意图名称', dataIndex: 'description', key: 'description' },
+                      { title: '意图编码', dataIndex: 'intent_name', key: 'intent_name' },
+                      { title: '描述', dataIndex: 'description', key: 'description', ellipsis: true },
+                      { 
+                        title: '创建时间', 
+                        dataIndex: 'created_at', 
+                        key: 'created_at',
+                        render: (text) => text ? new Date(text).toLocaleString() : '-'
+                      }
+                    ]}
+                    dataSource={filteredData}
+                    rowKey="id"
+                    scroll={undefined} // 移除固定的滚动条设置，让表格根据内容自适应
+                    pagination={{
+                      ...pagination,
+                      total: filteredData.length,
+                      showTotal: (total) => `共 ${total} 条记录`,
+                      onChange: (page, pageSize) => {
+                        setPagination(prev => ({ ...prev, current: page, pageSize }));
+                      },
+                      onShowSizeChange: (current, size) => {
+                        setPagination(prev => ({ ...prev, current: 1, pageSize: size }));
+                      }
+                    }}
+                  />
+                )}
+              </div>
+            </>
           )}
         </Modal>
 
@@ -967,9 +1121,9 @@ const Training = () => {
             description={`训练进度: ${Math.round(trainingProgress)}%`}
             size="large"
           />
-        </div>
-      );
-    };
-    
-    export default Training;
+    </div>
+  );
+};
+
+export default Training;
 

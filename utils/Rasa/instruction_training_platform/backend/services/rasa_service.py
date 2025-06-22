@@ -334,51 +334,51 @@ class RasaService:
             raise Exception(f"训练模型失败: {e}")
     
     def batch_test(self, test_data: List[Dict[str, str]], 
-                   model_version: str = None) -> BatchTestResponse:
+                   confidence_threshold: float = 0.8) -> BatchTestResponse:
         """
-        批量测试模型性能
+        批量测试模型性能 - 简化版，只测试意图识别能力
         
         Args:
-            test_data: 测试数据列表 [{"text": "...", "expected_intent": "..."}]
-            model_version: 模型版本 (可选)
+            test_data: 测试数据列表 [{"text": "..."}]
+            confidence_threshold: 置信度阈值
             
         Returns:
             BatchTestResponse: 测试结果
         """
         try:
             results = []
-            correct_count = 0
             
             for test_item in test_data:
-                text = test_item.get("text", "")
-                expected_intent = test_item.get("expected_intent", "")
+                text = test_item.get("text", "").strip()
+                if not text:
+                    continue
+                
+                # 记录单个测试的开始时间
+                start_time = time.time()
                 
                 # 预测意图
                 prediction = self.predict_intent(text)
                 predicted_intent = prediction.intent
                 confidence = prediction.confidence
+                entities = prediction.entities
                 
-                # 判断是否正确
-                is_correct = predicted_intent == expected_intent
-                if is_correct:
-                    correct_count += 1
+                # 计算响应时间（毫秒）
+                end_time = time.time()
+                response_time = round((end_time - start_time) * 1000, 2)
                 
+                # 记录结果
                 results.append(TestResult(
                     text=text,
-                    expected_intent=expected_intent,
                     predicted_intent=predicted_intent,
                     confidence=confidence,
-                    is_correct=is_correct
+                    response_time=response_time,
+                    entities=entities
                 ))
             
-            # 计算准确率
-            total_tests = len(test_data)
-            accuracy = correct_count / total_tests if total_tests > 0 else 0.0
+            total_tests = len(results)
             
             return BatchTestResponse(
                 total_tests=total_tests,
-                correct_predictions=correct_count,
-                accuracy=accuracy,
                 results=results
             )
             

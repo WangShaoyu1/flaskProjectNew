@@ -1,86 +1,47 @@
-# 高性能Rasa配置文件 - 针对GPU加速和快速推理优化
-# 专为中文智能家居指令系统设计，支持GPU加速
-
 recipe: default.v1
 language: zh
-
-# NLU Pipeline - 高性能版本，启用GPU加速
 pipeline:
-  # 中文分词 - 使用jieba优化版
-  - name: JiebaTokenizer
-    dictionary_path: null
-    intent_tokenization_flag: false
-    intent_split_symbol: "_"
-
-  # 正则特征提取 - 快速匹配
-  - name: RegexFeaturizer
-
-  # 词汇句法特征 - 轻量级
-  - name: LexicalSyntacticFeaturizer
-
-  # 字符级特征 - 优化参数
-  - name: CountVectorsFeaturizer
-    analyzer: char_wb
-    min_ngram: 1
-    max_ngram: 3  # 减少ngram范围提升速度
-    max_features: 5000  # 限制特征数量
-
-  # 词级特征 - 优化参数  
-  - name: CountVectorsFeaturizer
-    analyzer: word
-    min_ngram: 1
-    max_ngram: 2
-    max_features: 3000  # 限制特征数量
-
-  # 核心分类器 - GPU加速配置
-  - name: DIETClassifier
-    # 模型结构优化
-    transformer_size: 64        # 进一步减小模型大小，提升速度
-    number_of_transformer_layers: 1  # 单层transformer，最快推理
-    number_of_attention_heads: 2     # 减少注意力头
-    
-    # 训练优化
-    epochs: 50                  # 减少训练轮数
-    batch_size: 128            # 增大批次大小，利用GPU并行
-    
-    # 功能配置
-    entity_recognition: true
-    intent_classification: true
-    use_masked_language_model: false  # 关闭MLM提升速度
-    
-    # 性能优化
-    evaluate_every_number_of_epochs: 10
-    tensorboard_log_directory: "./tensorboard"
-    
-    # GPU配置 - 如果有CUDA支持
-    # CUDA_VISIBLE_DEVICES: "0"
-    # use_gpu: true
-    
-    # 推理优化
-    ranking_length: 10          # 限制候选数量
-    loss_type: "cross_entropy"  # 使用更快的损失函数
-    similarity_type: "inner"    # 使用更快的相似度计算
-    
-    # 正则化 - 防止过拟合
-    drop_rate: 0.2
-    weight_sparsity: 0.8
-
-  # 实体同义词映射
-  - name: EntitySynonymMapper
-
-# 对话策略 - 最简化配置，专注速度
+- name: JiebaTokenizer
+- name: RegexFeaturizer
+- name: LexicalSyntacticFeaturizer
+- name: CountVectorsFeaturizer
+  analyzer: char_wb
+  min_ngram: 1
+  max_ngram: 4
+- name: CountVectorsFeaturizer
+  analyzer: word
+  min_ngram: 1
+  max_ngram: 2
+- name: DIETClassifier
+  epochs: 200
+  entity_recognition: true
+  intent_classification: true
+  use_masked_language_model: true
+  transformer_size: 256
+  number_of_transformer_layers: 2
+  number_of_attention_heads: 4
+  batch_size: 64
+  evaluate_every_number_of_epochs: 20
+  evaluate_on_number_of_examples: 0
+  tensorboard_log_directory: ./tensorboard
+  tensorboard_log_level: epoch
+- name: EntitySynonymMapper
+- name: ResponseSelector
+  epochs: 100
+  retrieval_intent: null
 policies:
-  # 规则策略 - 主要且唯一策略
-  - name: RulePolicy
-    core_fallback_threshold: 0.3    # 降低阈值，提升识别率
-    core_fallback_action_name: "action_default_fallback"
-    enable_fallback_prediction: true
-    restrict_rules: false
-    check_for_contradictions: false  # 关闭矛盾检查提升速度
-
-# 性能配置
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
-
-assistant_id: 20250619-112940-relaxed-zinc
+- name: RulePolicy
+  core_fallback_threshold: 0.3
+  core_fallback_action_name: action_default_fallback
+  enable_fallback_prediction: true
+- name: UnexpecTEDIntentPolicy
+  max_history: 5
+  epochs: 100
+  batch_size: 32
+- name: TEDPolicy
+  max_history: 5
+  epochs: 100
+  batch_size: 32
+  evaluate_every_number_of_epochs: 20
+  evaluate_on_number_of_examples: 0
+assistant_id: 20250621-002323-eager-recipe
