@@ -40,6 +40,7 @@ import CustomLoading from '../components/CustomLoading';
 
 const { Title, Text, Paragraph } = Typography;
 const { TextArea } = Input;
+const { TabPane } = Tabs;
 
 // 上传记录组件
 const UploadRecordsTab = () => {

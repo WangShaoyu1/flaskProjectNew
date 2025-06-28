@@ -129,6 +129,10 @@ class ModelService:
         return db.query(Model).filter(Model.is_active == True).first()
     
     @staticmethod
+    def get_model(db: Session, model_id: int) -> Optional[Model]:
+        return db.query(Model).filter(Model.id == model_id).first()
+    
+    @staticmethod
     def create_model(db: Session, model: ModelCreate) -> Model:
         db_model = Model(**model.dict())
         db.add(db_model)
@@ -148,6 +152,57 @@ class ModelService:
             db.commit()
             return True
         return False
+    
+    @staticmethod
+    def delete_model(db: Session, model_id: int) -> bool:
+        """
+        删除模型 - 同时删除数据库记录和文件系统中的模型文件
+        
+        Args:
+            db: 数据库会话
+            model_id: 模型ID
+            
+        Returns:
+            bool: 删除是否成功
+        """
+        import os
+        import logging
+        
+        logger = logging.getLogger(__name__)
+        
+        # 获取模型记录
+        db_model = db.query(Model).filter(Model.id == model_id).first()
+        if not db_model:
+            return False
+        
+        # 检查是否为激活模型
+        if db_model.is_active:
+            logger.warning(f"尝试删除激活模型: {db_model.version}")
+            return False
+        
+        # 记录模型信息用于日志
+        model_version = db_model.version
+        model_file_path = db_model.file_path
+        
+        try:
+            # 删除文件系统中的模型文件
+            if model_file_path and os.path.exists(model_file_path):
+                os.remove(model_file_path)
+                logger.info(f"已删除模型文件: {model_file_path}")
+            else:
+                logger.warning(f"模型文件不存在或路径为空: {model_file_path}")
+            
+            # 删除数据库记录
+            db.delete(db_model)
+            db.commit()
+            
+            logger.info(f"成功删除模型: {model_version} (ID: {model_id})")
+            return True
+            
+        except Exception as e:
+            logger.error(f"删除模型失败: {model_version} (ID: {model_id}), 错误: {e}")
+            db.rollback()
+            return False
 
 class TrainingTaskService:
     """训练任务管理服务"""

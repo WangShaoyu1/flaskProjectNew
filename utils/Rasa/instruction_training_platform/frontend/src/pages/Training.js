@@ -285,6 +285,50 @@ const Training = () => {
     }
   };
 
+  const handleDeleteModel = (model) => {
+    Modal.confirm({
+      title: '确认删除模型',
+      content: (
+        <div>
+          <p>您确定要删除以下模型吗？</p>
+          <div style={{ 
+            padding: '12px', 
+            backgroundColor: '#f5f5f5', 
+            borderRadius: '4px', 
+            margin: '12px 0' 
+          }}>
+            <div><Text strong>模型版本：</Text>{model.version}</div>
+            <div><Text strong>训练时间：</Text>{model.training_time ? new Date(model.training_time).toLocaleString() : '未知'}</div>
+            <div><Text strong>状态：</Text>{getStatusText(model.status)}</div>
+          </div>
+          <div style={{ color: '#ff4d4f', fontSize: '14px' }}>
+            <ExclamationCircleOutlined style={{ marginRight: '4px' }} />
+            此操作不可撤销，模型文件将被永久删除！
+          </div>
+        </div>
+      ),
+      icon: <ExclamationCircleOutlined style={{ color: '#ff4d4f' }} />,
+      okText: '确认删除',
+      okType: 'danger',
+      cancelText: '取消',
+      onOk: async () => {
+        try {
+          await toolsAPI.deleteModel(model.id);
+          message.success(`模型 ${model.version} 删除成功`);
+          loadModels();
+          // 如果删除的是激活模型，重新加载激活模型信息
+          if (model.is_active) {
+            loadActiveModel();
+          }
+        } catch (error) {
+          console.error('删除模型失败:', error);
+          const errorMsg = error.response?.data?.detail || '删除模型失败';
+          message.error(errorMsg);
+        }
+      }
+    });
+  };
+
   // 显示模型详情
   const showModelDetail = (model) => {
     setSelectedModel(model);
@@ -360,6 +404,15 @@ const Training = () => {
             </Button>
           )}
           <Button type="link" onClick={() => showModelDetail(record)}>详情</Button>
+          {!record.is_active && (
+            <Button 
+              type="link" 
+              danger
+              onClick={() => handleDeleteModel(record)}
+            >
+              删除
+            </Button>
+          )}
         </Space>
       ),
     },

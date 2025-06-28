@@ -246,8 +246,8 @@ def excel_to_json_enhanced(command_file, slot_file, output_file):
     return result
 
 if __name__ == "__main__":
-    command_file = "command_403_1750175580.xlsx"
-    slot_file = "slot_403_1750302057.xlsx"
+    command_file = "403/command_403_1750175580.xlsx"
+slot_file = "403/slot_403_1750302057.xlsx"
     output_file = "intents_enhanced.json"
     
     try:

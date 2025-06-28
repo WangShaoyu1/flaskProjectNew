@@ -350,6 +350,12 @@ const IntentManagement = () => {
 
         <Divider />
 
+        <div style={{ marginBottom: 16 }}>
+          <Title level={5} style={{ margin: 0, color: '#666' }}>
+            相似指令（{utterances.length}个）
+          </Title>
+        </div>
+
         <List
           dataSource={utterances}
           renderItem={(item, index) => (
@@ -378,10 +384,9 @@ const IntentManagement = () => {
                 </Popconfirm>
               ]}
             >
-              <List.Item.Meta
-                title={`相似问 ${index + 1}`}
-                description={item.text}
-              />
+              <div style={{ width: '100%', padding: '8px 0' }}>
+                <Text>{item.text}</Text>
+              </div>
             </List.Item>
           )}
           locale={{ emptyText: '暂无相似问，请添加' }}

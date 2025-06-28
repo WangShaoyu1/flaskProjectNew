@@ -150,6 +150,9 @@ export const toolsAPI = {
   // 激活模型
   activateModel: (modelId) => api.post(`/api/tools/models/${modelId}/activate`),
   
+  // 删除模型
+  deleteModel: (modelId) => api.delete(`/api/tools/models/${modelId}`),
+  
   // 获取训练任务状态
   getTrainingTask: (taskId) => api.get(`/api/tools/training-tasks/${taskId}`),
   

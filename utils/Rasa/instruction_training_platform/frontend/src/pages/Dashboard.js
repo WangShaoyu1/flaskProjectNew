@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Row, Col, Statistic, Progress, List, Typography, Spin, Alert, Modal, Table, Tag, Collapse, Input } from 'antd';
+import { Card, Row, Col, Statistic, Progress, List, Typography, Spin, Alert, Modal, Table, Tag, Collapse, Input, Button, Space, message } from 'antd';
 import { 
   BulbOutlined, 
   RobotOutlined, 
@@ -8,7 +8,8 @@ import {
   TrophyOutlined,
   ApiOutlined,
   EyeOutlined,
-  SearchOutlined
+  SearchOutlined,
+  ExclamationCircleOutlined
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { intentAPI, toolsAPI, rasaAPI } from '../api';
@@ -251,6 +252,59 @@ const Dashboard = () => {
         </Row>
       </Card>
     );
+  };
+
+  // 激活模型
+  const handleActivateModel = async (modelId) => {
+    try {
+      await toolsAPI.activateModel(modelId);
+      message.success('模型激活成功');
+      loadDashboardData(); // 重新加载数据
+    } catch (error) {
+      message.error('模型激活失败');
+      console.error('激活模型失败:', error);
+    }
+  };
+
+  // 删除模型
+  const handleDeleteModel = (model) => {
+    Modal.confirm({
+      title: '确认删除模型',
+      content: (
+        <div>
+          <p>您确定要删除以下模型吗？</p>
+          <div style={{ 
+            padding: '12px', 
+            backgroundColor: '#f5f5f5', 
+            borderRadius: '4px', 
+            margin: '12px 0' 
+          }}>
+            <div><Text strong>模型版本：</Text>{model.version}</div>
+            <div><Text strong>训练时间：</Text>{model.training_time ? new Date(model.training_time).toLocaleString() : '未知'}</div>
+            <div><Text strong>状态：</Text>{model.status === 'success' ? '成功' : model.status === 'training' ? '训练中' : '失败'}</div>
+          </div>
+          <div style={{ color: '#ff4d4f', fontSize: '14px' }}>
+            <ExclamationCircleOutlined style={{ marginRight: '4px' }} />
+            此操作不可撤销，模型文件将被永久删除！
+          </div>
+        </div>
+      ),
+      icon: <ExclamationCircleOutlined style={{ color: '#ff4d4f' }} />,
+      okText: '确认删除',
+      okType: 'danger',
+      cancelText: '取消',
+      onOk: async () => {
+        try {
+          await toolsAPI.deleteModel(model.id);
+          message.success(`模型 ${model.version} 删除成功`);
+          loadDashboardData(); // 重新加载数据
+        } catch (error) {
+          console.error('删除模型失败:', error);
+          const errorMsg = error.response?.data?.detail || '删除模型失败';
+          message.error(errorMsg);
+        }
+      }
+    });
   };
 
   // 显示详情弹窗
@@ -522,6 +576,33 @@ const Dashboard = () => {
             dataIndex: 'training_time', 
             key: 'training_time',
             render: (text) => text ? new Date(text).toLocaleString() : '-'
+          },
+          {
+            title: '操作',
+            key: 'actions',
+            render: (_, record) => (
+              <Space>
+                {!record.is_active && record.status === 'success' && (
+                  <Button 
+                    type="link" 
+                    size="small"
+                    onClick={() => handleActivateModel(record.id)}
+                  >
+                    激活
+                  </Button>
+                )}
+                {!record.is_active && (
+                  <Button 
+                    type="link" 
+                    size="small"
+                    danger
+                    onClick={() => handleDeleteModel(record)}
+                  >
+                    删除
+                  </Button>
+                )}
+              </Space>
+            ),
           }
         ];
         break;

@@ -63,7 +63,7 @@ def excel_to_json(input_file, output_file):
 
 
 if __name__ == "__main__":
-    input_excel = "./command_403_1750175580.xlsx"  # 修改为您的Excel文件名
+    input_excel = "./403/command_403_1750175580.xlsx"  # 修改为您的Excel文件名
     output_json = "intents.json"  # 输出JSON文件名
 
     excel_to_json(input_excel, output_json)

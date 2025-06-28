@@ -14,7 +14,7 @@ from itertools import cycle
 
 def load_slot_mapping():
     """加载槽位映射数据"""
-    slot_file = "slot_403_1750302057.xlsx"
+    slot_file = "403/slot_403_1750302057.xlsx"
     
     try:
         df = pd.read_excel(slot_file, engine='openpyxl')
@@ -343,3 +343,4 @@ if __name__ == "__main__":
     
     # 生成修复后的Rasa训练文件
     generate_fixed_rasa_data()
+ 

@@ -481,6 +481,49 @@ async def activate_model(model_id: int, db: Session = Depends(get_db)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@router.delete("/models/{model_id}")
+async def delete_model(model_id: int, db: Session = Depends(get_db)):
+    """
+    删除指定模型
+    
+    Args:
+        model_id: 模型ID
+        
+    Returns:
+        Dict: 操作结果
+    """
+    try:
+        # 检查模型是否存在
+        model = ModelService.get_model(db, model_id)
+        if not model:
+            raise HTTPException(status_code=404, detail="模型不存在")
+        
+        # 检查是否为激活模型
+        if model.is_active:
+            raise HTTPException(
+                status_code=400, 
+                detail="无法删除激活模型，请先激活其他模型"
+            )
+        
+        # 执行删除
+        success = ModelService.delete_model(db, model_id)
+        if not success:
+            raise HTTPException(
+                status_code=500, 
+                detail="删除模型失败，请检查日志获取详细信息"
+            )
+        
+        return {
+            "message": "模型删除成功",
+            "model_id": model_id,
+            "model_version": model.version
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"删除模型时发生错误: {str(e)}")
+
 @router.get("/training-tasks/{task_id}", response_model=TrainingTask)
 async def get_training_task(task_id: str, db: Session = Depends(get_db)):
     """

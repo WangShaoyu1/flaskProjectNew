@@ -322,7 +322,7 @@ const Testing = () => {
         message.warning('文件上传成功，但未找到有效的测试数据');
       }
       
-    } catch (error) {
+      } catch (error) {
       message.destroy(); // 关闭loading
       console.error('文件上传失败:', error);
       
@@ -498,13 +498,13 @@ const Testing = () => {
                   {content.intent}
                 </Tag>
                 {content.isRecognized && (
-                  <span style={{ 
-                    color: '#666', 
-                    fontSize: 11, 
-                    marginLeft: 4 
-                  }}>
-                    {Math.round(content.confidence * 100)}%
-                  </span>
+                <span style={{ 
+                  color: '#666', 
+                  fontSize: 11, 
+                  marginLeft: 4 
+                }}>
+                  {Math.round(content.confidence * 100)}%
+                </span>
                 )}
               </div>
 
@@ -672,9 +672,9 @@ const Testing = () => {
           return (
             <Tag color="error" style={{ fontWeight: 600 }}>
               {failedCount} 条
-            </Tag>
+          </Tag>
           );
-        }
+      }
       },
       {
         title: '识别率',
@@ -747,7 +747,7 @@ const Testing = () => {
               <BarChartOutlined style={{ color: '#1890ff' }} />
               <span>批量测试历史记录</span>
               <Tag color="blue">{batchHistoryTotal} 条记录</Tag>
-            </div>
+                </div>
           }
           extra={
             <div 
@@ -782,7 +782,7 @@ const Testing = () => {
                   filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))'
                 }} 
               />
-            </div>
+              </div>
           }
           style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
           styles={{ body: { flex: 1, padding: '16px 24px' } }}
@@ -801,7 +801,7 @@ const Testing = () => {
               <BarChartOutlined style={{ fontSize: 64, marginBottom: 24, color: '#d9d9d9' }} />
               <div style={{ fontSize: 18, marginBottom: 12, color: '#666' }}>
                 暂无批量测试记录
-              </div>
+                </div>
               <div style={{ fontSize: 14, color: '#999', marginBottom: 24 }}>
                 点击"开始新测试"按钮进行首次批量测试
               </div>
@@ -833,20 +833,20 @@ const Testing = () => {
               >
                 <PlusCircleOutlined style={{ fontSize: '18px' }} />
                 开始新测试
+                </div>
               </div>
-            </div>
           ) : (
-            <Table
+        <Table
               columns={columns}
               dataSource={batchHistoryList}
               rowKey="id"
               loading={batchHistoryLoading}
-              pagination={{
+          pagination={{
                 current: batchHistoryPagination.current,
                 pageSize: batchHistoryPagination.pageSize,
                 total: batchHistoryTotal,
-                showSizeChanger: true,
-                showQuickJumper: true,
+            showSizeChanger: true,
+            showQuickJumper: true,
                 showTotal: (total) => `共 ${total} 条记录`,
                 onChange: (page, pageSize) => {
                   loadBatchTestHistory(page, pageSize);
@@ -858,11 +858,11 @@ const Testing = () => {
               scroll={{ 
                 y: 'calc(100vh - 400px)',
                 scrollToFirstRowOnChange: true 
-              }}
+          }}
               className="hide-scrollbar"
-            />
+        />
           )}
-        </Card>
+      </Card>
       </div>
     );
   };
@@ -916,10 +916,10 @@ const Testing = () => {
           {
             key: 'single',
             label: (
-              <span>
-                <ApiOutlined />
-                单条测试
-              </span>
+            <span>
+              <ApiOutlined />
+              单条测试
+            </span>
             ),
             children: (
           <Row gutter={24} style={{ height: 'calc(100vh - 200px)' }}>
@@ -982,9 +982,9 @@ const Testing = () => {
                 title="原始响应" 
                 style={{ height: '100%' }}
                 extra={
-                  <Text type="secondary" style={{ fontSize: 12 }}>
+                    <Text type="secondary" style={{ fontSize: 12 }}>
                     最新测试结果
-                  </Text>
+                    </Text>
                 }
               >
                 {latestRawResponse ? (
@@ -1015,16 +1015,16 @@ const Testing = () => {
                     
                     <Collapse size="small" defaultActiveKey={[]}>
                       <Panel header="完整原始响应" key="full">
-                        <pre style={{ 
-                          fontSize: 11,
-                          backgroundColor: '#fafafa',
-                          padding: 12,
-                          borderRadius: 4,
+                          <pre style={{ 
+                            fontSize: 11,
+                            backgroundColor: '#fafafa',
+                            padding: 12,
+                            borderRadius: 4,
                           maxHeight: 400,
-                          overflow: 'auto'
-                        }}>
-                          {JSON.stringify(latestRawResponse, null, 2)}
-                        </pre>
+                            overflow: 'auto'
+                          }}>
+                            {JSON.stringify(latestRawResponse, null, 2)}
+                          </pre>
                       </Panel>
                     </Collapse>
                   </div>
@@ -1046,15 +1046,15 @@ const Testing = () => {
           {
             key: 'batch',
             label: (
-              <span>
-                <BarChartOutlined />
-                批量测试
-              </span>
+            <span>
+              <BarChartOutlined />
+              批量测试
+            </span>
             ),
             children: (
               <div style={{ height: 'calc(100vh - 280px)' }}>
                 {renderBatchTestHistory()}
-              </div>
+            </div>
             )
           }
         ]}
