@@ -1,8 +1,1 @@
-.idea/*
-*.pyc
-__pycache__
-.env
-**/node_modules/**
-/utils/Rasa/instruction_training_platform/backend/venv/**
-**/.rasa/
-**/.idea/
+.idea/**.pyc__pycache__.env**/node_modules/**/utils/Rasa/instruction_training_platform/backend/venv/****/.rasa/**/.idea/google_credentials.json
