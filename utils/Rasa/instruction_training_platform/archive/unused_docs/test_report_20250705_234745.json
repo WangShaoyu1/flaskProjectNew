@@ -1,0 +1,89 @@
+{
+  "summary": {
+    "total_tests": 11,
+    "passed_tests": 5,
+    "failed_tests": 6,
+    "pass_rate": 45.45454545454545
+  },
+  "test_results": [
+    {
+      "test_name": "基础健康检查",
+      "success": false,
+      "message": "连接失败: HTTPConnectionPool(host='localhost', port=8001): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002257BDCEC80>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))",
+      "timestamp": "2025-07-05T23:47:24.939873",
+      "details": null
+    },
+    {
+      "test_name": "指令库管理测试",
+      "success": false,
+      "message": "错误: HTTPConnectionPool(host='localhost', port=8001): Max retries exceeded with url: /api/v2/libraries/list (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002257BDCF760>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))",
+      "timestamp": "2025-07-05T23:47:29.009663",
+      "details": null
+    },
+    {
+      "test_name": "检查Excel测试文件",
+      "success": true,
+      "message": "测试文件存在",
+      "timestamp": "2025-07-05T23:47:29.010658",
+      "details": null
+    },
+    {
+      "test_name": "Excel文件处理测试",
+      "success": false,
+      "message": "错误: HTTPConnectionPool(host='localhost', port=8001): Max retries exceeded with url: /api/v2/library-version/create-from-excel (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002257BE28160>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))",
+      "timestamp": "2025-07-05T23:47:33.096488",
+      "details": null
+    },
+    {
+      "test_name": "版本管理测试",
+      "success": false,
+      "message": "错误: HTTPConnectionPool(host='localhost', port=8001): Max retries exceeded with url: /api/v2/library-version/list/None (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002257BE28A30>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))",
+      "timestamp": "2025-07-05T23:47:37.188061",
+      "details": null
+    },
+    {
+      "test_name": "版本激活测试",
+      "success": false,
+      "message": "错误: HTTPConnectionPool(host='localhost', port=8001): Max retries exceeded with url: /api/v2/library-version/activate/None/None (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002257BDCF970>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))",
+      "timestamp": "2025-07-05T23:47:41.268644",
+      "details": null
+    },
+    {
+      "test_name": "API完整性测试",
+      "success": false,
+      "message": "错误: HTTPConnectionPool(host='localhost', port=8001): Max retries exceeded with url: /api/v2/library-version/index (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002257BDCEF50>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))",
+      "timestamp": "2025-07-05T23:47:45.354753",
+      "details": null
+    },
+    {
+      "test_name": "domain配置内容验证",
+      "success": true,
+      "message": "包含必要字段: True",
+      "timestamp": "2025-07-05T23:47:45.356756",
+      "details": null
+    },
+    {
+      "test_name": "NLU训练数据内容验证",
+      "success": true,
+      "message": "包含NLU数据: True",
+      "timestamp": "2025-07-05T23:47:45.356756",
+      "details": null
+    },
+    {
+      "test_name": "对话规则内容验证",
+      "success": true,
+      "message": "文件大小: 244 字符",
+      "timestamp": "2025-07-05T23:47:45.357750",
+      "details": null
+    },
+    {
+      "test_name": "对话故事内容验证",
+      "success": true,
+      "message": "文件大小: 704 字符",
+      "timestamp": "2025-07-05T23:47:45.357750",
+      "details": null
+    }
+  ],
+  "library_id": null,
+  "version_name": null
+}

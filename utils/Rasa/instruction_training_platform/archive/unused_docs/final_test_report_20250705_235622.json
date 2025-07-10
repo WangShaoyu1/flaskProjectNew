@@ -1,0 +1,141 @@
+{
+  "summary": {
+    "total_tests": 17,
+    "passed_tests": 17,
+    "failed_tests": 0,
+    "pass_rate": 100.0
+  },
+  "test_results": [
+    {
+      "test_name": "服务根路径",
+      "success": true,
+      "message": "系统状态: 运行中",
+      "timestamp": "2025-07-05T23:55:41.196303",
+      "details": null
+    },
+    {
+      "test_name": "健康检查",
+      "success": true,
+      "message": "健康状态: healthy",
+      "timestamp": "2025-07-05T23:55:43.243658",
+      "details": null
+    },
+    {
+      "test_name": "版本信息",
+      "success": true,
+      "message": "API版本: 2.0.0",
+      "timestamp": "2025-07-05T23:55:45.282550",
+      "details": null
+    },
+    {
+      "test_name": "获取指令库列表",
+      "success": true,
+      "message": "现有指令库: 2 个",
+      "timestamp": "2025-07-05T23:55:48.418147",
+      "details": null
+    },
+    {
+      "test_name": "使用现有指令库",
+      "success": true,
+      "message": "指令库ID: 1",
+      "timestamp": "2025-07-05T23:55:48.418147",
+      "details": null
+    },
+    {
+      "test_name": "检查Excel测试文件",
+      "success": true,
+      "message": "测试文件存在",
+      "timestamp": "2025-07-05T23:55:49.422721",
+      "details": null
+    },
+    {
+      "test_name": "双屏数据导入",
+      "success": true,
+      "message": "success",
+      "timestamp": "2025-07-05T23:56:03.292248",
+      "details": null
+    },
+    {
+      "test_name": "数据导入统计",
+      "success": true,
+      "message": "统计信息可用",
+      "timestamp": "2025-07-05T23:56:03.292248",
+      "details": {
+        "code": "000000",
+        "msg": "success",
+        "data": {
+          "instructions_imported": 0,
+          "similar_questions_imported": 86,
+          "slots_imported": 0,
+          "slot_values_imported": 836
+        }
+      }
+    },
+    {
+      "test_name": "创建手动版本",
+      "success": true,
+      "message": "版本: v20250705235606",
+      "timestamp": "2025-07-05T23:56:06.634866",
+      "details": null
+    },
+    {
+      "test_name": "获取版本列表",
+      "success": true,
+      "message": "版本数量: 1",
+      "timestamp": "2025-07-05T23:56:08.678658",
+      "details": null
+    },
+    {
+      "test_name": "获取版本文件",
+      "success": true,
+      "message": "文件数量: 5",
+      "timestamp": "2025-07-05T23:56:10.734902",
+      "details": null
+    },
+    {
+      "test_name": "RASA文件完整性",
+      "success": true,
+      "message": "所有必要文件存在",
+      "timestamp": "2025-07-05T23:56:10.734902",
+      "details": null
+    },
+    {
+      "test_name": "版本激活",
+      "success": true,
+      "message": "激活到: rasa/data/",
+      "timestamp": "2025-07-05T23:56:13.844564",
+      "details": null
+    },
+    {
+      "test_name": "工作区文件验证",
+      "success": true,
+      "message": "存在 4 个文件",
+      "timestamp": "2025-07-05T23:56:13.844564",
+      "details": null
+    },
+    {
+      "test_name": "版本索引API",
+      "success": true,
+      "message": "索引包含 1 个指令库",
+      "timestamp": "2025-07-05T23:56:16.896557",
+      "details": null
+    },
+    {
+      "test_name": "API文档访问",
+      "success": true,
+      "message": "Swagger文档可正常访问",
+      "timestamp": "2025-07-05T23:56:18.941793",
+      "details": null
+    },
+    {
+      "test_name": "OpenAPI规范",
+      "success": true,
+      "message": "包含 54 个API路径",
+      "timestamp": "2025-07-05T23:56:21.067591",
+      "details": null
+    }
+  ],
+  "library_id": 1,
+  "version_name": "v20250705235606",
+  "test_time": "2025-07-05T23:56:22.078546"
+}

@@ -1,0 +1,117 @@
+{
+  "summary": {
+    "total_tests": 15,
+    "passed_tests": 10,
+    "failed_tests": 5,
+    "pass_rate": 66.66666666666666
+  },
+  "test_results": [
+    {
+      "test_name": "根路径访问",
+      "success": true,
+      "message": "系统状态: 运行中",
+      "timestamp": "2025-07-05T23:50:05.939742",
+      "details": null
+    },
+    {
+      "test_name": "健康检查接口",
+      "success": true,
+      "message": "服务状态: healthy",
+      "timestamp": "2025-07-05T23:50:07.986916",
+      "details": null
+    },
+    {
+      "test_name": "版本信息接口",
+      "success": true,
+      "message": "API版本: 2.0.0",
+      "timestamp": "2025-07-05T23:50:10.027996",
+      "details": null
+    },
+    {
+      "test_name": "获取指令库列表",
+      "success": false,
+      "message": "状态码: 404",
+      "timestamp": "2025-07-05T23:50:12.077695",
+      "details": null
+    },
+    {
+      "test_name": "检查Excel测试文件",
+      "success": true,
+      "message": "测试文件存在",
+      "timestamp": "2025-07-05T23:50:12.078694",
+      "details": null
+    },
+    {
+      "test_name": "Excel文件上传处理",
+      "success": false,
+      "message": "状态码: 422",
+      "timestamp": "2025-07-05T23:50:14.123914",
+      "details": "{\"detail\":[{\"loc\":[\"body\",\"library_id\"],\"msg\":\"value is not a valid integer\",\"type\":\"type_error.integer\"}]}"
+    },
+    {
+      "test_name": "获取版本列表",
+      "success": false,
+      "message": "状态码: 422",
+      "timestamp": "2025-07-05T23:50:16.180792",
+      "details": null
+    },
+    {
+      "test_name": "版本激活",
+      "success": false,
+      "message": "状态码: 422",
+      "timestamp": "2025-07-05T23:50:18.232942",
+      "details": null
+    },
+    {
+      "test_name": "版本索引接口",
+      "success": true,
+      "message": "索引包含 0 个指令库",
+      "timestamp": "2025-07-05T23:50:20.284990",
+      "details": null
+    },
+    {
+      "test_name": "手动创建版本",
+      "success": false,
+      "message": "状态码: 422",
+      "timestamp": "2025-07-05T23:50:22.335396",
+      "details": null
+    },
+    {
+      "test_name": "API文档访问",
+      "success": true,
+      "message": "Swagger文档可正常访问",
+      "timestamp": "2025-07-05T23:50:24.380310",
+      "details": null
+    },
+    {
+      "test_name": "domain配置内容验证",
+      "success": true,
+      "message": "包含必要字段: True",
+      "timestamp": "2025-07-05T23:50:24.381311",
+      "details": null
+    },
+    {
+      "test_name": "NLU训练数据内容验证",
+      "success": true,
+      "message": "包含NLU数据: True",
+      "timestamp": "2025-07-05T23:50:24.382310",
+      "details": null
+    },
+    {
+      "test_name": "对话规则内容验证",
+      "success": true,
+      "message": "文件大小: 244 字符",
+      "timestamp": "2025-07-05T23:50:24.382310",
+      "details": null
+    },
+    {
+      "test_name": "对话故事内容验证",
+      "success": true,
+      "message": "文件大小: 704 字符",
+      "timestamp": "2025-07-05T23:50:24.382310",
+      "details": null
+    }
+  ],
+  "library_id": null,
+  "version_name": null
+}

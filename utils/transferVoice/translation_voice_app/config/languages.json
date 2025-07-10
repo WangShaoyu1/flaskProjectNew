@@ -1,0 +1,41 @@
+{
+  "supported": [
+    {
+      "code": "zh-cn",
+      "name": "中文",
+      "direction": "source",
+      "enabled": true
+    },
+    {
+      "code": "en",
+      "name": "English", 
+      "direction": "target",
+      "enabled": true
+    }
+  ],
+  "upcoming": [
+    {
+      "code": "ja",
+      "name": "日本語",
+      "direction": "target", 
+      "enabled": false,
+      "tooltip": "即将支持"
+    },
+    {
+      "code": "ko", 
+      "name": "한국어",
+      "direction": "target",
+      "enabled": false,
+      "tooltip": "即将支持"
+    },
+    {
+      "code": "fr",
+      "name": "Français",
+      "direction": "target",
+      "enabled": false,
+      "tooltip": "即将支持"
+    }
+  ],
+  "default_source": "zh-cn",
+  "default_target": "en"
+} 
