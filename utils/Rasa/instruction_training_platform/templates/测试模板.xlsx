@@ -1,0 +1,6 @@
+text,expected_intent,expected_entities,description
+设置温度为25度,set_temperature,"[{""entity"": ""temperature"", ""value"": ""25""}]",设置温度指令测试
+播放音乐,play_music,[],播放音乐指令测试
+查询天气,query_weather,[],天气查询指令测试
+开启空调,turn_on_ac,[],开启空调指令测试
+关闭灯光,turn_off_light,[],关闭灯光指令测试 

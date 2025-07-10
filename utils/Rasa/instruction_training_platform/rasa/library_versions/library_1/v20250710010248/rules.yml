@@ -1,0 +1,158 @@
+rules:
+- rule: Execute question_feedback
+  steps:
+  - intent: question_feedback
+  - action: utter_question_feedback
+- rule: Execute volume_up
+  steps:
+  - intent: volume_up
+  - action: utter_volume_up
+- rule: Execute volume_down
+  steps:
+  - intent: volume_down
+  - action: utter_volume_down
+- rule: Execute volume_max
+  steps:
+  - intent: volume_max
+  - action: utter_volume_max
+- rule: Execute volume_value
+  steps:
+  - intent: volume_value
+  - action: utter_volume_value
+- rule: Execute unmute
+  steps:
+  - intent: unmute
+  - action: utter_unmute
+- rule: Execute bright_up
+  steps:
+  - intent: bright_up
+  - action: utter_bright_up
+- rule: Execute bright_down
+  steps:
+  - intent: bright_down
+  - action: utter_bright_down
+- rule: Execute bright_max
+  steps:
+  - intent: bright_max
+  - action: utter_bright_max
+- rule: Execute bright_min
+  steps:
+  - intent: bright_min
+  - action: utter_bright_min
+- rule: Execute bright_value
+  steps:
+  - intent: bright_value
+  - action: utter_bright_value
+- rule: Execute screen_off_timeout
+  steps:
+  - intent: screen_off_timeout
+  - action: utter_screen_off_timeout
+- rule: Execute screen_off
+  steps:
+  - intent: screen_off
+  - action: utter_screen_off
+- rule: Execute child_lock_on
+  steps:
+  - intent: child_lock_on
+  - action: utter_child_lock_on
+- rule: Execute child_lock_off
+  steps:
+  - intent: child_lock_off
+  - action: utter_child_lock_off
+- rule: Execute back_home_page
+  steps:
+  - intent: back_home_page
+  - action: utter_back_home_page
+- rule: Execute cooking_unfreeze
+  steps:
+  - intent: cooking_unfreeze
+  - action: utter_cooking_unfreeze
+- rule: Execute voice_cmd_start_cooking
+  steps:
+  - intent: voice_cmd_start_cooking
+  - action: utter_voice_cmd_start_cooking
+- rule: Execute voice_cmd_pause_cooking
+  steps:
+  - intent: voice_cmd_pause_cooking
+  - action: utter_voice_cmd_pause_cooking
+- rule: Execute voice_cmd_continue_cooking
+  steps:
+  - intent: voice_cmd_continue_cooking
+  - action: utter_voice_cmd_continue_cooking
+- rule: Execute voice_cmd_stop_cooking
+  steps:
+  - intent: voice_cmd_stop_cooking
+  - action: utter_voice_cmd_stop_cooking
+- rule: Execute set_firepower
+  steps:
+  - intent: set_firepower
+  - action: utter_set_firepower
+- rule: Execute set_firepower_time
+  steps:
+  - intent: set_firepower_time
+  - action: utter_set_firepower_time
+- rule: Execute set_cooking_time
+  steps:
+  - intent: set_cooking_time
+  - action: utter_set_cooking_time
+- rule: Execute select_list_id
+  steps:
+  - intent: select_list_id
+  - action: utter_select_list_id
+- rule: Execute role_switch
+  steps:
+  - intent: role_switch
+  - action: utter_role_switch
+- rule: Execute set_cooking_temp
+  steps:
+  - intent: set_cooking_temp
+  - action: utter_set_cooking_temp
+- rule: Execute jump_to_page
+  steps:
+  - intent: jump_to_page
+  - action: utter_jump_to_page
+- rule: Execute set_theme_next
+  steps:
+  - intent: set_theme_next
+  - action: utter_set_theme_next
+- rule: Execute set_theme_previous
+  steps:
+  - intent: set_theme_previous
+  - action: utter_set_theme_previous
+- rule: Execute set_taste
+  steps:
+  - intent: set_taste
+  - action: utter_set_taste
+- rule: Execute set_foodtype
+  steps:
+  - intent: set_foodtype
+  - action: utter_set_foodtype
+- rule: Execute set_foodtype_taste
+  steps:
+  - intent: set_foodtype_taste
+  - action: utter_set_foodtype_taste
+- rule: Execute set_food_cooking_temp
+  steps:
+  - intent: set_food_cooking_temp
+  - action: utter_set_food_cooking_temp
+- rule: Execute AI_cooking_page_open
+  steps:
+  - intent: AI_cooking_page_open
+  - action: utter_AI_cooking_page_open
+- rule: Execute heat_cooking_page_open
+  steps:
+  - intent: heat_cooking_page_open
+  - action: utter_heat_cooking_page_open
+- rule: Execute DIY_cooking_page_open
+  steps:
+  - intent: DIY_cooking_page_open
+  - action: utter_DIY_cooking_page_open
+- rule: Execute recognition_results_correct
+  steps:
+  - intent: recognition_results_correct
+  - action: utter_recognition_results_correct
+- rule: Handle fallback
+  steps:
+  - intent: nlu_fallback
+  - action: utter_default
+version: '3.1'

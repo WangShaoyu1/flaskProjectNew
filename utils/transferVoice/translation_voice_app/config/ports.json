@@ -1,0 +1,11 @@
+{
+  "backend": {
+    "port": 5000,
+    "description": "Flask API服务器端口"
+  },
+  "frontend": {
+    "port": 8080,
+    "description": "React前端应用端口"
+  },
+  "note": "修改端口后需要重启应用才能生效"
+} 

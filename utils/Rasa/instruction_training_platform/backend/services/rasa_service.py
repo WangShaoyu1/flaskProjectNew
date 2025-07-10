@@ -1,412 +1,308 @@
-import requests
-import os
-import yaml
-import json
-import subprocess
-import uuid
-from datetime import datetime
-from typing import Dict, Any, List, Optional
-from sqlalchemy.orm import Session
-from services.database_service import IntentService, UtteranceService, ResponseService, ModelService, TrainingTaskService
-from models.schemas import PredictResponse, TrainResponse, BatchTestResponse, TestResult
-import logging
-import time
-from functools import lru_cache
+"""
+RASA服务类
+用于加载和使用训练好的模型进行意图识别和实体提取
+"""
 
-# 配置日志
-logging.basicConfig(level=logging.INFO)
+import os
+import json
+import logging
+import requests
+import subprocess
+import time
+from typing import Dict, List, Optional, Any
+from dataclasses import dataclass
+from pathlib import Path
+import yaml
+
 logger = logging.getLogger(__name__)
 
+@dataclass
+class PredictionResult:
+    """预测结果数据类"""
+    intent: str
+    confidence: float
+    entities: List[Dict[str, Any]]
+    response_time: float = 0.0
+    
+    def to_dict(self):
+        return {
+            'intent': self.intent,
+            'confidence': self.confidence,
+            'entities': self.entities,
+            'response_time': self.response_time
+        }
+
 class RasaService:
-    """Rasa 服务管理类"""
+    """RASA服务类"""
     
-    def __init__(self, rasa_server_url: str = "http://localhost:5005", 
-                 rasa_project_root: str = None):
-        self.rasa_server_url = rasa_server_url
-        self.rasa_project_root = rasa_project_root or os.path.abspath(
-            os.path.join(os.path.dirname(__file__), "..", "..", "rasa")
-        )
-        self.rasa_data_path = os.path.join(self.rasa_project_root, "data")
-        self.rasa_models_path = os.path.join(self.rasa_project_root, "models")
+    def __init__(self, rasa_project_path: str = None):
+        self.rasa_project_path = rasa_project_path or os.path.join(os.path.dirname(os.path.dirname(__file__)), '..', 'rasa')
+        self.rasa_server_url = "http://localhost:5005"
+        self.current_model_path = None
+        self.server_process = None
+        self.is_server_running = False
         
-        # 创建会话对象，复用连接
-        self.session = requests.Session()
-        # 设置连接池参数
-        adapter = requests.adapters.HTTPAdapter(
-            pool_connections=10,  # 连接池大小
-            pool_maxsize=20,      # 最大连接数
-            max_retries=1         # 重试次数
-        )
-        self.session.mount('http://', adapter)
-        self.session.mount('https://', adapter)
-        
-        # 确保目录存在
-        os.makedirs(self.rasa_data_path, exist_ok=True)
-        os.makedirs(self.rasa_models_path, exist_ok=True)
-    
-    def predict_intent(self, text: str) -> PredictResponse:
-        """
-        调用 Rasa 进行意图预测 - 高性能优化版本
-        
-        Args:
-            text: 用户输入文本
-            
-        Returns:
-            PredictResponse: 预测结果
-        """
+    def check_rasa_status(self) -> bool:
+        """检查RASA服务状态"""
         try:
-            # 预处理：去除多余空格和特殊字符
-            text = text.strip()
-            if not text:
-                raise ValueError("输入文本不能为空")
+            response = requests.get(f"{self.rasa_server_url}/status", timeout=5)
+            self.is_server_running = response.status_code == 200
+            return self.is_server_running
+        except Exception as e:
+            logger.warning(f"RASA服务状态检查失败: {e}")
+            self.is_server_running = False
+            return False
+    
+    def get_latest_model_path(self) -> Optional[str]:
+        """获取最新的模型路径"""
+        models_dir = os.path.join(self.rasa_project_path, 'models')
+        if not os.path.exists(models_dir):
+            return None
             
-            rasa_parse_url = f"{self.rasa_server_url}/model/parse"
+        model_files = [f for f in os.listdir(models_dir) if f.endswith('.tar.gz')]
+        if not model_files:
+            return None
             
-            # 高性能配置
-            start_time = time.time()
-            response = self.session.post(
-                rasa_parse_url, 
-                json={"text": text},
-                timeout=2,  # 进一步减少超时时间到2秒
-                headers={
-                    'Content-Type': 'application/json',
-                    'Connection': 'keep-alive',  # 保持连接
-                    'Accept-Encoding': 'gzip, deflate',  # 启用压缩
-                    'Cache-Control': 'no-cache'  # 避免缓存问题
-                }
+        # 按修改时间排序，获取最新的模型
+        model_files.sort(key=lambda x: os.path.getmtime(os.path.join(models_dir, x)), reverse=True)
+        return os.path.join(models_dir, model_files[0])
+    
+    def get_model_path_by_version(self, version_id: str) -> Optional[str]:
+        """根据版本ID获取模型路径"""
+        models_dir = os.path.join(self.rasa_project_path, 'models')
+        if not os.path.exists(models_dir):
+            return None
+            
+        # 查找包含版本ID的模型文件
+        for filename in os.listdir(models_dir):
+            if filename.endswith('.tar.gz') and version_id in filename:
+                return os.path.join(models_dir, filename)
+        
+        # 如果没有找到特定版本，返回最新模型
+        return self.get_latest_model_path()
+    
+    def start_rasa_server(self, model_path: str = None) -> bool:
+        """启动RASA服务器"""
+        try:
+            # 检查是否已经在运行
+            if self.check_rasa_status():
+                logger.info("RASA服务器已在运行")
+                return True
+            
+            # 确定模型路径
+            if not model_path:
+                model_path = self.get_latest_model_path()
+                
+            if not model_path or not os.path.exists(model_path):
+                logger.error(f"模型文件不存在: {model_path}")
+                return False
+            
+            # 启动RASA服务器
+            cmd = [
+                'rasa', 'run',
+                '--model', model_path,
+                '--endpoints', os.path.join(self.rasa_project_path, 'endpoints.yml'),
+                '--port', '5005',
+                '--enable-api'
+            ]
+            
+            logger.info(f"启动RASA服务器: {' '.join(cmd)}")
+            self.server_process = subprocess.Popen(
+                cmd,
+                cwd=self.rasa_project_path,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE
             )
-            response.raise_for_status()
             
-            rasa_result = response.json()
-            end_time = time.time()
+            # 等待服务器启动
+            max_wait = 30  # 最多等待30秒
+            wait_time = 0
+            while wait_time < max_wait:
+                if self.check_rasa_status():
+                    logger.info("RASA服务器启动成功")
+                    self.current_model_path = model_path
+                    return True
+                time.sleep(1)
+                wait_time += 1
             
-            # 性能监控
-            response_time = (end_time - start_time) * 1000
-            if response_time > 2000:
-                logger.error(f"Rasa API响应过慢: {response_time:.2f}ms - 需要检查模型或服务器")
-            elif response_time > 500:
-                logger.warning(f"Rasa API响应较慢: {response_time:.2f}ms")
-            else:
-                logger.debug(f"Rasa API响应正常: {response_time:.2f}ms")
+            logger.error("RASA服务器启动超时")
+            return False
             
-            # 快速提取核心信息
-            intent_info = rasa_result.get("intent", {})
-            intent_name = intent_info.get("name")
-            confidence = intent_info.get("confidence", 0.0)
-            entities = rasa_result.get("entities", [])
+        except Exception as e:
+            logger.error(f"启动RASA服务器失败: {e}")
+            return False
+    
+    def stop_rasa_server(self):
+        """停止RASA服务器"""
+        if self.server_process:
+            self.server_process.terminate()
+            self.server_process.wait()
+            self.server_process = None
+            self.is_server_running = False
+            logger.info("RASA服务器已停止")
+    
+    def predict_intent(self, text: str, model_version_id: str = None) -> PredictionResult:
+        """预测意图"""
+        start_time = time.time()
+        
+        try:
+            # 检查服务状态
+            if not self.check_rasa_status():
+                # 尝试启动服务器
+                model_path = None
+                if model_version_id:
+                    model_path = self.get_model_path_by_version(model_version_id)
+                
+                if not self.start_rasa_server(model_path):
+                    raise Exception("RASA服务器启动失败")
             
-            # 意图识别质量判断
-            is_fallback = intent_name == "nlu_fallback" or confidence < 0.3
-            if is_fallback:
-                logger.info(f"意图识别失败或置信度过低: intent={intent_name}, confidence={confidence:.3f}")
+            # 发送预测请求
+            payload = {"text": text}
+            response = requests.post(
+                f"{self.rasa_server_url}/model/parse",
+                json=payload,
+                timeout=10
+            )
             
-            return PredictResponse(
-                text=text,
+            if response.status_code != 200:
+                raise Exception(f"预测请求失败: {response.status_code}")
+            
+            result = response.json()
+            
+            # 解析结果
+            intent_data = result.get('intent', {})
+            intent_name = intent_data.get('name', 'nlu_fallback')
+            confidence = intent_data.get('confidence', 0.0)
+            entities = result.get('entities', [])
+            
+            # 计算响应时间
+            response_time = (time.time() - start_time) * 1000  # 转换为毫秒
+            
+            return PredictionResult(
                 intent=intent_name,
                 confidence=confidence,
                 entities=entities,
-                raw_rasa_response=rasa_result
+                response_time=response_time
             )
             
-        except requests.exceptions.Timeout:
-            logger.error("Rasa服务超时，可能需要优化模型或增加服务器资源")
-            raise Exception("Rasa服务响应超时，请检查服务器状态")
-        except requests.exceptions.ConnectionError:
-            logger.error("无法连接到Rasa服务，请检查服务是否启动")
-            raise Exception("无法连接到Rasa服务，请确保服务已启动")
-        except requests.exceptions.RequestException as e:
-            logger.error(f"Rasa 服务请求错误: {e}")
-            raise Exception(f"Rasa服务请求失败: {e}")
         except Exception as e:
-            logger.error(f"意图预测错误: {e}")
-            raise Exception(f"意图预测失败: {e}")
+            logger.error(f"意图预测失败: {e}")
+            response_time = (time.time() - start_time) * 1000
+            
+            # 返回失败结果
+            return PredictionResult(
+                intent='nlu_fallback',
+                confidence=0.0,
+                entities=[],
+                response_time=response_time
+            )
     
-    def generate_training_data(self, db: Session) -> tuple[str, str]:
-        """
-        从数据库生成 Rasa 训练数据
+    def batch_predict(self, texts: List[str], model_version_id: str = None) -> List[PredictionResult]:
+        """批量预测"""
+        results = []
         
-        Args:
-            db: 数据库会话
+        # 确保服务器运行
+        if not self.check_rasa_status():
+            model_path = None
+            if model_version_id:
+                model_path = self.get_model_path_by_version(model_version_id)
             
-        Returns:
-            tuple: (nlu_data, domain_data) YAML 格式字符串
-        """
+            if not self.start_rasa_server(model_path):
+                # 如果服务器启动失败，返回失败结果
+                return [PredictionResult(
+                    intent='nlu_fallback',
+                    confidence=0.0,
+                    entities=[],
+                    response_time=0.0
+                ) for _ in texts]
+        
+        # 逐个预测
+        for text in texts:
+            result = self.predict_intent(text, model_version_id)
+            results.append(result)
+        
+        return results
+    
+    def get_model_info(self, model_path: str = None) -> Dict[str, Any]:
+        """获取模型信息"""
         try:
-            # 获取所有意图和相关数据
-            intents = IntentService.get_intents(db)
+            if not model_path:
+                model_path = self.current_model_path or self.get_latest_model_path()
             
-            # 生成 NLU 数据
-            nlu_data = {
-                "version": "3.1",
-                "nlu": []
+            if not model_path or not os.path.exists(model_path):
+                return {}
+            
+            # 获取模型文件信息
+            model_info = {
+                'model_path': model_path,
+                'model_size': os.path.getsize(model_path),
+                'created_time': os.path.getctime(model_path),
+                'modified_time': os.path.getmtime(model_path)
             }
             
-            # 生成 Domain 数据
-            domain_data = {
-                "version": "3.1",
-                "intents": [],
-                "entities": [],
-                "responses": {},
-                "session_config": {
-                    "session_expiration_time": 60,
-                    "carry_over_slots_to_new_session": True
-                }
-            }
-            
-            entities_set = set()
-            
-            for intent in intents:
-                intent_name = intent.intent_name
-                domain_data["intents"].append(intent_name)
-                
-                # 获取相似问
-                utterances = UtteranceService.get_utterances_by_intent(db, intent.id)
-                if utterances:
-                    intent_examples = {
-                        "intent": intent_name,
-                        "examples": ""
-                    }
-                    
-                    examples_list = []
-                    for utterance in utterances:
-                        text = utterance.text
-                        
-                        # 处理实体标注
-                        if utterance.entities:
-                            try:
-                                entities_info = json.loads(utterance.entities)
-                                for entity in entities_info:
-                                    entity_name = entity.get("entity")
-                                    if entity_name:
-                                        entities_set.add(entity_name)
-                                        # 这里可以添加实体标注逻辑
-                            except json.JSONDecodeError:
-                                pass
-                        
-                        examples_list.append(f"- {text}")
-                    
-                    intent_examples["examples"] = "\\n".join(examples_list)
-                    nlu_data["nlu"].append(intent_examples)
-                
-                # 获取话术
-                responses = ResponseService.get_responses_by_intent(db, intent.id)
-                if responses:
-                    response_key = f"utter_{intent_name}"
-                    response_texts = []
-                    
-                    for response in responses:
-                        response_texts.append({"text": response.text})
-                    
-                    domain_data["responses"][response_key] = response_texts
-            
-            # 添加实体到 domain
-            domain_data["entities"] = list(entities_set)
-            
-            # 添加默认的 fallback 响应
-            if "utter_fallback" not in domain_data["responses"]:
-                domain_data["responses"]["utter_fallback"] = [
-                    {"text": "抱歉，我没有理解您的意思，请您再说一遍。"}
-                ]
-            
-            # 转换为 YAML 字符串
-            nlu_yaml = yaml.dump(nlu_data, allow_unicode=True, default_flow_style=False)
-            domain_yaml = yaml.dump(domain_data, allow_unicode=True, default_flow_style=False)
-            
-            return nlu_yaml, domain_yaml
+            return model_info
             
         except Exception as e:
-            logger.error(f"生成训练数据错误: {e}")
-            raise Exception(f"生成训练数据失败: {e}")
+            logger.error(f"获取模型信息失败: {e}")
+            return {}
     
-    def train_model(self, db: Session, nlu_data: str = None, domain_data: str = None) -> TrainResponse:
-        """
-        触发 Rasa 模型训练
-        
-        Args:
-            db: 数据库会话
-            nlu_data: NLU 数据 (可选，如果不提供则从数据库生成)
-            domain_data: Domain 数据 (可选，如果不提供则从数据库生成)
-            
-        Returns:
-            TrainResponse: 训练响应
-        """
+    def validate_model(self, model_path: str) -> bool:
+        """验证模型文件"""
         try:
-            # 生成任务ID
-            task_id = str(uuid.uuid4())
+            if not os.path.exists(model_path):
+                return False
             
-            # 如果没有提供数据，从数据库生成
-            if not nlu_data or not domain_data:
-                nlu_data, domain_data = self.generate_training_data(db)
+            # 检查文件大小
+            if os.path.getsize(model_path) < 1024:  # 至少1KB
+                return False
             
-            # 写入训练数据文件
-            nlu_file_path = os.path.join(self.rasa_data_path, "nlu.yml")
-            domain_file_path = os.path.join(self.rasa_data_path, "domain.yml")
+            # 检查文件格式
+            if not model_path.endswith('.tar.gz'):
+                return False
             
-            with open(nlu_file_path, "w", encoding="utf-8") as f:
-                f.write(nlu_data)
-            
-            with open(domain_file_path, "w", encoding="utf-8") as f:
-                f.write(domain_data)
-            
-            logger.info(f"训练数据已写入: {nlu_file_path}, {domain_file_path}")
-            
-            # 创建训练任务记录
-            from models.schemas import TrainingTaskCreate
-            task = TrainingTaskCreate(
-                task_id=task_id,
-                status="pending"
-            )
-            TrainingTaskService.create_task(db, task)
-            
-            # 生成模型版本号
-            model_version = f"model-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
-            
-            # 执行训练命令 (这里使用同步方式，实际项目中建议使用异步)
-            command = ["rasa", "train", "--force", "--out", self.rasa_models_path]
-            
-            logger.info(f"开始执行 Rasa 训练命令: {' '.join(command)}")
-            
-            # 更新任务状态为运行中
-            TrainingTaskService.update_task_status(db, task_id, "running", 0.1)
-            
-            try:
-                result = subprocess.run(
-                    command,
-                    cwd=self.rasa_project_root,
-                    capture_output=True,
-                    text=True,
-                    check=True,
-                    encoding="utf-8"
-                )
-                
-                logger.info("Rasa 训练完成")
-                logger.info(f"STDOUT: {result.stdout}")
-                
-                # 获取最新模型文件
-                model_files = [f for f in os.listdir(self.rasa_models_path) if f.endswith(".tar.gz")]
-                if model_files:
-                    latest_model = max(model_files, key=lambda f: os.path.getmtime(
-                        os.path.join(self.rasa_models_path, f)
-                    ))
-                    model_file_path = os.path.join(self.rasa_models_path, latest_model)
-                    
-                    # 创建模型记录
-                    from models.schemas import ModelCreate
-                    model_data = ModelCreate(
-                        version=model_version,
-                        file_path=model_file_path,
-                        status="success",
-                        is_active=True
-                    )
-                    
-                    # 创建模型记录
-                    model_record = ModelService.create_model(db, model_data)
-                    
-                    # 设置为激活模型
-                    ModelService.set_active_model(db, model_record.id)
-                    
-                    # 更新任务状态为完成
-                    TrainingTaskService.update_task_status(
-                        db, task_id, "completed", 1.0, result.stdout
-                    )
-                    
-                    return TrainResponse(
-                        message="模型训练成功",
-                        task_id=task_id,
-                        model_version=model_version
-                    )
-                else:
-                    raise Exception("未找到训练生成的模型文件")
-                    
-            except subprocess.CalledProcessError as e:
-                error_msg = f"Rasa 训练失败: {e.stderr}"
-                logger.error(error_msg)
-                
-                # 更新任务状态为失败
-                TrainingTaskService.update_task_status(
-                    db, task_id, "failed", error_message=error_msg
-                )
-                
-                raise Exception(error_msg)
-                
-        except Exception as e:
-            logger.error(f"训练模型错误: {e}")
-            raise Exception(f"训练模型失败: {e}")
-    
-    def batch_test(self, test_data: List[Dict[str, str]], 
-                   confidence_threshold: float = 0.8) -> BatchTestResponse:
-        """
-        批量测试模型性能 - 简化版，只测试意图识别能力
-        
-        Args:
-            test_data: 测试数据列表 [{"text": "..."}]
-            confidence_threshold: 置信度阈值
-            
-        Returns:
-            BatchTestResponse: 测试结果
-        """
-        try:
-            results = []
-            
-            for test_item in test_data:
-                text = test_item.get("text", "").strip()
-                if not text:
-                    continue
-                
-                # 记录单个测试的开始时间
-                start_time = time.time()
-                
-                # 预测意图
-                prediction = self.predict_intent(text)
-                predicted_intent = prediction.intent
-                confidence = prediction.confidence
-                entities = prediction.entities
-                
-                # 计算响应时间（毫秒）
-                end_time = time.time()
-                response_time = round((end_time - start_time) * 1000, 2)
-                
-                # 记录结果
-                results.append(TestResult(
-                    text=text,
-                    predicted_intent=predicted_intent,
-                    confidence=confidence,
-                    response_time=response_time,
-                    entities=entities
-                ))
-            
-            total_tests = len(results)
-            
-            return BatchTestResponse(
-                total_tests=total_tests,
-                results=results
-            )
+            return True
             
         except Exception as e:
-            logger.error(f"批量测试错误: {e}")
-            raise Exception(f"批量测试失败: {e}")
-    
-    @lru_cache(maxsize=128)
-    def _cached_status_check(self, timestamp: int) -> bool:
-        """
-        缓存的状态检查，减少频繁的状态检查请求
-        timestamp用于控制缓存时间（每分钟检查一次）
-        """
-        try:
-            response = self.session.get(f"{self.rasa_server_url}/status", timeout=2)
-            return response.status_code == 200
-        except:
+            logger.error(f"模型验证失败: {e}")
             return False
     
-    def check_rasa_status(self) -> bool:
-        """
-        检查 Rasa 服务状态 - 优化版本
-        使用缓存机制，每分钟最多检查一次
+    def get_available_models(self) -> List[Dict[str, Any]]:
+        """获取可用的模型列表"""
+        models = []
+        models_dir = os.path.join(self.rasa_project_path, 'models')
         
-        Returns:
-            bool: 服务是否可用
-        """
-        # 使用当前时间的分钟数作为缓存key，这样每分钟缓存会自动失效
-        current_minute = int(time.time() // 60)
-        return self._cached_status_check(current_minute)
+        if not os.path.exists(models_dir):
+            return models
+        
+        for filename in os.listdir(models_dir):
+            if filename.endswith('.tar.gz'):
+                model_path = os.path.join(models_dir, filename)
+                if self.validate_model(model_path):
+                    models.append({
+                        'filename': filename,
+                        'path': model_path,
+                        'size': os.path.getsize(model_path),
+                        'created_time': os.path.getctime(model_path),
+                        'modified_time': os.path.getmtime(model_path)
+                    })
+        
+        # 按修改时间排序
+        models.sort(key=lambda x: x['modified_time'], reverse=True)
+        return models
 
+# 全局RASA服务实例
+_rasa_service = None
+
+def get_rasa_service() -> RasaService:
+    """获取RASA服务实例（单例模式）"""
+    global _rasa_service
+    if _rasa_service is None:
+        _rasa_service = RasaService()
+    return _rasa_service
+
+def cleanup_rasa_service():
+    """清理RASA服务"""
+    global _rasa_service
+    if _rasa_service:
+        _rasa_service.stop_rasa_server()
+        _rasa_service = None 

@@ -1,0 +1,18 @@
+stories:
+- steps:
+  - intent: affirm
+  - action: utter_default
+  - intent: question_feedback
+  - action: utter_question_feedback
+  story: SYSTEM basic conversation
+- steps:
+  - intent: affirm
+  - action: utter_default
+  - intent: cooking_unfreeze
+  - action: utter_cooking_unfreeze
+  story: COOKING basic conversation
+- steps:
+  - intent: affirm
+  - action: utter_default
+  story: RECIPES basic conversation
+version: '3.1'

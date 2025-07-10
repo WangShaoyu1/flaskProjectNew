@@ -1,0 +1,355 @@
+/* App.css */
+
+/* 全局样式重置 - 去除页面四周白框 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.App {
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 卡片样式增强 */
+.ant-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+}
+
+.ant-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* 按钮样式增强 */
+.ant-btn {
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.ant-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* 输入框样式增强 */
+.ant-input,
+.ant-input-affix-wrapper {
+  border-radius: 6px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ant-input:focus,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+/* 选择器样式增强 */
+.ant-select-selector {
+  border-radius: 6px !important;
+}
+
+/* 滑块样式增强 */
+.ant-slider-rail {
+  background: #e8e8e8;
+  height: 6px;
+  border-radius: 3px;
+}
+
+.ant-slider-track {
+  background: linear-gradient(90deg, #1890ff, #36cfc9);
+  height: 6px;
+  border-radius: 3px;
+}
+
+.ant-slider-handle {
+  border: 2px solid #1890ff;
+  width: 20px;
+  height: 20px;
+  margin-top: -7px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.ant-slider-handle:hover {
+  border-color: #40a9ff;
+}
+
+.ant-slider-handle:focus {
+  border-color: #40a9ff;
+  box-shadow: 0 0 0 5px rgba(24, 144, 255, 0.12);
+}
+
+/* 进度条样式增强 */
+.ant-progress-line {
+  border-radius: 4px;
+}
+
+.ant-progress-bg {
+  border-radius: 4px;
+}
+
+/* 列表样式增强 */
+.ant-list-item {
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.ant-list-item:hover {
+  background: #f5f5f5;
+  border-color: #d9d9d9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 头像样式增强 */
+.ant-avatar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: bold;
+}
+
+/* 消息样式增强 - 修复半透明长条问题 */
+.ant-message {
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.ant-message-notice {
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: auto;
+  background: transparent !important;
+}
+
+.ant-message-notice-content {
+  background: transparent !important;
+}
+
+/* 隐藏message的背景遮罩 */
+.ant-message::before {
+  display: none !important;
+}
+
+/* 确保message容器没有背景 */
+.ant-message-notice::before {
+  display: none !important;
+}
+
+/* 移除message的背景条 */
+.ant-message-notice-wrapper {
+  background: transparent !important;
+}
+
+/* 进一步确保message相关元素没有背景 */
+.ant-message-custom-content {
+  background: transparent !important;
+}
+
+/* 移除可能的伪元素背景 */
+.ant-message-notice::after,
+.ant-message::after {
+  display: none !important;
+}
+
+/* 确保message容器本身透明 */
+.ant-message-holder {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* 完全移除message的所有背景和遮罩 */
+.ant-message-move-up-enter,
+.ant-message-move-up-enter-active,
+.ant-message-move-up-leave,
+.ant-message-move-up-leave-active {
+  background: transparent !important;
+}
+
+/* 针对不同类型的message样式 */
+.ant-message-success .ant-message-notice-content,
+.ant-message-error .ant-message-notice-content,
+.ant-message-info .ant-message-notice-content,
+.ant-message-warning .ant-message-notice-content {
+  background: transparent !important;
+}
+
+/* 移除顶部可能的背景条 */
+.ant-message-notice-wrapper::before,
+.ant-message-notice-wrapper::after {
+  display: none !important;
+}
+
+/* 模态框样式增强 */
+.ant-modal-content {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ant-modal-header {
+  border-radius: 8px 8px 0 0;
+}
+
+/* 选项卡样式增强 */
+.ant-tabs-tab {
+  border-radius: 6px 6px 0 0;
+}
+
+.ant-tabs-tab-active {
+  background: rgba(24, 144, 255, 0.1);
+}
+
+/* 警告框样式增强 */
+.ant-alert {
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .ant-col-12 {
+    width: 100% !important;
+    margin-bottom: 16px;
+  }
+  
+  .ant-card {
+    margin-bottom: 16px;
+  }
+  
+  .ant-layout-header {
+    padding: 0 16px !important;
+  }
+  
+  .ant-layout-content {
+    padding: 16px !important;
+  }
+  
+  .ant-typography h3 {
+    font-size: 18px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .ant-col-10,
+  .ant-col-4 {
+    width: 100% !important;
+    margin-bottom: 8px;
+  }
+  
+  .ant-space-item {
+    margin-bottom: 8px;
+  }
+  
+  .ant-btn-lg {
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ant-card {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* 加载状态样式 */
+.ant-spin-container {
+  transition: opacity 0.3s ease;
+}
+
+.ant-spin-blur {
+  opacity: 0.5;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* 自定义工具提示样式 */
+.ant-tooltip-inner {
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 文本区域样式增强 */
+.ant-input {
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.ant-input::placeholder {
+  color: #bfbfbf;
+  font-style: italic;
+}
+
+/* 成功状态样式 */
+.success-text {
+  color: #52c41a;
+  font-weight: 500;
+}
+
+/* 错误状态样式 */
+.error-text {
+  color: #ff4d4f;
+  font-weight: 500;
+}
+
+/* 警告状态样式 */
+.warning-text {
+  color: #faad14;
+  font-weight: 500;
+}
+
+/* 信息状态样式 */
+.info-text {
+  color: #1890ff;
+  font-weight: 500;
+} 

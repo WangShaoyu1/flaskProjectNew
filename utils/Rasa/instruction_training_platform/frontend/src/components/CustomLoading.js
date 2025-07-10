@@ -1,35 +1,53 @@
 import React from 'react';
+import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 
 const CustomLoading = ({ 
   visible = false, 
   text = "正在加载...", 
-  description = "请稍候",
+  description = "",
   size = "default" // small, default, large
 }) => {
   if (!visible) return null;
 
-  const getSpinnerSize = () => {
-    switch (size) {
-      case 'small': return { width: '32px', height: '32px', borderWidth: '3px' };
-      case 'large': return { width: '64px', height: '64px', borderWidth: '5px' };
-      default: return { width: '48px', height: '48px', borderWidth: '4px' };
-    }
-  };
-
-  const spinnerStyle = getSpinnerSize();
+  const antIcon = <LoadingOutlined style={{ fontSize: size === 'large' ? 48 : size === 'small' ? 24 : 36 }} spin />;
 
   return (
-    <div className="custom-fullscreen-loading">
-      <div className="custom-loading-content">
-        <div 
-          className="custom-loading-spinner"
-          style={spinnerStyle}
-        />
-        <div className="custom-loading-text">{text}</div>
-        {description && (
-          <div className="custom-loading-desc">{description}</div>
-        )}
+    <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 9999,
+      flexDirection: 'column'
+    }}>
+      <Spin 
+        indicator={antIcon} 
+        size={size}
+      />
+      <div style={{ 
+        marginTop: 16, 
+        fontSize: '16px', 
+        color: '#666',
+        textAlign: 'center'
+      }}>
+        {text}
       </div>
+      {description && (
+        <div style={{ 
+          marginTop: 8, 
+          fontSize: '14px', 
+          color: '#999',
+          textAlign: 'center'
+        }}>
+          {description}
+        </div>
+      )}
     </div>
   );
 };

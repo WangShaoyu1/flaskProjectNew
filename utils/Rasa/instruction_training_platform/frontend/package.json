@@ -1,21 +1,27 @@
 {
   "name": "instruction-training-platform-frontend",
-  "version": "1.0.0",
-  "description": "指令训练平台前端应用",
+  "version": "2.0.0",
+  "description": "智能对话训练平台v2.0前端应用",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --mode development",
-    "build": "webpack --mode production",
-    "dev": "webpack serve --mode development --open",
+    "start": "webpack serve --mode development --progress --color",
+    "start:v2": "webpack serve --mode development --progress --color --stats verbose",
+    "build": "webpack --mode production --progress --color",
+    "build:v2": "webpack --mode production --progress --color",
+    "dev": "webpack serve --mode development --open --progress --color",
+    "dev:verbose": "webpack serve --mode development --progress --color --stats verbose --log-level verbose",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "rasa",
     "nlp",
+    "ai",
     "training",
-    "platform"
+    "platform",
+    "intelligent-dialogue",
+    "conversation"
   ],
-  "author": "Instruction Training Platform Team",
+  "author": "智能对话训练平台团队",
   "license": "MIT",
   "dependencies": {
     "@ant-design/icons": "^5.2.6",

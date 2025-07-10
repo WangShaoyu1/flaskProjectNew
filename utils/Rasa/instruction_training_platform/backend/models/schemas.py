@@ -1,278 +1,530 @@
-from pydantic import BaseModel
-from typing import List, Optional, Dict, Any
+"""
+智能对话训练平台 - Pydantic数据模型
+用于API请求和响应的数据验证和序列化
+"""
+
+from pydantic import BaseModel, Field
+from typing import List, Optional, Dict, Any, Union
 from datetime import datetime
+from enum import Enum
 
 
-# 基础模型
-class IntentBase(BaseModel):
-    intent_name: str
+# ===== 枚举类型定义 =====
+
+class TrainingStatus(str, Enum):
+    """训练状态枚举"""
+    PREPARING = "preparing"
+    TRAINING = "training"
+    SUCCESS = "success"
+    FAILED = "failed"
+
+
+class TestStatus(str, Enum):
+    """测试状态枚举"""
+    RUNNING = "running"
+    COMPLETED = "completed"
+    FAILED = "failed"
+
+
+class TestType(str, Enum):
+    """测试类型枚举"""
+    SINGLE = "single"
+    BATCH = "batch"
+    COMPARISON = "comparison"
+
+
+class SlotType(str, Enum):
+    """词槽类型枚举"""
+    CATEGORICAL = "categorical"
+    TEXT = "text"
+    FLOAT = "float"
+    BOOLEAN = "boolean"
+    LIST = "list"
+
+
+# ===== 指令库母版相关 =====
+
+class InstructionLibraryMasterBase(BaseModel):
+    """指令库母版基础模型"""
+    name: str = Field(..., description="指令库名称", max_length=100)
+    language: str = Field(..., description="语种", max_length=10)
+    description: Optional[str] = Field(None, description="描述信息")
+    business_code: Optional[str] = Field(None, description="业务编码", max_length=50)
+    created_by: Optional[str] = Field(None, description="创建人", max_length=50)
+    is_active: bool = Field(True, description="是否启用")
+
+
+class InstructionLibraryMasterCreate(InstructionLibraryMasterBase):
+    """创建指令库母版请求"""
+    pass
+
+
+class InstructionLibraryMasterUpdate(BaseModel):
+    """更新指令库母版请求"""
+    name: Optional[str] = Field(None, max_length=100)
+    language: Optional[str] = Field(None, max_length=10)
     description: Optional[str] = None
+    business_code: Optional[str] = Field(None, max_length=50)
+    is_active: Optional[bool] = None
 
 
-class IntentCreate(IntentBase):
-    pass
-
-
-class IntentUpdate(IntentBase):
-    pass
-
-
-class Intent(IntentBase):
+class InstructionLibraryMaster(InstructionLibraryMasterBase):
+    """指令库母版响应"""
     id: int
-    created_at: datetime
-    updated_at: Optional[datetime] = None
+    created_time: datetime
+    updated_time: datetime
+    instruction_count: Optional[int] = Field(None, description="指令数量")
+    slot_count: Optional[int] = Field(None, description="词槽数量")
+    latest_version: Optional[int] = Field(None, description="最新训练版本")
 
     class Config:
         from_attributes = True
-        json_encoders = {
-            datetime: lambda v: v.isoformat() if v else None
-        }
 
 
-# 相似问模型
-class UtteranceBase(BaseModel):
-    text: str
-    entities: Optional[str] = None
+# ===== 指令数据相关 =====
+
+class InstructionDataBase(BaseModel):
+    """指令数据基础模型"""
+    instruction_name: str = Field(..., description="指令名称", max_length=100)
+    instruction_code: str = Field(..., description="指令编码", max_length=50)
+    instruction_desc: Optional[str] = Field(None, description="指令描述")
+    category: Optional[str] = Field(None, description="指令分类", max_length=50)
+    is_slot_related: bool = Field(False, description="是否关联词槽")
+    related_slot_ids: Optional[str] = Field(None, description="关联的词槽ID列表(JSON格式)")
+    success_response: Optional[str] = Field(None, description="执行成功话术")
+    failure_response: Optional[str] = Field(None, description="执行失败话术")
+    is_enabled: bool = Field(True, description="是否启用")
+    sort_order: int = Field(0, description="排序序号")
 
 
-class UtteranceCreate(UtteranceBase):
-    intent_id: int
+class InstructionDataCreate(InstructionDataBase):
+    """创建指令数据请求"""
+    library_id: int = Field(..., description="所属指令库ID")
+    similar_questions: Optional[List[str]] = Field(None, description="相似问列表")
 
 
-class UtteranceUpdate(UtteranceBase):
-    pass
+class InstructionDataUpdate(BaseModel):
+    """更新指令数据请求"""
+    instruction_name: Optional[str] = Field(None, max_length=100)
+    instruction_code: Optional[str] = Field(None, max_length=50)
+    instruction_desc: Optional[str] = None
+    category: Optional[str] = Field(None, max_length=50)
+    is_slot_related: Optional[bool] = None
+    related_slot_ids: Optional[str] = None
+    success_response: Optional[str] = None
+    failure_response: Optional[str] = None
+    is_enabled: Optional[bool] = None
+    sort_order: Optional[int] = None
 
 
-class Utterance(UtteranceBase):
+class InstructionData(InstructionDataBase):
+    """指令数据响应"""
     id: int
-    intent_id: int
-    created_at: datetime
+    library_id: int
+    created_time: datetime
+    updated_time: datetime
 
     class Config:
         from_attributes = True
-        json_encoders = {
-            datetime: lambda v: v.isoformat() if v else None
-        }
 
 
-# 话术模型
-class ResponseBase(BaseModel):
-    type: str  # success, failure, fallback
-    text: str
+# ===== 相似问相关 =====
+
+class SimilarQuestionBase(BaseModel):
+    """相似问基础模型"""
+    question_text: str = Field(..., description="相似问文本")
+    is_enabled: bool = Field(True, description="是否启用")
+    sort_order: int = Field(0, description="排序序号")
 
 
-class ResponseCreate(ResponseBase):
-    intent_id: int
-
-
-class ResponseUpdate(ResponseBase):
+class SimilarQuestionCreate(SimilarQuestionBase):
+    """创建相似问请求"""
     pass
 
 
-class Response(ResponseBase):
+class SimilarQuestionUpdate(BaseModel):
+    """更新相似问请求"""
+    question_text: Optional[str] = None
+    is_enabled: Optional[bool] = None
+    sort_order: Optional[int] = None
+
+
+class SimilarQuestion(SimilarQuestionBase):
+    """相似问响应"""
     id: int
-    intent_id: int
-    created_at: datetime
+    instruction_id: int
+    created_time: datetime
 
     class Config:
         from_attributes = True
-        json_encoders = {
-            datetime: lambda v: v.isoformat() if v else None
-        }
 
 
-# 模型管理
-class ModelBase(BaseModel):
-    version: str
-    file_path: str
-    data_version: Optional[str] = None
-    status: str = "training"
-    metrics: Optional[str] = None
-    is_active: bool = False
+# ===== 词槽定义相关 =====
+
+class SlotDefinitionBase(BaseModel):
+    """词槽定义基础模型"""
+    slot_name: str = Field(..., description="词槽名称", max_length=100)
+    slot_name_en: str = Field(..., description="词槽英文名", max_length=100)
+    slot_type: SlotType = Field(..., description="词槽类型")
+    description: Optional[str] = Field(None, description="词槽描述")
+    is_required: bool = Field(False, description="是否必填")
+    is_active: bool = Field(True, description="是否启用")
+    is_system: bool = Field(False, description="是否为系统词槽")
 
 
-class ModelCreate(ModelBase):
-    pass
+class SlotDefinitionCreate(SlotDefinitionBase):
+    """创建词槽定义请求"""
+    library_id: int = Field(..., description="所属指令库ID")
 
 
-class Model(ModelBase):
+class SlotDefinitionUpdate(BaseModel):
+    """更新词槽定义请求"""
+    slot_name: Optional[str] = Field(None, max_length=100)
+    slot_name_en: Optional[str] = Field(None, max_length=100)
+    slot_type: Optional[SlotType] = None
+    description: Optional[str] = None
+    is_required: Optional[bool] = None
+    is_active: Optional[bool] = None
+    is_system: Optional[bool] = None
+
+
+class SlotDefinition(SlotDefinitionBase):
+    """词槽定义响应"""
     id: int
-    training_time: datetime
+    library_id: int
+    created_time: datetime
+    updated_time: datetime
+    values_count: Optional[int] = Field(None, description="词槽值数量")
 
     class Config:
         from_attributes = True
-        json_encoders = {
-            datetime: lambda v: v.isoformat() if v else None
-        }
 
 
-# 训练任务模型
-class TrainingTaskBase(BaseModel):
-    task_id: str
-    status: str = "pending"
-    progress: float = 0.0
-    log_content: Optional[str] = None
+# ===== 词槽值相关 =====
+
+class SlotValueBase(BaseModel):
+    """词槽值基础模型"""
+    standard_value: str = Field(..., description="标准值", max_length=200)
+    aliases: Optional[str] = Field(None, description="别名(用==分隔)")
+    description: Optional[str] = Field(None, description="值描述")
+    sort_order: int = Field(0, description="排序序号")
+
+
+class SlotValueCreate(SlotValueBase):
+    """创建词槽值请求"""
+    slot_id: int = Field(..., description="所属词槽ID")
+
+
+class SlotValueUpdate(BaseModel):
+    """更新词槽值请求"""
+    standard_value: Optional[str] = Field(None, max_length=200)
+    aliases: Optional[str] = None
+    description: Optional[str] = None
+    is_active: Optional[bool] = None
+    sort_order: Optional[int] = None
+
+
+class SlotValue(SlotValueBase):
+    """词槽值响应"""
+    id: int
+    slot_id: int
+    created_time: datetime
+
+    class Config:
+        from_attributes = True
+
+
+# ===== 模型训练记录相关 =====
+
+class ModelTrainingRecordBase(BaseModel):
+    """模型训练记录基础模型"""
+    version_number: int = Field(..., description="版本号")
+    training_status: TrainingStatus = Field(TrainingStatus.PREPARING, description="训练状态")
+    intent_count: Optional[int] = Field(None, description="意图数量")
+    slot_count: Optional[int] = Field(None, description="词槽数量")
+    training_data_count: Optional[int] = Field(None, description="训练数据量")
+    is_active: bool = Field(False, description="是否激活")
+    model_file_path: Optional[str] = Field(None, description="模型文件路径", max_length=500)
+    config_snapshot: Optional[str] = Field(None, description="训练时配置快照")
+    training_log: Optional[str] = Field(None, description="训练日志")
+    error_message: Optional[str] = Field(None, description="错误信息")
+    training_params: Optional[str] = Field(None, description="训练参数")
+
+
+class ModelTrainingRecordCreate(ModelTrainingRecordBase):
+    """创建模型训练记录请求"""
+    library_id: int = Field(..., description="所属指令库ID")
+
+
+class ModelTrainingRecordUpdate(BaseModel):
+    """更新模型训练记录请求"""
+    training_status: Optional[TrainingStatus] = None
+    intent_count: Optional[int] = None
+    slot_count: Optional[int] = None
+    training_data_count: Optional[int] = None
+    is_active: Optional[bool] = None
+    model_file_path: Optional[str] = Field(None, max_length=500)
+    config_snapshot: Optional[str] = None
+    training_log: Optional[str] = None
+    error_message: Optional[str] = None
+    training_params: Optional[str] = None
+
+
+class ModelTrainingRecord(ModelTrainingRecordBase):
+    """模型训练记录响应"""
+    id: int
+    library_id: int
+    start_time: Optional[datetime]
+    complete_time: Optional[datetime]
+    created_time: datetime
+
+    class Config:
+        from_attributes = True
+
+
+# ===== 指令测试记录相关 =====
+
+class InstructionTestRecordBase(BaseModel):
+    """指令测试记录基础模型"""
+    test_type: TestType = Field(..., description="测试类型")
+    test_name: Optional[str] = Field(None, description="测试名称", max_length=100)
+    test_description: Optional[str] = Field(None, description="测试描述")
+    total_count: Optional[int] = Field(None, description="总测试数量")
+    success_count: Optional[int] = Field(None, description="成功数量")
+    success_rate: Optional[float] = Field(None, description="成功率")
+    avg_confidence: Optional[float] = Field(None, description="平均置信度")
+    test_status: TestStatus = Field(TestStatus.RUNNING, description="测试状态")
+    test_report: Optional[str] = Field(None, description="测试报告")
+    created_by: Optional[str] = Field(None, description="创建人", max_length=50)
+
+
+class InstructionTestRecordCreate(InstructionTestRecordBase):
+    """创建指令测试记录请求"""
+    library_id: int = Field(..., description="所属指令库ID")
+    model_version_id: int = Field(..., description="测试使用的模型版本ID")
+
+
+class InstructionTestRecordUpdate(BaseModel):
+    """更新指令测试记录请求"""
+    test_name: Optional[str] = Field(None, max_length=100)
+    test_description: Optional[str] = None
+    total_count: Optional[int] = None
+    success_count: Optional[int] = None
+    success_rate: Optional[float] = None
+    avg_confidence: Optional[float] = None
+    test_status: Optional[TestStatus] = None
+    test_report: Optional[str] = None
+
+
+class InstructionTestRecord(InstructionTestRecordBase):
+    """指令测试记录响应"""
+    id: int
+    library_id: int
+    model_version_id: int
+    start_time: datetime
+    complete_time: Optional[datetime]
+
+    class Config:
+        from_attributes = True
+
+
+# ===== 测试详情相关 =====
+
+class TestDetailBase(BaseModel):
+    """测试详情基础模型"""
+    input_text: str = Field(..., description="输入文本")
+    expected_intent: Optional[str] = Field(None, description="期望意图", max_length=100)
+    actual_intent: Optional[str] = Field(None, description="实际识别意图", max_length=100)
+    confidence_score: Optional[float] = Field(None, description="置信度分数")
+    extracted_entities: Optional[str] = Field(None, description="提取的实体")
+    is_success: Optional[bool] = Field(None, description="是否识别成功")
+    response_time: Optional[int] = Field(None, description="响应时间(毫秒)")
+    error_message: Optional[str] = Field(None, description="错误信息")
+
+
+class TestDetailCreate(TestDetailBase):
+    """创建测试详情请求"""
+    test_record_id: int = Field(..., description="所属测试记录ID")
+
+
+class TestDetailUpdate(BaseModel):
+    """更新测试详情请求"""
+    expected_intent: Optional[str] = Field(None, max_length=100)
+    actual_intent: Optional[str] = Field(None, max_length=100)
+    confidence_score: Optional[float] = None
+    extracted_entities: Optional[str] = None
+    is_success: Optional[bool] = None
+    response_time: Optional[int] = None
     error_message: Optional[str] = None
 
 
-class TrainingTaskCreate(TrainingTaskBase):
-    pass
-
-
-class TrainingTask(TrainingTaskBase):
+class TestDetail(TestDetailBase):
+    """测试详情响应"""
     id: int
-    created_at: datetime
-    completed_at: Optional[datetime] = None
-    model_id: Optional[int] = None
+    test_record_id: int
+    test_time: datetime
 
     class Config:
         from_attributes = True
 
 
-# 预测请求和响应
-class PredictRequest(BaseModel):
-    text: str
+# ===== 系统配置相关 =====
+
+class SystemConfigBase(BaseModel):
+    """系统配置基础模型"""
+    config_key: str = Field(..., description="配置键", max_length=100)
+    config_value: Optional[str] = Field(None, description="配置值")
+    config_desc: Optional[str] = Field(None, description="配置描述")
+    is_active: bool = Field(True, description="是否启用")
 
 
-class PredictResponse(BaseModel):
-    text: str
-    intent: Optional[str] = None
-    confidence: Optional[float] = None
-    entities: List[Dict[str, Any]] = []
-    raw_rasa_response: Dict[str, Any] = {}
+class SystemConfigCreate(SystemConfigBase):
+    """创建系统配置请求"""
+    pass
 
 
-# 训练请求
-class TrainRequest(BaseModel):
-    nlu_data: str
-    domain_data: str
-    force_retrain: bool = True
+class SystemConfigUpdate(BaseModel):
+    """更新系统配置请求"""
+    config_value: Optional[str] = None
+    config_desc: Optional[str] = None
+    is_active: Optional[bool] = None
 
 
-class TrainResponse(BaseModel):
-    message: str
-    task_id: str
-    model_version: Optional[str] = None
+class SystemConfig(SystemConfigBase):
+    """系统配置响应"""
+    id: int
+    updated_time: datetime
+
+    class Config:
+        from_attributes = True
 
 
-# 批量测试 - 简化版
+# ===== 复合模型 =====
+
+class InstructionDataDetail(InstructionData):
+    """指令数据详情（包含相似问）"""
+    similar_questions: List[SimilarQuestion] = []
+
+
+class SlotDefinitionDetail(SlotDefinition):
+    """词槽定义详情（包含词槽值）"""
+    slot_values: List[SlotValue] = []
+
+
+class InstructionLibraryMasterDetail(InstructionLibraryMaster):
+    """指令库母版详情（包含统计信息）"""
+    instruction_data: List[InstructionData] = []
+    slot_definitions: List[SlotDefinition] = []
+    training_records: List[ModelTrainingRecord] = []
+
+
+# ===== 批量操作相关 =====
+
+class BatchInstructionImport(BaseModel):
+    """批量导入指令请求"""
+    library_id: int = Field(..., description="指令库ID")
+    instructions: List[Dict[str, Any]] = Field(..., description="指令数据列表")
+
+
+class BatchImportResult(BaseModel):
+    """批量导入结果"""
+    success_count: int = Field(..., description="成功导入数量")
+    failed_count: int = Field(..., description="失败数量")
+    errors: List[str] = Field([], description="错误信息列表")
+    imported_ids: List[int] = Field([], description="成功导入的ID列表")
+
+
+# ===== 测试相关 =====
+
+class SingleTestRequest(BaseModel):
+    """单条测试请求"""
+    library_id: int = Field(..., description="指令库ID")
+    model_version_id: int = Field(..., description="模型版本ID")
+    input_text: str = Field(..., description="测试文本")
+
+
+class SingleTestResponse(BaseModel):
+    """单条测试响应"""
+    intent: Optional[str] = Field(None, description="识别的意图")
+    confidence: Optional[float] = Field(None, description="置信度")
+    entities: List[Dict[str, Any]] = Field([], description="实体列表")
+    response_time: Optional[int] = Field(None, description="响应时间")
+
+
 class BatchTestRequest(BaseModel):
-    test_data: List[Dict[str, str]]  # [{"text": "..."}] 只需要测试文本
-    confidence_threshold: Optional[float] = 0.8  # 置信度阈值
-    test_name: Optional[str] = None  # 测试名称（可选）
-
-
-class TestResult(BaseModel):
-    text: str
-    predicted_intent: Optional[str] = None
-    confidence: Optional[float] = None
-    response_time: Optional[float] = None  # 响应时间（毫秒）
-    entities: Optional[List[Dict[str, Any]]] = []  # 实体信息
+    """批量测试请求"""
+    library_id: int = Field(..., description="指令库ID")
+    model_version_id: int = Field(..., description="模型版本ID")
+    test_name: Optional[str] = Field(None, description="测试名称")
+    test_data: List[Dict[str, str]] = Field(..., description="测试数据")
 
 
 class BatchTestResponse(BaseModel):
-    total_tests: int
-    results: List[TestResult]
+    """批量测试响应"""
+    test_record_id: int = Field(..., description="测试记录ID")
+    total_count: int = Field(..., description="总测试数量")
+    message: str = Field(..., description="响应消息")
 
 
-# 完整意图信息（包含相似问和话术）
-class IntentDetail(Intent):
-    utterances: List[Utterance] = []
-    responses: List[Response] = []
+# ===== 训练相关 =====
+
+class TrainingStartRequest(BaseModel):
+    """开始训练请求"""
+    library_id: int = Field(..., description="指令库ID")
+    training_params: Optional[Dict[str, Any]] = Field(None, description="训练参数")
 
 
-# 数据上传
-class DataUploadRequest(BaseModel):
-    data_type: str  # "csv", "yaml", "json"
-    content: str
+class TrainingStartResponse(BaseModel):
+    """开始训练响应"""
+    training_record_id: int = Field(..., description="训练记录ID")
+    version_number: int = Field(..., description="版本号")
+    message: str = Field(..., description="响应消息")
 
 
-class DataUploadResponse(BaseModel):
-    message: str
-    imported_intents: int
-    imported_utterances: int
-    imported_responses: int
-    errors: List[str] = []
-    upload_record_id: Optional[int] = None
+class TrainingStatusResponse(BaseModel):
+    """训练状态响应"""
+    status: TrainingStatus = Field(..., description="训练状态")
+    progress: Optional[float] = Field(None, description="进度百分比")
+    current_step: Optional[str] = Field(None, description="当前步骤")
+    elapsed_time: Optional[int] = Field(None, description="已用时间(秒)")
+    estimated_remaining: Optional[int] = Field(None, description="预计剩余时间(秒)")
 
 
-# 文件上传记录模型
-class UploadRecordBase(BaseModel):
-    filename: str
-    file_type: str  # csv, xlsx, txt, json等
-    file_size: int
-    upload_type: str  # batch-test, training-data
-    status: str  # success, error
-    records_count: int  # 解析到的记录数
-    error_message: Optional[str] = None
+# ===== 版本管理相关 =====
+
+class VersionActivateRequest(BaseModel):
+    """版本激活请求"""
+    library_id: int = Field(..., description="指令库ID")
+    version_id: int = Field(..., description="版本ID")
 
 
-class UploadRecordCreate(UploadRecordBase):
-    parsed_data: Optional[str] = None  # JSON格式存储解析后的数据
+class VersionCompareRequest(BaseModel):
+    """版本对比请求"""
+    library_id: int = Field(..., description="指令库ID")
+    base_version_id: int = Field(..., description="基准版本ID")
+    compare_version_id: int = Field(..., description="对比版本ID")
 
 
-class UploadRecordUpdate(BaseModel):
-    status: Optional[str] = None
-    records_count: Optional[int] = None
-    error_message: Optional[str] = None
-    parsed_data: Optional[str] = None
+class VersionCompareResponse(BaseModel):
+    """版本对比响应"""
+    base_version: ModelTrainingRecord
+    compare_version: ModelTrainingRecord
+    data_changes: Dict[str, Any] = Field({}, description="数据变化")
+    performance_changes: Dict[str, Any] = Field({}, description="性能变化")
 
 
-class UploadRecord(UploadRecordBase):
-    id: int
-    upload_time: datetime
-    parsed_data: Optional[str] = None  # JSON格式存储解析后的数据
+# ===== 通用响应 =====
 
-    class Config:
-        from_attributes = True
-        json_encoders = {
-            datetime: lambda v: v.isoformat() if v else None
-        }
+class ApiResponse(BaseModel):
+    """通用API响应"""
+    success: bool = Field(..., description="是否成功")
+    message: str = Field(..., description="响应消息")
+    data: Optional[Any] = Field(None, description="响应数据")
 
 
-# 上传记录列表响应
-class UploadRecordListResponse(BaseModel):
-    total: int
-    records: List[Dict[str, Any]]  # 改为字典格式以避免序列化问题
-
-
-# 上传记录详情响应
-class UploadRecordDetailResponse(BaseModel):
-    record: Dict[str, Any]  # 改为字典格式以避免序列化问题
-    parsed_data_preview: List[Dict[str, Any]]  # 解析后数据的预览
-
-
-# 批量测试记录模型
-class BatchTestRecordBase(BaseModel):
-    test_name: Optional[str] = None  # 测试名称（可选）
-    total_tests: int
-    recognized_count: int  # 成功识别数量
-    recognition_rate: float  # 识别率
-    confidence_threshold: float  # 使用的置信度阈值
-    test_data: str  # JSON格式存储测试数据
-    test_results: str  # JSON格式存储测试结果
-
-
-class BatchTestRecordCreate(BatchTestRecordBase):
-    pass
-
-
-class BatchTestRecordUpdate(BaseModel):
-    test_name: Optional[str] = None
-
-
-class BatchTestRecord(BatchTestRecordBase):
-    id: int
-    created_at: datetime
-
-    class Config:
-        from_attributes = True
-        json_encoders = {
-            datetime: lambda v: v.isoformat() if v else None
-        }
-
-
-# 批量测试记录列表响应
-class BatchTestRecordListResponse(BaseModel):
-    total: int
-    records: List[Dict[str, Any]]
+class PaginatedResponse(BaseModel):
+    """分页响应"""
+    total: int = Field(..., description="总数量")
+    page: int = Field(..., description="当前页码")
+    size: int = Field(..., description="每页大小")
+    items: List[Any] = Field(..., description="数据列表") 

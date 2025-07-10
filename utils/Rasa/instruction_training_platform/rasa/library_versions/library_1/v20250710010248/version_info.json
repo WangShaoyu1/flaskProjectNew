@@ -1,0 +1,28 @@
+{
+  "library_id": 1,
+  "library_name": "智能硬件的指令库（一）",
+  "version_name": "v20250710010248",
+  "description": "训练版本 - 2025-07-10 01:02:47",
+  "created_time": "2025-07-10T01:02:48.229605",
+  "source": "excel_import",
+  "file_paths": {
+    "nlu.yml": "D:\\gitlab\\flaskProjectNew\\utils\\Rasa\\instruction_training_platform\\rasa\\library_versions\\library_1\\v20250710010248\\nlu.yml",
+    "domain.yml": "D:\\gitlab\\flaskProjectNew\\utils\\Rasa\\instruction_training_platform\\rasa\\library_versions\\library_1\\v20250710010248\\domain.yml",
+    "rules.yml": "D:\\gitlab\\flaskProjectNew\\utils\\Rasa\\instruction_training_platform\\rasa\\library_versions\\library_1\\v20250710010248\\rules.yml",
+    "stories.yml": "D:\\gitlab\\flaskProjectNew\\utils\\Rasa\\instruction_training_platform\\rasa\\library_versions\\library_1\\v20250710010248\\stories.yml",
+    "config.yml": "D:\\gitlab\\flaskProjectNew\\utils\\Rasa\\instruction_training_platform\\rasa\\library_versions\\library_1\\v20250710010248\\config.yml"
+  },
+  "statistics": {
+    "total_files": 4,
+    "file_sizes": {
+      "nlu.yml": 113791,
+      "domain.yml": 42217,
+      "rules.yml": 4044,
+      "stories.yml": 423
+    },
+    "has_nlu": true,
+    "has_domain": true,
+    "has_rules": true,
+    "has_stories": true
+  }
+}

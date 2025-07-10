@@ -1,0 +1,325 @@
+{
+  "generation_time": "2025-07-10T01:02:48.272087",
+  "data_source": "database",
+  "statistics": {
+    "total_instructions": 41,
+    "total_training_examples": 2649,
+    "total_slots": 12,
+    "total_entities": 1672,
+    "categories": {
+      "SYSTEM": 22,
+      "COOKING": 18,
+      "RECIPES": 1
+    }
+  },
+  "instructions_summary": [
+    {
+      "intent": "question_feedback",
+      "name": "问题反馈",
+      "category": "SYSTEM",
+      "examples_count": 11
+    },
+    {
+      "intent": "volume_up",
+      "name": "调高音量",
+      "category": "SYSTEM",
+      "examples_count": 112
+    },
+    {
+      "intent": "volume_down",
+      "name": "调低音量",
+      "category": "SYSTEM",
+      "examples_count": 92
+    },
+    {
+      "intent": "volume_max",
+      "name": "设置最高音量",
+      "category": "SYSTEM",
+      "examples_count": 77
+    },
+    {
+      "intent": "volume_value",
+      "name": "设置音量为目标值",
+      "category": "SYSTEM",
+      "examples_count": 59
+    },
+    {
+      "intent": "mute",
+      "name": "开启静音",
+      "category": "SYSTEM",
+      "examples_count": 145
+    },
+    {
+      "intent": "unmute",
+      "name": "解除静音",
+      "category": "SYSTEM",
+      "examples_count": 60
+    },
+    {
+      "intent": "bright_up",
+      "name": "调高亮度",
+      "category": "SYSTEM",
+      "examples_count": 105
+    },
+    {
+      "intent": "bright_down",
+      "name": "调低亮度",
+      "category": "SYSTEM",
+      "examples_count": 88
+    },
+    {
+      "intent": "bright_max",
+      "name": "设置最高亮度",
+      "category": "SYSTEM",
+      "examples_count": 71
+    },
+    {
+      "intent": "bright_min",
+      "name": "设置最低亮度",
+      "category": "SYSTEM",
+      "examples_count": 71
+    },
+    {
+      "intent": "bright_value",
+      "name": "设置亮度为目标值",
+      "category": "SYSTEM",
+      "examples_count": 60
+    },
+    {
+      "intent": "screen_off_timeout",
+      "name": "设置休眠时间",
+      "category": "SYSTEM",
+      "examples_count": 63
+    },
+    {
+      "intent": "screen_off",
+      "name": "息屏",
+      "category": "SYSTEM",
+      "examples_count": 68
+    },
+    {
+      "intent": "child_lock_on",
+      "name": "打开童锁",
+      "category": "SYSTEM",
+      "examples_count": 33
+    },
+    {
+      "intent": "child_lock_off",
+      "name": "关闭童锁",
+      "category": "SYSTEM",
+      "examples_count": 33
+    },
+    {
+      "intent": "back_home_page",
+      "name": "返回首页",
+      "category": "SYSTEM",
+      "examples_count": 90
+    },
+    {
+      "intent": "cooking_unfreeze",
+      "name": "解冻",
+      "category": "COOKING",
+      "examples_count": 23
+    },
+    {
+      "intent": "voice_cmd_start_cooking",
+      "name": "启动烹饪",
+      "category": "COOKING",
+      "examples_count": 110
+    },
+    {
+      "intent": "voice_cmd_pause_cooking",
+      "name": "暂停烹饪",
+      "category": "COOKING",
+      "examples_count": 49
+    },
+    {
+      "intent": "voice_cmd_continue_cooking",
+      "name": "继续烹饪",
+      "category": "COOKING",
+      "examples_count": 56
+    },
+    {
+      "intent": "voice_cmd_stop_cooking",
+      "name": "终止烹饪",
+      "category": "COOKING",
+      "examples_count": 95
+    },
+    {
+      "intent": "remaining_cooking_time_query",
+      "name": "播报烹饪剩余时间",
+      "category": "COOKING",
+      "examples_count": 75
+    },
+    {
+      "intent": "set_firepower",
+      "name": "设置火力",
+      "category": "COOKING",
+      "examples_count": 59
+    },
+    {
+      "intent": "set_firepower_time",
+      "name": "设置火力+时间",
+      "category": "COOKING",
+      "examples_count": 51
+    },
+    {
+      "intent": "set_cooking_time",
+      "name": "设置烹饪时间",
+      "category": "COOKING",
+      "examples_count": 67
+    },
+    {
+      "intent": "page_previous",
+      "name": "返回",
+      "category": "RECIPES",
+      "examples_count": 84
+    },
+    {
+      "intent": "select_list_id",
+      "name": "选择序号",
+      "category": "SYSTEM",
+      "examples_count": 32
+    },
+    {
+      "intent": "role_switch",
+      "name": "切换角色",
+      "category": "SYSTEM",
+      "examples_count": 87
+    },
+    {
+      "intent": "set_cooking_temp",
+      "name": "加热到指定温度",
+      "category": "COOKING",
+      "examples_count": 73
+    },
+    {
+      "intent": "jump_to_page",
+      "name": "打开指定页面",
+      "category": "SYSTEM",
+      "examples_count": 57
+    },
+    {
+      "intent": "set_theme_next",
+      "name": "切换主题",
+      "category": "SYSTEM",
+      "examples_count": 60
+    },
+    {
+      "intent": "set_theme_previous",
+      "name": "换回上一个主题",
+      "category": "SYSTEM",
+      "examples_count": 58
+    },
+    {
+      "intent": "set_taste",
+      "name": "选择口感",
+      "category": "COOKING",
+      "examples_count": 62
+    },
+    {
+      "intent": "set_foodtype",
+      "name": "选择食物",
+      "category": "COOKING",
+      "examples_count": 48
+    },
+    {
+      "intent": "set_foodtype_taste",
+      "name": "选择食物+口感",
+      "category": "COOKING",
+      "examples_count": 43
+    },
+    {
+      "intent": "set_food_cooking_temp",
+      "name": "加热食物到指定温度",
+      "category": "COOKING",
+      "examples_count": 47
+    },
+    {
+      "intent": "AI_cooking_page_open",
+      "name": "选择智能烹饪模式",
+      "category": "COOKING",
+      "examples_count": 39
+    },
+    {
+      "intent": "heat_cooking_page_open",
+      "name": "选择智能复热模式",
+      "category": "COOKING",
+      "examples_count": 68
+    },
+    {
+      "intent": "DIY_cooking_page_open",
+      "name": "选择自助烹饪模式",
+      "category": "COOKING",
+      "examples_count": 44
+    },
+    {
+      "intent": "recognition_results_correct",
+      "name": "识别结果纠错",
+      "category": "COOKING",
+      "examples_count": 24
+    }
+  ],
+  "slots_summary": [
+    {
+      "slot_name": "时长",
+      "slot_name_en": "duration",
+      "entities_count": 7
+    },
+    {
+      "slot_name": "数字",
+      "slot_name_en": "slot_55d4790c",
+      "entities_count": 11
+    },
+    {
+      "slot_name": "数量",
+      "slot_name_en": "quantity",
+      "entities_count": 5
+    },
+    {
+      "slot_name": "时间",
+      "slot_name_en": "time",
+      "entities_count": 100
+    },
+    {
+      "slot_name": "音量",
+      "slot_name_en": "volume",
+      "entities_count": 2
+    },
+    {
+      "slot_name": "休眠时间",
+      "slot_name_en": "sleep_time",
+      "entities_count": 712
+    },
+    {
+      "slot_name": "口感",
+      "slot_name_en": "taste",
+      "entities_count": 17
+    },
+    {
+      "slot_name": "火力",
+      "slot_name_en": "fire_power",
+      "entities_count": 5
+    },
+    {
+      "slot_name": "第N",
+      "slot_name_en": "sequence_number",
+      "entities_count": 100
+    },
+    {
+      "slot_name": "肯否判断",
+      "slot_name_en": "yes_no",
+      "entities_count": 2
+    },
+    {
+      "slot_name": "菜品名称",
+      "slot_name_en": "dish_name",
+      "entities_count": 705
+    },
+    {
+      "slot_name": "页面名称",
+      "slot_name_en": "page_name",
+      "entities_count": 6
+    }
+  ]
+}

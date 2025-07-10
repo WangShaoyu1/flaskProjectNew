@@ -1,165 +1,293 @@
-from fastapi import FastAPI, HTTPException
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+智能对话训练平台 - 新版本主应用
+基于新的数据库结构和API设计
+"""
+
+import os
+import sys
+import logging
+from pathlib import Path
+from datetime import datetime
+
+# 设置编码
+import locale
+import json
+
+# 注释掉有问题的编码设置
+# # 确保UTF-8编码
+# if sys.platform.startswith('win'):
+#     # Windows下设置控制台编码
+#     import codecs
+#     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.detach())
+#     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.detach())
+
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.openapi.docs import (
+    get_redoc_html,
+    get_swagger_ui_html,
+    get_swagger_ui_oauth2_redirect_html,
+)
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.encoders import jsonable_encoder
 from contextlib import asynccontextmanager
 import uvicorn
-import os
-import logging
 
-# 导入数据库和API路由
-from database import create_tables
-from api import intents, rasa, tools
-from api_docs import custom_openapi
+# 导入数据库初始化
+from models.database_models import create_new_tables
 
-# 配置日志
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
-logger = logging.getLogger(__name__)
+# 导入CDN配置
+from cdn_config import get_current_cdn_config
 
+# 导入统一响应格式
+from utils.response_utils import StandardResponse, success_response, error_response, ErrorCodes, Messages
+
+# 导入日志系统
+from middleware.logging_middleware import LoggingMiddleware, SystemEventLogger, ConsoleLoggingMiddleware
+from utils.logger import log_system, log_error, setup_logger
+
+# 导入API路由
+from api.instruction_library import router as library_router
+from api.instruction_data import router as instruction_router
+from api.slot_management import router as slot_router
+from api.instruction_test import router as test_router
+from api.model_training import router as training_router
+from api.version_management import router as version_router
+from api.system_monitor import router as system_router
+from api.dual_screen_import import router as dual_screen_router
+from api.log_viewer import router as log_viewer_router
+from api.library_version import router as library_version_router
+
+
+# 设置控制台日志格式
+def setup_console_logging():
+    """设置控制台日志输出"""
+    # 创建控制台处理器
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setLevel(logging.INFO)
+
+    # 创建格式化器
+    formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+    console_handler.setFormatter(formatter)
+
+    # 获取根日志记录器
+    root_logger = logging.getLogger()
+    root_logger.setLevel(logging.INFO)
+    root_logger.addHandler(console_handler)
+
+    # 设置uvicorn日志
+    uvicorn_logger = logging.getLogger("uvicorn")
+    uvicorn_logger.setLevel(logging.INFO)
+
+    # 设置uvicorn.access日志
+    uvicorn_access_logger = logging.getLogger("uvicorn.access")
+    uvicorn_access_logger.setLevel(logging.INFO)
+
+
+# 应用生命周期管理
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """应用生命周期管理"""
-    # 启动时的初始化操作
-    try:
-        # 创建数据库表
-        create_tables()
-        logger.info("数据库表创建成功")
-        
-        # 检查 Rasa 项目目录
-        rasa_project_root = os.path.abspath(
-            os.path.join(os.path.dirname(__file__), "..", "rasa")
-        )
-        
-        if not os.path.exists(rasa_project_root):
-            logger.warning(f"Rasa 项目目录不存在: {rasa_project_root}")
-        else:
-            logger.info(f"Rasa 项目目录: {rasa_project_root}")
-        
-        logger.info("指令训练平台后端服务启动成功")
-        
-    except Exception as e:
-        logger.error(f"应用启动失败: {e}")
-        raise
-    
-    yield
-    
-    # 关闭时的清理操作
-    logger.info("指令训练平台后端服务正在关闭...")
+    # 启动时执行
+    print("\n" + "=" * 60)
+    print("🚀 启动智能对话训练平台 v2.0.0")
+    print("=" * 60)
+    print(f"⏰ 启动时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print("📋 服务信息:")
+    print("   - 后端API服务: http://localhost:8001")
+    print("   - API文档: http://localhost:8001/docs")
+    print("   - 健康检查: http://localhost:8001/api/health")
+    print("=" * 60)
 
-# 创建 FastAPI 应用
+    SystemEventLogger.log_startup()
+
+    # 确保数据库表存在
+    try:
+        create_new_tables()
+        print("✅ 数据库表检查完成")
+        SystemEventLogger.log_database_init()
+    except Exception as e:
+        print(f"❌ 数据库初始化失败: {e}")
+        SystemEventLogger.log_database_error(e)
+        raise
+
+    print("🎯 服务已启动，等待请求...")
+    print("=" * 60)
+    yield
+
+    # 关闭时执行
+    print("\n" + "=" * 60)
+    print("📴 智能对话训练平台已关闭")
+    print(f"⏰ 关闭时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print("=" * 60)
+    SystemEventLogger.log_shutdown()
+
+
+# 创建FastAPI应用（禁用默认文档URL）
 app = FastAPI(
-    title="指令训练平台 API",
-    description="基于 Rasa 3.6.21 的智能指令训练平台后端服务",
-    version="1.0.0",
-    docs_url="/docs",
-    redoc_url="/redoc",
+    title="智能对话训练平台",
+    description="基于RASA的智能对话模型训练和管理平台",
+    version="2.0.0",
+    docs_url=None,  # 禁用默认文档
+    redoc_url=None,  # 禁用默认ReDoc
     lifespan=lifespan
 )
 
-# 配置 CORS - 允许所有来源以解决跨域问题
+
+# 自定义JSON响应类，确保UTF-8编码
+class UTF8JSONResponse(JSONResponse):
+    def render(self, content) -> bytes:
+        return json.dumps(
+            jsonable_encoder(content),
+            ensure_ascii=False,
+            allow_nan=False,
+            indent=None,
+            separators=(",", ":"),
+        ).encode("utf-8")
+
+
+# 设置默认响应类
+app.response_class = UTF8JSONResponse
+
+# 添加控制台日志中间件（用于显示请求信息）
+app.add_middleware(ConsoleLoggingMiddleware)
+
+# 添加文件日志中间件
+app.add_middleware(LoggingMiddleware)
+
+# 添加CORS中间件
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # 允许所有来源
-    allow_credentials=False,  # 当allow_origins=["*"]时，必须设置为False
-    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"],
+    allow_origins=["*"],  # 在生产环境中应该限制具体的域名
+    allow_credentials=True,
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# 注册 API 路由
-app.include_router(intents.router)
-app.include_router(rasa.router)
-app.include_router(tools.router)
 
-# 设置自定义 OpenAPI 文档
-app.openapi = lambda: custom_openapi(app)
-
-@app.exception_handler(Exception)
-async def global_exception_handler(request, exc):
-    """全局异常处理器"""
-    logger.error(f"未处理的异常: {exc}")
-    return JSONResponse(
-        status_code=500,
-        content={"detail": "服务器内部错误"}
+# 自定义Swagger UI文档页面（使用国内CDN）
+@app.get("/docs", include_in_schema=False)
+async def custom_swagger_ui_html():
+    cdn_config = get_current_cdn_config()
+    return get_swagger_ui_html(
+        openapi_url=app.openapi_url,
+        title=app.title + " - Swagger UI",
+        oauth2_redirect_url=app.swagger_ui_oauth2_redirect_url,
+        swagger_js_url=cdn_config["swagger_js"],
+        swagger_css_url=cdn_config["swagger_css"],
+        swagger_favicon_url="https://fastapi.tiangolo.com/img/favicon.png",
     )
 
-@app.get("/")
-async def root():
-    """根路径 - 服务健康检查"""
-    return {
-        "message": "指令训练平台后端服务",
-        "version": "1.0.0",
-        "status": "running",
-        "docs": "/docs",
-        "redoc": "/redoc"
-    }
 
-@app.get("/health")
+@app.get(app.swagger_ui_oauth2_redirect_url, include_in_schema=False)
+async def swagger_ui_redirect():
+    return get_swagger_ui_oauth2_redirect_html()
+
+
+# 自定义ReDoc文档页面（使用国内CDN）
+@app.get("/redoc", include_in_schema=False)
+async def redoc_html():
+    cdn_config = get_current_cdn_config()
+    return get_redoc_html(
+        openapi_url=app.openapi_url,
+        title=app.title + " - ReDoc",
+        redoc_js_url=cdn_config["redoc_js"],
+        redoc_favicon_url="https://fastapi.tiangolo.com/img/favicon.png",
+    )
+
+
+# 注册API路由
+app.include_router(library_router)
+app.include_router(instruction_router)
+app.include_router(slot_router)
+app.include_router(test_router)
+app.include_router(training_router)
+app.include_router(version_router)
+app.include_router(system_router)
+app.include_router(dual_screen_router)
+app.include_router(log_viewer_router)
+app.include_router(library_version_router)
+
+
+# 根路径
+@app.get("/", response_model=StandardResponse)
+async def root():
+    """根路径 - 系统状态"""
+    data = {
+        "name": "智能对话训练平台",
+        "version": "2.0.0",
+        "status": "运行中",
+        "description": "基于RASA的智能对话模型训练和管理平台",
+        "docs": "/docs",
+        "redoc": "/redoc",
+        "note": "文档页面已优化为使用国内CDN，无需VPN即可访问"
+    }
+    return success_response(data=data, msg="系统运行正常")
+
+
+# 健康检查
+@app.get("/api/health", response_model=StandardResponse)
 async def health_check():
     """健康检查接口"""
     try:
-        # 这里可以添加更多的健康检查逻辑
-        # 例如检查数据库连接、Rasa 服务状态等
-        
-        return {
+        # 这里可以添加数据库连接检查等
+        data = {
             "status": "healthy",
             "timestamp": "2024-01-01T00:00:00Z",
-            "services": {
-                "database": "connected",
-                "rasa": "checking..."
-            }
+            "database": "connected",
+            "version": "2.0.0"
         }
+        return success_response(data=data, msg="服务健康状态良好")
     except Exception as e:
-        logger.error(f"健康检查失败: {e}")
-        raise HTTPException(status_code=503, detail="服务不健康")
+        return error_response(msg=f"服务不可用: {str(e)}", code=ErrorCodes.SYSTEM_ERROR)
 
-@app.get("/api/info")
-async def get_api_info():
-    """获取 API 信息"""
-    return {
-        "title": "指令训练平台 API",
-        "version": "1.0.0",
-        "description": "基于 Rasa 3.6.21 的智能指令训练平台",
-        "endpoints": {
-            "intents": "/api/intents",
-            "rasa": "/api/rasa", 
-            "tools": "/api/tools"
-        },
+
+# API版本信息
+@app.get("/api/version", response_model=StandardResponse)
+async def get_version():
+    """获取API版本信息"""
+    data = {
+        "api_version": "2.0.0",
+        "platform_version": "2.0.0",
+        "build_date": "2024-01-01",
         "features": [
-            "意图管理",
-            "相似问管理", 
-            "话术管理",
+            "指令库母版管理",
+            "指令数据管理",
+            "词槽管理",
             "模型训练",
-            "语义理解",
-            "批量测试",
-            "数据导入导出"
-        ],
-        "documentation": {
-            "swagger_ui": "/docs",
-            "redoc": "/redoc",
-            "openapi_json": "/openapi.json"
-        }
+            "指令测试",
+            "版本管理",
+            "系统性能监控",
+            "双屏数据导入"
+        ]
     }
-
+    return success_response(data=data, msg="获取版本信息成功")
 
 
 if __name__ == "__main__":
-    # 获取配置参数
-    host = os.getenv("HOST", "0.0.0.0")
-    port = int(os.getenv("PORT", 8081))
-    debug = os.getenv("DEBUG", "false").lower() == "true"
-    
-    logger.info(f"启动服务: http://{host}:{port}")
-    logger.info(f"API 文档: http://{host}:{port}/docs")
-    logger.info(f"ReDoc 文档: http://{host}:{port}/redoc")
-    
-    # 启动服务
+    # 设置控制台日志
+    setup_console_logging()
+
+    print("=" * 60)
+    print("🚀 启动智能对话训练平台 v2.0.0")
+    print("=" * 60)
+    print("📖 API文档: http://localhost:8001/docs (国内CDN优化)")
+    print("📚 ReDoc文档: http://localhost:8001/redoc (国内CDN优化)")
+    print("💡 健康检查: http://localhost:8001/api/health")
+    print("🌐 无需VPN即可访问文档页面")
+    print("=" * 60)
+
     uvicorn.run(
         "app:app",
-        host=host,
-        port=port,
-        reload=debug,
-        log_level="info"
+        host="0.0.0.0",
+        port=8001,
+        reload=True,
+        log_level="info",
+        access_log=True
     )
-

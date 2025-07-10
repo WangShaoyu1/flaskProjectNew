@@ -5,7 +5,7 @@ from sqlalchemy.sql import func
 import os
 
 # 数据库配置
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./instruction_platform.db")
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./database/instruction_platform.db")
 
 engine = create_engine(
     DATABASE_URL,

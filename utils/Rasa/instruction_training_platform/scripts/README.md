@@ -1,190 +1,118 @@
-# 启动停止脚本集合
+# 启动脚本说明
 
-本文件夹包含了智能家居指令训练平台的所有启动和停止脚本。
+## 概述
 
-## 📁 文件说明
+本目录包含智能对话训练平台的启动脚本，采用Python实现，支持跨平台运行。
 
-### 🚀 启动脚本
+## 启动方式
 
-#### 1. 完整服务启动
-- **`start_all_services.bat`** - Windows批处理脚本，启动所有服务
-- **`start_all_services.py`** - Python脚本，启动所有服务（后端+前端+Rasa）
+### 主启动脚本（推荐）
 
-#### 2. Rasa服务启动
-- **`start_rasa_gpu.bat`** - Windows批处理脚本，启动GPU加速版Rasa
-- **`start_rasa_gpu.py`** - Python脚本，GPU优化的Rasa启动（专为RTX 3080Ti优化）
-- **`start_rasa_simple.py`** - Python脚本，简化版Rasa启动（推荐使用）
-
-### 🛑 停止脚本
-- **`stop_all_services.bat`** - Windows批处理脚本，停止所有服务
-
-## 🎯 推荐使用方式
-
-### 快速启动（推荐）
 ```bash
-# 方式1: 使用批处理文件（Windows）
-scripts/start_all_services.bat
-
-# 方式2: 使用Python脚本
-python scripts/start_all_services.py
+# 分标签页启动（推荐）
+python start_platform_tabs.py
 ```
 
-### 单独启动Rasa服务
-```bash
-# 简化版启动（推荐）
-python scripts/start_rasa_simple.py
+**特性：**
+- 🚀 **分标签页显示**：每个服务在独立标签页中显示详细日志
+- 🔧 **智能环境检查**：自动检查Python、Node.js、RASA依赖
+- 🎯 **跨平台支持**：支持Windows、Linux、macOS
+- 🛠️ **自动故障诊断**：启动失败时提供详细解决建议
+- 🎨 **彩色界面**：不同服务使用不同颜色主题
+- 🔄 **智能降级**：根据环境自动选择最佳启动方式
 
-# GPU加速版启动
-python scripts/start_rasa_gpu.py
+### 启动流程
 
-# 或使用批处理文件
-scripts/start_rasa_gpu.bat
-```
+1. **环境检查**：验证Python、Node.js、RASA环境
+2. **文件验证**：检查关键配置文件
+3. **端口清理**：停止占用端口的现有服务
+4. **智能启动**：根据系统选择最佳启动方式
 
-### 停止所有服务
-```bash
-scripts/stop_all_services.bat
-```
+### 支持的启动方式
 
-## 📋 脚本详细说明
+#### Windows系统
+1. **Windows Terminal标签页**（优先）
+   - 使用`wt`命令启动多标签页
+   - 每个服务独立标签页，便于查看日志
 
-### start_all_services.bat / start_all_services.py
-**功能**: 一键启动完整的智能家居指令训练平台
-**包含服务**:
-- 后端API服务 (FastAPI, 端口: 8081)
-- 前端界面服务 (React, 端口: 3000)
-- Rasa NLU服务 (端口: 5005)
+2. **传统cmd窗口**（降级）
+   - 启动3个独立cmd窗口
+   - 兼容旧版Windows系统
 
-**使用场景**: 
-- 首次启动系统
-- 完整的开发和测试环境
-- 演示和生产环境
+#### Unix/Linux系统
+1. **终端模拟器**（优先）
+   - 支持gnome-terminal、konsole、xterm
+   - 每个服务独立终端窗口
 
-### start_rasa_simple.py
-**功能**: 启动简化版的Rasa服务
-**特点**:
-- 轻量级启动，启动速度快
-- 自动检查必要文件
-- 适合日常开发和调试
+2. **直接进程启动**（降级）
+   - 后台启动服务进程
+   - 脚本保持运行监控状态
 
-**使用场景**:
-- 只需要Rasa服务时
-- 快速测试NLU功能
-- 开发调试阶段
+## 服务信息
 
-### start_rasa_gpu.py
-**功能**: 启动GPU加速版的Rasa服务
-**特点**:
-- 专为RTX 3080Ti优化
-- 包含GPU环境检查
-- 启用CUDA加速
-- 内存优化配置
+启动后的服务地址：
 
-**使用场景**:
-- 有GPU硬件支持时
-- 需要高性能训练时
-- 大规模数据处理
+- **前端界面**: http://localhost:3000
+- **后端API**: http://localhost:8001
+- **后端文档**: http://localhost:8001/docs
+- **API健康检查**: http://localhost:8001/api/health
+- **RASA API**: http://localhost:5005
 
-### stop_all_services.bat
-**功能**: 停止所有相关服务
-**包含操作**:
-- 关闭后端API服务
-- 关闭前端服务
-- 关闭Rasa服务
-- 清理相关进程
+## 停止服务
 
-## 🔧 故障排除
+### 方式1：关闭标签页/窗口
+- 直接关闭对应的标签页或窗口即可停止服务
+
+### 方式2：使用Ctrl+C
+- 在启动脚本窗口中按`Ctrl+C`停止所有服务
+
+### 方式3：手动停止
+- 可以在任务管理器中手动结束进程
+
+## 故障排除
 
 ### 常见问题
 
-#### 1. 端口占用
-```bash
-# 检查端口占用
-netstat -ano | findstr :5005
-netstat -ano | findstr :8081
-netstat -ano | findstr :3000
+1. **端口占用**
+   - 脚本会自动检查并清理占用的端口
+   - 如仍有问题，请手动停止相关进程
 
-# 强制关闭进程
-taskkill /F /PID <进程ID>
-```
+2. **环境依赖**
+   - Python 3.8+
+   - Node.js 16+
+   - RASA 3.x
 
-#### 2. Python环境问题
-```bash
-# 检查Python版本
-python --version
+3. **权限问题**
+   - 确保脚本有执行权限
+   - Windows下可能需要管理员权限
 
-# 检查关键包
-python -c "import rasa; print('Rasa:', rasa.__version__)"
-python -c "import tensorflow as tf; print('TensorFlow:', tf.__version__)"
-```
+4. **编码问题**
+   - 所有脚本使用UTF-8编码
+   - 支持中文路径和文件名
 
-#### 3. TensorFlow错误
-```bash
-# 运行修复工具
-python tools/fix_tensorflow_bug.py
-```
+### 日志查看
 
-### 启动顺序建议
+每个服务的日志都会在对应的标签页/窗口中实时显示：
 
-1. **首次启动**:
-   ```bash
-   # 1. 检查环境
-   python -c "import rasa, tensorflow"
-   
-   # 2. 启动所有服务
-   python scripts/start_all_services.py
-   ```
+- **后端日志**：包含API请求、数据库操作、错误信息
+- **前端日志**：包含webpack编译、热重载、访问日志
+- **RASA日志**：包含NLU处理、对话管理、模型加载
 
-2. **日常开发**:
-   ```bash
-   # 只启动需要的服务
-   python scripts/start_rasa_simple.py
-   ```
+## 开发建议
 
-3. **停止服务**:
-   ```bash
-   scripts/stop_all_services.bat
-   ```
+1. **开发环境**：推荐使用Windows Terminal或现代终端模拟器
+2. **调试模式**：所有服务都启用了开发模式和热重载
+3. **日志级别**：可以通过修改启动参数调整日志详细程度
+4. **性能监控**：建议同时打开系统监控页面观察资源使用
 
-## 📝 配置说明
+## 更新日志
 
-### 环境变量
-脚本会自动设置以下环境变量：
-- `PYTHONUNBUFFERED=1` - 实时输出
-- `RASA_TELEMETRY_ENABLED=false` - 禁用遥测
-- `TF_CPP_MIN_LOG_LEVEL=2` - 减少TensorFlow日志
+### v2.0.0 (2025-01-07)
+- 🔥 **重大更新**：移除所有bat文件，统一使用Python脚本
+- ✨ **新增功能**：跨平台支持，智能环境检查
+- 🛠️ **优化改进**：更好的错误处理和故障诊断
+- 🎨 **界面优化**：彩色日志输出，更清晰的状态显示
 
-### 端口配置
-- **后端API**: 8081
-- **前端界面**: 3000  
-- **Rasa服务**: 5005
-
-### 模型文件
-Rasa服务会自动加载最新的模型文件：
-- `rasa/models/20250619-111126-composite-float.tar.gz`
-
-## 🔄 更新说明
-
-### 最近更新 (2025-01-20)
-- ✅ 修复了TensorFlow 2.12.0兼容性问题
-- ✅ 优化了GPU启动脚本
-- ✅ 添加了环境检查功能
-- ✅ 统一了脚本存放位置
-
-### 历史版本
-- 支持GPU加速启动
-- 集成了前后端服务
-- 添加了自动化停止脚本
-
-## 📞 技术支持
-
-如果遇到问题，请参考：
-1. `../Rasa启动问题诊断报告.md` - 详细的问题诊断
-2. `../docs/README.md` - 系统使用指南
-3. `../tools/` - 各种诊断和修复工具
-
----
-
-**维护者**: AI Assistant  
-**创建时间**: 2025-01-20  
-**最后更新**: 2025-01-20 
+### v1.x (历史版本)
+- 支持Windows批处理文件启动
+- 基础的服务管理功能 

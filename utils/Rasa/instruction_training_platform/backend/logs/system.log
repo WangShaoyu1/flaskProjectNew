@@ -1,0 +1,195 @@
+[2025-07-10 00:14:24.575] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-10 00:14:30.094] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 00:14:30.101] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 00:14:32.637] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 00:14:32.642] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 01:01:11.321] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 01:01:11.327] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 01:39:24.510] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-10 01:39:27.306] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 01:39:27.311] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 01:41:24.433] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-10 01:41:35.992] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 01:41:36.001] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 01:49:46.806] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-10 01:49:56.935] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 01:49:56.941] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 01:50:26.090] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-10 01:50:35.733] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 01:50:35.738] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 14:39:18.805] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-10 14:39:30.616] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 14:39:30.623] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 14:41:22.821] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 14:41:22.824] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 17:20:44.676] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 17:20:44.687] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 17:33:46.846] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-10 17:33:51.612] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 17:33:51.618] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 17:37:51.586] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-10 17:37:54.697] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 17:37:54.704] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 17:38:24.789] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-10 17:38:27.345] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 17:38:27.354] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 17:38:51.899] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-10 17:38:54.823] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 17:38:54.829] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 17:39:24.850] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-10 17:39:27.389] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 17:39:27.395] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 17:40:51.542] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-10 17:40:54.783] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 17:40:54.790] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 17:41:24.852] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-10 17:41:28.108] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 17:41:28.116] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 17:41:51.884] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-10 17:41:54.909] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 17:41:54.917] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 17:42:24.927] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-10 17:42:29.902] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 17:42:29.913] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 17:43:51.575] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-10 17:43:54.887] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 17:43:54.897] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-10 17:46:47.769] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-10 17:46:47.774] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}

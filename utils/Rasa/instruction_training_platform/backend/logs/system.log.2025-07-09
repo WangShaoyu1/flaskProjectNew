@@ -1,0 +1,134 @@
+[2025-07-09 00:16:12.501] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-09 00:16:15.769] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-09 00:16:15.778] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-09 00:22:42.103] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-09 00:22:42.107] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-09 00:34:59.674] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-09 00:34:59.683] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-09 01:54:41.823] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-09 01:54:45.506] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-09 01:54:45.509] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-09 15:02:24.181] [INFO] [system] 体温监控数据库表初始化完成
+[2025-07-09 15:02:24.185] [INFO] [system] 默认温度范围配置插入完成
+[2025-07-09 15:02:26.715] [INFO] [system] 体温监控数据库表初始化完成
+[2025-07-09 15:02:27.009] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-09 15:02:27.015] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-09 15:02:43.085] [INFO] [system] 体温监控数据库表初始化完成
+[2025-07-09 15:02:46.163] [INFO] [system] 体温监控数据库表初始化完成
+[2025-07-09 15:02:46.488] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-09 15:02:46.496] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-09 15:03:04.245] [INFO] [system] 体温监控数据库表初始化完成
+[2025-07-09 15:03:07.337] [INFO] [system] 体温监控数据库表初始化完成
+[2025-07-09 15:03:07.649] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-09 15:03:07.656] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-09 15:15:52.151] [INFO] [system] 体温监控数据库表初始化完成
+[2025-07-09 15:15:52.248] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-09 15:15:52.254] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-09 15:47:54.201] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-09 15:47:54.208] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-09 16:14:10.697] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-09 16:14:14.314] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-09 16:14:14.319] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-09 22:05:35.676] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-09 22:05:35.692] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-09 23:01:49.237] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-09 23:01:52.196] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-09 23:01:52.200] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-09 23:02:49.464] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-09 23:02:51.253] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-09 23:02:51.258] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-09 23:03:21.321] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-09 23:03:22.618] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-09 23:03:22.623] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}
+[2025-07-09 23:26:58.797] [INFO] [system] 系统关闭{
+  "event": "shutdown"
+}
+[2025-07-09 23:27:01.176] [INFO] [system] 系统启动{
+  "event": "startup",
+  "version": "2.0.0"
+}
+[2025-07-09 23:27:01.181] [INFO] [system] 数据库初始化完成{
+  "event": "database_init"
+}

@@ -128,5 +128,20 @@
     "chinese": "努力识别中，请稍等",
     "english": "Please wait while trying to identify",
     "tone": "girl"
+  },
+  "selectLanguage_girl.WAV": {
+    "chinese": "请在右边的小屏上选择语言吧",
+    "english": "Please select the language on the small screen to the right.",
+    "tone": "girl"
+  },
+  "selectWIFI_girl.WAV": {
+    "chinese": "请先在右边小屏上选择您想要连接的wifi",
+    "english": "Please first select the Wi-Fi you want to connect to on the small screen to the right",
+    "tone": "girl"
+  },
+  "scanQR_girl.WAV": {
+    "chinese": "请先使用万得厨APP扫描屏幕上的二维码进行绑定哦",
+    "english": "Please scan the QR code on the screen with the Wandechu App to bind your device",
+    "tone": "girl"
   }
 }
